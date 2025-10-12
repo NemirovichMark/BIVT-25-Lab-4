@@ -340,7 +340,7 @@ namespace Lab4
                 int j = i << 1;
 
                 answer[j] = item;
-                
+
                 j += 1;
                 answer[j] = item;
             }
@@ -354,6 +354,38 @@ namespace Lab4
             double[] normalized = null;
 
             // code here
+
+            int
+                max_item = array[0]
+                ,
+                min_item = array[0]
+            ;
+
+            foreach (
+                int item
+                in array
+            )
+            {
+                max_item = Math.Max(max_item, item);
+                min_item = Math.Min(min_item, item);
+            }
+
+            if (max_item != min_item)
+            {
+                double range = max_item - min_item;
+
+                normalized = new double[array.Length];
+
+                for (
+                    int i = 0;
+                    i < array.Length;
+                    i += 1
+                )
+                {
+                    normalized[i] = (array[i] - min_item) / range;
+                }
+
+            }
 
             // end
 
