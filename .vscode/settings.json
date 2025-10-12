@@ -1,9 +1,9 @@
 {
     "dotnet-test-explorer.enableTelemetry": false,
-    "dotnet-test-explorer.testProjectPath": "Lab2test/Lab2test.csproj",
+    "dotnet-test-explorer.testProjectPath": "Lab2test/Lab4test.csproj",
     "csharp.format.enable": true,
     "editor.formatOnSave": true,
     "[csharp]": {
-        "editor.defaultFormatter": "JetBrains.resharper-code"
+        "editor.defaultFormatter": "ms-dotnettools.csharp"
     }
 }
