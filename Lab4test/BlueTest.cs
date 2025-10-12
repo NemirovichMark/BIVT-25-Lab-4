@@ -543,7 +543,7 @@
                     Assert.IsNull(test[i]);
                     continue;
                 }
-                Assert.AreEqual(answer[i].Length, test[i].Length);
+                Assert.AreEqual(answer[i].Length, test[i].Length, $"Test {i} failed");
                 for (int j = 0; j < answer[i].Length; j++)
                 {
                     Assert.AreEqual(answer[i][j], test[i][j], $"Test {i} failed (index {j})");
