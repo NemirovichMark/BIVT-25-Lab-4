@@ -1,4 +1,7 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Data;
+using System.Runtime.CompilerServices;
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.InteropServices;
 
 namespace Lab4
 {
@@ -80,6 +83,72 @@ namespace Lab4
             int[] answer = null;
 
             // code here
+            const int
+                INVALID_INDEX = -0x7F_C0_C0_D0
+            ;
+
+            int
+                p_index = INVALID_INDEX
+                ,
+                answer_length = array.Length
+            ;
+
+
+            //  p_index=
+            for (
+                int i = array.Length - 1;
+                i >= 0;
+                i -= 1
+            )
+            {
+
+                int item = array[i];
+
+                if (item > 0)
+                {
+                    p_index = i + 1;
+                    break;
+                }
+
+            }
+
+            if (INVALID_INDEX == p_index)
+            {
+                p_index = answer_length;
+            }
+            else
+            {
+                answer_length += 1;
+            }
+
+            answer = new int[answer_length];
+
+            //  my_array_t::copy_btw
+
+            //  answer[0..p] = array[0..p]
+            for (
+                int i = 0;
+                i < p_index;
+                i += 1
+            )
+            {
+                answer[i] = array[i];
+            }
+
+            if (answer_length != array.Length)
+            {
+                answer[p_index] = P;
+
+                //  answer[p+1..] = array[p..]
+                for (
+                    int i = p_index + 1;
+                    i < answer_length;
+                    i += 1
+                )
+                {
+                    answer[i] = array[i - 1];
+                }
+            }
 
             // end
 
