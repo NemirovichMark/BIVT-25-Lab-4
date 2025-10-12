@@ -6,11 +6,74 @@ namespace Lab4
     {
         public void Task1(int[] array)
         {
-
             // code here
 
-            // end
+            const int
+                INDEX_NOT_FOUND = -1
+            ;
 
+            int
+                first_negative_index = INDEX_NOT_FOUND
+                ,
+                max_item_index = INDEX_NOT_FOUND
+                ,
+                max_item = array[0]
+                ,
+                sum = 0
+            ;
+
+            // first_negative_index=
+            // max_item=
+            for (
+                int i = 0, item;
+                i < array.Length;
+                i += 1
+            )
+            {
+                item = array[i];
+
+                if (INDEX_NOT_FOUND == first_negative_index && item < 0)
+                {
+                    first_negative_index = i;
+                }
+
+                max_item = Math.Max(max_item, item);
+            }
+
+            if (first_negative_index == INDEX_NOT_FOUND)
+            {
+                return;
+            }
+
+            // max_item_index=
+            for (
+                int i = 0;
+                i < array.Length;
+                i += 1
+            )
+            {
+                if (array[i] != max_item)
+                {
+                    continue;
+                }
+
+                max_item_index = i;
+                break;
+            }
+
+            // sum arr[max..]=
+            for (
+                int i = max_item_index + 1;
+                i < array.Length;
+                i += 1
+            )
+            {
+                sum += array[i];
+            }
+
+            array[first_negative_index] = sum;
+
+            // end
         }
         public int[] Task2(int[] array, int P)
         {
