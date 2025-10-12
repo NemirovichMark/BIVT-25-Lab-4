@@ -328,6 +328,23 @@ namespace Lab4
 
             // code here
 
+            answer = new int[array.Length << 1];
+
+            for (
+                int i = 0;
+                i < array.Length;
+                i += 1
+            )
+            {
+                int item = array[i];
+                int j = i << 1;
+
+                answer[j] = item;
+                
+                j += 1;
+                answer[j] = item;
+            }
+
             // end
 
             return answer;
