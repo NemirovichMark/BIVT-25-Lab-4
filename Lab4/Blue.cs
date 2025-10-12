@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 
 namespace Lab4
 {
@@ -284,6 +286,27 @@ namespace Lab4
             int[] indexes = null;
 
             // code here
+
+            var avg = 0.0;
+
+            foreach (var item in array) avg += item;
+            avg /= array.Length;
+
+            int targets = 0;
+
+            var ret = new int[array.Length];
+            var ret_i = 0;
+
+            for (var array_i = 0; array_i < array.Length; array_i += 1) if (array[array_i] < avg)
+                {
+                    targets += 1;
+                    ret[ret_i] = array_i;
+                    ret_i += 1;
+                }
+
+            indexes = new int[targets];
+
+            for (var i = 0; i < targets; i += 1) indexes[i] = ret[i];
 
             // end
 
