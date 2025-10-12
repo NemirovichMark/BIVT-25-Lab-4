@@ -1,7 +1,4 @@
-﻿using System.Data;
-using System.Runtime.CompilerServices;
-using System.Runtime.ConstrainedExecution;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.CompilerServices;
 
 namespace Lab4
 {
@@ -93,7 +90,6 @@ namespace Lab4
                 answer_length = array.Length
             ;
 
-
             //  p_index=
             for (
                 int i = array.Length - 1;
@@ -159,6 +155,99 @@ namespace Lab4
             int[] answer = null;
 
             // code here
+
+            const int
+                NOT_FOUND = 0x7A_CA_D0_D0
+            ;
+
+            int
+                target_item = NOT_FOUND
+                ,
+                target_item_index = NOT_FOUND
+                ,
+                answer_lenght = array.Length;
+            ;
+
+            // item=
+            // MY_min_by..
+            foreach (
+                int item
+                in array
+            )
+            {
+
+                if (item > 0)
+                {
+
+                    target_item = Math.Min(item, target_item);
+
+                }
+
+            }
+
+            if (NOT_FOUND == target_item) goto ahh__solve_by_skip_method;
+
+            for (
+                int i = 0;
+                i < array.Length;
+                i += 1
+            )
+            {
+
+                int item = array[i];
+
+                if (target_item != item)
+                {
+
+                    continue;
+
+                }
+
+                target_item_index = i;
+
+                break;
+            }
+
+            ahh__solve_by_skip_method:
+
+            if (NOT_FOUND == target_item_index)
+            {
+                target_item_index = answer_lenght;
+            }
+            else
+            {
+                answer_lenght -= 1;
+            }
+            answer = new int[answer_lenght];
+
+
+            for (
+                int i = 0;
+                i < target_item_index;
+                i += 1
+            )
+            {
+
+                answer[i] = array[i];
+
+            }
+
+            if (array.Length != answer_lenght)
+            {
+                for (
+                    int i = target_item_index;
+                    i < answer_lenght;
+                    i += 1
+                )
+
+                // bruh
+
+                {
+
+                    answer[i] = array[i + 1];
+
+                }
+            }
 
             // end
 
