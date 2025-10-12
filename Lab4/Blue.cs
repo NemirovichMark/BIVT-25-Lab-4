@@ -255,11 +255,16 @@ namespace Lab4
         }
         public void Task4(double[] array)
         {
-
             // code here
 
-            // end
+            var avg = 0.0;
 
+            foreach (var item in array) avg += item;
+            avg /= array.Length;
+
+            for (var i = 0; i < array.Length; i += 1) array[i] -= avg; 
+
+            // end
         }
         public int Task5(int[] A, int[] B)
         {
