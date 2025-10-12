@@ -318,6 +318,43 @@ namespace Lab4
 
             // code here
 
+            int
+                rising_count = 1
+                ,
+                falling_count = 1
+            ;
+
+            for (
+                int i = 1;
+                i < array.Length;
+                i += 1
+            )
+            {
+                int diff = array[i - 1] - array[i];
+
+                if (diff >= 0)
+                {
+                    rising_count += 1;
+                }
+                else
+                {
+                    count = Math.Max(count, rising_count);
+                    rising_count = 1;
+                }
+
+                if (diff <= 0)
+                {
+                    falling_count += 1;
+                }
+                else
+                {
+                    count = Math.Max(count, falling_count);
+                    falling_count = 1;
+                }
+            }
+
+            count = Math.Max(count, Math.Max(rising_count, falling_count));
+
             // end
 
             return count;
