@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
+using System.Security;
 
 namespace Lab4
 {
@@ -431,11 +432,42 @@ namespace Lab4
         public int Task10(int[] array, int P)
         {
             int index = 0;
-
             // code here
 
-            // end
+            quick_sort(0, array.Length - 1);
 
+            void quick_sort(int low, int high)
+            {
+                if (low >= high) return;
+
+                int p = part(low, high);
+                quick_sort(low, p - 1);
+                quick_sort(p + 1, high);
+
+                return;
+
+                int part(int low, int high)
+                {
+
+                    var p = array[high];
+                    var i = low;
+
+                    for (var j = low; j < high; j += 1)
+                    {
+                        if (array[j] >= p) continue;
+
+                        swap(i, j);
+                        i += 1;
+                    }
+
+                    swap(i, high);
+                    return i;
+
+                    void swap(int i, int j) => (array[i], array[j]) = (array[j], array[i]);
+                }
+            }
+
+            // end
             return index;
         }
         public int[] Task11(int a, int b, int c)
@@ -454,7 +486,7 @@ namespace Lab4
                 array[i] = a + b * i;
             }
 
-            ahh__solve_by_skip_method:
+        ahh__solve_by_skip_method:
             // end
 
             return array;
