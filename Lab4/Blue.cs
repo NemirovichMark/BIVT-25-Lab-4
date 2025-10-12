@@ -208,7 +208,7 @@ namespace Lab4
                 break;
             }
 
-            ahh__solve_by_skip_method:
+        ahh__solve_by_skip_method:
 
             if (NOT_FOUND == target_item_index)
             {
@@ -262,7 +262,7 @@ namespace Lab4
             foreach (var item in array) avg += item;
             avg /= array.Length;
 
-            for (var i = 0; i < array.Length; i += 1) array[i] -= avg; 
+            for (var i = 0; i < array.Length; i += 1) array[i] -= avg;
 
             // end
         }
@@ -271,6 +271,9 @@ namespace Lab4
             int sum = 0;
 
             // code here
+
+            if (A.Length != B.Length) return 0;
+            for (var i = 0; i < A.Length; i += 1) sum += A[i] * B[i];
 
             // end
 
