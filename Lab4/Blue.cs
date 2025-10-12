@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 using System.Security;
+using System.Security.AccessControl;
 
 namespace Lab4
 {
@@ -434,36 +435,35 @@ namespace Lab4
             int index = 0;
             // code here
 
-            quick_sort(0, array.Length - 1);
+            int last_index = array.Length - 1;
 
-            void quick_sort(int low, int high)
+            //  array.sort();
+            for (int i = 0; i < last_index; i += 1) for (int j = 0; j < last_index - i; j += 1) if (array[j] > array[j + 1]) (array[j + 1], array[j]) = (array[j], array[j + 1]); // bruh
+
+            index = -1;
+
+            int
+                left = 0
+                ,
+                right = last_index
+            ;
+
+            while (left <= right)
             {
-                if (low >= high) return;
+                int mid = (right + left) >> 1;
 
-                int p = part(low, high);
-                quick_sort(low, p - 1);
-                quick_sort(p + 1, high);
-
-                return;
-
-                int part(int low, int high)
+                if (array[mid] == P)
                 {
-
-                    var p = array[high];
-                    var i = low;
-
-                    for (var j = low; j < high; j += 1)
-                    {
-                        if (array[j] >= p) continue;
-
-                        swap(i, j);
-                        i += 1;
-                    }
-
-                    swap(i, high);
-                    return i;
-
-                    void swap(int i, int j) => (array[i], array[j]) = (array[j], array[i]);
+                    index = mid;
+                    right = mid - 1;
+                }
+                else if (array[mid] < P)
+                {
+                    left = mid + 1;
+                }
+                else
+                {
+                    right = mid - 1;
                 }
             }
 
