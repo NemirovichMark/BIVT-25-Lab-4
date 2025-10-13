@@ -424,29 +424,37 @@ namespace Lab4
             int index = 0;
             // code here
 
-            int last_index = array.Length - 1;
-
-            //  array.sort();
-            for (int i = 0; i < last_index; i += 1)
-                for (int j = 0; j < last_index - i; j += 1)
-                    if (array[j] > array[j + 1])
-                        (array[j + 1], array[j]) = (array[j], array[j + 1]); // bruh
-
             index = -1;
 
             int
-                left = 0,
-                right = last_index
-                ;
+                left = 0
+                ,
+                right = array.Length - 1
+            ;
+
+            for (int i = 0; i < right; i += 1)
+            {
+                bool swapped = false;
+
+                for (int j = 0; j < right - i; j += 1)
+                {
+                    if (array[j] > array[j + 1])
+                    {
+                        (array[j + 1], array[j]) = (array[j], array[j + 1]);
+                        swapped = true;
+                    }
+                }
+                if (!swapped) break;
+            }
 
             while (left <= right)
             {
-                int mid = (right + left) >> 1;
+                int mid = (left + right) >> 1;
 
                 if (array[mid] == P)
                 {
                     index = mid;
-                    right = mid - 1;
+                    break;
                 }
                 else if (array[mid] < P)
                 {
@@ -501,7 +509,7 @@ namespace Lab4
             for (int i = 0; i < metrics_map.Length; i += 1)
             {
                 int j;
-                
+
                 int a = magazine[i] + 1;
                 j = i + 1;
 
@@ -509,7 +517,7 @@ namespace Lab4
 
                 j += 1;
                 int c = magazine[j] + 1;
-                
+
                 metrics_map[i] = a * b * c;
             }
 
