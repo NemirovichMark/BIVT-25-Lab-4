@@ -14,17 +14,14 @@ namespace Lab4
 
             const int
                 INDEX_NOT_FOUND = -1
-            ;
+                ;
 
             int
-                first_negative_index = INDEX_NOT_FOUND
-                ,
-                max_item_index = INDEX_NOT_FOUND
-                ,
-                max_item = array[0]
-                ,
+                first_negative_index = INDEX_NOT_FOUND,
+                max_item_index = INDEX_NOT_FOUND,
+                max_item = array[0],
                 sum = 0
-            ;
+                ;
 
             // first_negative_index=
             // max_item=
@@ -79,6 +76,7 @@ namespace Lab4
 
             // end
         }
+
         public int[] Task2(int[] array, int P)
         {
             int[] answer = null;
@@ -86,13 +84,12 @@ namespace Lab4
             // code here
             const int
                 INVALID_INDEX = -0x7F_C0_C0_D0
-            ;
+                ;
 
             int
-                p_index = INVALID_INDEX
-                ,
+                p_index = INVALID_INDEX,
                 answer_length = array.Length
-            ;
+                ;
 
             //  p_index=
             for (
@@ -101,7 +98,6 @@ namespace Lab4
                 i -= 1
             )
             {
-
                 int item = array[i];
 
                 if (item > 0)
@@ -109,7 +105,6 @@ namespace Lab4
                     p_index = i + 1;
                     break;
                 }
-
             }
 
             if (INVALID_INDEX == p_index)
@@ -154,6 +149,7 @@ namespace Lab4
 
             return answer;
         }
+
         public int[] Task3(int[] array)
         {
             int[] answer = null;
@@ -162,13 +158,11 @@ namespace Lab4
 
             const int
                 NOT_FOUND = 0x7A_CA_D0_D0
-            ;
+                ;
 
             int
-                target_item = NOT_FOUND
-                ,
-                target_item_index = NOT_FOUND
-                ,
+                target_item = NOT_FOUND,
+                target_item_index = NOT_FOUND,
                 answer_lenght = array.Length;
             ;
 
@@ -179,14 +173,10 @@ namespace Lab4
                 in array
             )
             {
-
                 if (item > 0)
                 {
-
                     target_item = Math.Min(item, target_item);
-
                 }
-
             }
 
             if (NOT_FOUND == target_item) goto ahh__solve_by_skip_method;
@@ -197,14 +187,11 @@ namespace Lab4
                 i += 1
             )
             {
-
                 int item = array[i];
 
                 if (target_item != item)
                 {
-
                     continue;
-
                 }
 
                 target_item_index = i;
@@ -222,6 +209,7 @@ namespace Lab4
             {
                 answer_lenght -= 1;
             }
+
             answer = new int[answer_lenght];
 
 
@@ -231,25 +219,21 @@ namespace Lab4
                 i += 1
             )
             {
-
                 answer[i] = array[i];
-
             }
 
             if (array.Length != answer_lenght)
             {
                 for (
-                    int i = target_item_index;
-                    i < answer_lenght;
-                    i += 1
-                )
+                        int i = target_item_index;
+                        i < answer_lenght;
+                        i += 1
+                    )
 
                 // bruh
 
                 {
-
                     answer[i] = array[i + 1];
-
                 }
             }
 
@@ -257,6 +241,7 @@ namespace Lab4
 
             return answer;
         }
+
         public void Task4(double[] array)
         {
             // code here
@@ -270,6 +255,7 @@ namespace Lab4
 
             // end
         }
+
         public int Task5(int[] A, int[] B)
         {
             int sum = 0;
@@ -283,6 +269,7 @@ namespace Lab4
 
             return sum;
         }
+
         public int[] Task6(int[] array)
         {
             int[] indexes = null;
@@ -299,7 +286,8 @@ namespace Lab4
             var ret = new int[array.Length];
             var ret_i = 0;
 
-            for (var array_i = 0; array_i < array.Length; array_i += 1) if (array[array_i] < avg)
+            for (var array_i = 0; array_i < array.Length; array_i += 1)
+                if (array[array_i] < avg)
                 {
                     targets += 1;
                     ret[ret_i] = array_i;
@@ -314,6 +302,7 @@ namespace Lab4
 
             return indexes;
         }
+
         public int Task7(int[] array)
         {
             int count = 0;
@@ -321,10 +310,9 @@ namespace Lab4
             // code here
 
             int
-                rising_count = 1
-                ,
+                rising_count = 1,
                 falling_count = 1
-            ;
+                ;
 
             for (
                 int i = 1;
@@ -361,6 +349,7 @@ namespace Lab4
 
             return count;
         }
+
         public int[] Task8(int[] array)
         {
             int[] answer = null;
@@ -388,6 +377,7 @@ namespace Lab4
 
             return answer;
         }
+
         public double[] Task9(int[] array)
         {
             double[] normalized = null;
@@ -395,10 +385,9 @@ namespace Lab4
             // code here
 
             int
-                max_item = array[0]
-                ,
+                max_item = array[0],
                 min_item = array[0]
-            ;
+                ;
 
             foreach (
                 int item
@@ -423,13 +412,13 @@ namespace Lab4
                 {
                     normalized[i] = (array[i] - min_item) / range;
                 }
-
             }
 
             // end
 
             return normalized;
         }
+
         public int Task10(int[] array, int P)
         {
             int index = 0;
@@ -438,15 +427,17 @@ namespace Lab4
             int last_index = array.Length - 1;
 
             //  array.sort();
-            for (int i = 0; i < last_index; i += 1) for (int j = 0; j < last_index - i; j += 1) if (array[j] > array[j + 1]) (array[j + 1], array[j]) = (array[j], array[j + 1]); // bruh
+            for (int i = 0; i < last_index; i += 1)
+                for (int j = 0; j < last_index - i; j += 1)
+                    if (array[j] > array[j + 1])
+                        (array[j + 1], array[j]) = (array[j], array[j + 1]); // bruh
 
             index = -1;
 
             int
-                left = 0
-                ,
+                left = 0,
                 right = last_index
-            ;
+                ;
 
             while (left <= right)
             {
@@ -470,6 +461,7 @@ namespace Lab4
             // end
             return index;
         }
+
         public int[] Task11(int a, int b, int c)
         {
             int[] array = null;
@@ -495,11 +487,59 @@ namespace Lab4
         public int[] Task12(int[] magazine)
         {
             int[] indexes = null;
-
             // code here
 
-            // end
+            if (magazine.Length < 3)
+            {
+                indexes = new int[magazine.Length];
+                for (int i = 0; i < magazine.Length; i += 1) indexes[i] = i;
+                goto ahh_t__solve_by_skip_method;
+            }
 
+            var metrics_map = new int[magazine.Length - 2];
+
+            for (int i = 0; i < metrics_map.Length; i += 1)
+            {
+                int j;
+                
+                int a = magazine[i] + 1;
+                j = i + 1;
+
+                int b = magazine[j] + 1;
+
+                j += 1;
+                int c = magazine[j] + 1;
+                
+                metrics_map[i] = a * b * c;
+            }
+
+            int
+                max_metrics_item
+                ,
+                max_metrics_index
+            ;
+
+            max_metrics_item = metrics_map[0];
+            for (int i = 1; i < metrics_map.Length; i += 1) max_metrics_item = Math.Max(max_metrics_item, metrics_map[i]);
+
+            max_metrics_index = 0;
+            for (int i = 0; i < metrics_map.Length; i += 1)
+            {
+                if (metrics_map[i] != max_metrics_item) continue;
+
+                max_metrics_index = i;
+                break;
+            }
+
+            indexes = [
+                max_metrics_index,
+                max_metrics_index + 1,
+                max_metrics_index + 2
+            ];
+
+        ahh_t__solve_by_skip_method:
+
+            // end
             return indexes;
         }
     }
