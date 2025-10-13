@@ -6,8 +6,17 @@ namespace Lab4
     {
         public void Task1(int[] array)
         {
+            bool Zamena = false;
 
             // code here
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < 0 && Zamena == false)
+                {
+                    int test = array[i] = array.Skip(array.ToList().IndexOf(array.Max()) + 1).Sum();
+                    Zamena = true;
+                }
+            }
 
             // end
 
@@ -15,8 +24,20 @@ namespace Lab4
         public int[] Task2(int[] array, int P)
         {
             int[] answer = null;
+            bool Zamena = false;
 
             // code here
+            answer = array;
+            for (int i = array.Length - 1; i >= 0; i--)
+            {
+                if (array[i] > 0 && Zamena == false)
+                {
+                    answer.ToList().Insert(i, P);
+                    System.Console.WriteLine(i.ToString() + "/" + (answer.Length - 1).ToString());
+                    Zamena = true;
+                }
+            }
+            System.Console.WriteLine(string.Join(", ", answer));
 
             // end
 
