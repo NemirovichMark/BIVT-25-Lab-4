@@ -1,10 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Security.AccessControl;
-
-namespace Lab4
+﻿namespace Lab4
 {
     public class Blue
     {
@@ -84,12 +78,12 @@ namespace Lab4
             // code here
             const int
                 INVALID_INDEX = -0x7F_C0_C0_D0
-                ;
+            ;
 
             int
                 p_index = INVALID_INDEX,
                 answer_length = array.Length
-                ;
+            ;
 
             //  p_index=
             for (
@@ -158,7 +152,7 @@ namespace Lab4
 
             const int
                 NOT_FOUND = 0x7A_CA_D0_D0
-                ;
+            ;
 
             int
                 target_item = NOT_FOUND,
@@ -229,9 +223,6 @@ namespace Lab4
                         i < answer_lenght;
                         i += 1
                     )
-
-                // bruh
-
                 {
                     answer[i] = array[i + 1];
                 }
