@@ -54,11 +54,17 @@ namespace Lab4
         }
         public void Task4(int[] array)
         {
-
             // code here
 
-            // end
+            for (var i = 0; i < array.Length - 1; i += 1)
+                for (var j = 0; j < array.Length - 1 - i; j += 1)
+                {
+                    var a = array[j];
+                    var b = array[j + 1];
+                    if (b >= 0 && a < 0) (array[j], array[j + 1]) = (b, a);
+                }
 
+            // end
         }
         public int[] Task5(int[] A, int[] B, int k)
         {
