@@ -4,11 +4,28 @@
     {
         public void Task1(double[] array)
         {
-
             // code here
 
-            // end
+            var avg = 0.0;
+            var max_item = array[0];
+            var max_item_index = array.Length;
 
+            foreach (var item in array)
+            {
+                max_item = Math.Max(max_item, item);
+                avg += item;
+            }
+            avg /= array.Length;
+
+            for (var i = 0; i < array.Length; i += 1) if (array[i] == max_item)
+                {
+                    max_item_index = i;
+                    break;
+                }
+
+            for (var i = max_item_index + 1; i < array.Length; i += 1) array[i] = avg;
+
+            // end
         }
         public (int[] even, int[] odd) Task2(int[] array)
         {
@@ -65,7 +82,7 @@
             // code here
 
             // end
-            
+
             return normalized;
         }
         public int[] Task8(int[] A, int[] B)
