@@ -1,4 +1,6 @@
-﻿namespace Lab4
+﻿using System.Runtime.InteropServices;
+
+namespace Lab4
 {
     public class Purple
     {
@@ -30,11 +32,14 @@
         public (int[] even, int[] odd) Task2(int[] array)
         {
             int[] even = null, odd = null;
-
             // code here
 
-            // end
+            even = new int[(array.Length >> 1) + (array.Length % 2)];
+            odd = new int[array.Length >> 1];
+            var selector = new int[][] { even, odd };
+            for (var i = 0; i < array.Length; i += 1) selector[i % selector.Length][i >> 1] = array[i];
 
+            // end
             return (even, odd);
         }
         public int[] Task3(int[] array, int P)
