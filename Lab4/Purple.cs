@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace Lab4
 {
@@ -69,11 +70,28 @@ namespace Lab4
         public int[] Task5(int[] A, int[] B, int k)
         {
             int[] answer = null;
-
             // code here
 
-            // end
+            if (k > A.Length)
+            {
+                answer = A;
+                goto skip;
+            }
 
+            answer = new int[A.Length + B.Length];
+
+            //  answer[..k] = A[..=k]
+            for (var i = 0; i <= k; i += 1) answer[i] = A[i];
+
+            //  answer[(k+1)..(k+B.len)] = B[..]
+            for (var i = 0; i < B.Length; i += 1) answer[i + k + 1] = B[i];
+
+            //  answer[??] = A[(k + 1)..]
+            for (var i = k + 1; i < A.Length; i += 1) answer[i] = A[i];
+
+            skip:
+
+            // end
             return answer;
         }
         public (int[] sum, int[] dif) Task6(int[] A, int[] B)
