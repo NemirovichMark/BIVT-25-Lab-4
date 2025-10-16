@@ -487,23 +487,16 @@
             {
                 indexes = new int[magazine.Length];
                 for (int i = 0; i < magazine.Length; i += 1) indexes[i] = i;
-                goto ahh_t__solve_by_skip_method;
+                return indexes;
             }
 
-            var metrics_map = new int[magazine.Length - 2];
+            int[] metrics_map = new int[magazine.Length - 2];
 
             for (int i = 0; i < metrics_map.Length; i += 1)
             {
-                int j;
-
                 int a = magazine[i] + 1;
-                j = i + 1;
-
-                int b = magazine[j] + 1;
-
-                j += 1;
-                int c = magazine[j] + 1;
-
+                int b = magazine[i + 1] + 1;
+                int c = magazine[i + 2] + 1;
                 metrics_map[i] = a * b * c;
             }
 
@@ -530,8 +523,6 @@
                 max_metrics_index + 1,
                 max_metrics_index + 2
             ];
-
-        ahh_t__solve_by_skip_method:
 
             // end
             return indexes;
