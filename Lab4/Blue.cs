@@ -81,7 +81,8 @@
             ;
 
             int
-                p_index = INVALID_INDEX,
+                p_index = INVALID_INDEX
+                ,
                 answer_length = array.Length
             ;
 
@@ -155,9 +156,11 @@
             ;
 
             int
-                target_item = NOT_FOUND,
-                target_item_index = NOT_FOUND,
-                answer_lenght = array.Length;
+                target_item = NOT_FOUND
+                ,
+                target_item_index = NOT_FOUND
+                ,
+                answer_lenght = array.Length
             ;
 
             // item=
