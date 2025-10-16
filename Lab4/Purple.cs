@@ -6,7 +6,27 @@
         {
 
             // code here
+            double mx = array.Max();
+            double summ = 0;
+            double average = 0;
+            int k = 0;
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == mx) k = i;
+                break;
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                summ += array[i];
+            }
+            average = summ / array.Length;
+
+            for (int i = k+1; i < array.Length; i++)
+            {
+                array[i] = average;
+            }
             // end
 
         }
@@ -117,4 +137,5 @@
             return (bright, normal, dim);
         }
     }
+
 }
