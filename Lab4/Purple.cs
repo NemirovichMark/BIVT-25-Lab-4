@@ -1,23 +1,46 @@
-﻿namespace Lab4
+﻿using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+
+namespace Lab4
 {
     public class Purple
     {
         public void Task1(double[] array)
         {
-
             // code here
 
-            // end
+            var avg = 0.0;
+            var max_item = array[0];
+            var max_item_index = array.Length;
 
+            foreach (var item in array)
+            {
+                max_item = Math.Max(max_item, item);
+                avg += item;
+            }
+            avg /= array.Length;
+
+            for (var i = 0; i < array.Length; i += 1) if (array[i] == max_item)
+                {
+                    max_item_index = i;
+                    break;
+                }
+
+            for (var i = max_item_index + 1; i < array.Length; i += 1) array[i] = avg;
+
+            // end
         }
         public (int[] even, int[] odd) Task2(int[] array)
         {
             int[] even = null, odd = null;
-
             // code here
 
-            // end
+            even = new int[(array.Length >> 1) + (array.Length % 2)];
+            odd = new int[array.Length >> 1];
+            var selector = new int[][] { even, odd };
+            for (var i = 0; i < array.Length; i += 1) selector[i % selector.Length][i >> 1] = array[i];
 
+            // end
             return (even, odd);
         }
         public int[] Task3(int[] array, int P)
@@ -32,20 +55,43 @@
         }
         public void Task4(int[] array)
         {
-
             // code here
 
-            // end
+            for (var i = 0; i < array.Length - 1; i += 1)
+                for (var j = 0; j < array.Length - 1 - i; j += 1)
+                {
+                    var a = array[j];
+                    var b = array[j + 1];
+                    if (b >= 0 && a < 0) (array[j], array[j + 1]) = (b, a);
+                }
 
+            // end
         }
         public int[] Task5(int[] A, int[] B, int k)
         {
             int[] answer = null;
-
             // code here
 
-            // end
+            if (k > A.Length)
+            {
+                answer = A;
+                goto skip;
+            }
 
+            answer = new int[A.Length + B.Length];
+
+            //  answer[..k] = A[..=k]
+            for (var i = 0; i <= k; i += 1) answer[i] = A[i];
+
+            //  answer[(k+1)..(k+B.len)] = B[..]
+            for (var i = 0; i < B.Length; i += 1) answer[i + k + 1] = B[i];
+
+            //  answer[??] = A[(k + 1)..]
+            for (var i = k + 1; i < A.Length; i += 1) answer[i] = A[i];
+
+            skip:
+
+            // end
             return answer;
         }
         public (int[] sum, int[] dif) Task6(int[] A, int[] B)
@@ -65,7 +111,7 @@
             // code here
 
             // end
-            
+
             return normalized;
         }
         public int[] Task8(int[] A, int[] B)
