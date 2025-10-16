@@ -1,0 +1,15 @@
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/bin/Debug/net8.0/Lab4
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/bin/Debug/net8.0/Lab4.deps.json
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/bin/Debug/net8.0/Lab4.runtimeconfig.json
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/bin/Debug/net8.0/Lab4.dll
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/bin/Debug/net8.0/Lab4.pdb
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/obj/Debug/net8.0/Lab4.GeneratedMSBuildEditorConfig.editorconfig
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/obj/Debug/net8.0/Lab4.AssemblyInfoInputs.cache
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/obj/Debug/net8.0/Lab4.AssemblyInfo.cs
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/obj/Debug/net8.0/Lab4.csproj.CoreCompileInputs.cache
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/obj/Debug/net8.0/Lab4.sourcelink.json
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/obj/Debug/net8.0/Lab4.dll
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/obj/Debug/net8.0/refint/Lab4.dll
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/obj/Debug/net8.0/Lab4.pdb
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/obj/Debug/net8.0/Lab4.genruntimeconfig.cache
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/obj/Debug/net8.0/ref/Lab4.dll

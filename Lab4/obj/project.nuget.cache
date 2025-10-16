@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "3IbXc5s03zo=",
+  "success": true,
+  "projectFilePath": "/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj",
+  "expectedPackageFiles": [
+    "/home/egorb/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.20/microsoft.aspnetcore.app.ref.8.0.20.nupkg.sha512",
+    "/home/egorb/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.20/microsoft.netcore.app.host.linux-x64.8.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}
