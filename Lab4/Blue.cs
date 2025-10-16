@@ -8,14 +8,17 @@
 
             const int
                 INDEX_NOT_FOUND = -1
-                ;
+            ;
 
             int
-                first_negative_index = INDEX_NOT_FOUND,
-                max_item_index = INDEX_NOT_FOUND,
-                max_item = array[0],
+                first_negative_index = INDEX_NOT_FOUND
+                ,
+                max_item_index = INDEX_NOT_FOUND
+                ,
+                max_item = array[0]
+                ,
                 sum = 0
-                ;
+            ;
 
             // first_negative_index=
             // max_item=
@@ -304,9 +307,10 @@
             // code here
 
             int
-                rising_count = 1,
+                rising_count = 1
+                ,
                 falling_count = 1
-                ;
+            ;
 
             for (
                 int i = 1;
@@ -379,9 +383,10 @@
             // code here
 
             int
-                max_item = array[0],
+                max_item = array[0]
+                ,
                 min_item = array[0]
-                ;
+            ;
 
             foreach (
                 int item
