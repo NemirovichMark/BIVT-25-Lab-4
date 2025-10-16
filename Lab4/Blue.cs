@@ -469,23 +469,15 @@
             return index;
         }
 
-        public int[] Task11(int a, int b, int c)
-        {
+        public int[] Task11(int a, int b, int c) {
             int[] array = null;
 
             // code here
-            if (b <= 0) goto ahh__solve_by_skip_method;
-
-            int items = Math.Max(0, (c - a + b) / b);
-
-            array = new int[items];
-
-            for (int i = 0; i < items; i += 1)
-            {
-                array[i] = a + b * i;
+            if (b > 0) {
+                int items = Math.Max(0, (c - a + b) / b);
+                array = new int[items];
+                for (int i = 0; i < items; i += 1) { array[i] = a + b * i; }
             }
-
-        ahh__solve_by_skip_method:
             // end
 
             return array;
