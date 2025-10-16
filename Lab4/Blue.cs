@@ -179,27 +179,20 @@
                 }
             }
 
-            if (NOT_FOUND == target_item) goto ahh__solve_by_skip_method;
-
-            for (
+            if (
+                NOT_FOUND != target_item
+            ) for (
                 int i = 0;
                 i < array.Length;
                 i += 1
             )
             {
-                int item = array[i];
-
-                if (target_item != item)
+                if (target_item == array[i])
                 {
-                    continue;
+                    target_item_index = i;
+                    break;
                 }
-
-                target_item_index = i;
-
-                break;
             }
-
-        ahh__solve_by_skip_method:
 
             if (NOT_FOUND == target_item_index)
             {
@@ -469,11 +462,13 @@
             return index;
         }
 
-        public int[] Task11(int a, int b, int c) {
+        public int[] Task11(int a, int b, int c)
+        {
             int[] array = null;
 
             // code here
-            if (b > 0) {
+            if (b > 0)
+            {
                 int items = Math.Max(0, (c - a + b) / b);
                 array = new int[items];
                 for (int i = 0; i < items; i += 1) { array[i] = a + b * i; }
