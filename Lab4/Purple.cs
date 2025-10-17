@@ -117,43 +117,52 @@ namespace Lab4
         }
         public int[] Task5(int[] A, int[] B, int k)
         {
-            int[] answer = null;
-
-            // code here
-            answer = new int[A.Length + B.Length];
-            if (k == A.Length - 1)
+            // Обработка случая, когда k выходит за границы массива A
+            if (k >= A.Length - 1)
             {
-                int curInd = 0;
-                for(int i = 0; i < A.Length; i++)
+                // Если k указывает на последний элемент или за его пределами - вставляем B в конец
+                int[] result = new int[A.Length + B.Length];
+
+                // Копируем весь массив A
+                for (int i = 0; i < A.Length; i++)
                 {
-                    answer[i] = A[i];
-                    curInd++;
+                    result[i] = A[i];
                 }
-                for (int i = 0; i < B.Length; i++) answer[curInd + i] = B[i];
+
+                // Вставляем B после A
+                for (int i = 0; i < B.Length; i++)
+                {
+                    result[A.Length + i] = B[i];
+                }
+
+                return result;
             }
             else
             {
-                int curInd = 0;
+                // Вставляем B между k-м и (k+1)-м элементами
+                int[] result = new int[A.Length + B.Length];
+                int index = 0;
+
+                // Копируем элементы до k-го включительно
                 for (int i = 0; i <= k; i++)
                 {
-                     answer[curInd] = A[i];
-                     curInd = i;
+                    result[index++] = A[i];
                 }
+
+                // Вставляем массив B
                 for (int i = 0; i < B.Length; i++)
                 {
-                    answer[curInd] = B[i];
-                    curInd++;
+                    result[index++] = B[i];
                 }
+
+                // Копируем оставшиеся элементы из A (начиная с k+1)
                 for (int i = k + 1; i < A.Length; i++)
                 {
-                    answer[curInd] = A[i];
-                    curInd++;
+                    result[index++] = A[i];
                 }
+
+                return result;
             }
-
-            //end
-
-            return answer;
         }
         public (int[] sum, int[] dif) Task6(int[] A, int[] B)
         {
