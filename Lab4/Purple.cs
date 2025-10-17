@@ -6,6 +6,21 @@
         {
 
             // code here
+            int max_element_pos = 0;
+            double element_sum = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                element_sum += array[i];
+                if (array[i] > array[max_element_pos]) max_element_pos = i;
+            }
+            double mid = element_sum / array.Length;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i > max_element_pos)
+                {
+                    array[i] = mid;
+                }
+            }
 
             // end
 
@@ -15,7 +30,14 @@
             int[] even = null, odd = null;
 
             // code here
+            int s = 0;
+            for (int i = 0; i<array.Length; i++)
+            {
+                if (s == 0)
+                {
 
+                }
+            }
             // end
 
             return (even, odd);
@@ -116,5 +138,6 @@
 
             return (bright, normal, dim);
         }
+
     }
 }
