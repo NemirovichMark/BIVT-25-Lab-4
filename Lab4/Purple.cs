@@ -115,7 +115,7 @@ namespace Lab4
             // end
 
         }
-        public int[] Task5(int[] A, int[] B, int k)
+        public int[] Task5(int[] A, int[] B, int k) // noooo way u think?
         {
             // Обработка случая, когда k выходит за границы массива A
             if (k >= A.Length - 1)
@@ -234,3 +234,4 @@ namespace Lab4
         }
     }
 }
+
