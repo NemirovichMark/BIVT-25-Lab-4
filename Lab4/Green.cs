@@ -1,34 +1,112 @@
-﻿namespace Lab4
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
+
+namespace Lab4
 {
     public class Green
     {
         public void Task1(double[] array)
         {
-
+            double sum = 0;
+            int count = 0;
             // code here
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > 0)
+                {
+                    sum += array[i];
+                    count += 1;
+                }
+            }
 
-            // end
 
+            double avg = sum / count;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if ((array[i] > 0))
+                {
+                    array[i] = avg;
+                }
+            }
         }
+            // end        }
         public int Task2(int[] array)
         {
             int sum = 0;
+            bool check = false;
 
-            // code here
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < 0)
+                {
+                    check = true;
+                    break;
+                }
+            }
+            if (check)
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i] >= 0)
+                    {
+                        sum += (array[i] * array[i]);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            
             // end
 
             return sum;
         }
         public int[] Task3(int[] array)
         {
-            int[] negatives = null;
+            int[] negatives = ;
 
             // code here
+            int max_val = 0;
+            int max_pos = 0;
 
-            // end
+            int min_val = 0;
+            int min_pos = 0;
 
-            return negatives;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max_val)
+                {
+                    max_val = array[i];
+                    max_pos = i;
+                }
+
+                if (array[i] < min_val)
+                {
+                    min_val = array[i];
+                    min_pos = i;
+                }
+            }
+
+
+            int left = Math.Min(max_pos, min_pos);
+            int right = Math.Max(max_pos, min_pos);
+
+
+
+            for (int i = left + 1; i < right; i++)
+            {
+                if (array[i] < 0)
+                {
+                    negatives.SetValue(value: array[i], index: i - left - 1);
+                }
+            }
+                // end
+
+                return negatives;
         }
         public void Task4(int[] array)
         {
