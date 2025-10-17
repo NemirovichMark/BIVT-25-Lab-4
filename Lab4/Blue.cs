@@ -241,7 +241,9 @@ namespace Lab4
             // code here
 
 	    int[] arr = new int[array.Length];
-	    array.CopyTo(arr, 0);
+	    for (int j = 0; j < array.Length; j++){
+	      arr[j] = array[j];
+	    }
 	    int i = 1, n = arr.Length;
 
 	    
