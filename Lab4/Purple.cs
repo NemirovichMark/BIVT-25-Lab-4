@@ -117,46 +117,56 @@ namespace Lab4
         }
         public int[] Task5(int[] A, int[] B, int k)
         {
-            
-            if (k >= A.Length - 1)
-            {
-                int[] result = new int[A.Length + B.Length];
+            int[] answer = null;
 
+            // code here
+            if (k == A.Length)
+            {
+                answer = new int[A.Length + B.Length];
+                int id = 0;
                 for (int i = 0; i < A.Length; i++)
                 {
-                    result[i] = A[i];
+                    answer[id++] = A[i];
                 }
-
                 for (int i = 0; i < B.Length; i++)
                 {
-                    result[A.Length + i] = B[i];
+                    answer[id++] = B[i];
                 }
-
-                return result;
+            }
+            else if (k < A.Length)
+            {
+                answer = new int[A.Length + B.Length];
+                int id = 0;
+                for (int i = 0; i < k; i++)
+                {
+                    answer[id] = A[i];
+                    id += 1;
+                }
+                for (int i = 0; i < B.Length; i++)
+                {
+                    answer[id] = B[i];
+                    id += 1;
+                }
+                for (int i = k; i < A.Length; i++)
+                {
+                    answer[id] = A[i];
+                    id += 1;
+                }
             }
             else
             {
-                int[] result = new int[A.Length + B.Length];
-                int index = 0;
-
-                for (int i = 0; i <= k; i++)
+                answer = new int[A.Length];
+                int id = 0;
+                for (int i = 0; i < A.Length; i++)
                 {
-                    result[index++] = A[i];
+                    answer[id++] = A[i];
                 }
-
-                for (int i = 0; i < B.Length; i++)
-                {
-                    result[index++] = B[i];
-                }
-
-                for (int i = k + 1; i < A.Length; i++)
-                {
-                    result[index++] = A[i];
-                }
-
-                return result;
             }
+            // end
+
+            return answer;
         }
+
         public (int[] sum, int[] dif) Task6(int[] A, int[] B)
         {
             int[] sum = null, dif = null;
