@@ -51,7 +51,7 @@ namespace Lab4
             if (array == null || array.Length < 2)
                 return;
             
-            // إيجاد الفهرس الأقصى
+            
             int maxIndex = 0;
             for (int i = 1; i < array.Length; i++)
             {
@@ -61,11 +61,11 @@ namespace Lab4
                 }
             }
             
-            // إذا كان العنصر الأقصى هو الأخير، لا شيء لتغييره
+            
             if (maxIndex >= array.Length - 1)
                 return;
             
-            // إيجاد الحد الأدنى بعد الأقصى
+            
             int minAfterMaxIndex = maxIndex + 1;
             for (int i = maxIndex + 2; i < array.Length; i++)
             {
@@ -75,7 +75,7 @@ namespace Lab4
                 }
             }
             
-            // التبديل
+            
             int temp = array[maxIndex];
             array[maxIndex] = array[minAfterMaxIndex];
             array[minAfterMaxIndex] = temp;
@@ -91,7 +91,7 @@ namespace Lab4
             int maxEvenIndex = 0;
             bool found = false;
             
-            // البحث في الفهارس الزوجية فقط
+            
             for (int i = 0; i < array.Length; i += 2)
             {
                 if (!found || array[i] > array[maxEvenIndex])
@@ -101,7 +101,7 @@ namespace Lab4
                 }
             }
             
-            // الاستبدال بقيمة الفهرس
+            
             if (found)
             {
                 array[maxEvenIndex] = maxEvenIndex;
@@ -204,4 +204,5 @@ namespace Lab4
     }
 
 }
+
 
