@@ -10,13 +10,12 @@ namespace Lab4
             if (vector == null || vector.Length == 0)
                 return 0;
             
-            double sumOfSquares = 0;
+            double sum = 0;
             for (int i = 0; i < vector.Length; i++)
             {
-                sumOfSquares += vector[i] * vector[i];
+                sum += vector[i] * vector[i];
             }
-            
-            length = Math.Sqrt(sumOfSquares);
+            length = Math.Sqrt(sum);
             // end
 
             return length;
@@ -30,15 +29,13 @@ namespace Lab4
             if (array == null || array.Length == 0)
                 return 0;
             
-            int lower = Math.Min(P, Q);
-            int upper = Math.Max(P, Q);
+            int min = Math.Min(P, Q);
+            int max = Math.Max(P, Q);
             
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] > lower && array[i] < upper)
-                {
+                if (array[i] > min && array[i] < max)
                     count++;
-                }
             }
             // end
 
@@ -51,34 +48,30 @@ namespace Lab4
             if (array == null || array.Length < 2)
                 return;
             
-            
+            // Find max element index
             int maxIndex = 0;
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] > array[maxIndex])
-                {
                     maxIndex = i;
-                }
             }
             
-            
-            if (maxIndex >= array.Length - 1)
+            // If max is last element, no changes
+            if (maxIndex == array.Length - 1)
                 return;
             
-            
-            int minAfterMaxIndex = maxIndex + 1;
+            // Find min element after max
+            int minIndex = maxIndex + 1;
             for (int i = maxIndex + 2; i < array.Length; i++)
             {
-                if (array[i] < array[minAfterMaxIndex])
-                {
-                    minAfterMaxIndex = i;
-                }
+                if (array[i] < array[minIndex])
+                    minIndex = i;
             }
             
-            
+            // Swap
             int temp = array[maxIndex];
-            array[maxIndex] = array[minAfterMaxIndex];
-            array[minAfterMaxIndex] = temp;
+            array[maxIndex] = array[minIndex];
+            array[minIndex] = temp;
             // end
         }
 
@@ -88,24 +81,22 @@ namespace Lab4
             if (array == null || array.Length == 0)
                 return;
             
-            int maxEvenIndex = 0;
+            int maxIndex = 0;
             bool found = false;
             
-            
+            // Find max element with even index
             for (int i = 0; i < array.Length; i += 2)
             {
-                if (!found || array[i] > array[maxEvenIndex])
+                if (!found || array[i] > array[maxIndex])
                 {
-                    maxEvenIndex = i;
+                    maxIndex = i;
                     found = true;
                 }
             }
             
-            
+            // Replace with index value
             if (found)
-            {
-                array[maxEvenIndex] = maxEvenIndex;
-            }
+                array[maxIndex] = maxIndex;
             // end
         }
 
@@ -134,76 +125,56 @@ namespace Lab4
 
             return index;
         }
-    }
-}
+
+        // المهام من 6 إلى 12 ستبقى فارغة كما في القالب
         public void Task6(int[] array)
         {
-
             // code here
-
             // end
-
         }
+        
         public int[] Task7(int[] array)
         {
             int[] answer = null;
-
             // code here
-
             // end
-
             return answer;
         }
+        
         public void Task8(int[] array)
         {
-
             // code here
-
             // end
-
         }
+        
         public void Task9(int[] array)
         {
-
             // code here
-
             // end
-
         }
+        
         public int[] Task10(int[] A, int[] B)
         {
             int[] C = null;
-
             // code here
-
             // end
-
             return C;
         }
+        
         public double[] Task11(double a, double b, int n)
         {
             double[] array = null;
-
             // code here
-
             // end
-
             return array;
         }
 
         public double[] Task12(double[] raw)
         {
             double[] restored = null;
-
             // code here
-
             // end
-
             return restored;
         }
     }
-
 }
-
-
-
