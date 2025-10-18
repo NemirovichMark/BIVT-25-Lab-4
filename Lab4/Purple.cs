@@ -22,7 +22,7 @@ namespace Lab4
                 sum += array[i];
             }
             double middle = sum / array.Length;
-            for(int i = array.Length - 1; i > indMx; i--)
+            for (int i = array.Length - 1; i > indMx; i--)
                 array[i] = middle;
             // end
 
@@ -36,7 +36,7 @@ namespace Lab4
             odd = new int[array.Length / 2];
             for (int i = 0; i < array.Length; i++)
             {
-                if (i % 2 == 0) 
+                if (i % 2 == 0)
                     even[i / 2] = array[i];
                 else
                     odd[i / 2] = array[i];
@@ -84,7 +84,7 @@ namespace Lab4
             int countNegative = 0;
             foreach (var i in array)
             {
-                if(i < 0)
+                if (i < 0)
                     countNegative++;
             }
             int[] positives = new int[array.Length - countNegative];
@@ -110,26 +110,23 @@ namespace Lab4
                 array[i] = positives[i];
                 curInd++;
             }
-            for(int i = 0; i < countNeg; i++) array[curInd + i] = negatives[i];
-            
+            for (int i = 0; i < countNeg; i++) array[curInd + i] = negatives[i];
+
             // end
 
         }
-        public int[] Task5(int[] A, int[] B, int k) // noooo way u think?
+        public int[] Task5(int[] A, int[] B, int k)
         {
-            // Обработка случая, когда k выходит за границы массива A
+            
             if (k >= A.Length - 1)
             {
-                // Если k указывает на последний элемент или за его пределами - вставляем B в конец
                 int[] result = new int[A.Length + B.Length];
 
-                // Копируем весь массив A
                 for (int i = 0; i < A.Length; i++)
                 {
                     result[i] = A[i];
                 }
 
-                // Вставляем B после A
                 for (int i = 0; i < B.Length; i++)
                 {
                     result[A.Length + i] = B[i];
@@ -139,23 +136,19 @@ namespace Lab4
             }
             else
             {
-                // Вставляем B между k-м и (k+1)-м элементами
                 int[] result = new int[A.Length + B.Length];
                 int index = 0;
 
-                // Копируем элементы до k-го включительно
                 for (int i = 0; i <= k; i++)
                 {
                     result[index++] = A[i];
                 }
 
-                // Вставляем массив B
                 for (int i = 0; i < B.Length; i++)
                 {
                     result[index++] = B[i];
                 }
 
-                // Копируем оставшиеся элементы из A (начиная с k+1)
                 for (int i = k + 1; i < A.Length; i++)
                 {
                     result[index++] = A[i];
@@ -169,7 +162,16 @@ namespace Lab4
             int[] sum = null, dif = null;
 
             // code here
-
+            if (A.Length == B.Length)
+            {
+                sum = new int[A.Length];
+                dif = new int[A.Length];
+                for (int i = 0; i < A.Length; i++)
+                {
+                    sum[i] = A[i] + B[i];
+                    dif[i] = A[i] - B[i];
+                }
+            }
             // end
 
             return (sum, dif);
@@ -181,7 +183,7 @@ namespace Lab4
             // code here
 
             // end
-            
+
             return normalized;
         }
         public int[] Task8(int[] A, int[] B)
@@ -189,7 +191,28 @@ namespace Lab4
             int[] C = null;
 
             // code here
-
+            int len = A.Length + B.Length;
+            C = new int[len];
+            int[] sorted = new int[len];
+            for (int i = 0; i < A.Length; i++) C[i] = A[i];
+            for (int i = 0; i < B.Length; i++) C[i + A.Length] = B[i];
+            while (len != 0)
+            {
+                int mx = int.MinValue;
+                int ind = 0;
+                for (int i = 0; i < C.Length; i++)
+                {
+                    if (C[i] > mx)
+                    {
+                        mx = C[i];
+                        ind = i;
+                    }
+                }
+                sorted[C.Length - len] = mx;
+                C[ind] = int.MinValue;
+                len--;
+            }
+            C = sorted;
             // end
 
             return C;
@@ -198,7 +221,26 @@ namespace Lab4
         {
 
             // code here
-
+            int mx = int.MinValue;
+            int ind = 0;
+            
+            int[] preArray = new int[array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > mx)
+                {
+                    mx = array[i];
+                    ind = i;
+                }
+            }
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (ind + i < array.Length)
+                    preArray[ind + i] = array[i];
+                else
+                    preArray[i + ind - array.Length] = array[i];
+            }
+            for (int i = 0; i < array.Length; i++) array[i] = preArray[i];
             // end
 
         }
@@ -206,6 +248,15 @@ namespace Lab4
         {
 
             // code here
+            //int[] preArray = new int[array.Length];
+            int left = N - 2, right = N;
+            while (left >= 0 && right < array.Length)
+            {
+                array[right] = array[left];
+                right++;
+                left--;
+            }
+            
 
             // end
 
@@ -216,6 +267,19 @@ namespace Lab4
             double[] Xext = null, Yext = null;
 
             // code here
+            int len = (int)Math.Ceiling(b - a) / n;
+            X = new double[len];
+            Y = new double[len];
+            Xext = new double[len];
+            Yext = new double[len];
+            int id = 0;
+
+            for (double x = a; x <= b; a += n)
+            {
+                X[id] = x;
+                Y[id] = Math.Cos(x) + x * Math.Sin(x);
+                id++;
+            }
 
             // end
 
@@ -234,4 +298,3 @@ namespace Lab4
         }
     }
 }
-
