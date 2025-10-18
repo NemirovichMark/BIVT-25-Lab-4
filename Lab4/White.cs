@@ -248,111 +248,117 @@ namespace Lab4
             return C;
         }
         
-        public double[] Task11(double a, double b, int n)
+       public double[] Task11(double a, double b, int n)
+{
+    double[] array = null;
+
+    // code here
+    if (n <= 0)
+        return null;
+    
+    if (n == 1)
+    {
+        array = new double[] { a };
+        return array;
+    }
+    
+    if (a == b)
+        return null;
+    
+    array = new double[n];
+    
+    if (a < b)
+    {
+        double step = (b - a) / (n - 1);
+        for (int i = 0; i < n; i++)
         {
-            double[] array = null;
-
-            // code here
-            if (n <= 0)
-                return null;
-            
-            if (n == 1 && a == b)
-            {
-                array = new double[] { a };
-                return array;
-            }
-            
-            if (n < 1)
-                return null;
-            
-            array = new double[n];
-            
-            if (a == b)
-            {
-                for (int i = 0; i < n; i++)
-                {
-                    array[i] = a;
-                }
-            }
-            else if (a < b)
-            {
-                double step = (b - a) / (n - 1);
-                for (int i = 0; i < n; i++)
-                {
-                    array[i] = a + i * step;
-                }
-            }
-            else // a > b
-            {
-                double step = (a - b) / (n - 1);
-                for (int i = 0; i < n; i++)
-                {
-                    array[i] = a - i * step;
-                }
-            }
-            // end
-
-            return array;
-        }
-
-        public double[] Task12(double[] raw)
-        {
-            double[] restored = null;
-
-            // code here
-            if (raw == null || raw.Length < 3)
-                return raw?.ToArray() ?? new double[0];
-            
-            restored = new double[raw.Length];
-            
-            // Check if all elements are -1
-            bool allNegativeOne = true;
-            for (int i = 0; i < raw.Length; i++)
-            {
-                if (raw[i] != -1)
-                {
-                    allNegativeOne = false;
-                    break;
-                }
-            }
-            
-            if (allNegativeOne)
-            {
-                Array.Copy(raw, restored, raw.Length);
-                return restored;
-            }
-            
-            // Copy original values
-            Array.Copy(raw, restored, raw.Length);
-            
-            // Restore damaged values
-            for (int i = 0; i < restored.Length; i++)
-            {
-                if (restored[i] == -1)
-                {
-                    double left = (i > 0) ? restored[i - 1] : -1;
-                    double right = (i < restored.Length - 1) ? restored[i + 1] : -1;
-                    
-                    if (left != -1 && right != -1)
-                    {
-                        restored[i] = (left + right) / 2.0;
-                    }
-                    else if (left != -1)
-                    {
-                        restored[i] = left;
-                    }
-                    else if (right != -1)
-                    {
-                        restored[i] = right;
-                    }
-                    // else leave as -1
-                }
-            }
-            // end
-
-            return restored;
+            array[i] = a + i * step;
         }
     }
+    else // a > b
+    {
+        double step = (a - b) / (n - 1);
+        for (int i = 0; i < n; i++)
+        {
+            array[i] = a - i * step;
+        }
+    }
+    // end
+
+    return array;
 }
+       public double[] Task12(double[] raw)
+{
+    double[] restored = null;
+
+    // code here
+    if (raw == null || raw.Length < 3)
+        return raw?.ToArray() ?? new double[0];
     
+    restored = new double[raw.Length];
+    
+    // Check if all elements are -1
+    bool allNegativeOne = true;
+    for (int i = 0; i < raw.Length; i++)
+    {
+        if (raw[i] != -1)
+        {
+            allNegativeOne = false;
+            break;
+        }
+    }
+    
+    if (allNegativeOne)
+    {
+        Array.Copy(raw, restored, raw.Length);
+        return restored;
+    }
+    
+    // Copy original values
+    Array.Copy(raw, restored, raw.Length);
+    
+    // Restore damaged values - multiple passes until no more changes
+    bool changed;
+    do
+    {
+        changed = false;
+        for (int i = 0; i < restored.Length; i++)
+        {
+            if (restored[i] == -1)
+            {
+                // Find left neighbor (circular)
+                double left = -1;
+                for (int j = i - 1; j >= 0; j--)
+                {
+                    if (restored[j] != -1)
+                    {
+                        left = restored[j];
+                        break;
+                    }
+                }
+                
+                // Find right neighbor (circular)
+                double right = -1;
+                for (int j = i + 1; j < restored.Length; j++)
+                {
+                    if (restored[j] != -1)
+                    {
+                        right = restored[j];
+                        break;
+                    }
+                }
+                
+                // If both neighbors are valid, calculate average
+                if (left != -1 && right != -1)
+                {
+                    restored[i] = (left + right) / 2.0;
+                    changed = true;
+                }
+            }
+        }
+    } while (changed);
+    // end
+
+    return restored;
+}
 
