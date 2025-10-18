@@ -1,39 +1,38 @@
-using System.Runtime.InteropServices;
-
 namespace Lab4
 {
-    public class Blue
+    public class White
     {
-        public void Task1(int[] array)
+        public double Task1(int[] vector)
         {
+            double length = 0;
 
             // code here
             if (vector == null || vector.Length == 0)
                 return 0;
-
+            
             double sumOfSquares = 0;
             for (int i = 0; i < vector.Length; i++)
             {
                 sumOfSquares += vector[i] * vector[i];
             }
-
-            double answer = Math.Sqrt(sumOfSquares);
-            return answer;
+            
+            length = Math.Sqrt(sumOfSquares);
             // end
 
+            return length;
         }
-        public int[] Task2(int[] array, int P)
+
+        public int Task2(int[] array, int P, int Q)
         {
-            int[] answer = null;
+            int count = 0;
 
             // code here
             if (array == null || array.Length == 0)
                 return 0;
-
-            int count = 0;
+            
             int lower = Math.Min(P, Q);
             int upper = Math.Max(P, Q);
-
+            
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] > lower && array[i] < upper)
@@ -41,22 +40,18 @@ namespace Lab4
                     count++;
                 }
             }
-
-            int answer = count;
-           
             // end
 
-            return answer;
+            return count;
         }
-        public int[] Task3(int[] array)
-        {
-            int[] answer = null;
 
+        public void Task3(int[] array)
+        {
             // code here
             if (array == null || array.Length < 2)
-                return array;
-
-            // Находим индекс максимального элемента
+                return;
+            
+            // إيجاد الفهرس الأقصى
             int maxIndex = 0;
             for (int i = 1; i < array.Length; i++)
             {
@@ -65,12 +60,12 @@ namespace Lab4
                     maxIndex = i;
                 }
             }
-
-            // Если максимальный элемент последний - изменений не производить
+            
+            // إذا كان العنصر الأقصى هو الأخير، لا شيء لتغييره
             if (maxIndex >= array.Length - 1)
-                return array;
-
-            // Находим минимальный элемент после максимального
+                return;
+            
+            // إيجاد الحد الأدنى بعد الأقصى
             int minAfterMaxIndex = maxIndex + 1;
             for (int i = maxIndex + 2; i < array.Length; i++)
             {
@@ -79,26 +74,24 @@ namespace Lab4
                     minAfterMaxIndex = i;
                 }
             }
-
-            // Меняем местами максимальный и минимальный после него
+            
+            // التبديل
             int temp = array[maxIndex];
             array[maxIndex] = array[minAfterMaxIndex];
             array[minAfterMaxIndex] = temp;
             // end
-
-            return answer;
         }
-        public void Task4(double[] array)
-        {
 
+        public void Task4(int[] array)
+        {
             // code here
             if (array == null || array.Length == 0)
-                return array;
-
-            // Находим максимальный элемент среди элементов с четными индексами
+                return;
+            
             int maxEvenIndex = 0;
             bool found = false;
-
+            
+            // البحث في الفهارس الزوجية فقط
             for (int i = 0; i < array.Length; i += 2)
             {
                 if (!found || array[i] > array[maxEvenIndex])
@@ -107,27 +100,42 @@ namespace Lab4
                     found = true;
                 }
             }
-
-            // Заменяем максимальный элемент значением его индекса
+            
+            // الاستبدال بقيمة الفهرس
             if (found)
             {
                 array[maxEvenIndex] = maxEvenIndex;
             }
-            return array;
             // end
-            
-
         }
+
         public int Task5(int[] array, int P)
         {
             int index = 0;
 
             // code here
-
+            if (array == null)
+            {
+                index = -1;
+                return index;
+            }
+            
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == P)
+                {
+                    index = i;
+                    return index;
+                }
+            }
+            
+            index = -1;
             // end
 
             return index;
         }
+    }
+}
         public void Task6(int[] array)
         {
 
@@ -196,3 +204,4 @@ namespace Lab4
     }
 
 }
+
