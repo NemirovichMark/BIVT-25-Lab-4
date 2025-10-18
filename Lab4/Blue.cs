@@ -76,8 +76,10 @@ namespace Lab4
 		target = i;
 	      }
 	    }
-
-	    answer = new int[array.Length - Convert.ToInt32(target != -1)];
+	    int shift = 0;
+	    if (target != -1)
+	      shift = 1;
+	    answer = new int[array.Length - shift];
 
 	    int done = 0;
 	    for (int i = 0; i < array.Length; i++){
@@ -133,7 +135,7 @@ namespace Lab4
 
 	    double avg = 0;
 	    foreach (int item in array){
-	      avg+=Convert.ToDouble(item);
+	      avg+=(double)item;
 	    }
 
 	    avg/=array.Length;
