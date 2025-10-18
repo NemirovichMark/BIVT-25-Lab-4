@@ -1,5 +1,4 @@
-
-     namespace Lab4
+namespace Lab4
 {
     public class White
     {
@@ -124,7 +123,25 @@
         public void Task6(int[] array)
         {
             // code here
+            if (array == null || array.Length < 2)
+                return;
             
+            int maxIndex = 0;
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] > array[maxIndex])
+                    maxIndex = i;
+            }
+            
+            if (maxIndex < 2)
+                return;
+            
+            for (int i = 0; i < maxIndex - 1; i += 2)
+            {
+                int temp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
+            }
             // end
         }
         
@@ -133,7 +150,28 @@
             int[] answer = null;
 
             // code here
+            if (array == null)
+                return new int[0];
             
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] >= 0)
+                {
+                    count++;
+                }
+            }
+            
+            answer = new int[count];
+            int index = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] >= 0)
+                {
+                    answer[index] = array[i];
+                    index++;
+                }
+            }
             // end
 
             return answer;
@@ -142,14 +180,36 @@
         public void Task8(int[] array)
         {
             // code here
+            if (array == null || array.Length < 2)
+                return;
             
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                for (int j = 0; j < array.Length - 1 - i; j++)
+                {
+                    if (array[j] < array[j + 1])
+                    {
+                        int temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
             // end
         }
         
         public void Task9(int[] array)
         {
             // code here
+            if (array == null || array.Length < 2)
+                return;
             
+            for (int i = 0; i < array.Length / 2; i++)
+            {
+                int temp = array[i];
+                array[i] = array[array.Length - 1 - i];
+                array[array.Length - 1 - i] = temp;
+            }
             // end
         }
         
@@ -158,7 +218,31 @@
             int[] C = null;
 
             // code here
+            if (A == null && B == null)
+                return new int[0];
+            if (A == null)
+                return (int[])B.Clone();
+            if (B == null)
+                return (int[])A.Clone();
             
+            C = new int[A.Length + B.Length];
+            int indexA = 0, indexB = 0, indexC = 0;
+            
+            while (indexA < A.Length && indexB < B.Length)
+            {
+                C[indexC++] = A[indexA++];
+                C[indexC++] = B[indexB++];
+            }
+            
+            while (indexA < A.Length)
+            {
+                C[indexC++] = A[indexA++];
+            }
+            
+            while (indexB < B.Length)
+            {
+                C[indexC++] = B[indexB++];
+            }
             // end
 
             return C;
@@ -169,7 +253,43 @@
             double[] array = null;
 
             // code here
+            if (n <= 0)
+                return null;
             
+            if (n == 1 && a == b)
+            {
+                array = new double[] { a };
+                return array;
+            }
+            
+            if (n < 1)
+                return null;
+            
+            array = new double[n];
+            
+            if (a == b)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = a;
+                }
+            }
+            else if (a < b)
+            {
+                double step = (b - a) / (n - 1);
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = a + i * step;
+                }
+            }
+            else // a > b
+            {
+                double step = (a - b) / (n - 1);
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = a - i * step;
+                }
+            }
             // end
 
             return array;
@@ -180,10 +300,59 @@
             double[] restored = null;
 
             // code here
+            if (raw == null || raw.Length < 3)
+                return raw?.ToArray() ?? new double[0];
             
+            restored = new double[raw.Length];
+            
+            // Check if all elements are -1
+            bool allNegativeOne = true;
+            for (int i = 0; i < raw.Length; i++)
+            {
+                if (raw[i] != -1)
+                {
+                    allNegativeOne = false;
+                    break;
+                }
+            }
+            
+            if (allNegativeOne)
+            {
+                Array.Copy(raw, restored, raw.Length);
+                return restored;
+            }
+            
+            // Copy original values
+            Array.Copy(raw, restored, raw.Length);
+            
+            // Restore damaged values
+            for (int i = 0; i < restored.Length; i++)
+            {
+                if (restored[i] == -1)
+                {
+                    double left = (i > 0) ? restored[i - 1] : -1;
+                    double right = (i < restored.Length - 1) ? restored[i + 1] : -1;
+                    
+                    if (left != -1 && right != -1)
+                    {
+                        restored[i] = (left + right) / 2.0;
+                    }
+                    else if (left != -1)
+                    {
+                        restored[i] = left;
+                    }
+                    else if (right != -1)
+                    {
+                        restored[i] = right;
+                    }
+                    // else leave as -1
+                }
+            }
             // end
 
             return restored;
         }
     }
 }
+    
+
