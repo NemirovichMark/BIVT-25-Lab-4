@@ -97,11 +97,11 @@
         }
         public int Task5(int[] array, int P)
         {
-            int index = -1;
+            int index = 0;
 
             // code here
             if (array == null || array.Length == 0)
-                return -1;
+                return 0;
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] == P)
@@ -280,4 +280,5 @@
         }
     }
 }
+
 
