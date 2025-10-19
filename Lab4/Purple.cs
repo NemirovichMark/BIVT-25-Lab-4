@@ -56,13 +56,15 @@ namespace Lab4
             int[] answer = null;
 
             // code here
-            int n = array.Length, mx = 0;
+            int n = array.Length;
+            int mx = 0;
             double sr = 0;
-            answer = new int[n + 1];
+            answer = new int[n + 2];
             for (int i = 0; i < n; i++)
             {
                 sr += array[i];
             }
+            sr /= n;
             for (int i = 0; i < n; i++)
             {
                 if (Math.Abs(array[i] - sr) < Math.Abs(array[mx] - sr))
@@ -215,5 +217,6 @@ namespace Lab4
         }
     }
 }
+
 
 
