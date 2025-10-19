@@ -248,7 +248,7 @@ namespace Lab4
             return C;
         }
         
-       public double[] Task11(double a, double b, int n)
+     public double[] Task11(double a, double b, int n)
 {
     double[] array = null;
 
@@ -256,12 +256,22 @@ namespace Lab4
     if (n <= 0)
         return null;
     
-    if (n == 1 && a == b)
+    // Only return array when n = 1 and a = b
+    if (n == 1)
     {
-        return new double[] { a };
+        if (a == b)
+        {
+            array = new double[] { a };
+            return array;
+        }
+        else
+        {
+            return null;
+        }
     }
     
-    if (n == 1 || a == b)
+    // For n > 1, a must not equal b
+    if (a == b)
         return null;
     
     array = new double[n];
@@ -362,4 +372,5 @@ namespace Lab4
         }
     }
 }
+
 
