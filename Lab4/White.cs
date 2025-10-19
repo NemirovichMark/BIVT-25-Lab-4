@@ -139,6 +139,7 @@
         }
 
         // 11. Массив равноудаленных элементов
+               // 11. Массив равноудаленных элементов по диапазону [a, b]
         public double[] Task11(double a, double b, int n)
         {
             if (n < 1) return null;
@@ -148,22 +149,28 @@
                 return null;
 
             double[] array = new double[n];
-            double step = (b - a) / (n - 1);
-            for (int i = 0; i < n; i++)
-                array[i] = a + i * step;
-            if (a > b)
-                Array.Reverse(array);
+            double step = (b - a) / n; // исправлено! делим на n, НЕ на (n-1)
+            if (a < b)
+            {
+                for (int i = 0; i < n; i++)
+                    array[i] = a + step * (i + 0.5);
+            }
+            else
+            {
+                for (int i = 0; i < n; i++)
+                    array[i] = a - step * (i + 0.5);
+            }
             return array;
         }
 
-        // 12. Восстановить поврежденные данные (-1 → ср. соседей)
+        // 12. Восстановление поврежденных данных
         public double[] Task12(double[] raw)
         {
             if (raw == null || raw.Length < 3)
-                return (raw == null) ? null : (double[])raw.Clone();
+                return null;
 
             if (raw.All(x => x == -1))
-                return (double[])raw.Clone();
+                return null;
 
             double[] restored = (double[])raw.Clone();
             int n = restored.Length;
@@ -171,16 +178,20 @@
             {
                 if (restored[i] == -1)
                 {
-                    double left = restored[(i - 1 + n) % n];
-                    double right = restored[(i + 1) % n];
-                    if (left != -1 && right != -1)
-                        restored[i] = (left + right) / 2.0;
+                    double? left = null;
+                    double? right = null;
+                    // ищем первый не -1 слева
+                    for (int l = i - 1; l >= 0; l--)
+                        if (restored[l] != -1) { left = restored[l]; break; }
+                    // ищем первый не -1 справа
+                    for (int r = i + 1; r < n; r++)
+                        if (restored[r] != -1) { right = restored[r]; break; }
+                    if (left.HasValue && right.HasValue)
+                        restored[i] = (left.Value + right.Value) / 2.0;
                 }
             }
+            // если ничего не восстановлено, вернуть null
+            if (restored.SequenceEqual(raw))
+                return null;
             return restored;
         }
-    }
-}
-
-
-
