@@ -230,13 +230,20 @@ namespace Lab4
             double[] array = null;
 
             // code here
-            if (n <= 0) return array;
-            if (n == 1 && a == b)
+            if (n <= 0) return null;
+            if (n == 1)
             {
-                array = new double[] { a };
-                return array;
+                if (a == b)
+                {
+                    array = new double[] { a };
+                    return array;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            if (a == b && n != 1) return array;
+            if (a == b) return null;
             
             array = new double[n];
             if (a < b)
@@ -247,7 +254,7 @@ namespace Lab4
                     array[i] = a + i * step;
                 }
             }
-            else if (a > b)
+            else // a > b
             {
                 double step = (a - b) / (n - 1);
                 for (int i = 0; i < n; i++)
@@ -265,7 +272,14 @@ namespace Lab4
             double[] restored = null;
 
             // code here
-            if (raw == null || raw.Length < 3) return restored;
+            if (raw == null || raw.Length < 3) 
+            {
+                if (raw != null)
+                {
+                    restored = (double[])raw.Clone();
+                }
+                return restored;
+            }
             
             restored = (double[])raw.Clone();
             bool allDamaged = true;
@@ -279,41 +293,48 @@ namespace Lab4
             }
             if (allDamaged) return restored;
             
-            for (int i = 0; i < restored.Length; i++)
+            bool changed;
+            do
             {
-                if (restored[i] == -1)
+                changed = false;
+                for (int i = 0; i < restored.Length; i++)
                 {
-                    double left = -1, right = -1;
-                    
-                    // Find left neighbor
-                    for (int j = i - 1; j >= 0; j--)
+                    if (restored[i] == -1)
                     {
-                        if (restored[j] != -1)
+                        double left = -1, right = -1;
+                        
+                        // Find left neighbor (not -1)
+                        for (int j = i - 1; j >= 0; j--)
                         {
-                            left = restored[j];
-                            break;
+                            if (restored[j] != -1)
+                            {
+                                left = restored[j];
+                                break;
+                            }
                         }
-                    }
-                    
-                    // Find right neighbor
-                    for (int j = i + 1; j < restored.Length; j++)
-                    {
-                        if (restored[j] != -1)
+                        
+                        // Find right neighbor (not -1)
+                        for (int j = i + 1; j < restored.Length; j++)
                         {
-                            right = restored[j];
-                            break;
+                            if (restored[j] != -1)
+                            {
+                                right = restored[j];
+                                break;
+                            }
                         }
-                    }
-                    
-                    if (left != -1 && right != -1)
-                    {
-                        restored[i] = (left + right) / 2.0;
+                        
+                        if (left != -1 && right != -1)
+                        {
+                            restored[i] = (left + right) / 2.0;
+                            changed = true;
+                        }
                     }
                 }
-            }
+            } while (changed);
             // end
 
             return restored;
         }
     }
 }
+
