@@ -296,81 +296,81 @@ namespace Lab4
 
     return array;
 }
-        public double[] Task12(double[] raw)
+      public double[] Task12(double[] raw)
+{
+    double[] restored = null;
+
+    // code here
+    if (raw == null || raw.Length < 3)
+        return raw?.ToArray() ?? new double[0];
+    
+    restored = new double[raw.Length];
+    
+    // Check if all elements are -1
+    bool allNegativeOne = true;
+    for (int i = 0; i < raw.Length; i++)
+    {
+        if (raw[i] != -1)
         {
-            double[] restored = null;
-
-            // code here
-            if (raw == null || raw.Length < 3)
-                return raw?.ToArray() ?? new double[0];
-            
-            restored = new double[raw.Length];
-            
-            // Check if all elements are -1
-            bool allNegativeOne = true;
-            for (int i = 0; i < raw.Length; i++)
-            {
-                if (raw[i] != -1)
-                {
-                    allNegativeOne = false;
-                    break;
-                }
-            }
-            
-            if (allNegativeOne)
-            {
-                Array.Copy(raw, restored, raw.Length);
-                return restored;
-            }
-            
-            // Copy original values
-            Array.Copy(raw, restored, raw.Length);
-            
-            // Restore damaged values - multiple passes until no more changes
-            bool changed;
-            do
-            {
-                changed = false;
-                for (int i = 0; i < restored.Length; i++)
-                {
-                    if (restored[i] == -1)
-                    {
-                        // Find left neighbor (circular)
-                        double left = -1;
-                        for (int j = i - 1; j >= 0; j--)
-                        {
-                            if (restored[j] != -1)
-                            {
-                                left = restored[j];
-                                break;
-                            }
-                        }
-                        
-                        // Find right neighbor (circular)
-                        double right = -1;
-                        for (int j = i + 1; j < restored.Length; j++)
-                        {
-                            if (restored[j] != -1)
-                            {
-                                right = restored[j];
-                                break;
-                            }
-                        }
-                        
-                        // If both neighbors are valid, calculate average
-                        if (left != -1 && right != -1)
-                        {
-                            restored[i] = (left + right) / 2.0;
-                            changed = true;
-                        }
-                    }
-                }
-            } while (changed);
-            // end
-
-            return restored;
+            allNegativeOne = false;
+            break;
         }
     }
+    
+    if (allNegativeOne)
+    {
+        Array.Copy(raw, restored, raw.Length);
+        return restored;
+    }
+    
+    // Copy original values
+    Array.Copy(raw, restored, raw.Length);
+    
+    // Restore damaged values - with maximum iteration limit to prevent infinite loop
+    bool changed;
+    int maxIterations = raw.Length * 2; // Prevent infinite loop
+    int iterations = 0;
+    
+    do
+    {
+        changed = false;
+        for (int i = 0; i < restored.Length; i++)
+        {
+            if (restored[i] == -1)
+            {
+                // Find left neighbor (circular)
+                double left = -1;
+                for (int j = i - 1; j >= 0; j--)
+                {
+                    if (restored[j] != -1)
+                    {
+                        left = restored[j];
+                        break;
+                    }
+                }
+                
+                // Find right neighbor (circular)
+                double right = -1;
+                for (int j = i + 1; j < restored.Length; j++)
+                {
+                    if (restored[j] != -1)
+                    {
+                        right = restored[j];
+                        break;
+                    }
+                }
+                
+                // If both neighbors are valid, calculate average
+                if (left != -1 && right != -1)
+                {
+                    restored[i] = (left + right) / 2.0;
+                    changed = true;
+                }
+            }
+        }
+        iterations++;
+    } while (changed && iterations < maxIterations);
+    // end
+
+    return restored;
 }
-
-
