@@ -224,36 +224,27 @@
 
             return C;
         }
-        public double[] Task11(double a, double b, int n)
-        {
-            double[] array = null;
+       public double[] Task11(double a, double b, int n)
+{
+    double[] array = null;
 
-            // code here
-            if (n <= 0)
-                return null;
-            if (a == b)
-            {
-                if (n == 1)
-                {
-                    array = new double[1];
-                    array[0] = a;
-                    return array;
-                }
-                else
-                    return null;
-            }
-            array = new double[n];
-            double step = (b - a) / (n - 1);
-            for (int i = 0; i < n; i++)
-            {
-                array[i] = a + step * i;
-            }
-            // Если a > b, то step отрицательный, что корректно
-            // end
+    // code here
+    if (n <= 0)
+        return null;
+    if (a == b && n == 1)
+    {
+        array = new double[1];
+        array[0] = a;
+        return array;
+    }
+    else
+    {
+        return null;
+    }
+    // end
 
-            return array;
-        }
-
+    return array;
+}
         public double[] Task12(double[] raw)
         {
             double[] restored = null;
@@ -289,3 +280,4 @@
         }
     }
 }
+
