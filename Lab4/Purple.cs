@@ -59,7 +59,7 @@ namespace Lab4
             int n = array.Length;
             int mx = 0;
             double sr = 0;
-            answer = new int[n + 2];
+            answer = new int[n + 1];
             for (int i = 0; i < n; i++)
             {
                 sr += array[i];
@@ -217,6 +217,7 @@ namespace Lab4
         }
     }
 }
+
 
 
 
