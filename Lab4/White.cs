@@ -1,4 +1,4 @@
-﻿﻿namespace Lab4
+﻿namespace Lab4
 {
     public class White
     {
@@ -355,4 +355,3 @@
         }
     }
 }
-
