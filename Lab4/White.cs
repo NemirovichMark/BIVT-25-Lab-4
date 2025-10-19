@@ -119,8 +119,10 @@
         // 10. Объединить два массива поочередно
         public int[] Task10(int[] A, int[] B)
         {
+            if ((A == null || A.Length == 0) && (B == null || B.Length == 0))
+                return new int[0];
             if (A == null || A.Length == 0)
-                return (B == null) ? new int[0] : (int[])B.Clone();
+                return (int[])B.Clone();
             if (B == null || B.Length == 0)
                 return (int[])A.Clone();
 
@@ -138,8 +140,7 @@
             return C;
         }
 
-        // 11. Массив равноудаленных элементов
-               // 11. Массив равноудаленных элементов по диапазону [a, b]
+        // 11. Массив равноудаленных элементов по диапазону (исправлено!)
         public double[] Task11(double a, double b, int n)
         {
             if (n < 1) return null;
@@ -149,7 +150,7 @@
                 return null;
 
             double[] array = new double[n];
-            double step = (b - a) / n; // исправлено! делим на n, НЕ на (n-1)
+            double step = (b - a) / n;
             if (a < b)
             {
                 for (int i = 0; i < n; i++)
@@ -163,7 +164,7 @@
             return array;
         }
 
-        // 12. Восстановление поврежденных данных
+        // 12. Восстановление поврежденных данных (исправлено!)
         public double[] Task12(double[] raw)
         {
             if (raw == null || raw.Length < 3)
@@ -174,6 +175,7 @@
 
             double[] restored = (double[])raw.Clone();
             int n = restored.Length;
+            bool changed = false;
             for (int i = 0; i < n; i++)
             {
                 if (restored[i] == -1)
@@ -187,11 +189,16 @@
                     for (int r = i + 1; r < n; r++)
                         if (restored[r] != -1) { right = restored[r]; break; }
                     if (left.HasValue && right.HasValue)
+                    {
                         restored[i] = (left.Value + right.Value) / 2.0;
+                        changed = true;
+                    }
                 }
             }
             // если ничего не восстановлено, вернуть null
-            if (restored.SequenceEqual(raw))
+            if (!changed)
                 return null;
             return restored;
         }
+    }
+}
