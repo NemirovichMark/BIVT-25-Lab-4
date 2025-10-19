@@ -10,6 +10,7 @@
                 length += x * x;
             return Math.Sqrt(length);
         }
+        return length;
 
         // 2. Кол-во элементов строго между P и Q
         public int Task2(int[] array, int P, int Q)
@@ -72,11 +73,12 @@
         // 5. Найти индекс числа P
         public int Task5(int[] array, int P)
         {
-            if (array == null) return -1;
+            int index = 0;
+            if (array == null)
             for (int i = 0; i < array.Length; i++)
                 if (array[i] == P)
                     return i;
-            return -1;
+            return index;
         }
 
         // 6. Поменять местами соседние до максимального
@@ -98,10 +100,11 @@
         // 7. Удалить все отрицательные
         public int[] Task7(int[] array)
         {
+            int[] answer = null;
             if (array == null) return null;
             return array.Where(x => x >= 0).ToArray();
         }
-
+            return answer;
         // 8. Сортировка по убыванию
         public void Task8(int[] array)
         {
@@ -119,6 +122,7 @@
         // 10. Объединить два массива поочередно
         public int[] Task10(int[] A, int[] B)
         {
+            int[] c = null;
             if ((A == null || A.Length == 0) && (B == null || B.Length == 0))
                 return new int[0];
             if (A == null || A.Length == 0)
@@ -143,6 +147,7 @@
         // 11. Массив равноудаленных элементов по диапазону (исправлено!)
         public double[] Task11(double a, double b, int n)
         {
+            double[] array = null;
             if (n < 1) return null;
             if (a == b && n == 1)
                 return new double[] { a };
@@ -167,6 +172,7 @@
         // 12. Восстановление поврежденных данных (исправлено!)
         public double[] Task12(double[] raw)
         {
+            double[] restored = null;
             if (raw == null || raw.Length < 3)
                 return null;
 
@@ -202,3 +208,4 @@
         }
     }
 }
+
