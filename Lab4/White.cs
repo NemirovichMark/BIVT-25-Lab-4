@@ -372,5 +372,8 @@ namespace Lab4
     } while (changed && iterations < maxIterations);
     // end
 
-    return restored;
+  return restored;
+        }
+        
+    } 
 }
