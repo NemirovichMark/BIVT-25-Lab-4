@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Numerics;
 using System.Runtime.ExceptionServices;
 
@@ -191,7 +192,34 @@ namespace Lab4
             double[] normalized = null;
 
             // code here
-
+            bool equal = true;
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] != array[i - 1])
+                {
+                    equal = false;
+                    break;
+                }
+            }
+            int mx = int.MinValue;
+            int mn = int.MaxValue;
+            foreach (int i in array)
+            {
+                if (i > mx)
+                    mx = i;
+                if (i < mn)
+                    mn = i;
+            }
+            if (!equal)
+            {
+                double normal = 0.0;
+                normalized = new double[array.Length];
+                for (int i = 0; i < array.Length; i++)
+                {
+                    normal = (double)(array[i] - mn) / (mx - mn);
+                    normalized[i] = 2.0 * normal - 1;
+                }
+            }
             // end
 
             return normalized;
@@ -233,7 +261,7 @@ namespace Lab4
             // code here
             int mx = int.MinValue;
             int ind = 0;
-            
+
             int[] preArray = new int[array.Length];
             for (int i = 0; i < array.Length; i++)
             {
@@ -266,7 +294,7 @@ namespace Lab4
                 right++;
                 left--;
             }
-            
+
 
             // end
 
@@ -277,20 +305,53 @@ namespace Lab4
             double[] Xext = null, Yext = null;
 
             // code here
-            int len = (int)Math.Ceiling(b - a) / n;
-            X = new double[len];
-            Y = new double[len];
-            Xext = new double[len];
-            Yext = new double[len];
-            int id = 0;
-
-            for (double x = a; x <= b; a += n)
+            // ext mx: Yi-1 < Yi > Yi+1
+            // ext mn: Yi-1 > Yi < Yi+1
+            if (n == 1)
             {
-                X[id] = x;
-                Y[id] = Math.Cos(x) + x * Math.Sin(x);
-                id++;
+                Xext = new double[0];
+                Yext = new double[0];
+                return (Xext, Yext);
             }
 
+            if (n <= 2 || a >= b)
+                return (Xext, Yext);
+
+            X = new double[n];
+            Y = new double[n];
+            double step = (b - a) / (n - 1);
+
+            for (int i = 0; i < n; i++)
+            {
+                X[i] = a + i * step;
+                Y[i] = Math.Cos(X[i]) + X[i] * Math.Sin(X[i]);
+            }
+
+            int extremumCount = 0;
+            for (int i = 1; i < n - 1; i++)
+            {
+                if ((Y[i - 1] < Y[i] && Y[i] > Y[i + 1]) || (Y[i - 1] > Y[i] && Y[i] < Y[i + 1]))
+                    extremumCount++;
+            }
+
+            Xext = new double[extremumCount];
+            Yext = new double[extremumCount];
+            if (extremumCount == 0)
+            {
+                return (Xext, Yext);
+            }
+
+            int extIndex = 0;
+
+            for (int i = 1; i < n - 1; i++)
+            {
+                if ((Y[i - 1] < Y[i] && Y[i] > Y[i + 1]) || (Y[i - 1] > Y[i] && Y[i] < Y[i + 1]))
+                {
+                    Xext[extIndex] = X[i];
+                    Yext[extIndex] = Y[i];
+                    extIndex++;
+                }
+            }
             // end
 
             return (Xext, Yext);
@@ -301,7 +362,77 @@ namespace Lab4
             double[] bright = null, normal = null, dim = null;
 
             // code here
+            int brightCount = 0;
+            int dimCount = 0;
+            double middleSum = 0;
 
+            foreach (double x in raw)
+                middleSum += x;
+
+            middleSum /= raw.Length;
+
+            foreach (double x in raw)
+            {
+                if (middleSum * 2 < x)
+                    brightCount++;
+                else if (middleSum * 0.5 > x)
+                    dimCount++;
+            }
+
+            bright = new double[brightCount];
+            dim = new double[dimCount];
+            normal = new double[raw.Length];
+            brightCount = 0;
+            dimCount = 0;
+            int normalCount = 0;
+            double middleIgnoreSum = 0;
+
+            for (int i = 0; i < raw.Length; i++)
+            {
+                if (middleSum * 2 < raw[i])
+                {
+                    bright[brightCount++] = raw[i];
+                }
+
+                else if (middleSum * 0.5 > raw[i])
+                {
+                    dim[dimCount++] = raw[i];
+                }
+                else
+                {
+                    normalCount++;
+                    middleIgnoreSum += raw[i];
+                }
+            }
+            middleIgnoreSum /= normalCount;
+
+            for (int i = 0; i < raw.Length; i++)
+            {
+                if (middleSum * 2 < raw[i] || middleSum * 0.5 > raw[i])
+                {
+                    raw[i] = (raw[i] + middleIgnoreSum) / 2;
+                }
+            }
+
+            int len = raw.Length;
+            double[] sorted = new double[len];
+            while (len != 0)
+            {
+                double mx = double.MinValue;
+                int ind = 0;
+                for (int i = 0; i < raw.Length; i++)
+                {
+                    if (raw[i] > mx)
+                    {
+                        mx = raw[i];
+                        ind = i;
+                    }
+                }
+                sorted[raw.Length - len] = mx;
+                raw[ind] = double.MinValue;
+                len--;
+            }
+            normal = sorted;
             // end
 
             return (bright, normal, dim);
