@@ -6,8 +6,29 @@
         {
 
             // code here
+            double sum = 0;
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > 0)
+                {
+                    sum += array[i];
+                    count += 1;
+                }
+            }
 
+            double srednie = sum / count;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > 0)
+                {
+                    array[i] = srednie;
+                }
+            }
             // end
+
+            //return array;
 
         }
         public int Task2(int[] array)
@@ -15,10 +36,20 @@
             int sum = 0;
 
             // code here
-
+            bool flag = false;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < 0)
+                {
+                    flag = true;
+                    break;
+                }
+          
+                sum += array[i]*array[i];
+            }
             // end
 
-            return sum;
+            return flag ? sum: 0;
         }
         public int[] Task3(int[] array)
         {
@@ -34,6 +65,32 @@
         {
 
             // code here
+            int max = -100000000;
+            int min = 100000000;
+            int max_index = -1;
+            int min_index = -1;
+            bool first = true;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    max_index = i;
+                }
+                if (first && array[i] < 0)
+                {
+                    min = array[i];
+                    min_index = i;
+                    first = false;
+                }
+            }
+
+            if (first == false && max_index != min_index)
+            {
+                array[max_index] = min;
+                array[min_index] = max;
+            }
 
             // end
 
@@ -41,9 +98,34 @@
         public int[] Task5(int[] array)
         {
             int[] answer = null;
+            //answer.
 
             // code here
+            int max = -100000000;
+            int count = 0;
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    count = 1;
+                } else if (array[i] >= max)
+                {
+                    count += 1;
+                }
+            }
+
+            answer = new int[count];
+            int j = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    answer[j] = i;
+                    j += 1;
+                }
+            }
             // end
 
             return answer;
@@ -52,7 +134,25 @@
         {
 
             // code here
+            int max = -100000000;
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                }
+            }
+
+            int j = 1;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    array[i] += j;
+                    j += 1;
+                }
+            }
             // end
 
         }
@@ -60,7 +160,44 @@
         {
 
             // code here
+            int max = -100000000;
+            int count = 0;
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    count = 1;
+                }
+                else if (array[i] >= max)
+                {
+                    count += 1;
+                }
+            }
+
+            int[] answer = new int[count];
+            int sum = 0;
+            int j = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    answer[j] = sum;
+                    j += 1;
+                }
+                sum += array[i];
+            }
+
+            j = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    array[i] = answer[j];
+                    j += 1;
+                }
+            }
             // end
 
         }
