@@ -54,7 +54,7 @@
         {
 
             // code here
-            if (array == null || array.Length == 0) 
+            if (array == null || array.Length == 0)
                 return;
 
             int maxIdx = 0;
@@ -64,7 +64,7 @@
                     maxIdx = i;
             }
 
-            // if after max there are no elements, do nothing
+            // if after max there are no elements — do nothing
             if (maxIdx >= array.Length - 1)
                 return;
 
@@ -82,7 +82,6 @@
             if (minIdx == -1)
                 return;
 
-            // if min after max equals the max, do not change
             if (array[maxIdx] == array[minIdx])
                 return;
 
@@ -355,3 +354,4 @@
         }
     }
 }
+
