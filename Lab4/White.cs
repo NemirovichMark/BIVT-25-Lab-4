@@ -1,44 +1,70 @@
-﻿namespace Lab4
+﻿﻿namespace Lab4
 {
     public class White
     {
-        // 1. Длина вектора
         public double Task1(int[] vector)
         {
-            if (vector == null || vector.Length == 0)
-                return 0;
-            double sum = 0;
-            foreach (var x in vector)
-                sum += (double)x * x;
-            return System.Math.Sqrt(sum);
-        }
+            double length = 0;
 
-        // 2. Кол-во элементов строго между P и Q
+            // code here
+            if (vector == null || vector.Length == 0)
+            {
+                length = 0;
+            }
+            else
+            {
+                double sum = 0.0;
+                for (int i = 0; i < vector.Length; i++)
+                {
+                    double v = vector[i];
+                    sum += v * v;
+                }
+                length = System.Math.Sqrt(sum);
+            }
+            // end
+
+            return length;
+        }
         public int Task2(int[] array, int P, int Q)
         {
-            if (array == null || array.Length == 0)
-                return 0;
-            int min = System.Math.Min(P, Q);
-            int max = System.Math.Max(P, Q);
             int count = 0;
-            foreach (var x in array)
-                if (x > min && x < max)
-                    count++;
+
+            // code here
+            if (array == null || array.Length == 0)
+            {
+                count = 0;
+            }
+            else
+            {
+                int min = System.Math.Min(P, Q);
+                int max = System.Math.Max(P, Q);
+                int c = 0;
+                for (int i = 0; i < array.Length; i++)
+                {
+                    int x = array[i];
+                    if (x > min && x < max) c++;
+                }
+                count = c;
+            }
+            // end
+
             return count;
         }
-
-        // 3. Поменять местами максимальный и мин. после него
         public void Task3(int[] array)
         {
-            if (array == null || array.Length == 0)
+
+            // code here
+            if (array == null || array.Length == 0) 
                 return;
 
             int maxIdx = 0;
             for (int i = 1; i < array.Length; i++)
+            {
                 if (array[i] > array[maxIdx])
                     maxIdx = i;
+            }
 
-            // если после максимального нет элементов — не делать ничего
+            // if after max there are no elements, do nothing
             if (maxIdx >= array.Length - 1)
                 return;
 
@@ -56,93 +82,124 @@
             if (minIdx == -1)
                 return;
 
-            // Если все элементы после максимального равны (minIdx будет установлен, но может быть равен max value),
-            // условие "если ... все элементы равны – изменений не производить" фактически означает,
-            // что если найденный минимальный равен максимальному, не менять.
+            // if min after max equals the max, do not change
             if (array[maxIdx] == array[minIdx])
                 return;
 
             int tmp = array[maxIdx];
             array[maxIdx] = array[minIdx];
             array[minIdx] = tmp;
-        }
+            // end
 
-        // 4. Максимальный с четным индексом -> индекс
+        }
         public void Task4(int[] array)
         {
+
+            // code here
             if (array == null || array.Length == 0)
                 return;
 
-            int maxIdx = -1;
-            int maxVal = int.MinValue;
+            int bestIdx = -1;
+            int bestVal = int.MinValue;
             for (int i = 0; i < array.Length; i += 2)
             {
-                if (array[i] > maxVal)
+                if (array[i] > bestVal)
                 {
-                    maxVal = array[i];
-                    maxIdx = i;
+                    bestVal = array[i];
+                    bestIdx = i;
                 }
             }
-            if (maxIdx != -1)
-                array[maxIdx] = maxIdx;
-        }
 
-        // 5. Найти индекс числа P
+            if (bestIdx != -1)
+                array[bestIdx] = bestIdx;
+            // end
+
+        }
         public int Task5(int[] array, int P)
         {
-            if (array == null || array.Length == 0)
-                return -1;
-            for (int i = 0; i < array.Length; i++)
-                if (array[i] == P)
-                    return i;
-            return -1;
-        }
+            int index = 0;
 
-        // 6. Поменять местами соседние до максимального
+            // code here
+            index = -1;
+            if (array == null || array.Length == 0)
+            {
+                // leave index = -1
+            }
+            else
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i] == P)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+            }
+            // end
+
+            return index;
+        }
         public void Task6(int[] array)
         {
+
+            // code here
             if (array == null || array.Length < 2)
                 return;
 
             int maxIdx = 0;
             for (int i = 1; i < array.Length; i++)
+            {
                 if (array[i] > array[maxIdx])
                     maxIdx = i;
+            }
 
-            // переставляем пары (0,1),(2,3),... расположенные до максимального элемента
+            // swap neighboring pairs (0,1),(2,3),... that are located before maxIdx
             for (int i = 0; i + 1 < maxIdx; i += 2)
             {
                 int tmp = array[i];
                 array[i] = array[i + 1];
                 array[i + 1] = tmp;
             }
-        }
+            // end
 
-        // 7. Удалить все отрицательные
+        }
         public int[] Task7(int[] array)
         {
-            if (array == null)
-                return new int[0];
+            int[] answer = null;
 
-            int count = 0;
-            foreach (var x in array)
-                if (x >= 0) count++;
+            // code here
+            if (array == null || array.Length == 0)
+            {
+                answer = new int[0];
+            }
+            else
+            {
+                int cnt = 0;
+                for (int i = 0; i < array.Length; i++)
+                    if (array[i] >= 0) cnt++;
 
-            int[] answer = new int[count];
-            int idx = 0;
-            foreach (var x in array)
-                if (x >= 0) answer[idx++] = x;
+                answer = new int[cnt];
+                int k = 0;
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i] >= 0)
+                        answer[k++] = array[i];
+                }
+            }
+            // end
 
             return answer;
         }
-
-        // 8. Сортировка по убыванию (устойчивый алгоритм — пузырьковая)
         public void Task8(int[] array)
         {
+
+            // code here
             if (array == null || array.Length < 2)
                 return;
 
             int n = array.Length;
+            // stable bubble sort descending
             for (int i = 0; i < n - 1; i++)
             {
                 bool swapped = false;
@@ -158,11 +215,13 @@
                 }
                 if (!swapped) break;
             }
-        }
+            // end
 
-        // 9. Развернуть массив
+        }
         public void Task9(int[] array)
         {
+
+            // code here
             if (array == null || array.Length < 2)
                 return;
 
@@ -173,85 +232,127 @@
                 array[i] = array[n - 1 - i];
                 array[n - 1 - i] = tmp;
             }
-        }
+            // end
 
-        // 10. Объединить два массива поочередно
+        }
         public int[] Task10(int[] A, int[] B)
         {
-            if ((A == null || A.Length == 0) && (B == null || B.Length == 0))
-                return new int[0];
-            if (A == null || A.Length == 0)
-                return (int[])B.Clone();
-            if (B == null || B.Length == 0)
-                return (int[])A.Clone();
+            int[] C = null;
 
-            int lenA = A.Length;
-            int lenB = B.Length;
-            int[] C = new int[lenA + lenB];
-            int i = 0, j = 0, k = 0;
-            while (i < lenA && j < lenB)
+            // code here
+            bool emptyA = (A == null || A.Length == 0);
+            bool emptyB = (B == null || B.Length == 0);
+
+            if (emptyA && emptyB)
             {
-                C[k++] = A[i++];
-                C[k++] = B[j++];
+                C = new int[0];
             }
-            while (i < lenA) C[k++] = A[i++];
-            while (j < lenB) C[k++] = B[j++];
+            else if (emptyA)
+            {
+                // copy B
+                C = new int[B.Length];
+                for (int i = 0; i < B.Length; i++) C[i] = B[i];
+            }
+            else if (emptyB)
+            {
+                // copy A
+                C = new int[A.Length];
+                for (int i = 0; i < A.Length; i++) C[i] = A[i];
+            }
+            else
+            {
+                int i = 0, j = 0, k = 0;
+                C = new int[A.Length + B.Length];
+                while (i < A.Length && j < B.Length)
+                {
+                    C[k++] = A[i++];
+                    C[k++] = B[j++];
+                }
+                while (i < A.Length) C[k++] = A[i++];
+                while (j < B.Length) C[k++] = B[j++];
+            }
+            // end
 
             return C;
         }
-
-        // 11. Массив равноудаленных элементов по диапазону
-        // По условию задания: если a == b и n == 1 вернуть массив из одного элемента, во всех остальных случаях вернуть null.
         public double[] Task11(double a, double b, int n)
         {
+            double[] array = null;
+
+            // code here
             if (n <= 0)
-                return null;
-            if (a == b)
+            {
+                array = null;
+            }
+            else if (a == b)
             {
                 if (n == 1)
-                    return new double[] { a };
+                    array = new double[] { a };
                 else
-                    return null;
+                    array = null;
             }
-            // В соответствии с условием: во всех остальных случаях вернуть null
-            return null;
+            else
+            {
+                // Specification: in all other cases return null
+                array = null;
+            }
+            // end
+
+            return array;
         }
 
-        // 12. Восстановление поврежденных данных (закольцованный массив)
         public double[] Task12(double[] raw)
         {
+            double[] restored = null;
+
+            // code here
             if (raw == null || raw.Length < 3)
-                return null;
-
-            int n = raw.Length;
-            bool allNeg = true;
-            for (int i = 0; i < n; i++)
             {
-                if (raw[i] != -1.0)
-                {
-                    allNeg = false;
-                    break;
-                }
+                restored = null;
             }
-            if (allNeg)
-                return (double[])raw.Clone();
-
-            double[] restored = (double[])raw.Clone();
-
-            for (int i = 0; i < n; i++)
+            else
             {
-                if (restored[i] == -1.0)
+                int n = raw.Length;
+                bool allNeg = true;
+                for (int i = 0; i < n; i++)
                 {
-                    double left = restored[(i - 1 + n) % n];
-                    double right = restored[(i + 1) % n];
-                    if (left != -1.0 && right != -1.0)
+                    if (raw[i] != -1.0)
                     {
-                        restored[i] = (left + right) / 2.0;
+                        allNeg = false;
+                        break;
+                    }
+                }
+
+                // if all elements are -1 return a copy of the original array
+                if (allNeg)
+                {
+                    restored = new double[n];
+                    for (int i = 0; i < n; i++) restored[i] = raw[i];
+                }
+                else
+                {
+                    // copy raw
+                    restored = new double[n];
+                    for (int i = 0; i < n; i++) restored[i] = raw[i];
+
+                    for (int i = 0; i < n; i++)
+                    {
+                        if (restored[i] == -1.0)
+                        {
+                            double left = restored[(i - 1 + n) % n];
+                            double right = restored[(i + 1) % n];
+                            if (left != -1.0 && right != -1.0)
+                            {
+                                restored[i] = (left + right) / 2.0;
+                            }
+                        }
                     }
                 }
             }
+            // end
 
             return restored;
         }
     }
 }
+
