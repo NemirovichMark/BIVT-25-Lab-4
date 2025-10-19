@@ -82,7 +82,7 @@ namespace Lab4
                 }
                 else
                 {
-                    answer[i] = array[i + 1];
+                    answer[i + 1] = array[i];
                 }
             } 
             // end
@@ -215,3 +215,4 @@ namespace Lab4
         }
     }
 }
+
