@@ -119,10 +119,10 @@
             int index = 0;
 
             // code here
-            index = -1;
+            
             if (array == null || array.Length == 0)
             {
-                // leave index = -1
+                
             }
             else
             {
@@ -354,4 +354,5 @@
         }
     }
 }
+
 
