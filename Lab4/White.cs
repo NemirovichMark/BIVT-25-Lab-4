@@ -91,9 +91,10 @@ namespace Lab4
         }
         public int Task5(int[] array, int P)
         {
-            int index = -1;
+            int index = 0;
 
             // code here
+            index = -1;
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] == P)
@@ -102,6 +103,8 @@ namespace Lab4
                     break;
                 }
             }
+
+            Console.WriteLine(index);
             // end
 
             return index;
@@ -225,26 +228,28 @@ namespace Lab4
 
             return C;
         }
-        public double[] Task11(double a, double b, int n)
+         public double[] Task11(double a, double b, int n)
         {
             double[] array = null;
 
             // code here
-            if (n <= 0) return null;
+            if (n <= 0) { return null; }
+
             if (n == 1)
             {
                 if (a == b)
                 {
-                    array = new double[] { a };
-                    return array;
+                    return new double[] { a };
                 }
                 else
                 {
                     return null;
                 }
             }
-            if (a == b) return null;
-            
+
+            if (a == b) { return null; }
+
+
             array = new double[n];
             if (a < b)
             {
@@ -254,7 +259,7 @@ namespace Lab4
                     array[i] = a + i * step;
                 }
             }
-            else // a > b
+            else 
             {
                 double step = (a - b) / (n - 1);
                 for (int i = 0; i < n; i++)
@@ -337,4 +342,5 @@ namespace Lab4
         }
     }
 }
+
 
