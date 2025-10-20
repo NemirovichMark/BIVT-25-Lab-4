@@ -1,3 +1,6 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography;
 
 namespace Lab4
 {
@@ -16,6 +19,7 @@ namespace Lab4
                 sum += vector[i] * vector[i];
             }
             length = Math.Sqrt(sum);
+             
             // end
 
             return length;
@@ -95,10 +99,10 @@ namespace Lab4
 
         public int Task5(int[] array, int P)
         {
-            int index = -1;
+            int index = 0;
                
             // code here
-             index = 0;
+             index = -1;
             if (array != null)
             {
                 for (int i = 0; i < array.Length; i++)
@@ -274,33 +278,44 @@ namespace Lab4
             return C;
         }
 
-        public double[] Task11(double a, double b, int n)
+      public double[] Task11(double a, double b, int n)
         {
             double[] array = null;
 
             // code here
-            if (n <= 0) return null;
-            
-            // Special case: only one element and a equals b
-            if (n == 1 && a == b)
+            if (n <= 0) { return null; }
+
+            if (n == 1)
             {
-                array = new double[1];
-                array[0] = a;
-                return array;
+                if (a == b)
+                {
+                    return new double[] { a };
+                }
+                else
+                {
+                    return null;
+                }
             }
-            
-            // If only one element but a != b, impossible
-            if (n == 1 && a != b) return null;
-            
-            // If multiple elements but a = b, impossible
-            if (a == b) return null;
-            
+
+            if (a == b) { return null; }
+
+
             array = new double[n];
-            double step = (b - a) / (n - 1);
-            
-            for (int i = 0; i < n; i++)
+            if (a < b)
             {
-                array[i] = a + i * step;
+                double step = (b - a) / (n - 1);
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = a + i * step;
+                }
+            }
+            else 
+            {
+                double step = (a - b) / (n - 1);
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = a - i * step;
+                }
             }
             // end
 
@@ -357,4 +372,5 @@ namespace Lab4
         }
     }
 }
+
 
