@@ -1,0 +1,377 @@
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Green.cs(25,31): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Green.cs(31,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(15,26): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(15,38): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(21,20): warning CS8619: Nullability of reference types in value of type '(int[]? even, int[]? odd)' doesn't match target type '(int[] even, int[] odd)'. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(25,28): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(31,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Green.cs(43,28): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Green.cs(49,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/White.cs(61,28): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/White.cs(67,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(43,28): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(49,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/White.cs(87,23): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/White.cs(93,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(53,25): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(53,37): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(59,20): warning CS8619: Nullability of reference types in value of type '(int[]? sum, int[]? dif)' doesn't match target type '(int[] sum, int[] dif)'. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Green.cs(87,29): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Green.cs(93,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/White.cs(97,30): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/White.cs(103,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(35,28): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(41,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/White.cs(108,33): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/White.cs(114,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(63,35): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(69,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(45,28): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(51,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(73,23): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(79,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(73,29): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(79,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(99,26): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(99,36): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(100,29): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(100,42): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(106,20): warning CS8619: Nullability of reference types in value of type '(double[]? Xext, double[]? Yext)' doesn't match target type '(double[], double[])'. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(99,22): warning CS0219: The variable 'X' is assigned but its value is never used [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(99,32): warning CS0219: The variable 'Y' is assigned but its value is never used [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(93,28): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(99,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(111,31): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(111,46): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(111,58): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Purple.cs(117,20): warning CS8619: Nullability of reference types in value of type '(double[]? bright, double[]? normal, double[]? dim)' doesn't match target type '(double[] bright, double[] normal, double[] dim)'. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(103,35): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(109,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(123,27): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(129,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(134,29): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Blue.cs(140,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Green.cs(97,26): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Green.cs(97,36): warning CS8600: Converting null literal or possible null value to non-nullable type. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Green.cs(103,20): warning CS8603: Possible null reference return. [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Green.cs(97,22): warning CS0219: The variable 'A' is assigned but its value is never used [/home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4/Lab4.csproj]
+MSTest v3.6.4 (UTC 11/11/2024) [arch-x64 - .NET 8.0.20]
+Test Parallelization enabled for /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/bin/Debug/net8.0/Lab4test.dll (Workers: 1, Scope: MethodLevel)
+failed Test01 (61ms)
+  Assert.AreEqual failed. Expected:<-3>. Actual:<0>. Test No 9, index = 1
+    at Lab4test.BlueTest.Test01() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:58
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test02 (5ms)
+  Test method Lab4test.BlueTest.Test02 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.BlueTest.Test02() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:line 111
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test03 (2ms)
+  Test method Lab4test.BlueTest.Test03 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.BlueTest.Test03() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:line 171
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test04 (3ms)
+  Assert.AreEqual failed. Expected a difference no greater than <0.0001> between expected value <-3.28> and actual value <-2>. Test 0 failed (index 0)
+    at Lab4test.BlueTest.Test04() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:232
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test05 (1ms)
+  Assert.AreEqual failed. Expected:<150>. Actual:<0>. Test 0 failed
+    at Lab4test.BlueTest.Test05() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:267
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test06 (2ms)
+  Test method Lab4test.BlueTest.Test06 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.BlueTest.Test06() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:line 318
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test07 (1ms)
+  Assert.AreEqual failed. Expected:<8>. Actual:<0>. Test 0 failed
+    at Lab4test.BlueTest.Test07() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:356
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test08 (2ms)
+  Test method Lab4test.BlueTest.Test08 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.BlueTest.Test08() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:line 407
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test09 (2ms)
+  Test method Lab4test.BlueTest.Test09 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.BlueTest.Test09() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:line 466
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test10 (1ms)
+  Assert.AreEqual failed. Expected:<12>. Actual:<0>. Test 0 failed
+    at Lab4test.BlueTest.Test10() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:505
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test11 (1ms)
+  Test method Lab4test.BlueTest.Test11 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.BlueTest.Test11() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:line 546
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test12 (2ms)
+  Test method Lab4test.BlueTest.Test12 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.BlueTest.Test12() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/BlueTest.cs:line 606
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test01 (2ms)
+  Assert.AreEqual failed. Expected a difference no greater than <0.0001> between expected value <3.5> and actual value <1>. Test 0 failed (index 3)
+    at Lab4test.GreenTest.Test01() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:58
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test02 (1ms)
+  Assert.AreEqual failed. Expected:<20>. Actual:<0>. Test 3 failed
+    at Lab4test.GreenTest.Test02() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:93
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test03 (2ms)
+  Test method Lab4test.GreenTest.Test03 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.GreenTest.Test03() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:line 149
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test04 (2ms)
+  Assert.AreEqual failed. Expected:<8>. Actual:<-2>. Test 0 failed (index 0)
+    at Lab4test.GreenTest.Test04() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:210
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test05 (2ms)
+  Test method Lab4test.GreenTest.Test05 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.GreenTest.Test05() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:line 267
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test06 (2ms)
+  Assert.AreEqual failed. Expected:<9>. Actual:<8>. Test 0 failed (index 7)
+    at Lab4test.GreenTest.Test06() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:323
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test07 (2ms)
+  Assert.AreEqual failed. Expected:<6>. Actual:<8>. Test 0 failed (index 7)
+    at Lab4test.GreenTest.Test07() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:376
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test08 (1ms)
+  Assert.AreEqual failed. Expected:<4>. Actual:<0>. Test 0 failed
+    at Lab4test.GreenTest.Test08() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:411
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test09 (2ms)
+  Assert.AreEqual failed. Expected:<-8>. Actual:<-2>. Test 0 failed (index 0)
+    at Lab4test.GreenTest.Test09() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:463
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test10 (2ms)
+  Test method Lab4test.GreenTest.Test10 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.GreenTest.Test10() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:line 515
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test11 (1ms)
+  Test method Lab4test.GreenTest.Test11 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.GreenTest.Test11() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:line 560
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test12 (1ms)
+  Assert.AreEqual failed. Expected:<6>. Actual:<0>. Test 0 failed
+    at Lab4test.GreenTest.Test12() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/GreenTest.cs:598
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test01 (2ms)
+  Assert.AreEqual failed. Expected a difference no greater than <0.0001> between expected value <1.28> and actual value <5>. Test 0 failed (index 8)
+    at Lab4test.PurpleTest.Test01() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:60
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test02 (3ms)
+  Test method Lab4test.PurpleTest.Test02 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.PurpleTest.Test02() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:line 111
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test03 (2ms)
+  Test method Lab4test.PurpleTest.Test03 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.PurpleTest.Test03() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:line 177
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test04 (2ms)
+  Assert.AreEqual failed. Expected a difference no greater than <0.0001> between expected value <0> and actual value <-2>. Test 0 failed (index 0)
+    at Lab4test.PurpleTest.Test04() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:238
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test05 (2ms)
+  Test method Lab4test.PurpleTest.Test05 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.PurpleTest.Test05() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:line 291
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test06 (2ms)
+  Test method Lab4test.PurpleTest.Test06 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.PurpleTest.Test06() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:line 351
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test07 (2ms)
+  Test method Lab4test.PurpleTest.Test07 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.PurpleTest.Test07() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:line 415
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test08 (2ms)
+  Test method Lab4test.PurpleTest.Test08 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.PurpleTest.Test08() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:line 470
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test09 (2ms)
+  Assert.AreEqual failed. Expected a difference no greater than <0.0001> between expected value <0> and actual value <-2>. Test 0 failed (index 0)
+    at Lab4test.PurpleTest.Test09() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:526
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test10 (2ms)
+  Assert.AreEqual failed. Expected a difference no greater than <0.0001> between expected value <2> and actual value <0>. Test 1 failed (index 2)
+    at Lab4test.PurpleTest.Test10() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:580
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test11 (2ms)
+  Test method Lab4test.PurpleTest.Test11 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.PurpleTest.Test11() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:line 624
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test12 (3ms)
+  Test method Lab4test.PurpleTest.Test12 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.PurpleTest.Test12() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/PurpleTest.cs:line 683
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test01 (1ms)
+  Assert.AreEqual failed. Expected a difference no greater than <0.0001> between expected value <20.92845> and actual value <0>. Test 0 failed
+    at Lab4test.WhiteTest.Test01() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:56
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test02 (1ms)
+  Assert.AreEqual failed. Expected:<4>. Actual:<0>. Test 1 failed
+    at Lab4test.WhiteTest.Test02() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:92
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test03 (2ms)
+  Assert.AreEqual failed. Expected:<-8>. Actual:<8>. Test 0 failed (index 7)
+    at Lab4test.WhiteTest.Test03() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:144
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test04 (2ms)
+  Assert.AreEqual failed. Expected:<16>. Actual:<8>. Test 0 failed (index 16)
+    at Lab4test.WhiteTest.Test04() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:197
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test05 (1ms)
+  Assert.AreEqual failed. Expected:<3>. Actual:<0>. Test 0 failed
+    at Lab4test.WhiteTest.Test05() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:233
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test06 (2ms)
+  Assert.AreEqual failed. Expected:<-1>. Actual:<-2>. Test 0 failed (index 0)
+    at Lab4test.WhiteTest.Test06() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:285
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test07 (2ms)
+  Test method Lab4test.WhiteTest.Test07 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.WhiteTest.Test07() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:line 337
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test08 (2ms)
+  Assert.AreEqual failed. Expected:<8>. Actual:<-2>. Test 0 failed (index 0)
+    at Lab4test.WhiteTest.Test08() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:393
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test09 (2ms)
+  Assert.AreEqual failed. Expected:<3>. Actual:<-2>. Test 0 failed (index 0)
+    at Lab4test.WhiteTest.Test09() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:446
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test10 (2ms)
+  Test method Lab4test.WhiteTest.Test10 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.WhiteTest.Test10() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:line 498
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test11 (1ms)
+  Test method Lab4test.WhiteTest.Test11 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.WhiteTest.Test11() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:line 543
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+failed Test12 (2ms)
+  Test method Lab4test.WhiteTest.Test12 threw exception: 
+  System.NullReferenceException: Object reference not set to an instance of an object.
+        at Lab4test.WhiteTest.Test12() in /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/WhiteTest.cs:line 603
+    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+    
+
+Test run summary: Failed! - /home/egorb/BIVT-25-LABS/BIVT-25-Lab-4/Lab4test/bin/Debug/net8.0/Lab4test.dll (net8.0|x64)
+  total: 48
+  failed: 48
+  succeeded: 0
+  skipped: 0
+  duration: 586ms
