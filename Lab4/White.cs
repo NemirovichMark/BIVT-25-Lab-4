@@ -291,67 +291,68 @@ namespace Lab4
             double[] restored = null;
 
             // code here
-            if (raw == null || raw.Length < 3)
+            if (raw.Length < 3)
             {
-                return raw?.ToArray() ?? new double[0];
+                return null;
             }
 
-            restored = new double[raw.Length];
-            
-            // Check if all values are -1
-            bool allMissing = true;
-            foreach (double val in raw)
+            else
             {
-                if (val != -1)
+                bool allMinusOne = true;
+                for (int i = 0; i < raw.Length; i++)
                 {
-                    allMissing = false;
-                    break;
+                    if (raw[i] != -1)
+                    {
+                        allMinusOne = false;
+                        break;
+                    }
                 }
-            }
 
-            if (allMissing)
-            {
-                Array.Fill(restored, -1);
-                return restored;
-            }
-
-            // Copy original values
-            Array.Copy(raw, restored, raw.Length);
-
-            // Restore missing values using circular neighbors
-            for (int i = 0; i < raw.Length; i++)
-            {
-                if (Math.Abs(raw[i] - (-1)) < 0.001) // Check for -1 with tolerance
+                if (allMinusOne)
                 {
-                    double leftVal, rightVal;
-                    
-                    // Get left neighbor (circular)
-                    int leftIdx = i > 0 ? i - 1 : raw.Length - 1;
-                    leftVal = raw[leftIdx];
-                    
-                    // Get right neighbor (circular)
-                    int rightIdx = i < raw.Length - 1 ? i + 1 : 0;
-                    rightVal = raw[rightIdx];
-                    
-                    // If both neighbors are valid, use their average
-                    if (Math.Abs(leftVal - (-1)) > 0.001 && Math.Abs(rightVal - (-1)) > 0.001)
-                    {
-                        restored[i] = (leftVal + rightVal) / 2.0;
-                    }
-                    // If only left neighbor is valid, use it
-                    else if (Math.Abs(leftVal - (-1)) > 0.001)
-                    {
-                        restored[i] = leftVal;
-                    }
-                    // If only right neighbor is valid, use it
-                    else if (Math.Abs(rightVal - (-1)) > 0.001)
-                    {
-                        restored[i] = rightVal;
-                    }
-                    // If no valid neighbors, keep -1
-                    else
+                    restored = new double[raw.Length];
+                    for (int i = 0; i < raw.Length; i++)
                     {
                         restored[i] = -1;
+                    }
+                    return restored;
+                }
+
+                restored = new double[raw.Length];
+                for (int i = 0; i < raw.Length; i++)
+                {
+                    restored[i] = raw[i];
+                }
+
+                for (int i = 0; i < raw.Length; i++)
+                {
+                    if (raw[i] == -1)
+                    {
+                        double leftNeighbor;
+                        if (i == 0)
+                        {
+                            leftNeighbor = raw[raw.Length - 1];
+                        }
+                        else
+                        {
+                            leftNeighbor = raw[i - 1];
+                        }
+
+                        double rightNeighbor;
+                        if (i == raw.Length - 1)
+                        {
+                            rightNeighbor = raw[0];
+                        }
+                        else
+                        {
+                            rightNeighbor = raw[i + 1];
+                        }
+
+                        if (leftNeighbor != -1 && rightNeighbor != -1)
+                        {
+                            restored[i] = (leftNeighbor + rightNeighbor) / 2;
+                        }
+
                     }
                 }
             }
