@@ -96,8 +96,9 @@ namespace Lab4
         public int Task5(int[] array, int P)
         {
             int index = -1;
-
+               
             // code here
+             index = 0;
             if (array != null)
             {
                 for (int i = 0; i < array.Length; i++)
@@ -356,3 +357,4 @@ namespace Lab4
         }
     }
 }
+
