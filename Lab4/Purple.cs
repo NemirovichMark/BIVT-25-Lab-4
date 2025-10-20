@@ -1,4 +1,7 @@
-﻿namespace Lab4
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.Design;
+
+namespace Lab4
 {
     public class Purple
     {
@@ -6,7 +9,23 @@
         {
 
             // code here
-
+            double[] answer = new double[array.Length];
+            double maxEl = array[0];
+            double sum = 0;
+            foreach (double el in array)
+            {
+                if (el > maxEl) maxEl = el;
+                sum += el;
+            }
+            bool isM = false;
+            double sr = sum / array.Length;
+            for (int n = 0; n < array.Length; n++)
+            {
+                if (array[n] == maxEl && !isM) { isM = true; answer[n] = maxEl; continue; }
+                if (isM) answer[n] = sr;
+                else answer[n] = array[n];
+            }
+            array = answer;
             // end
 
         }
@@ -15,7 +34,18 @@
             int[] even = null, odd = null;
 
             // code here
-
+            //if (array.Length % 2 != 0) { even = new int[(array.Length / 2) + 1]; odd = new int[array.Length / 2]; }
+            //else { even = new int[array.Length / 2]; odd = new int[array.Length / 2]; }
+            //int k = 0;
+            //int z = 0;
+            //for(int i = 0; i < array.Length; i++)
+            //{
+            //    if(i % 2 != 0) { even[k] = array[i]; k++; }
+            //    else { odd[z] = array[i]; z++; }
+            //}
+            //Console.WriteLine(string.Join(' ', array));
+            //Console.WriteLine(string.Join(' ', even));
+            //Console.WriteLine(string.Join(' ', odd));
             // end
 
             return (even, odd);
