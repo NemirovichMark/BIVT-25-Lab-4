@@ -39,7 +39,7 @@
                     break;
                 }
             }
-
+            
             for (int i = 0; i < negativeIndex; i++) //перебираем до этого индекса
                 sum += array[i]*array[i];
             // end
@@ -70,10 +70,10 @@
                     indexMin = i;
                 }
             }
-
+            
             int startIndex = Math.Min(indexMax, indexMin); //учли ситуацию, когда мин. и макс. индекс идут в разном порядке
             int endIndex = Math.Max(indexMax, indexMin);
-
+            
             int countNegatives = 0;
             
             for (int i = startIndex + 1; i < endIndex; i++) //считали количество отрицательных элементов
@@ -81,9 +81,9 @@
                 if (array[i] < 0)
                     countNegatives++;
             }
-
+            
             negatives = new int[countNegatives]; //создали пустой список от количества отрицательных элементов
-
+            
             int indexNegative = 0; //индекс для нового массива
             
             for (int i = startIndex + 1; i < endIndex; i++) //перебираем в старом массиве от начального до конечного индекса
@@ -94,9 +94,7 @@
                     indexNegative++; //переходим на следующую ячейку
                 }
             }
-                
             // end
-
             return negatives;
         }
         public void Task4(int[] array)
@@ -114,9 +112,9 @@
                     indexMax = i;
                 }
             }
-           
+            
             //ищем первый отрицательный элемент
-            int firstNegativeIndex = -1;
+            int firstNegativeIndex = -1; //начинаем с -1 чтобы затем сделать проверку на существование отрицательных элементов
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] < 0)
@@ -128,7 +126,7 @@
             
             if (firstNegativeIndex >= 0) //если в массиве есть отрицательные числа, то firstNegativeIndex меняется и цикл работает, иначе ничего не происходит
             {
-                int temporary = array[indexMax];
+                int temporary = array[indexMax]; //временная переменная
                 array[indexMax] = array[firstNegativeIndex];
                 array[firstNegativeIndex] = temporary;
             }
@@ -146,7 +144,7 @@
                 if (array[i] > maxElement)
                     maxElement = array[i];
             }
-
+            
             //ищем количество максимальных элементов
             int count = 0;
             for (int i = 0; i < array.Length; i++)
@@ -157,7 +155,7 @@
             
             //answer становится длины count
             answer = new int[count];
-
+            
             //answerIndex это позиция в массиве answer
             int answerIndex = 0; 
             
@@ -177,7 +175,24 @@
         {
 
             // code here
-
+            int maxElement = array[0];
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > maxElement)
+                    maxElement = array[i];
+                    
+            }
+            
+            int number = 1; //порядковый номер
+            
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == maxElement)
+                {
+                    array[i] += number; // прибавляем к макс. элементу его порядковый номер
+                    number++;
+                }
+            }
             // end
 
         }
@@ -185,7 +200,31 @@
         {
 
             // code here
-
+            int maxElement = array[0];
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > maxElement)
+                    maxElement = array[i];
+            }
+            
+            int [] prefixSum = new int [array.Length];
+            prefixSum[0] = 0;
+            //перебираем с 1 так как сумма элементов до первого элемента равна 0
+            for (int i = 1; i < array.Length; i++)
+            {
+                prefixSum[i] = prefixSum[i - 1] + array[i - 1];
+            }
+            
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == maxElement)
+                {
+                    array[i] = prefixSum[i];
+                }
+            }
+            
+            //1     2     3    4    2       1      4     1   
+            //0     1     3    6    10      12     13    17
             // end
 
         }
@@ -194,7 +233,25 @@
             int length = 0;
 
             // code here
-
+            
+            //количество убывающих элементов
+            int count = 1;
+            
+            //максимальное количество убывающих элементов
+            int maxCount = 1;
+            
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                if (array[i] > array[i + 1])
+                {
+                    count++;
+                    if (count > maxCount)
+                        maxCount = count;
+                }
+                else
+                    count = 1;
+            }
+            length = maxCount;
             // end
 
             return length;
@@ -203,6 +260,41 @@
         {
 
             // code here
+            //длина массива четных индексов
+            int evenElementLength = (array.Length + 1)/2;
+            
+            int[] evenElements = new int[evenElementLength];
+            
+            int index = 0; //индекс элемента из evenElements
+            
+            for (int i = 0; i < array.Length; i += 2 )
+            {
+                    evenElements[index] = array[i];
+                    index++;
+            }
+
+            int temprorary = 0; //временная переменная
+            //просто идеи до конца списка
+            for (int i = 0; i < evenElements.Length; i++)
+            {
+                //а тут попарно сравниваем по два элемента и максимальный сдвигаем вправо
+                for (int j = 0; j < evenElements.Length - 1; j++)
+                {
+                    if (evenElements[j] > evenElements[j + 1])
+                    {
+                        //Меняем элементы местами
+                        temprorary = evenElements[j];
+                        evenElements[j] = evenElements[j + 1];
+                        evenElements[j + 1] = temprorary;
+                    }
+                }
+                // Если на каком-то проходе не было обменов, массив отсортирован
+            }
+            //возвращение отсортированных элементов
+            for (int i = 0; i < evenElements.Length; i ++)
+            {
+                array[i*2] = evenElements[i];
+            }
 
             // end
 
@@ -212,7 +304,32 @@
             int[] cleared = null;
 
             // code here
-
+            int count = 0;
+            //список неповторяющихся элементов
+            int [] resultList = new int [array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                bool dublicated = false;
+                for (int j = 0; j < count; j++)
+                {
+                    if (resultList[j] == array[i])
+                    {
+                        dublicated = true;
+                        break;
+                    }
+                }
+                
+                if (dublicated == false)
+                {
+                    resultList[count] = array[i];
+                    count++;
+                }
+            }
+            cleared =  new int[count];
+            for (int i = 0; i < count; i++)
+            {
+                cleared[i]= resultList[i];
+            }
             // end
 
             return cleared;
