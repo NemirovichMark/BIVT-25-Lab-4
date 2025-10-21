@@ -23,8 +23,6 @@
                 if (array[i] == max)
                     afterMax = true;
             }
-
-            Console.WriteLine(array);
             // end
         }
 
@@ -44,9 +42,6 @@
                 else
                     oddArray[i - i / 2 - 1] = array[i];
             }
-
-            Console.WriteLine(evenArray);
-            Console.WriteLine(oddArray);
             // end
 
             return (evenArray, oddArray);
@@ -178,7 +173,7 @@
             var minElem = array[0];
             var prevElem = array[0];
             var isDifferent = false;
-            
+
             foreach (var elem in array)
             {
                 if (prevElem != elem)
@@ -208,8 +203,24 @@
             // code here
             int idxA = 0, idxB = 0, totalIdx = 0, curIdx = 0;
             C = new int[A.Length + B.Length];
-            Array.Sort(A);
-            Array.Sort(B);
+
+            for (int i = 0; i < A.Length - 1; i++)
+            {
+                for (int j = 0; j < A.Length - 1 - i; j++)
+                {
+                    if (A[j] > A[j + 1])
+                        (A[j], A[j + 1]) = (A[j + 1], A[j]);
+                }
+            }
+
+            for (int i = 0; i < B.Length - 1; i++)
+            {
+                for (int j = 0; j < B.Length - 1 - i; j++)
+                {
+                    if (B[j] > B[j + 1])
+                        (B[j], B[j + 1]) = (B[j + 1], B[j]);
+                }
+            }
 
             while (idxA < A.Length && idxB < B.Length)
             {
@@ -373,9 +384,14 @@
                 normalIdx++;
             }
 
-            Array.Sort(normal);
-            for (var i = 0; i < normal.Length / 2; i++)
-                (normal[i], normal[^(i + 1)]) = (normal[^(i + 1)], normal[i]);
+            for (var i = 0; i < normal.Length; i++)
+            {
+                for (var j = 0; j < normal.Length - 1 - i; j++)
+                {
+                    if (normal[j] < normal[j + 1])
+                        (normal[j], normal[j + 1]) = (normal[j + 1], normal[j]);
+                }
+            }
 
             dim = dimClean;
             bright = brightClean;
