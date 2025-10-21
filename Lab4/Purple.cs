@@ -34,18 +34,15 @@ namespace Lab4
             int[] even = null, odd = null;
 
             // code here
-            //if (array.Length % 2 != 0) { even = new int[(array.Length / 2) + 1]; odd = new int[array.Length / 2]; }
-            //else { even = new int[array.Length / 2]; odd = new int[array.Length / 2]; }
-            //int k = 0;
-            //int z = 0;
-            //for(int i = 0; i < array.Length; i++)
-            //{
-            //    if(i % 2 != 0) { even[k] = array[i]; k++; }
-            //    else { odd[z] = array[i]; z++; }
-            //}
-            //Console.WriteLine(string.Join(' ', array));
-            //Console.WriteLine(string.Join(' ', even));
-            //Console.WriteLine(string.Join(' ', odd));
+            if (array.Length % 2 != 0) { even = new int[(array.Length / 2) + 1]; odd = new int[array.Length / 2]; }
+            else { even = new int[array.Length / 2]; odd = new int[array.Length / 2]; }
+            int k = 0;
+            int z = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i % 2 == 0) { even[k] = array[i]; k++; }
+                else { odd[z] = array[i]; z++; }
+            }
             // end
 
             return (even, odd);
@@ -55,7 +52,36 @@ namespace Lab4
             int[] answer = null;
 
             // code here
+            int sum = 0;
+            double avarege;
+            double distance;
+            int closest = array[0];
+            foreach (int el in array) sum += el;
+            avarege = (double)sum / array.Length;
+            distance = Math.Abs(avarege - array[0]);
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (Math.Abs(avarege - array[i]) < distance)
+                {
+                    closest = array[i];
+                    distance = Math.Abs(avarege - array[i]);
+                }
+            }
+            answer = new int[array.Length + 1];
+            bool isA = true;
+            for(int i = 0; i < answer.Length; i++)
+            {
 
+                if (isA & array[i] == closest)
+                {
+                    answer[i] = array[i];
+                    answer[i + 1] = P;
+                    isA = false;
+                    continue;
+                }
+                else if (!isA) answer[i] = array[i + 1];
+                else answer[i] = array[i];
+            }
             // end
 
             return answer;
