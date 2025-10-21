@@ -48,7 +48,28 @@
             // code here
 // PROBLEM THREE---------------------------------------------------------------------------------------------------------------------------------------------START
 
-        for (int i = 0; i <  ; i++) 
+        int maxIndex = 0;
+        for (int = 1; i < array.Length; i++)
+        {
+            if (array[i] > array[maxIndex])
+                maxIndex = i;
+        }
+
+
+        int minIndex = maxIndex + 1;
+        for (int i = maxIndex + 2; i < array.Length; i++)
+        {
+            if (array[i] < array{minIndex])
+                minIndex = i;
+        }
+        
+
+        if (array.Length == 0 || array.Length == 1 || maxIndex == array.Length - 1 || array[maxIndex] == array [minIndex])
+        return;
+
+        int swap = array[maxIndex];
+        array[maxIndex] = array[minIndex];
+        array[minIndex] = swap;
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
             // end
@@ -176,3 +197,4 @@
     }
 
 }
+
