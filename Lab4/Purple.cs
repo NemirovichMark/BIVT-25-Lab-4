@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design;
+using System.Runtime.InteropServices;
 
 namespace Lab4
 {
@@ -69,18 +70,19 @@ namespace Lab4
             }
             answer = new int[array.Length + 1];
             bool isA = true;
+            int z = 0;
             for(int i = 0; i < answer.Length; i++)
             {
-
-                if (isA & array[i] == closest)
+                if (isA & array[z] == closest)
                 {
+                    isA = false;
                     answer[i] = array[i];
                     answer[i + 1] = P;
-                    isA = false;
                     continue;
                 }
-                else if (!isA) answer[i] = array[i + 1];
+                else if (!isA) answer[i] = array[i - 1];
                 else answer[i] = array[i];
+                Console.WriteLine(answer[i]);
             }
             // end
 
@@ -90,7 +92,32 @@ namespace Lab4
         {
 
             // code here
-
+            int[] answer = new int[array.Length];
+            int countMinus = 0;
+            foreach (int el in array) if (el < 0) countMinus++;
+            int[] minus = new int[countMinus];
+            int k = 0;
+            int z = 0;
+            for (int i = 0; i < array.Length;i++)
+            {
+                if (array[i] < 0)
+                {
+                    minus[k] = array[i];
+                    k++;
+                }
+                else
+                {
+                    answer[z] = array[i];
+                    z++;
+                }
+            }
+            k = 0;
+            for (int i = (array.Length - countMinus); i < array.Length; i++)
+            {
+                answer[i] = minus[k];
+                k++;
+            }
+            array = answer;
             // end
 
         }
@@ -99,7 +126,25 @@ namespace Lab4
             int[] answer = null;
 
             // code here
-
+            answer = new int[A.Length + B.Length];
+            bool isA = false;
+            int a = 0;
+            int b = 0;
+            for (int i = 0; i < answer.Length; i++)
+            {
+                if (i + 1 == k) isA = true;
+                else if (b == B.Length) isA = false;
+                if (!isA)
+                {
+                    answer[i] = A[a];
+                    a++;
+                }
+                else if (isA)
+                {
+                    answer[i] = B[b];
+                    b++;
+                }
+            }
             // end
 
             return answer;
