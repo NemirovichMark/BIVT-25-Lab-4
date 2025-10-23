@@ -6,6 +6,26 @@ namespace Lab4
 {
     public class Purple
     {
+        public static int[] Reverse(int[] a)
+        {
+            int[] b = new int[a.Length];
+            for (int i = 0; i < a.Length; i++)
+            {
+                b[b.Length - 1 - i] = a[i];
+            }
+            return b;
+        }
+
+        public static double[] doubleReverse(double[] a)
+        {
+            double[] b = new double[a.Length];
+            for (int i = 0; i < a.Length; i++)
+            {
+                b[b.Length - 1 - i] = a[i];
+            }
+            return b;
+        }
+
         public static int[] Sort(int[] array)
         {
             int[] result = (int[])array.Clone();
@@ -286,8 +306,8 @@ namespace Lab4
             // code here
             A = Sort(A);
             B = Sort(B);
-            Array.Reverse(A);
-            Array.Reverse(B);
+            A = Reverse(A);
+            B = Reverse(B);
             C = new int[A.Length + B.Length];
             int i = 0, j = 0, k = 0;
             while (i < A.Length && j < B.Length)
@@ -488,7 +508,7 @@ namespace Lab4
                 } 
             }
             tnormal = doubleSort(tnormal);
-            Array.Reverse(tnormal);
+            tnormal = doubleReverse(tnormal);
             normal = new double[raw.Length];
 
             for (int i=0; i<raw.Length; i++)
