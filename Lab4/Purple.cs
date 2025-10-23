@@ -71,11 +71,37 @@ namespace Lab4
             int[] answer = null;
 
             // code here
-            int e = 1000;
+            double e = 10000000;
             double mid = 0;
+            int index = -1;
             foreach (int i in array)
             {
-
+                mid += i;
+            }
+            mid = mid / array.Length;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (Math.Abs(mid - array[i]) < e)
+                {
+                    e = Math.Abs(mid - array[i]);
+                    index = i;
+                }
+            }
+            answer = new int[array.Length + 1];
+            for (int i = 0; i < answer.Length; i++)
+            {
+                if (i <= index)
+                {
+                    answer[i] = array[i];
+                }
+                else if (i == index + 1)
+                {
+                    answer[i] = P;
+                }
+                else
+                {
+                    answer[i] = array[i - 1];
+                }
             }
             // end
 
@@ -85,7 +111,49 @@ namespace Lab4
         {
 
             // code here
-
+            int positive = 0, negative = 0, n = array.Length;
+            for (int i = 0; i < n; i++)
+            {
+                if (array[i] < 0)
+                {
+                    negative++;
+                }
+                else
+                {
+                    positive++;
+                }
+            }
+            int[] pos = new int[positive], neg = new int[negative];
+            positive = 0;
+            negative = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (array[i] < 0)
+                {
+                    neg[negative] = array[i];
+                    negative++;
+                }
+                else
+                {
+                    pos[positive] = array[i];
+                    positive++;
+                }
+            }
+            positive = 0;
+            negative = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (i >= pos.Length)
+                {
+                    array[i] = neg[negative];
+                    negative++;
+                }
+                else
+                {
+                    array[i] = pos[positive];
+                    positive++;
+                }
+            }
             // end
 
         }
@@ -94,7 +162,23 @@ namespace Lab4
             int[] answer = null;
 
             // code here
-
+            int n = A.Length + B.Length;
+            answer = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                if (i < k)
+                {
+                    answer[i] = A[i];
+                }
+                else if (i < k + B.Length)
+                {
+                    answer[i] = B[i - k];
+                }
+                else
+                {
+                    answer[i] = A[i - B.Length];
+                }
+            }
             // end
 
             return answer;
