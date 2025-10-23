@@ -301,8 +301,8 @@ namespace Lab4
                     k--;
                 }
             }
-            // end
             C = r;
+            // end
             return C;
         }
         public void Task9(int[] array)
@@ -433,7 +433,6 @@ namespace Lab4
                         Xext = xext;
                         Yext = yext;
                 }
-                // end
             }
             else if ((a < b || (a == b && n <= 1)) && t == 0)
             {
@@ -442,6 +441,7 @@ namespace Lab4
                 Xext = xext;
                 Yext = yext;
             }
+            // end
                 return (Xext, Yext);
         }
 
@@ -513,7 +513,9 @@ namespace Lab4
                 }
             }
             normal = raw;
+            // end
             return (bright, normal, dim);
         }
     }
 }
+
