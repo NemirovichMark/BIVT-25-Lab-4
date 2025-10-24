@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 namespace Lab4
 {
@@ -8,7 +9,14 @@ namespace Lab4
         {
 
             // code here
-
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < 0)
+                {
+                    array[i] = array.SkipWhile(n => n != array.Max()).ToArray().Sum()-array.Max();
+                    break;
+                }
+            }
             // end
 
         }
@@ -17,6 +25,37 @@ namespace Lab4
             int[] answer = null;
 
             // code here
+            int last_el = -1;
+            foreach (int i in array)
+            {
+                if (i > 0) last_el = i;
+            }
+            int last_el_ind = 0;
+            for (int i =0; i < array.Length; i++) if (array[i] > 0) last_el_ind= i;
+            if (last_el == -1) return array;
+
+
+            int[] fin = new int[array.Length + 1];
+            bool fl = false;
+            for (int i=0; i < array.Length; i++)
+            {
+                if (fl) fin[i + 1] = array[i];
+                else
+                {
+                    fin[i] = array[i];
+                    if (i == last_el_ind) {
+                        fin[i + 1] = P;
+                        fl = true;
+                    }
+                }
+
+            }
+
+            answer = fin;
+            Console.WriteLine(string.Join(", ", array));
+            Console.WriteLine("_______________________");
+            Console.WriteLine(string.Join(", ", answer));
+            Console.WriteLine("_______________________");
 
             // end
 
@@ -28,14 +67,60 @@ namespace Lab4
 
             // code here
 
-            // end
+            // code here
+            int minpl = 10000;
+            int index = 0;
+            int minindex = 0;
+            foreach (int i in array)
+            {
+                if (i > 0)
+                {
+                    if (i < minpl)
+                    { 
+                        minpl = i; 
+                        minindex = index;
+                    }
+                }
+                index++;
+            }
+            if (minpl == 10000) 
+            { 
+                return array; 
+            }
+            
+            else
+            {
+                bool fl = true;
+                //Console.WriteLine(string.Join(", ", array));
+                int[] ans = new int[array.Length - 1];
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i != minindex && fl)
+                    {
+                        ans[i] = array[i];
+                    }
+                    else if (i == minindex) 
+                    {
+                        fl = false;
+                    }
+                    else
+                    {
+                        ans[i-1] = array[i];
+                    }
+                        ;
+                }
+                // end
 
-            return answer;
+
+                Console.WriteLine(string.Join(", ", array));
+                Console.WriteLine("_______________________");
+                Console.WriteLine(string.Join(", ", ans));
+                Console.WriteLine("_______________________");
+                return ans;
+            }
         }
         public void Task4(double[] array)
         {
-
-            // code here
 
             // end
 
