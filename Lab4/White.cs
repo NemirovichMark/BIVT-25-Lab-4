@@ -1,4 +1,4 @@
-﻿namespace Lab4
+namespace Lab4
 {
     public class White
     {
@@ -14,7 +14,7 @@
                 length += vector[i] * vector[i];
             }
 
-            length = Math.Sqrt(length)
+            length = Math.Sqrt(length);
             
 //---------------------------------------------------------------------------------------------------------------------------------------------
             // end
@@ -59,7 +59,7 @@
         int minIndex = maxIndex + 1;
         for (int i = maxIndex + 2; i < array.Length; i++)
         {
-            if (array[i] < array{minIndex])
+            if (array[i] < array[minIndex])
                 minIndex = i;
         }
         
@@ -320,7 +320,7 @@ for (int i = 0; i < n; i++)
 int n = raw.Length;
 double[] restored = new double[n];
 for (int i = 0; i < n; i++)
-    restored[i] = raw[i]
+    restored[i] = raw[i];
             
 bool allCorrupt = true;
 for (int i = 0; i < n; i++)
@@ -365,5 +365,3 @@ for (int = 0; i < n; i++)
     }
 
 }
-
-
