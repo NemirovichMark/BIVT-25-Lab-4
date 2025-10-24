@@ -343,7 +343,7 @@ if (n < 3)
     return null;
 }
 
-for (int = 0; i < n; i++)
+for (int i = 0; i < n; i++)
 {
     if (raw[i] == -1)
     {
