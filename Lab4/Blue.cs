@@ -121,8 +121,16 @@ namespace Lab4
         }
         public void Task4(double[] array)
         {
-
-            // end
+            double sr = 0;
+            foreach (double i in array)
+            {
+                sr += i;
+            }
+            sr /= array.Length;
+            for (int i = 0; i < array.Length ; i++)
+            {
+                array[i] = array[i]-sr;
+            }
 
         }
         public int Task5(int[] A, int[] B)
@@ -130,7 +138,11 @@ namespace Lab4
             int sum = 0;
 
             // code here
-
+            if (A.Length != B.Length) return 0;
+            for (int i = 0; i < A.Length; i++)
+            {
+                sum += A[i] * B[i];
+            }
             // end
 
             return sum;
@@ -138,19 +150,77 @@ namespace Lab4
         public int[] Task6(int[] array)
         {
             int[] indexes = null;
-
+            double sr = 0;
             // code here
+            foreach (int i in array)
+            {
+                sr += i;
+            }
+            sr /= array.Length;
 
+            int count = 0;
+            foreach (int i in array)
+            {
+                if (i < sr) 
+                {
+                    count++;
+                    Console.WriteLine($"{i} < {sr}");
+
+                }
+                ;
+            }
+            int[] m = new int[count];
+            int j = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < sr)
+                {
+
+                    m[j] = i;
+                    j++;
+                }  
+            }
             // end
-
-            return indexes;
+            Console.WriteLine(string.Join(", ", array));
+            Console.WriteLine(array.Length);
+            Console.WriteLine(string.Join(", ", m));
+            Console.WriteLine(m.Length);
+            Console.WriteLine("__________________________");
+            return m;
         }
         public int Task7(int[] array)
         {
-            int count = 0;
+            int mcount = 0;
 
             // code here
-
+            int count = 0;
+            int lastC = 0;
+            foreach (int i in array)
+            {
+                if (count==0)
+                {
+                    count++;
+                    lastC = i;
+                }
+                else
+                {
+                    if (i >= lastC)
+                    {
+                        lastC = i;
+                        count++;
+                    }
+                    else
+                    {
+                        if (mcount < count)
+                        {
+                            mcount = count;
+                            count = 1;
+                            lastC = i;
+                        }
+                    }
+                }
+                return mcount;
+            }
             // end
 
             return count;
