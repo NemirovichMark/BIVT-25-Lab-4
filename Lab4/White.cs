@@ -49,7 +49,7 @@ namespace Lab4
 // PROBLEM THREE---------------------------------------------------------------------------------------------------------------------------------------------START
 
         int maxIndex = 0;
-        for (int = 1; i < array.Length; i++)
+        for (int i = 1; i < array.Length; i++)
         {
             if (array[i] > array[maxIndex])
                 maxIndex = i;
@@ -87,7 +87,7 @@ return;
 int maxIndex = 0;
 for (int i = 2; i < array.Length; i+= 2)
 {
-    if (array[i] > array[maxIndex]
+    if (array[i] > array[maxIndex])
         maxIndex = i;
 }
 
@@ -123,7 +123,7 @@ for (int i = 2; i < array.Length; i+= 2)
 int maxIndex = 0;
 for (int i = 1; i < array.Length; i++)
 {
-    if (array[i] > array[maxIndex]
+    if (array[i] > array[maxIndex])
         maxIndex = i;
 }
 
@@ -162,7 +162,7 @@ for (int i = 0; i < array.Length; i++)
 {
     if (array[i] >= 0)
     {
-        answer[onlyPositive] = array[i]
+        answer[onlyPositive] = array[i];
         onlyPositive++;
     }
 }
