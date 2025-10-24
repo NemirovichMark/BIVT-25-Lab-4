@@ -1,0 +1,15 @@
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\bin\Debug\net8.0\Lab4.exe
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\bin\Debug\net8.0\Lab4.deps.json
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\bin\Debug\net8.0\Lab4.runtimeconfig.json
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\bin\Debug\net8.0\Lab4.dll
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\bin\Debug\net8.0\Lab4.pdb
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\obj\Debug\net8.0\Lab4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\obj\Debug\net8.0\Lab4.AssemblyInfoInputs.cache
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\obj\Debug\net8.0\Lab4.AssemblyInfo.cs
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\obj\Debug\net8.0\Lab4.csproj.CoreCompileInputs.cache
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\obj\Debug\net8.0\Lab4.sourcelink.json
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\obj\Debug\net8.0\Lab4.dll
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\obj\Debug\net8.0\refint\Lab4.dll
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\obj\Debug\net8.0\Lab4.pdb
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\obj\Debug\net8.0\Lab4.genruntimeconfig.cache
+C:\Users\freak\Source\Repos\BIVT-25-Lab-4\Lab4\obj\Debug\net8.0\ref\Lab4.dll
