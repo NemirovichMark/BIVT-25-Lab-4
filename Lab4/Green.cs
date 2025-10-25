@@ -66,14 +66,14 @@ namespace Lab4
         }
         public int[] Task3(int[] array)
         {
-            int[] negatives = ;
+            int[] negatives = null;
 
             // code here
-            int max_val = 0;
-            int max_pos = 0;
+            int max_val = -999999;
+            int max_pos = 333;
 
-            int min_val = 0;
-            int min_pos = 0;
+            int min_val = 99999;
+            int min_pos = 333;
 
 
             for (int i = 0; i < array.Length; i++)
@@ -91,19 +91,32 @@ namespace Lab4
                 }
             }
 
-
             int left = Math.Min(max_pos, min_pos);
             int right = Math.Max(max_pos, min_pos);
-
-
+            int count = 0;
 
             for (int i = left + 1; i < right; i++)
             {
                 if (array[i] < 0)
                 {
-                    negatives.SetValue(value: array[i], index: i - left - 1);
+                    count++;
                 }
             }
+
+            var ints = new int[count];
+            int j = 0;
+
+            for (int i = left + 1; i < right; i++)
+            {
+                if (array[i] < 0)
+                {
+                    ints[j] = array[i];
+                    j++;
+                }
+            }
+
+
+            negatives = ints;
                 // end
 
                 return negatives;
@@ -112,6 +125,31 @@ namespace Lab4
         {
 
             // code here
+            bool found = true;
+            int max_pos = 33, neg_pos = 33, neg_value = 999;
+            int max_value = -99999;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max_value)
+                {
+                    max_value = array[i];
+                    max_pos = i;
+                }
+
+                if (found && (array[i] < 0))
+                {
+                    neg_pos = i;
+                    neg_value = array[i];
+                    found = false;
+                }
+            }
+
+            if (found == false)
+            {
+                array[neg_pos] = max_value;
+                array[max_pos] = neg_value;
+            }
+
 
             // end
 
@@ -121,7 +159,38 @@ namespace Lab4
             int[] answer = null;
 
             // code here
+            int max_val = -99999;
+            int counter = 0;
 
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max_val)
+                {
+                    max_val = array[i];
+                }
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max_val)
+                {
+                    counter++;
+                }
+            }
+
+            var ints = new int[counter];
+            int j = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max_val)
+                {
+                    ints[j] = i; j++;
+                }
+            }
+
+
+            answer = ints;
             // end
 
             return answer;
@@ -131,6 +200,23 @@ namespace Lab4
 
             // code here
 
+            int max_val = -99999;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max_val) {
+                    max_val = array[i];
+                }
+            }
+            int ccounter = 1;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if ((array[i] == max_val))
+                {
+                    array[i] = max_val + ccounter;
+                    ccounter++;
+                }
+            }
             // end
 
         }
@@ -138,20 +224,60 @@ namespace Lab4
         {
 
             // code here
+            int max_value = -9999;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max_value)
+                {
+                    max_value = array[i];
+                }
+            }
+
+            int summ = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                int temp = array[i];
+
+                if (array[i] == max_value)
+                {
+                    array[i] = summ;
+                }
+                summ += temp;
+                
+            }
 
             // end
 
         }
         public int Task8(int[] array)
         {
-            int length = 0;
+            int length = 1;
+            int cur_streak = 1;
 
-            // code here
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                if (array[i] > array[i + 1])
+                {
+                    cur_streak++;
+                }
+                else
+                {
+                    if (cur_streak > length)
+                    {
+                        length = cur_streak;
+                    }
+                    cur_streak = 1;
+                }
+            }
 
-            // end
+            if (cur_streak > length)
+            {
+                length = cur_streak;
+            }
 
             return length;
         }
+
         public void Task9(int[] array)
         {
 
