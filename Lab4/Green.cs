@@ -304,31 +304,38 @@
             int[] cleared = null;
 
             // code here
+            //массив с неповторяющимися элементами
+            int [] arrayUnique =  new int [array.Length];
+            
+            //счетчик уникальных элементов
             int count = 0;
-            //список неповторяющихся элементов
-            int [] resultList = new int [array.Length];
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length; i++) //берем один элемент из списка
             {
-                bool dublicated = false;
-                for (int j = 0; j < count; j++)
+                bool isDublicate = false;
+                for (int j = 0; j < count; j++) //идем по count, чтобы не было лишнего прохода по нулям в массиве
                 {
-                    if (resultList[j] == array[i])
+                    if (array[i] == arrayUnique[j])
                     {
-                        dublicated = true;
+                        isDublicate = true;
                         break;
                     }
                 }
-                
-                if (dublicated == false)
+                if (!isDublicate) //если не дубликат, то добавляем в список 
                 {
-                    resultList[count] = array[i];
+                    arrayUnique[count] = array[i];
                     count++;
                 }
             }
-            cleared =  new int[count];
+
+            //здесь и далее по count чтобы не было лишних нулей
+            
+            //делаем у cleared длину равную count
+            cleared = new int[count];
+            
+            //добавляем в каждую ячейку cleared значение от arrayUnique
             for (int i = 0; i < count; i++)
             {
-                cleared[i]= resultList[i];
+                cleared[i] = arrayUnique[i];
             }
             // end
 
@@ -340,6 +347,62 @@
 
             // code here
 
+            if (b == a)
+                return null;
+            if (n <= 1)
+                return null;
+            
+            //создание массива А
+            A = new double[n];
+
+            double step = (b - a) / (n - 1);
+            for (int i = 0; i < n; i++)
+            {
+                A[i] = a + step * i;
+            }
+            
+            //поиск среднего арифметического положительных элементов
+            double sum = 0;
+            int count = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (A[i] > 0) 
+                {
+                    sum += A[i];
+                    count++;
+                }
+            }
+            
+            // если в массиве А не найдено положительных
+            // элементов, то В пустой
+            if (count == 0)
+                return new double[0];
+            
+            double average = sum / count;
+
+            //количество положительные элементы массива A,
+            //которые превышают среднее арифметическое
+            //положительных элементов массива
+            int elementsCount = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (A[i] > 0 && A[i] > average)
+                {
+                    elementsCount++;
+                }
+            }
+            
+            B = new double[elementsCount];
+            int indexB = 0; 
+            
+            for (int i = 0; i < n; i++)
+            {
+                if (A[i] > 0 && A[i] > average)
+                {
+                    B[indexB] = A[i];
+                    indexB++;
+                }
+            }
             // end
 
             return B;
@@ -349,7 +412,28 @@
             int wins = 0;
 
             // code here
-
+            //изначальный ход шулера
+            int sharperStep = 6;
+            //ходы шулера будут 6 5 4 3 2 1 (из-за проклятья)
+            
+            //проклятие шестерок игрока
+            int curse = 0;
+            
+            for (int i = 0; i < dices.Length; i++)
+            {
+                //проверка на то, выпало не меньше 1
+                int playerStep = Math.Max(1, dices[i] - curse);//ход игрока - накопленное проклятье
+                
+                if (playerStep > sharperStep) // условие победы
+                    wins++;
+                
+                //если игроку выпала 6
+                if (dices[i] == 6)
+                    curse++;
+                
+                //проверяем условие на 1
+                sharperStep = Math.Max(1, sharperStep - 1);
+            }
             // end
 
             return wins;
