@@ -248,17 +248,41 @@ public async Task Task7(int[] array)
     }
 }
 
-    
-        
+
+
 
         public int Task8(int[] array)
         {
-            int length = 0;
+            int length = 1;
 
-            // code here
+            if (array == null || array.Length < 1)
+            {
+                return 0;
+            }
+            if (array.Length == 1)
+            {
+                return 1;
+            }
 
-            // end
-
+            int c = 1;
+            
+            for(int i = 0; i < array.Length-1; i++)
+            {
+                
+                if (array[i] > array[i + 1])
+                {
+                    c++;
+                    if (c > length)
+                    {
+                        length = c;
+                    }
+                }
+                else
+                {
+                    c = 1;
+                }
+                
+            }
             return length;
         }
         public void Task9(int[] array)
@@ -350,10 +374,11 @@ public async Task Task7(int[] array)
         public double[] Task11(double a, double b, int n)
         {
             double[] A = null, B = null;
+            
+            
+            
 
-            // code here
-
-            // end
+            
 
             return B;
         }

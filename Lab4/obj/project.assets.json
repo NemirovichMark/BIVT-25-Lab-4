@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\retin\\OneDrive\\Рабочий стол\\Progects\\works\\labs\\Новая папка\\BIVT-25-Lab-4\\Lab4\\Lab4.csproj",
+      "projectUniqueName": "C:\\Users\\retin\\OneDrive\\Рабочий стол\\Progects\\works\\labs\\BIVT-25-Lab-4\\Lab4\\Lab4.csproj",
       "projectName": "Lab4",
-      "projectPath": "C:\\Users\\retin\\OneDrive\\Рабочий стол\\Progects\\works\\labs\\Новая папка\\BIVT-25-Lab-4\\Lab4\\Lab4.csproj",
+      "projectPath": "C:\\Users\\retin\\OneDrive\\Рабочий стол\\Progects\\works\\labs\\BIVT-25-Lab-4\\Lab4\\Lab4.csproj",
       "packagesPath": "C:\\Users\\retin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\retin\\OneDrive\\Рабочий стол\\Progects\\works\\labs\\Новая папка\\BIVT-25-Lab-4\\Lab4\\obj\\",
+      "outputPath": "C:\\Users\\retin\\OneDrive\\Рабочий стол\\Progects\\works\\labs\\BIVT-25-Lab-4\\Lab4\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\retin\\AppData\\Roaming\\NuGet\\NuGet.Config"
