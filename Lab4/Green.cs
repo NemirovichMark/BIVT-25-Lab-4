@@ -438,15 +438,37 @@ public async Task Task7(int[] array)
     return new double[0];
 }
         public int Task12(int[] dices)
+{
+    
+    int wins = 0;
+    int n = dices.Length;
+    int[] shuler = new int[n];
+    int loss = 0;
+    for (int i = 0; i < n; i++)
+    {
+        shuler[i] = Math.Max(1, 6 - loss);
+        loss++;
+    }
+    loss = 0;
+    for (int i = 0; i < n; i++)
+    {
+        int prev = dices[i];
+        dices[i] = Math.Max(1, dices[i] - loss);
+        if (prev == 6)
         {
-            int wins = 0;
-
-            // code here
-
-            // end
-
-            return wins;
-
+            loss++;
         }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        if (shuler[i] < dices[i])
+        {
+            wins++;
+        }
+    }
+    return wins;
+
+}
     }
 }
