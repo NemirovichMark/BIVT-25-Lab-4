@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using System.Threading.Tasks;
 
 namespace Lab4
@@ -371,17 +372,71 @@ public async Task Task7(int[] array)
     
         }
         
-        public double[] Task11(double a, double b, int n)
+        public double[]? Task11(double a, double b, int n)
+{
+    if (n == 0) 
+    {
+        return null;
+    }
+    if (n == 1) 
+    {
+        return null; 
+    }
+
+    double[] A = new double[n];
+    double suma = 0;
+    int c = 0;
+
+    
+    double step = (b - a) / (n - 1); 
+    double curl = a;
+    for(int i = 0; i < n; i++)
+    {
+        
+        A[i] = curl;
+        curl += step;
+    }
+
+    for (int i = 0; i < A.Length; i++)
+    {
+        
+        if (A[i] > 0)
         {
-            double[] A = null, B = null;
-            
-            
-            
-
-            
-
-            return B;
+            suma += A[i]; 
+            c++;
         }
+    }
+
+    if (c > 0) 
+    {
+        double sr = suma / c;
+        int len = 0;
+        for (int i = 0; i < A.Length; i++)
+        {
+            if (A[i] > sr)
+            {
+                len++;
+            }
+        }
+        int r = 0;
+        double[] B = new double[len];
+        for (int i = 0; i < A.Length; i++)
+        {
+            if (A[i] > sr)
+            {
+                B[r] = A[i];
+                r++;
+            }
+        }
+        if (a == b)
+        {
+            return null;
+        }
+        return B;
+    }
+
+    return new double[0];
+}
         public int Task12(int[] dices)
         {
             int wins = 0;
