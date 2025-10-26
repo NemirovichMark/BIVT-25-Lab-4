@@ -42,33 +42,39 @@ namespace Lab4
 
             return sum;
         }
-        public int[] Task3(int[] array)
-        {
-            int[] negatives = null;
+    public int[] Task3(int[] array){
+        
+    int[] negatives = null;
 
-            // code here
+    // code here
 
-            if (array == null || array.Length == 0) return System.Array.Empty<int>();
+    if (array == null || array.Length == 0) return System.Array.Empty<int>();
 
-            int maxI = 0, minI = 0;
-            for (int i = 1; i < array.Length; i++)
-            {
-                if (array[i] > array[maxI]) maxI = i;
-                if (array[i] < array[minI]) minI = i;
-            }
+    int maxI = 0, minI = 0;
+    for (int i = 1; i < array.Length; i++)
+    {
+        if (array[i] > array[maxI]) maxI = i;
+        if (array[i] < array[minI]) minI = i;
+    }
 
-            int left = System.Math.Min(maxI, minI);
-            int right = System.Math.Max(maxI, minI);
+    int left = System.Math.Min(maxI, minI);
+    int right = System.Math.Max(maxI, minI);
 
-            var list = new System.Collections.Generic.List<int>();
-            for (int i = left + 1; i < right; i++)
-                if (array[i] < 0) list.Add(array[i]);
-            negatives = list.ToArray();
+    int count = 0;
+    for (int i = left + 1; i < right; i++)
+        if (array[i] < 0) count++;
 
-            // end
+    if (count == 0) return new int[0];
 
-            return negatives;
-        }
+    negatives = new int[count];
+    int index = 0;
+    for (int i = left + 1; i < right; i++)
+        if (array[i] < 0) negatives[index++] = array[i];
+
+    // end
+
+    return negatives;
+}
         public void Task4(int[] array)
         {
 
@@ -143,7 +149,9 @@ namespace Lab4
             if (array == null || array.Length == 0) return;
 
             int n = array.Length;
-            int[] orig = (int[])array.Clone();
+            int[] orig = new int[n];
+            for (int i = 0; i < n; i++)
+                orig[i] = array[i]; 
 
             int max = orig[0];
             for (int i = 1; i < n; i++)
@@ -160,6 +168,7 @@ namespace Lab4
             // end
 
         }
+
         public int Task8(int[] array)
         {
             int length = 0;
@@ -267,36 +276,38 @@ namespace Lab4
 
             return B;
         }
-        public int Task12(int[] dices)
-        {
-            //code here
-            if (dices == null || dices.Length == 0) return 0;
+public int Task12(int[] dices)
+{
+    //code here
+    if (dices == null || dices.Length == 0) return 0;
 
-            int n = dices.Length;
+    int n = dices.Length;
 
-            int sixesSoFar = 0;
-            int[] mine = new int[n];
-            for (int i = 0; i < n; i++)
-            {
-                int adjusted = dices[i] - sixesSoFar;
-                if (adjusted < 1) adjusted = 1;
-                mine[i] = adjusted;
+   
+    int sixesSoFar = 0;
+    int[] mine = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        int adjusted = dices[i] - sixesSoFar;
+        if (adjusted < 1) adjusted = 1;
+        mine[i] = adjusted;
 
-                if (dices[i] == 6) sixesSoFar++;
-            }
+        if (dices[i] == 6) sixesSoFar++;
+    }
 
-            int wins = 0;
-            for (int i = 0; i < n; i++)
-            {
-                int cheater = 6 - i;
-                if (cheater < 1) cheater = 1;
+    
+    int wins = 0;
+    for (int i = 0; i < n; i++)
+    {
+        int cheater = 6 - i;
+        if (cheater < 1) cheater = 1;
 
-                if (mine[i] > cheater) wins++;
-            }
+        if (mine[i] > cheater) wins++;
+    }
 
-            return wins;
-            //end
-        }
+    return wins;
+    //end
+}
 
     }
 }
