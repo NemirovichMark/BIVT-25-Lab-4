@@ -447,17 +447,25 @@ namespace Lab4
         {
             int[] array = null;
 
-            if (b <= 0) return null;   // b debe ser positivo
-            if (a > c)  return null;   // no hay elementos
+            // b debe ser positivo -> caso inválido: null
+            if (b <= 0)
+                return null;
 
+            // si a > c, no hay elementos que formar -> arreglo vacío
+            if (a > c)
+                return Array.Empty<int>();
+
+            // cantidad de elementos desde a hasta c, con paso b (incluye a y el último <= c)
             int count = ((c - a) / b) + 1;
+
             array = new int[count];
 
             for (int i = 0; i < count; i++)
                 array[i] = a + i * b;
 
-                return array;
+            return array;
         }
+
 
 
         public int[] Task12(int[] magazine)
@@ -507,3 +515,4 @@ namespace Lab4
 
     }
 }
+
