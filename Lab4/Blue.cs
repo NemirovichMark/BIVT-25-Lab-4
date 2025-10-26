@@ -1,7 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices;
-using System.Security.AccessControl;
-
 namespace Lab4
 {
     public class Blue
@@ -492,3 +488,4 @@ namespace Lab4
         }
     }
 }
+
