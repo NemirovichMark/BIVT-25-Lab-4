@@ -267,25 +267,18 @@ namespace Lab4
                 array[i] -= average;
             }
         }
-
         public int Task5(int[] A, int[] B)
         {
+            if (A == null || B == null) return 0;
+            if (A.Length != B.Length) return 0;
+
             int sum = 0;
-
-            if (A == null || B == null)
-                return 0;
-
-            // Si los arrays tienen distinta longitud, usamos la mínima
-            int length = Math.Min(A.Length, B.Length);
-
-            // 1. Sumar los productos de los elementos correspondientes
-            for (int i = 0; i < length; i++)
-            {
+            for (int i = 0; i < A.Length; i++)
                 sum += A[i] * B[i];
-            }
 
             return sum;
         }
+
 
         public int[] Task6(int[] array)
         {
@@ -327,48 +320,38 @@ namespace Lab4
 
         public int Task7(int[] array)
         {
-            if (array == null || array.Length == 0)
-                return 0;
-            if (array.Length == 1)
-                return 1;
+            if (array == null || array.Length == 0) return 0;
+            if (array.Length == 1) return 1;
 
-            int maxLength = 1;   // longitud máxima
-            int currentLength = 1;
-            int prevDiff = 0;    // diferencia anterior
+            int incLen = 1; // no-decreciente
+            int decLen = 1; // no-creciente
+            int maxLen = 1;
 
             for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] > array[i - 1])
                 {
-                int diff = array[i] - array[i - 1];
-
-                if (diff == 0)
-                {
-                    // Si son iguales, la secuencia continúa
-                    currentLength++;
+                    incLen += 1;
+                    decLen = 1;
                 }
-                else
+                else if (array[i] < array[i - 1])
                 {
-                    int sign = diff > 0 ? 1 : -1;
-
-                    // Si aún no había dirección o la dirección no cambia
-                    if (prevDiff == 0 || sign == Math.Sign(prevDiff))
-                    {
-                        currentLength++;
-                    }
-                    else
-                    {
-                        // Cambio de dirección → reiniciar el conteo
-                        currentLength = 2; // el actual y el anterior
-                    }
-
-                    prevDiff = diff;
+                    decLen += 1;
+                    incLen = 1;
+                }
+                else // iguales
+                {
+                    incLen += 1;
+                    decLen += 1;
                 }
 
-                if (currentLength > maxLength)
-                    maxLength = currentLength;
+                if (incLen > maxLen) maxLen = incLen;
+                if (decLen > maxLen) maxLen = decLen;
             }
 
-            return maxLength;
+            return maxLen;
         }
+
 
         public int[] Task8(int[] array)
         {
@@ -464,34 +447,18 @@ namespace Lab4
         {
             int[] array = null;
 
-            // b debe ser positivo
-            if (b <= 0)
-                return new int[0];
+            if (b <= 0) return null;   // b debe ser positivo
+            if (a > c)  return null;   // no hay elementos
 
-            // Si el inicio ya supera c, no hay elementos
-            if (a > c)
-                return new int[0];
-
-            // 1. Calcular cuántos elementos habrá
-            int count = 0;
-            for (int value = a; value <= c; value += b)
-            {
-                count++;
-            }
-
-            // 2. Crear el arreglo con ese tamaño
+            int count = ((c - a) / b) + 1;
             array = new int[count];
 
-            // 3. Llenarlo
-            int current = a;
             for (int i = 0; i < count; i++)
-            {
-                array[i] = current;
-                current += b;
-            }
+                array[i] = a + i * b;
 
-            return array;
+                return array;
         }
+
 
         public int[] Task12(int[] magazine)
         {
