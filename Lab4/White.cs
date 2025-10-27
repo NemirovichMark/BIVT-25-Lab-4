@@ -52,7 +52,9 @@ namespace Lab4
         for (int i = 1; i < array.Length; i++)
         {
             if (array[i] > array[maxIndex])
+            {
                 maxIndex = i;
+            }
         }
 
         int minIndex = maxIndex + 1;
@@ -66,7 +68,9 @@ namespace Lab4
         
 
         if (array.Length == 0 || array.Length == 1 || maxIndex == array.Length - 1 || array[maxIndex] == array [minIndex] || array == null)
-        return;
+        {
+        return null;
+        }
 
         (array[maxIndex], array[minIndex]) = (array[minIndex], array[maxIndex]);
         Console.WriteLine(string.Join(",", array));   
@@ -82,8 +86,10 @@ namespace Lab4
 // PROBLEM FOUR---------------------------------------------------------------------------------------------------------------------------------------------START
 
 if (array.Length == 0)
-return;
-
+{
+return null;
+}
+    
 int maxIndex = 0;
 for (int i = 2; i < array.Length; i+= 2)
 {
@@ -139,7 +145,7 @@ for (int i = 1; i < array.Length; i++)
 
 if (array.Length == 0 || max == 0)
 {
-    return;
+    return null;
 }
 
 for (int i = 0; i + 1 < max; i += 2)
@@ -377,7 +383,3 @@ for (int i = 0; i < n; i++)
     }
 
 }
-
-
-
-
