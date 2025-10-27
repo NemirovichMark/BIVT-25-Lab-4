@@ -103,6 +103,7 @@
             for (int i = 0; i < answer.Length; i++)
             {
                 test[i] = _main.Task2(input[i], inputP[i]);
+                System.Console.WriteLine(string.Join(", ", test[i]));
             }
             // Assert
             Assert.AreNotEqual(input, test);
@@ -158,6 +159,7 @@
             for (int i = 0; i < answer.Length; i++)
             {
                 test[i] = _main.Task3(input[i]);
+                System.Console.WriteLine(string.Join(", ", test[i]));
             }
             // Assert
             Assert.AreNotEqual(input, test);

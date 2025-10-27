@@ -24,21 +24,39 @@ namespace Lab4
         public int[] Task2(int[] array, int P)
         {
             int[] answer = null;
-            bool Zamena = false;
 
             // code here
-            answer = array;
+            bool finded = false;
             for (int i = array.Length - 1; i >= 0; i--)
             {
-                if (array[i] > 0 && Zamena == false)
+                if (array[i] > 0 && !finded)
                 {
-                    answer.ToList().Insert(i, P);
-                    System.Console.WriteLine(i.ToString() + "/" + (answer.Length - 1).ToString());
-                    Zamena = true;
+                    answer = new int[array.Length + 1];
+                    answer[i + 1] = P;
+                    finded = true;
                 }
             }
-            System.Console.WriteLine(string.Join(", ", answer));
-
+            if (!finded)
+            {
+                return array;
+            }
+            finded = false;
+            for (int i = array.Length - 1; i >= 0; i--)
+            {
+                if (array[i] > 0 && !finded)
+                {
+                    finded = true;
+                    answer[i] = array[i];
+                }
+                else if (!finded)
+                {
+                    answer[i + 1] = array[i];
+                }
+                else
+                {
+                    answer[i] = array[i];
+                }
+            }
             // end
 
             return answer;
@@ -48,7 +66,43 @@ namespace Lab4
             int[] answer = null;
 
             // code here
+            int Minimal = int.MaxValue;
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                if (array[i] > 0 && array[i] < Minimal)
+                {
+                    Minimal = array[i];
+                }
+            }
+            if (Minimal != int.MaxValue)
+            {
+                bool finded = false;
+                answer = new int[array.Length - 1];
+                for (int i = 0; i < array.Length - 1; i++)
+                {
+                    if (!finded)
+                    {
+                        answer[i] = array[i];
+                    }
+                    else if (array[i] == Minimal && !finded)
+                    {
+                        finded = true;
+                        answer[i] = array[i + 1];
+                        continue;
+                    }
+                    else
+                    {
+                        answer[i] = array[i + 1];
+                    }
 
+                }
+            }
+            else
+            {
+                return array;
+            }
+
+ 
             // end
 
             return answer;
