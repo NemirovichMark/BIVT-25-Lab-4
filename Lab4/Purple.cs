@@ -59,7 +59,7 @@ namespace Lab4
             int n = array.Length;
             int mx = 0;
             double sr = 0;
-            answer = new int[n + 1];
+            answer = new int[n + 2];
             for (int i = 0; i < n; i++)
             {
                 sr += array[i];
@@ -86,7 +86,7 @@ namespace Lab4
                 {
                     answer[i] = array[i - 1];
                 }
-            } 
+            }  
             // end
 
             return answer;
@@ -95,9 +95,46 @@ namespace Lab4
         {
 
             // code here
-
+            int n = array.Length, cnt1 = 0,  cnt2 = 0;
+            int last = n - 1;
+            int value = 0;
+            for (int i = n - 1; i >= 0; i--)
+            {
+                if (array[i] < 0)
+                {
+                    cnt1++;
+                }
+                else
+                {
+                    cnt2++;
+                }
+            }
+            int[] array1 = new int[cnt1];
+            int[] array2 = new int[cnt2];
+            cnt1 = 0;
+            cnt2 = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (array[i] < 0)
+                {
+                    array1[cnt1] = array[i];
+                    cnt1++;
+                }
+                else
+                {
+                    array2[cnt2] = array[i];
+                    cnt2++;
+                }
+            }
+            for (int i = 0; i < array2.Length; i++)
+            {
+                array[i] = array2[i];
+            }
+            for (int i = 0; i < array1.Length; i++)
+            {
+                array[i + array2.Length] = array1[i];
+            }
             // end
-
         }
         public int[] Task5(int[] A, int[] B, int k)
         {
@@ -172,7 +209,20 @@ namespace Lab4
             int[] C = null;
 
             // code here
-            
+            C = new int[A.Length + B.Length];
+            for (int i = 0; i < C.Length; i++)
+            {
+                if (i < A.Length)
+                {
+                    C[i] = A[i];
+                }
+                else
+                {
+                    C[i] = B[i - A.Length];
+                }
+            }
+            Array.Sort(C);
+            Array.Reverse(C);
             // end
 
             return C;
@@ -181,7 +231,27 @@ namespace Lab4
         {
 
             // code here
-
+            int[] answer = new int[array.Length];
+            int ind = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > array[ind])
+                {
+                    ind = i;
+                }
+            }
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (ind + i < answer.Length)
+                {
+                    answer[i] = array[ind + i];
+                }
+                else
+                {
+                    answer[i] = array[ind + i - answer.Length];
+                }
+            }
+            array = answer;
             // end
 
         }
@@ -199,7 +269,12 @@ namespace Lab4
             double[] Xext = null, Yext = null;
 
             // code here
-
+            double move = (b - a) / (n + 1);
+            double y = 0;
+            for (double x = a; x < b; x += move)
+            {
+                y = Math.Cos(x) + x * Math.Sin(x);
+            }
             // end
 
             return (Xext, Yext);
@@ -217,7 +292,3 @@ namespace Lab4
         }
     }
 }
-
-
-
-
