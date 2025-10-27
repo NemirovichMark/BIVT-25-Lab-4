@@ -15,7 +15,7 @@ namespace Lab4
             }
 
             length = Math.Sqrt(length);
-            
+            Console.WriteLine(length);
 //---------------------------------------------------------------------------------------------------------------------------------------------
             // end
 
@@ -34,8 +34,8 @@ namespace Lab4
                 {
                     count++;
                 }
-            
-            }     
+            }
+            Console.WriteLine(count);
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
             // end
@@ -55,21 +55,21 @@ namespace Lab4
                 maxIndex = i;
         }
 
-
         int minIndex = maxIndex + 1;
         for (int i = maxIndex + 2; i < array.Length; i++)
         {
             if (array[i] < array[minIndex])
+            {
                 minIndex = i;
+            }
         }
         
 
-        if (array.Length == 0 || array.Length == 1 || maxIndex == array.Length - 1 || array[maxIndex] == array [minIndex])
+        if (array.Length == 0 || array.Length == 1 || maxIndex == array.Length - 1 || array[maxIndex] == array [minIndex] || array == null)
         return;
 
-        int swap = array[maxIndex];
-        array[maxIndex] = array[minIndex];
-        array[minIndex] = swap;
+        (array[maxIndex], array[min]) = (array[min], array[maxIndex]);
+        Console.WriteLine(string.Join(",", array));   
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
             // end
@@ -88,9 +88,13 @@ int maxIndex = 0;
 for (int i = 2; i < array.Length; i+= 2)
 {
     if (array[i] > array[maxIndex])
+    {
         maxIndex = i;
+    }
 }
-
+            
+    array [maxIndex] = maxIndex;
+            
 //---------------------------------------------------------------------------------------------------------------------------------------------
             // end
 
@@ -102,12 +106,16 @@ for (int i = 2; i < array.Length; i+= 2)
             // code here
 // PROBLEM FIVE---------------------------------------------------------------------------------------------------------------------------------------------START
 
+        index = -1;
         for (int i = 0; i < array.Length; i++)
         {
             if (array[i] == P)
+            {
                 return i;
+            }
         }
-            return -1;
+            
+        Console.WriteLine(index);
         
 //---------------------------------------------------------------------------------------------------------------------------------------------
             // end
@@ -120,21 +128,23 @@ for (int i = 2; i < array.Length; i+= 2)
             // code here
 // PROBLEM SIX---------------------------------------------------------------------------------------------------------------------------------------------START
 
-int maxIndex = 0;
+int max = 0;
 for (int i = 1; i < array.Length; i++)
 {
-    if (array[i] > array[maxIndex])
+    if (array[i] > array[max])
+    {
         maxIndex = i;
+    }
 }
 
-if (array.Length == 0 || maxIndex == 0)
+if (array.Length == 0 || max == 0)
+{
     return;
+}
 
-for (int i = 0; i + 1 < maxIndex; i+= 2)
+for (int i = 0; i + 1 < max; i += 2)
         {
-            int swap = array[i];
-            array[i] = array[i + 1];
-            array[i + 1] = swap;
+            (array[i], array[i+1]) = (array[i+1], array[i]);
         }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -148,14 +158,16 @@ for (int i = 0; i + 1 < maxIndex; i+= 2)
             // code here
 // PROBLEM SEVEN---------------------------------------------------------------------------------------------------------------------------------------------START
 
-int arraySize = 0;
+int arraySizer = 0;
 for (int i = 0; i < array.Length; i++)
 {
     if (array[i] >= 0)
-        arraySize++;
+    {
+        arraySizer++;
+    }
 }
 
-int[] answer = new int[arraySize];
+answer = new int[arraySizer];
 
 int onlyPositive = 0;
 for (int i = 0; i < array.Length; i++)
@@ -184,22 +196,20 @@ int maxIndex = 0;
             
 for (int i = 0; i < array.Length - 1; i++)
 {
-    int maxIndex = i;
+    int maxxi = i;
 
         for (int j = i + 1; j < array.Length; j++)
         {
-            if (array[j] > array[maxIndex])
+            if (array[j] > array[maxxi])
             {
-                maxIndex = j;
+                maxxi = j;
             }
         }
 
 
         if (maxIndex != i)
         {
-            int swap = array[i];
-            array[i] = array[maxIndex];
-            array[maxIndex] = swap;
+            (array[i], array[maxxi]) = (array[maxxi], array[i]);
         }
 }
     
@@ -218,9 +228,7 @@ int j = array.Length - 1;
 
 while (i < j)
 {
-    int swap = array[i];
-    array[i] = array[j];
-    array[j] = swap;
+    (array[i], array[j]) = (array[j], array[i]);
 }
             i++;
             j--;
@@ -261,9 +269,13 @@ int i = 0, j = 0, k = 0;
 while (i < A.Length || j < B.Length)
 {
     if (i < A.Length)
+    {
         C[k++] = A[i++];
+    }
     if (j < B.Length)
+    {
         C[k++] = B[j++];
+    }
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -320,7 +332,9 @@ for (int i = 0; i < n; i++)
 int n = raw.Length;
 double[] restored = new double[n];
 for (int i = 0; i < n; i++)
+{
     restored[i] = raw[i];
+}
             
 bool allCorrupt = true;
 for (int i = 0; i < n; i++)
@@ -365,3 +379,4 @@ for (int i = 0; i < n; i++)
     }
 
 }
+
