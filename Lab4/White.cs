@@ -68,7 +68,7 @@ namespace Lab4
         if (array.Length == 0 || array.Length == 1 || maxIndex == array.Length - 1 || array[maxIndex] == array [minIndex] || array == null)
         return;
 
-        (array[maxIndex], array[min]) = (array[min], array[maxIndex]);
+        (array[maxIndex], array[minIndex]) = (array[minIndex], array[maxIndex]);
         Console.WriteLine(string.Join(",", array));   
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ for (int i = 1; i < array.Length; i++)
 {
     if (array[i] > array[max])
     {
-        maxIndex = i;
+        max = i;
     }
 }
 
@@ -255,9 +255,9 @@ if (A.Length == 0 || B.Length == 0)
     C = A.Length == 0 ? new int[B.Length] : new int[A.Length];
 
     int[] remainArray = A.Length == 0? B : A;
-    for (int i = 0; i < remainArray.Length; i++)
+    for (int x = 0; x < remainArray.Length; x++)
     {
-        C[i] = remainArray[i];
+        C[x] = remainArray[x];
     }
     return C;
 }
@@ -310,7 +310,7 @@ if (a > b)
     distance = -distance;
 }
 
-double[] array = new double[n];
+array = new double[n];
 for (int i = 0; i < n; i++)
 {
     array[i] = a + i * distance;
@@ -330,7 +330,7 @@ for (int i = 0; i < n; i++)
 // PROBLEM TWELVE---------------------------------------------------------------------------------------------------------------------------------------------START
 
 int n = raw.Length;
-double[] restored = new double[n];
+restored = new double[n];
 for (int i = 0; i < n; i++)
 {
     restored[i] = raw[i];
@@ -379,4 +379,5 @@ for (int i = 0; i < n; i++)
     }
 
 }
+
 
