@@ -142,22 +142,19 @@ namespace Lab4
 
             // code here
             answer = new int[A.Length + B.Length];
-            for (int i = 0; i < A.Length; i++)
+            for (int i = 0; i < answer.Length; i++)
             {
                 if (i <= k)
                 {
                     answer[i] = A[i];
                 }
-                else if (i == k + 1)
+                else if (i <= k + B.Length)
                 {
-                    for (int j = 0; j < B.Length; j++)
-                    {
-                        answer[i + j + 1] = B[j];
-                    }
+                    answer[i] = B[i - k - 1];
                 }
                 else
                 {
-                    answer[i + B.Length] = A[i];
+                    answer[i] = A[i - B.Length];
                 }
             }
             // end
@@ -292,3 +289,4 @@ namespace Lab4
         }
     }
 }
+
