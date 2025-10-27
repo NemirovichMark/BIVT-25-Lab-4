@@ -281,8 +281,48 @@ namespace Lab4
         public void Task9(int[] array)
         {
 
-            // code here
+            // code 
+            int siz2e = (array.Length + 1) / 2;
+            int[] new_a = new int[siz2e];
 
+            int count = 0;
+            for (int i = 0; i <  array.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    new_a[count] = array[i];
+                    count++;
+                }
+            }
+            int j = 1;
+            int size = new_a.Length;
+
+            while (j < size)
+            {
+                if (new_a[j - 1] <= new_a[j])
+                {
+                    j++;
+                } else
+                {
+                    int temp = new_a[j - 1];
+                    new_a[j - 1] = new_a[j];
+                    new_a[j] = temp;
+                    if (j > 1)
+                    {
+                        j--;
+                    }
+                }
+            }
+
+            count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    array[i] = new_a[count];
+                    count++;
+                }
+            }
             // end
 
         }
@@ -292,6 +332,37 @@ namespace Lab4
 
             // code here
 
+            int unique = 0;
+            int[] temp = new int[unique];
+            for (int i = 0; i < array.Length; i++)
+            {
+                bool ch = true;
+                for (int j = 0; j < temp.Length; j++)
+                {
+                    if (array[i] == temp[j])
+                    {
+                        ch = false;
+                        break;
+                    }
+                }
+
+                if (ch)
+                {
+                    unique++;
+                    int[] temp2 = new int[unique];
+                    for (int i2 = 0; i2 < temp.Length; i2++)
+                    {
+                        temp2[i2] = temp[i2];
+                    }
+
+                    temp2[temp.Length] = array[i];
+
+                    temp = temp2;
+                }
+            }
+
+            cleared = temp;
+
             // end
 
             return cleared;
@@ -300,12 +371,61 @@ namespace Lab4
         {
             double[] A = null, B = null;
 
-            // code here
+            if (n <= 0)
+                return new double[] { };
 
-            // end
+            if (n == 1)
+                return new double[] { };
+
+            A = new double[n];
+            double step = (n == 1) ? 0.0 : (b - a) / (n - 1);
+
+            for (int idx = 0; idx < n; idx++)
+            {
+                A[idx] = a + idx * step;
+            }
+
+            double summ = 0;
+            int count = 0;
+            for (int i = 0; i < A.Length; i++)
+            {
+                if (A[i] > 0)
+                {
+                    summ += A[i];
+                    count++;
+                }
+            }
+
+            if (count == 0)
+                return new double[] { };
+            double avg = summ / count;
+
+            int second_c = 0;
+            for (int i = 0; i < A.Length; i++)
+            {
+                if (A[i] > 0 && A[i] > avg)
+                {
+                    second_c++;
+                }
+            }
+
+            if (second_c == 0)
+                return new double[] { };
+            B = new double[second_c];
+            int cur_pos_B = 0;
+            for (int i = 0; i < A.Length; i++)
+            {
+                if (A[i] > 0 && A[i] > avg)
+                {
+                    B[cur_pos_B] = A[i];
+                    cur_pos_B++;
+                }
+            }
 
             return B;
         }
+
+
         public int Task12(int[] dices)
         {
             int wins = 0;
