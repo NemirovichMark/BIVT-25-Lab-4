@@ -196,20 +196,22 @@ int maxIndex = 0;
             
 for (int i = 0; i < array.Length - 1; i++)
 {
-    int maxxi = i;
+    int maxxi = array[i];
+    int maxxiInd = i;
 
         for (int j = i + 1; j < array.Length; j++)
         {
             if (array[j] > array[maxxi])
             {
-                maxxi = j;
+                maxxi = array[j];
+                maxxiInd = j;
             }
         }
 
 
-        if (maxIndex != i)
+        if (maxxi != i)
         {
-            (array[i], array[maxxi]) = (array[maxxi], array[i]);
+            (array[i], array[maxxiInd]) = (array[maxxiInd], array[i]);
         }
 }
     
@@ -379,5 +381,6 @@ for (int i = 0; i < n; i++)
     }
 
 }
+
 
 
