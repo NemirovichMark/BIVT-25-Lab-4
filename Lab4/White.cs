@@ -1,4 +1,10 @@
-﻿namespace Lab4
+using System.Diagnostics;
+using System.Formats.Asn1;
+using System.IO.Compression;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+
+namespace Lab4
 {
     public class White
     {
@@ -6,110 +12,232 @@
         {
             double length = 0;
 
-            // code here
+            for (int i = 0; i != vector.Length; i++) length += vector[i] * vector[i];
 
-            // end
-
-            return length;
+            return Math.Sqrt(length);
         }
         public int Task2(int[] array, int P, int Q)
         {
             int count = 0;
 
-            // code here
-
-            // end
+            for (int i = 0; i != array.Length; i++)
+            {
+                if (array[i] > P && array[i] < Q) count++;
+            }
 
             return count;
         }
         public void Task3(int[] array)
         {
+            int max_b = -999;
+            int min_b = 999;
+            int max_index = 0;
+            int min_index = 0;
 
-            // code here
+            for (int i = 0; i != array.Length; i++)
+            {
+                if (array[i] > max_b)
+                {
+                    max_b = array[i];
+                    max_index = i;
+                }
+            }
 
-            // end
+            for (int i = max_index; i != array.Length; i++)
+            {
+                if (array[i] < min_b)
+                {
+                    min_b = array[i];
+                    min_index = i;
+                }
+            }
 
+            array[min_index] = max_b;
+            array[max_index] = min_b;
         }
         public void Task4(int[] array)
         {
+            int max_b = -999;
+            int max_index = 0;
 
-            // code here
+            for (int i = 0; i != array.Length; i++)
+            {
+                if (max_b < array[i] && i % 2 == 0)
+                {
+                    max_b = array[i];
+                    max_index = i;
+                }
+            }
 
-            // end
-
+            array[max_index] = max_index;
         }
         public int Task5(int[] array, int P)
         {
-            int index = 0;
+            for (int i = 0; i != array.Length; i++)
+            {
+                if (array[i] == P)
+                {
+                    return i;
+                }
+            }
 
-            // code here
-
-            // end
-
-            return index;
+            return -1;
         }
         public void Task6(int[] array)
         {
+            int max = -9999;
+            int max_index = 0;
 
-            // code here
+            int x = 0;
+            int y = 0;
 
-            // end
+            for (int i = 0; i != array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    max_index = i;
+                }
+            }
 
-        }
+            for (int i = 0; i < max_index; i += 2)
+            {
+                if (i + 1 < max_index)
+                {
+                    x = array[i];
+                    y = array[i + 1];
+
+                    array[i] = y;
+                    array[i + 1] = x;
+                }
+            }
+        }   
         public int[] Task7(int[] array)
         {
             int[] answer = null;
+            int count = 0;
 
-            // code here
+            for (int i = 0; i != array.Length; i++)
+            {
+                if (array[i] < 0) count++;
+            }
 
-            // end
+            answer = new int[array.Length - count];
+            count = 0;
+            for (int i = 0; i != array.Length; i++)
+            {
+                if (array[i] >= 0)
+                {
+                    answer[count] = array[i];
+                    count++;
+                }
+            }
 
             return answer;
         }
         public void Task8(int[] array)
         {
+            int count = 0;
+            int i = 0;
+            if (array.Length <= 1) return;
 
-            // code here
-
-            // end
-
+            while (count != array.Length - 1)
+            {
+                if (i == array.Length - 1 - count)
+                {
+                    count++;
+                    i = 0;
+                }
+                if (array[i] < array[i + 1])
+                {
+                    int p = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = p;
+                }
+                
+                i++;
+            }
         }
         public void Task9(int[] array)
         {
-
-            // code here
-
-            // end
-
+            for (int i = 0; i < array.Length / 2; i++)
+            {
+                int p = array[i];
+                array[i] = array[array.Length - 1 - i];
+                array[array.Length - 1 - i] = p;
+            }
         }
         public int[] Task10(int[] A, int[] B)
         {
             int[] C = null;
 
-            // code here
+            C = new int[A.Length + B.Length];
 
-            // end
+            int a = 0, b = 0;
+
+            for (int i = 0; i != C.Length; i++)
+            {
+                if (a < A.Length && (i % 2 == 0 || b >= B.Length)) C[i] = A[a++];
+                else if (b < B.Length) C[i] = B[b++];
+            }
 
             return C;
         }
         public double[] Task11(double a, double b, int n)
         {
-            double[] array = null;
+            if (n <= 0)
+                return null;
 
-            // code here
+            if (a == b)
+            {
+                if (n == 1)
+                    return [a];
+                else
+                    return null;
+            }
 
-            // end
+            if (n == 1 && a != b)
+                return null;
 
-            return array;
+            double[] answer = new double[n];
+            double step = (b - a) / (n - 1);
+
+            for (int i = 0; i < n; i++)
+                answer[i] = a + step * i;
+
+            return answer;
         }
 
         public double[] Task12(double[] raw)
         {
-            double[] restored = null;
+            if (raw.Length < 3) return null;
 
-            // code here
+            bool flag = true;
 
-            // end
+            for (int i = 0; i != raw.Length; i++)
+            {
+                if (raw[i] != -1)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+
+            if (flag == true) return raw;
+
+            double[] restored = new double[raw.Length];
+            for (int i = 0; i != restored.Length; i++) restored[i] = raw[i];
+
+            for (int i = 0; i < raw.Length; i++)
+            {
+                if (restored[i] == -1)
+                {
+                    int left = (i - 1 + raw.Length) % raw.Length;
+                    int right = (i + 1) % raw.Length;
+
+                    if (restored[left] != -1 && restored[right] != -1) restored[i] = (restored[left] + restored[right]) / 2;
+                }
+            }
 
             return restored;
         }
