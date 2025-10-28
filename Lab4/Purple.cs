@@ -95,7 +95,8 @@ namespace Lab4
         {
 
             // code here
-            int n = array.Length, cnt1 = 0,  cnt2 = 0;
+            int n = array.Length;
+            int cnt1 = 0,  cnt2 = 0;
             int last = n - 1;
             int value = 0;
             for (int i = n - 1; i >= 0; i--)
@@ -138,24 +139,26 @@ namespace Lab4
         }
         public int[] Task5(int[] A, int[] B, int k)
         {
-            int[] answer = null;
+            //int[] answer = null;
 
             // code here
-            // if (k >= A.Length)
-            // answer = new int[A.Length + B.Length];
-            // for (int i = 0; i < k + 1; i++)
-            // {
-            //     answer[i] = A[i];
-            // }
-            // for (int i = 0; i < B.Length; i++)
-            // {
-            //     answer[i + B.Length] = B[i];
-            // }
-            // for (int i = 1; i < A.Length - k; i++)
-            // {
-            //     answer[i + B.Length + k] = A[k + i];
-            // }
+            if (k > A.Length)
+            {
+                return A;
+            }
             int[] answer = new int[A.Length + B.Length];
+            for (int i = 0; i < k; i++)
+            {
+                answer[i] = A[i];
+            }
+            for (int i = 0; i < B.Length; i++)
+            {
+                answer[k + i] = B[i];
+            }
+            for (int i = k; i < A.Length; i++)
+            {
+                answer[i + B.Length] = A[i];
+            }
             // end
 
             return answer;
@@ -186,7 +189,6 @@ namespace Lab4
             normalized = new double[array.Length];
             bool fl = true;
             double mx = (double)(array[0]), mn = (double)(array[0]);
-            int MaxInt = array[mx];
 
             for (int i = 0; i < array.Length; i++)
             {
@@ -196,7 +198,7 @@ namespace Lab4
 
             if (mx == mn)
             {
-                normalized = null;
+                return null;
             }
 
             for (int i = 0; i < array.Length; i++)
@@ -225,8 +227,23 @@ namespace Lab4
                     C[i] = B[i - A.Length];
                 }
             }
-            Array.Sort(C);
-            Array.Reverse(C);
+            int mx = 0;
+            int[] rev = new int[C.Length];
+            for (int i = 0; i < C.Length; i++)
+            {
+                mx = i;
+                for (int j = i; j < C.Length; j++)
+                {
+                    if (C[mx] < C[j])
+                    {
+                        mx = j;
+                    }
+
+                }
+                rev[i] = C[mx];
+                (C[mx], C[i]) = (C[i], C[mx]);
+            }
+            C = rev;
             // end
 
             return C;
@@ -266,23 +283,22 @@ namespace Lab4
         {
 
             // code here
-            if (N > array.Length || N == 0)
+            if (N <= array.Length && N != 0)
             {
-                return array;
-            }
-            int cnt = N - 1;
-            if (array.Length - N < cnt)
-            {
-                cnt = array.Length - N;
-            }
-            int[] test = new int[cnt];
-            for (int i = 0; i < cnt; i++)
-            {
-                test[i] = array[N - i - 2];
-            }
-            for (int i = 0; i < cnt; i++)
-            {
-                array[N + i] = test[i];
+                int cnt = N - 1;
+                if (array.Length - N < cnt)
+                {
+                    cnt = array.Length - N;
+                }
+                int[] test = new int[cnt];
+                for (int i = 0; i < cnt; i++)
+                {
+                    test[i] = array[N - i - 2];
+                }
+                for (int i = 0; i < cnt; i++)
+                {
+                    array[N + i] = test[i];
+                }
             }
             // end
 
@@ -294,40 +310,44 @@ namespace Lab4
 
             // code here
             
-            double[] X = new double[n], Y = new double[n];
-            double[] Xext = new double[0], Yext = new double[0];
-
             if (a == b && n == 1)
             {
-                return (Xext, Yext);
+                return (new double[0], new double[0]);
             }
-            if (a > b || n < 3 || (a == b && n > 1))
+            if (a > b || a == b && n > 1)
             {
                 return (null, null);
-
             }
-            double d = (b - a) / (n - 1);
+            Y = new double[n]; X = new double[n];
             double x = a;
-            for (int i = 0; i < n; ++i)
+            double y = 0;
+            double move = (b - a) / (n - 1);
+            for (int i = 0; i < n; i++)
             {
-                X[i] = x;
-                Y[i] = Math.Cos(x) + x * Math.Sin(x);
-                x += d;
+                y = Math.Cos(x) + x * Math.Sin(x);
+                Y[i] = y; X[i] = x;
+                x += move;
             }
+
             int cnt = 0;
-            for (int i = 1; i < n - 1; ++i)
+            for (int i = 1; i < n - 1; i++)
             {
-                if (Y[i - 1] < Y[i] && Y[i] > Y[i + 1] || Y[i - 1] > Y[i] && Y[i] < Y[i + 1]) ++cnt;
-            }
-            Xext = new double[cnt]; Yext = new double[cnt];
-            int now = 0;
-            for (int i = 1; i < n - 1; ++i)
-            {
-                if (Y[i - 1] < Y[i] && Y[i] > Y[i + 1] || Y[i - 1] > Y[i] && Y[i] < Y[i + 1])
+                if (Y[i] > Y[i - 1] && Y[i] > Y[i + 1] || Y[i] < Y[i - 1] && Y[i] < Y[i + 1])
                 {
-                    Xext[now] = X[i];
-                    Yext[now] = Y[i];
-                    now++;
+                    cnt++;
+                }
+            }
+
+            Yext = new double[cnt];
+            Xext = new double[cnt];
+            int ind = 0;
+            for (int i = 1; i < n - 1; i++)
+            {
+                if (Y[i] > Y[i - 1] && Y[i] > Y[i + 1] || Y[i] < Y[i - 1] && Y[i] < Y[i + 1])
+                {
+                    Yext[ind] = Y[i];
+                    Xext[ind] = X[i];
+                    ind++;
                 }
             }
 
@@ -341,73 +361,81 @@ namespace Lab4
             double[] bright = null, normal = null, dim = null;
 
             // code here
-
+            if (raw.Length == 0)
+            {
+                return (null, null, null);
+            }
             double sr = 0;
-            double S = 0;
-            for (int i = 0; i < raw.Length; i++)
+            for (int i = 0; i < raw.Length; ++i)
             {
-                S += raw[i];
+                sr += raw[i];
             }
-            sr = S / raw.Length;
-            int cb = 0; int cd = 0;
+            sr /= raw.Length;
+            int cntb = 0, cntd = 0;
             for (int i = 0; i < raw.Length; i++)
             {
-                if (raw[i] > 2 * sr)  cb++; 
-                else if (raw[i] < sr / 2) cd++; 
-            }
-            bright = new double[cb]; normal = new double[raw.Length]; dim = new double[cd];
-            int b = 0;
-            int d = 0;
-            for (int i = 0; i < raw.Length; i++)
-            {
-                if (raw[i] > 2 * sr)
+                if (raw[i] > sr * 2)
                 {
-                    bright[b++] = raw[i];
+                    cntb++;
                 }
                 else if (raw[i] < sr / 2)
                 {
-                    dim[d++] = raw[i];
+                    cntd++;
                 }
             }
-            double bb = 0;
-            double dd = 0;
-            double n = 0;
-            for (int i = 0; i < bright.Length; i++)
-            {
-                bb += bright[i];
-            }
-            for (int i = 0; i < dim.Length; i++)
-            {
-                dd += dim[i];
-            }
-            n = (S - dd - bb) / (raw.Length - (cd+cb));
+            bright = new double[cntb];
+            dim = new double[cntd];
+            normal = new double[raw.Length - cntd - cntb];
+            cntb = 0; cntd = 0;
             for (int i = 0; i < raw.Length; i++)
             {
-                if (raw[i] > 2 * sr || raw[i] < sr / 2)
+                if (raw[i] > sr * 2)
                 {
-                    normal[i] = (n + raw[i]) / 2;
+                    bright[cntb++] = raw[i];
+                }
+                else if (raw[i] < sr / 2)
+                {
+                    dim[cntd++] = raw[i];
                 }
                 else
                 {
-                    normal[i] = raw[i];
+                    normal[i - cntb - cntd] = raw[i];
                 }
-            }
-            for (int i = 0; i < normal.Length - 1; i++)
-            {
-                double max = normal[i];
-                int indexofmax = i;
-                for (int j = i + 1; j < normal.Length; j++)
-                {
-                    if (normal[j] > max)
-                    {
-                        max = normal[j];
-                        indexofmax = j;
-                    }
-                }
-                (normal[i], normal[indexofmax]) = (normal[indexofmax], normal[i]);
             }
 
-            // end
+            double sr2 = 0;
+            for (int i = 0; i < normal.Length; i++)
+            {
+                sr2 += normal[i];
+            }
+
+            sr2 /= normal.Length;
+            for (int i = 0; i < raw.Length; i++)
+            {
+                if (raw[i] > sr * 2 || raw[i] < sr / 2)
+                {
+                    raw[i] = (sr2 + raw[i]) / 2;
+                }
+            }
+            normal = raw;
+            bool fl;
+            for (int i = 0; i < normal.Length; i++)
+            {
+                fl = false;
+                for (int j = 1; j < normal.Length; j++)
+                {
+                    if (normal[j] > normal[j - 1])
+                    {
+                        (normal[j], normal[j - 1]) = (normal[j - 1], normal[j]);
+                        fl = true;
+                    }
+                }
+                if (!fl)
+                {
+                    break;
+                }
+            }
+            //end
 
             return (bright, normal, dim);
         }
