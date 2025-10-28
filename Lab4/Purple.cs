@@ -103,33 +103,23 @@ namespace Lab4
         }
         public int[] Task5(int[] A, int[] B, int k)
         {
-            // В ЗАДАНИИ НЕ НАПИСАНО ЧТО ДЕЛАТЬ ЕСЛИ k > A.Length
-            // УСЛОВИЕ НЕПОЛНОЕ
             if (k > A.Length)
             {
                 return A;
             }
-            // В ЗАДАНИИ НЕ НАПИСАНО ЧТО ДЕЛАТЬ ЕСЛИ k > A.Length
-            // УСЛОВИЕ НЕПОЛНОЕ
             int[] answer = new int[A.Length + B.Length];
             for (int i = 0; i < k; ++i)
             {
                 answer[i] = A[i];
             }
-            // В ЗАДАНИИ НЕ НАПИСАНО ЧТО ДЕЛАТЬ ЕСЛИ k > A.Length
-            // УСЛОВИЕ НЕПОЛНОЕ
             for (int i = 0; i < B.Length; ++i)
             {
                 answer[k + i] = B[i];
             }
-            // В ЗАДАНИИ НЕ НАПИСАНО ЧТО ДЕЛАТЬ ЕСЛИ k > A.Length
-            // УСЛОВИЕ НЕПОЛНОЕ
             for (int i = k; i < A.Length; ++i)
             {
                 answer[i + B.Length] = A[i];
             }
-            // В ЗАДАНИИ НЕ НАПИСАНО ЧТО ДЕЛАТЬ ЕСЛИ k > A.Length
-            // УСЛОВИЕ НЕПОЛНОЕ
 
 
             return answer;
