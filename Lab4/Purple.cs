@@ -258,27 +258,53 @@ namespace Lab4
             // code here
             double sum = 0;
             double average;
+            normal = new double[raw.Length];
             foreach (double el in raw) sum += el;
             average = sum / raw.Length;
             int bright_count = 0;
             int dim_count = 0;
+            double sum_withoutDef = 0;
+            double average_withoutDef;
             for(int i = 0; i < raw.Length; i++)
             {
                 if ((raw[i] / 2) > average) bright_count++;
                 else if ((raw[i] * 2) < average) dim_count++;
+                else sum_withoutDef += raw[i];
             }
+            average_withoutDef = sum_withoutDef / (raw.Length - dim_count - bright_count);
             bright = new double[bright_count];
             dim = new double[dim_count];
             bright_count = 0; dim_count = 0;
             for (int i = 0; i < raw.Length; i++)
             {
-                if ((raw[i] / 2) > average) { bright[bright_count] = raw[i]; bright_count++; }
-                else if ((raw[i] * 2) < average) { dim[dim_count] = raw[i]; dim_count++; }
+                if ((raw[i] / 2) > average)
+                {
+                    bright[bright_count] = raw[i];
+                    bright_count++;
+                    normal[i] = (raw[i] + average_withoutDef) / 2;
+                }
+                else if ((raw[i] * 2) < average)
+                {
+                    dim[dim_count] = raw[i];
+                    dim_count++;
+                    normal[i] = (raw[i] + average_withoutDef) / 2;
+                }
+                else normal[i] = raw[i];
             }
-            Console.WriteLine(string.Join(' ', raw));
-            Console.WriteLine(string.Join(' ', bright));
-            Console.WriteLine(string.Join(' ', dim));
-            Console.WriteLine(average);
+            double temp;
+            for (int i = 0; i < normal.Length; i++)
+            {
+                for (int k = 0; k < normal.Length - i - 1; k++)
+                {
+                    if (normal[k] < normal[k + 1])
+                    {
+                        temp = normal[k];
+                        normal[k] = normal[k + 1];
+                        normal[k + 1] = temp;
+                    }
+                }
+            }
+            //YES
             // end
 
             return (bright, normal, dim);
