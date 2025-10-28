@@ -27,6 +27,7 @@ namespace Lab4
                 else answer[n] = array[n];
             }
             array = answer;
+            //YES
             // end
 
         }
@@ -44,8 +45,8 @@ namespace Lab4
                 if (i % 2 == 0) { even[k] = array[i]; k++; }
                 else { odd[z] = array[i]; z++; }
             }
+            //YES
             // end
-
             return (even, odd);
         }
         public int[] Task3(int[] array, int P)
@@ -54,36 +55,31 @@ namespace Lab4
 
             // code here
             int sum = 0;
-            double avarege;
-            double distance;
             int closest = array[0];
+            double average;
             foreach (int el in array) sum += el;
-            avarege = (double)sum / array.Length;
-            distance = Math.Abs(avarege - array[0]);
-            for (int i = 0; i < array.Length; i++)
+            average = (double)sum / array.Length;
+            for(int i = 0; i < array.Length; i++)
             {
-                if (Math.Abs(avarege - array[i]) < distance)
+                if (Math.Abs(array[i] - average) < Math.Abs(closest - average))
                 {
                     closest = array[i];
-                    distance = Math.Abs(avarege - array[i]);
                 }
             }
             answer = new int[array.Length + 1];
-            bool isA = true;
-            int z = 0;
-            for(int i = 0; i < answer.Length; i++)
+            bool isA = false;
+            for (int i = 0; i < array.Length; i++)
             {
-                if (isA & array[z] == closest)
+                if (!isA & array[i] == closest)
                 {
-                    isA = false;
+                    isA = true;
                     answer[i] = array[i];
                     answer[i + 1] = P;
-                    continue;
                 }
-                else if (!isA) answer[i] = array[i - 1];
-                else answer[i] = array[i];
-                Console.WriteLine(answer[i]);
+                else if (!isA) answer[i] = array[i];
+                else answer[i + 1] = array[i]; 
             }
+            //YES
             // end
 
             return answer;
@@ -118,6 +114,7 @@ namespace Lab4
                 k++;
             }
             array = answer;
+            //YES
             // end
 
         }
@@ -126,13 +123,14 @@ namespace Lab4
             int[] answer = null;
 
             // code here
-            answer = new int[A.Length + B.Length];
+            if (k > (A.Length - 1)) answer = new int[A.Length];
+            else answer = new int[A.Length + B.Length];
             bool isA = false;
             int a = 0;
             int b = 0;
             for (int i = 0; i < answer.Length; i++)
             {
-                if (i + 1 == k) isA = true;
+                if (i == k) isA = true;
                 else if (b == B.Length) isA = false;
                 if (!isA)
                 {
@@ -145,6 +143,7 @@ namespace Lab4
                     b++;
                 }
             }
+            //YES
             // end
 
             return answer;
@@ -154,7 +153,15 @@ namespace Lab4
             int[] sum = null, dif = null;
 
             // code here
-
+            if (A.Length != B.Length) return (sum, dif);
+            sum = new int[A.Length];
+            dif = new int[A.Length];
+            for (int i = 0; i < A.Length; i++)
+            {
+                sum[i] = A[i] + B[i];
+                dif[i] = A[i] - B[i];
+            }
+            //YES
             // end
 
             return (sum, dif);
@@ -164,7 +171,20 @@ namespace Lab4
             double[] normalized = null;
 
             // code here
-
+            bool isEveryEqual = true;
+            int temp = array[0];
+            int maxEl = array[0];
+            for(int i = 0; i < array.Length; i++)
+            {
+                if(temp != array[i]) isEveryEqual = false;
+                if (array[i] > maxEl) maxEl = array[i];
+            }
+            if (!isEveryEqual)
+            {
+                normalized = new double[array.Length];
+                for (int i = 0; i < array.Length; i++) normalized[i] = (double)array[i] / maxEl;
+            }
+            //YES
             // end
             
             return normalized;
@@ -174,7 +194,7 @@ namespace Lab4
             int[] C = null;
 
             // code here
-
+            
             // end
 
             return C;
@@ -183,7 +203,31 @@ namespace Lab4
         {
 
             // code here
-
+            int maxElIndex = 0;
+            int maxEl = array[0];
+            int[] answer = new int[array.Length];
+            for (int i = 0; i < array.Length; i++) 
+            {
+                if (array[i] > maxEl)
+                {
+                    maxEl = array[i];
+                    maxElIndex = i;
+                }
+            }
+            Console.WriteLine(array.Length - maxElIndex);
+            Console.WriteLine(answer.Length - 1);
+            int k = 0;
+            for (int i = 0; i < (array.Length - maxElIndex); i++)
+            {
+                if (i >= (answer.Length - maxElIndex)) 
+                { 
+                    answer[i] = array[k];
+                    k++;
+                    Console.WriteLine("h");
+                }
+                else answer[i] = array[i + maxElIndex];
+            }
+            Console.WriteLine(string.Join(' ', answer));
             // end
 
         }
@@ -212,7 +256,29 @@ namespace Lab4
             double[] bright = null, normal = null, dim = null;
 
             // code here
-
+            double sum = 0;
+            double average;
+            foreach (double el in raw) sum += el;
+            average = sum / raw.Length;
+            int bright_count = 0;
+            int dim_count = 0;
+            for(int i = 0; i < raw.Length; i++)
+            {
+                if ((raw[i] / 2) > average) bright_count++;
+                else if ((raw[i] * 2) < average) dim_count++;
+            }
+            bright = new double[bright_count];
+            dim = new double[dim_count];
+            bright_count = 0; dim_count = 0;
+            for (int i = 0; i < raw.Length; i++)
+            {
+                if ((raw[i] / 2) > average) { bright[bright_count] = raw[i]; bright_count++; }
+                else if ((raw[i] * 2) < average) { dim[dim_count] = raw[i]; dim_count++; }
+            }
+            Console.WriteLine(string.Join(' ', raw));
+            Console.WriteLine(string.Join(' ', bright));
+            Console.WriteLine(string.Join(' ', dim));
+            Console.WriteLine(average);
             // end
 
             return (bright, normal, dim);

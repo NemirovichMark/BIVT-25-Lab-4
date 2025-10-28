@@ -1,13 +1,15 @@
-﻿namespace Lab4
+﻿using System.Linq;
+
+namespace Lab4
 {
     public class Program
     {
         public static void Main()
         {
-            int[] mas = { -2, -1, 0, 1, 2, 3, 3, 8, 5, 3, 1, 1, 1, 2, -7, 8, 8, -1, 0, 0, 5, -5, -8, 2, 3 };
-            int[] mas1 = { 2, 1, 0, 1, 2, 3, 3, 8, 5, 3, 1, 1, 1, 2, 7, 8, 8, 1, 0, 0, 5, 5, 8, 2, 3 };
+            double[] mas = { 1, 2, 3, 3, 5, 3, 1, 1, 1, 2, 5, 2, 3 };
+            int[] mas1 = { 5 };
             Purple purp = new Purple();
-            Console.WriteLine(string.Join(' ', purp.Task5(mas, mas1, 1)));
+            purp.Task12(mas);
         }
     }
 }
