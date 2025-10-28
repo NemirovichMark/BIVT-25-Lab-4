@@ -1,4 +1,4 @@
-﻿namespace Lab4
+namespace Lab4
 {
     public class Purple
     {
@@ -6,27 +6,27 @@
         {
 
             // code here
-            double mx = array.Max();
+            double mx = int.MinValue;
             double summ = 0;
             double average = 0;
-            int k = 0;
+            int ind = 0;
 
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] == mx) k = i;
-                break;
-            }
-
-            for (int i = 0; i < array.Length; i++)
-            {
+                if (array[i] > mx)
+                {
+                    mx = array[i];
+                    ind = i;
+                }
                 summ += array[i];
             }
             average = summ / array.Length;
 
-            for (int i = k+1; i < array.Length; i++)
+            for (int i = array.Length-1; i>ind; i--)
             {
                 array[i] = average;
             }
+
             // end
 
         }
@@ -47,7 +47,7 @@
                 {
                     odd[i/2] = array[i];
                 }
-
+            }
             // end
 
             return (even, odd);
@@ -82,8 +82,6 @@
                 else a[i] = array[i - 1];
             }
             answer = a;
-            // code here
-
             // end
 
             return answer;
@@ -164,9 +162,9 @@
                     answer[i] = A[i];
                 }
             }
-            // end
+                // end
 
-            return answer;
+                return answer;
         }
         public (int[] sum, int[] dif) Task6(int[] A, int[] B)
         {
@@ -272,7 +270,6 @@
                 }
             }
             for (int i = 0; i < array.Length; i++) array[i] = a[i];
-
             // end
 
         }
@@ -342,9 +339,10 @@
                     }
                 }
             }
-            // end
+                
+                // end
 
-            return (Xext, Yext);
+                return (Xext, Yext);
         }
 
         public (double[] bright, double[] normal, double[] dim) Task12(double[] raw)
@@ -417,4 +415,3 @@
     }
 
 }
-
