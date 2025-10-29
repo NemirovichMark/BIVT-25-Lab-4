@@ -194,7 +194,42 @@ namespace Lab4
             int[] C = null;
 
             // code here
-            
+            C = new int[A.Length + B.Length];
+            int temp;
+            for(int i = 0; i < A.Length; i++)
+            {
+                for(int k = 0; k < A.Length - i - 1; k++)
+                {
+                    if (A[k] < A[k + 1])
+                    {
+                        temp = A[k];
+                        A[k] = A[k + 1];
+                        A[k + 1] = temp;
+                    }
+                }
+            }
+            temp = B[0];
+            for (int i = 0; i < B.Length; i++)
+            {
+                for (int k = 0; k < B.Length - i - 1; k++)
+                {
+                    if (B[k] < B[k + 1])
+                    {
+                        temp = B[k];
+                        B[k] = B[k + 1];
+                        B[k + 1] = temp;
+                    }
+                }
+            }
+            int z = 0, j = 0, l = 0;
+            while (z < A.Length && j < A.Length)
+            {
+                if (A[z] <= B[j]) C[l++] = A[z++];
+                else C[l++] = B[j++];
+            }
+            while (z < A.Length) C[l++] = A[z++];
+            while (j < B.Length) C[l++] = B[z++];
+            Console.WriteLine(string.Join(' ', C));
             // end
 
             return C;

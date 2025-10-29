@@ -6,10 +6,10 @@ namespace Lab4
     {
         public static void Main()
         {
-            double[] mas = { 0, 0, 0, 0, 0 };
-            int[] mas1 = { 5 };
+            int[] mas = { -2, -1, 0, 1, 2, 3, 3, 8, 5, 3, 1, 1, 1, 2, -7, 8, 8, -1, 0, 0, 5, -5, -8, 2, 3 };
+            int[] mas1 = { 2, 1, 0, 1, 2, 3, 3, 8, 5, 3, 1, 1, 1, 2, 7, 8, 8, 1, 0, 0, 5, 5, 8, 2, 3, -9999 };
             Purple purp = new Purple();
-            purp.Task12(mas);
+            purp.Task8(mas, mas1);
         }
     }
 }
