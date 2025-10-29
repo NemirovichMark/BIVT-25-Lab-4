@@ -221,15 +221,16 @@ namespace Lab4
                     }
                 }
             }
-            int z = 0, j = 0, l = 0;
-            while (z < A.Length && j < A.Length)
+            temp = 0;
+            int z = 0, j = 0, y = 0;
+            while(z < A.Length && j < B.Length)
             {
-                if (A[z] <= B[j]) C[l++] = A[z++];
-                else C[l++] = B[j++];
+                if (A[z] >= B[j]) C[y++] = A[z++];
+                else C[y++] = B[j++];
             }
-            while (z < A.Length) C[l++] = A[z++];
-            while (j < B.Length) C[l++] = B[z++];
-            Console.WriteLine(string.Join(' ', C));
+            while (z < A.Length) C[y++] = A[z++];
+            while (j < B.Length) C[y++] = B[j++];
+            //YES
             // end
 
             return C;
@@ -249,20 +250,12 @@ namespace Lab4
                     maxElIndex = i;
                 }
             }
-            Console.WriteLine(array.Length - maxElIndex);
-            Console.WriteLine(answer.Length - 1);
-            int k = 0;
-            for (int i = 0; i < (array.Length - maxElIndex); i++)
-            {
-                if (i >= (answer.Length - maxElIndex)) 
-                { 
-                    answer[i] = array[k];
-                    k++;
-                    Console.WriteLine("h");
-                }
-                else answer[i] = array[i + maxElIndex];
-            }
-            Console.WriteLine(string.Join(' ', answer));
+            int[] tempArray = new int[array.Length];
+            int z = 0;
+            for(int i = array.Length - maxElIndex; i < array.Length; i++) tempArray[z++] = array[i];
+            for (int i = 0; i < array.Length - maxElIndex; i++) tempArray[z++] = array[i];
+            array = tempArray;
+            //YES
             // end
 
         }
@@ -270,7 +263,20 @@ namespace Lab4
         {
 
             // code here
+            int index = N - 1; // потому что N задан "по счёту", а индексы с 0
 
+            int left = index;
+            int right = array.Length - N;
+
+            int z;
+            if (left < right) z = left;
+            else z = right;
+
+            for (int i = 0; i < z; i++)
+            {
+                array[index + 1 + i] = array[index - 1 - i];
+            }
+            //YES
             // end
 
         }
@@ -280,7 +286,39 @@ namespace Lab4
             double[] Xext = null, Yext = null;
 
             // code here
-
+            int z = 0;
+            X = new double[n];
+            Y = new double[n];
+            if(a != b)
+            {
+                for(double x = a; x <= b; x += Math.Abs(b - a) / ((double)n - 1))
+                {
+                    X[z] = x;
+                    Y[z] = Math.Cos(x) + x * Math.Sin(x);
+                    z++;
+                }
+                z = 0;
+                for (int i = 1; i < X.Length - 1; i++)
+                {
+                    if ((Y[i - 1] < Y[i] && Y[i] > Y[i + 1]) || (Y[i - 1] > Y[i] && Y[i] < Y[i + 1]))
+                    {
+                        z++;
+                    }
+                }
+                Xext = new double[z];
+                Yext = new double[z];
+                z = 0;
+                for (int i = 1; i < X.Length - 1; i++) 
+                {
+                    if ( (Y[i - 1] < Y[i] && Y[i] > Y[i + 1]) || (Y[i - 1] > Y[i] && Y[i] < Y[i + 1]))
+                    {
+                        Xext[z] = X[i];
+                        Yext[z] = Y[i];
+                        z++;
+                    }
+                }
+            }
+            //YES
             // end
 
             return (Xext, Yext);
