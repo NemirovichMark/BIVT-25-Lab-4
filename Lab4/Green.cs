@@ -249,17 +249,10 @@ namespace Lab4
         {
 
             // code here
-            int n = (array.Length + 1) / 2;
-            int[] chet = new int[n];
-            for (int i = 0; i < n; i++)
-            {
-                chet[i] = array[2 * i];
-            }
-            Array.Sort(chet);
-            for (int i = 0; i < n; i++)
-            {
-                array[2 * i] = chet[i];
-            }
+            for (int i = 0; i < array.Length - 2; i += 2)
+                for (int j = 0; j < array.Length - 2; j += 2)
+                    if (array[j] > array[j + 2])
+                        (array[j], array[j + 2]) = (array[j + 2], array[j]);
             // end
 
         }
@@ -390,3 +383,4 @@ namespace Lab4
         }
     }
 }
+
