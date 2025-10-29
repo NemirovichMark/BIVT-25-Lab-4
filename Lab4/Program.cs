@@ -6,11 +6,7 @@ namespace Lab4
     {
         public static void Main()
         {
-            int[] mas = { -2, 88, 5, 3, 1, 1, 15, -8, 2, -33 };
-            //0, 8, 15, 15, 15, -15, -15, -8, -15, -15
-            int[] maa = { 2, 1, 0, 1, 2, 3, 3, 8, 5, 3, 1, 1, 1, 2, 7, 8, 8, 1, 0, 0, 5, 5, 8, 2, 3 };
-            Purple purp = new Purple();
-            purp.Task10(mas, 3);
+           
         }
     }
 }

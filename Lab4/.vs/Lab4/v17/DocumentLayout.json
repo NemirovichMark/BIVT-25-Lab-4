@@ -3,12 +3,15 @@
   "WorkspaceRootPath": "C:\\MisisStudyCS\\BIVT-25-Lab-4_Afanasev\\Lab4\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9E1E4ED5-B3B0-BE7E-02EC-FF2AF45C22B2}|Lab4.csproj|c:\\misisstudycs\\bivt-25-lab-4_afanasev\\lab4\\purple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E1E4ED5-B3B0-BE7E-02EC-FF2AF45C22B2}|Lab4.csproj|solutionrelative:purple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{853631A6-F3B4-073C-C95B-D61862AA6910}|..\\Lab4test\\Lab4test.csproj|c:\\misisstudycs\\bivt-25-lab-4_afanasev\\lab4test\\whitetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E1E4ED5-B3B0-BE7E-02EC-FF2AF45C22B2}|Lab4.csproj|c:\\misisstudycs\\bivt-25-lab-4_afanasev\\lab4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E1E4ED5-B3B0-BE7E-02EC-FF2AF45C22B2}|Lab4.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E1E4ED5-B3B0-BE7E-02EC-FF2AF45C22B2}|Lab4.csproj|c:\\misisstudycs\\bivt-25-lab-4_afanasev\\lab4\\purple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E1E4ED5-B3B0-BE7E-02EC-FF2AF45C22B2}|Lab4.csproj|solutionrelative:purple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{853631A6-F3B4-073C-C95B-D61862AA6910}|..\\Lab4test\\Lab4test.csproj|c:\\misisstudycs\\bivt-25-lab-4_afanasev\\lab4test\\purpletest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -21,7 +24,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -33,7 +36,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "WhiteTest.cs",
+              "DocumentMoniker": "C:\\MisisStudyCS\\BIVT-25-Lab-4_Afanasev\\Lab4test\\WhiteTest.cs",
+              "RelativeDocumentMoniker": "..\\Lab4test\\WhiteTest.cs",
+              "ToolTip": "C:\\MisisStudyCS\\BIVT-25-Lab-4_Afanasev\\Lab4test\\WhiteTest.cs",
+              "RelativeToolTip": "..\\Lab4test\\WhiteTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T21:24:45.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "PurpleTest.cs",
               "DocumentMoniker": "C:\\MisisStudyCS\\BIVT-25-Lab-4_Afanasev\\Lab4test\\PurpleTest.cs",
               "RelativeDocumentMoniker": "..\\Lab4test\\PurpleTest.cs",
@@ -41,8 +57,7 @@
               "RelativeToolTip": "..\\Lab4test\\PurpleTest.cs",
               "ViewState": "AgIAABkCAAAAAAAAAAAiwCACAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T16:45:47.162Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T16:45:47.162Z"
             },
             {
               "$type": "Document",
@@ -52,14 +67,14 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\MisisStudyCS\\BIVT-25-Lab-4_Afanasev\\Lab4\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-17T08:14:19.336Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Purple.cs",
               "DocumentMoniker": "C:\\MisisStudyCS\\BIVT-25-Lab-4_Afanasev\\Lab4\\Purple.cs",
               "RelativeDocumentMoniker": "Purple.cs",
