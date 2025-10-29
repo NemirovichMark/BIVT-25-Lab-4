@@ -1,6 +1,3 @@
-﻿using System.Globalization;
-using System.Security.AccessControl;
-
 namespace Lab4
 {
     public class Purple
@@ -438,3 +435,4 @@ namespace Lab4
 
     }
 }
+
