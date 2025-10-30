@@ -7,15 +7,38 @@ namespace Lab4
     {
         public void Task1(int[] array)
         {
-
+            int max_el_ind = 0;
+            int max_el = array[0];
             // code here
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length; i++) 
             {
-                if (array[i] < 0)
+                if (array[i] > max_el)
                 {
-                    array[i] = array.SkipWhile(n => n != array.Max()).ToArray().Sum()-array.Max();
-                    break;
+                    max_el = array[i];
+                    max_el_ind = i;
                 }
+            }
+            int sum = 0;
+            if (max_el_ind == array.Length) sum = 0;
+            else
+            {
+                for (int i = max_el_ind + 1; i < array.Length; i++)
+                {
+                    sum += array[i];
+                }
+            }
+            //int[] ints = new int[array.Length];
+            bool fl = false;
+            int j = 0;
+            foreach (int i in array) 
+            {
+                if (fl) continue;
+                else if (i < 0)
+                {
+                    fl = true;
+                    array[j] = sum;
+                }
+                j++;
             }
             // end
 
