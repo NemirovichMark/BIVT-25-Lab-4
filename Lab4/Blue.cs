@@ -9,14 +9,21 @@ namespace Lab4
         {
 
             // code here
-            int maxnumber = array.Max();
+            int maximum = -10000000;
             int S = 0;
             int i_value = 0;
             int minus_value = 0;
             int minus_count = 0;
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] == maxnumber)
+                if (array[i] > maximum)
+                {
+                    maximum = array[i];
+                }
+            }
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == maximum)
                 {
                     i_value = i;
                     break;
