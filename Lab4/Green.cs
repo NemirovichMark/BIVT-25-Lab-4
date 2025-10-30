@@ -149,59 +149,61 @@ namespace Lab4
         public int[] Task5(int[] array)
         {
             int[] answer = null;
+            answer = new int[0];
             if (array.Length > 0)
             {
-                answer = new int[0];
-                int index = 0;
+                int max_i = 0;
+                int max_n = array[0];
                 int c = 0;
-                int maxValue = int.MinValue;
-                for (int i = 1; i < array.Length; i++)
+                for (int i = 0; i < array.Length; i++)
                 {
-                    if (array[i] > maxValue)
+                    if (max_n < array[i])
                     {
-                        maxValue = array[i];
+                        max_i = i;
+                        max_n = array[i];
                     }
                 }
                 for (int i = 0; i < array.Length; i++)
                 {
-                    if (array[i] == maxValue)
+                    if (max_n == array[i])
                     {
                         c++;
                     }
                 }
-                int[] A = new int[c];
+                answer = new int[c];
+                c = 0;
                 for (int i = 0; i < array.Length; i++)
                 {
-                    if (array[i] == maxValue)
+                    if (max_n == array[i])
                     {
-                        A[index] = i;
-                        index++;
+                        answer[c] = i;
+                        c++;
                     }
                 }
-                answer = A;
-            }   
+            }
             return answer;
         }
         public void Task6(int[] array)
         {
             if (array.Length > 0)
             {
-                int maxValue = int.MinValue;
-                for (int i = 1; i < array.Length; i++)
-                {
-                    if (array[i] > maxValue)
-                    {
-                        maxValue = array[i];
-                    }
-                }
-
-
+                int max_i = 0;
+                int max_n = array[0]; 
+                int c = 1;
                 for (int i = 0; i < array.Length; i++)
                 {
-                    if (array[i] == maxValue)
+                    if (max_n < array[i])
                     {
-                        array[i] += (i + 1);
-
+                        max_i = i;
+                        max_n = array[i];
+                    }
+                }
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (max_n == array[i])
+                    {
+                        array[i] += c;
+                        c++;
                     }
                 }
             }
@@ -210,24 +212,29 @@ namespace Lab4
         {
             if (array.Length > 0)
             {
-                int maxValue = int.MinValue;
-                int S = 0;
-                for (int i = 1; i < array.Length; i++)
-                {
-                    if (array[i] > maxValue)
-                    {
-                        maxValue = array[i];
-                    }
-                }
-
-
+                int max_i = 0;
+                int max_n = array[0];
+                int s = 0;
+                int a = 0;
                 for (int i = 0; i < array.Length; i++)
                 {
-                    S += array[i];
-                    if (array[i] == maxValue)
+                    if (max_n < array[i])
                     {
-
-                        array[i] = S - maxValue;
+                        max_i = i;
+                        max_n = array[i];
+                    }
+                }
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (max_n == array[i])
+                    {
+                        a = array[i];
+                        array[i] = s;
+                        s += a;
+                    }
+                    else
+                    {
+                        s += array[i];
                     }
                 }
             }
@@ -236,27 +243,24 @@ namespace Lab4
         public int Task8(int[] array)
         {
             int length = 0;
+            length = 1;
             if (array.Length > 0)
             {
-                int maxValue = int.MinValue;
-                int c = 0;
-                for (int i = 1; i < array.Length; i++)
+                int c = 1;
+                for (int i = 0; i < array.Length - 1; i++)
                 {
-                    if (array[i - 1] > array[i])
+                    if (array[i] > array[i + 1])
                     {
                         c++;
-                        maxValue = Math.Max(c, maxValue);
                     }
                     else
                     {
                         c = 1;
                     }
-
-                }
-                length = maxValue;
-                if (array.Length == 1)
-                {
-                    length = 1;
+                    if (length < c)
+                    {
+                        length = c;
+                    }
                 }
             }
             return length;
