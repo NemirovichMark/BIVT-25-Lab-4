@@ -7,7 +7,12 @@
             double length = 0;
 
             // code here
-
+            double sum = 0;
+            for (int i = 0; i < vector.Length; i++)
+            {
+                sum += Math.Pow(vector[i], 2);
+            }
+            length = Math.Sqrt(sum);
             // end
 
             return length;
@@ -17,7 +22,12 @@
             int count = 0;
 
             // code here
-
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (P < array[i] && array[i] < Q)
+                {
+                    count++;
+                }
             // end
 
             return count;
@@ -26,7 +36,26 @@
         {
 
             // code here
+            int max = 0;
 
+            for (int i = 0;i < array.Length;i++)
+            {
+                if (array[i] > array[max])
+                    max = i;
+
+            }
+            if (max == array.Length - 1) 
+                return;
+
+            int min = max + 1;
+            for (int i = min + 1; i < array.Length;i++)
+            {
+                if (array[i] < array[min])
+                    min = i;
+            }
+            (array[max], array[min]) = (array[min], array[max]);
+            if (array == null || array.Length == 0)
+                return;
             // end
 
         }
@@ -34,7 +63,15 @@
         {
 
             // code here
-
+            int max = 0;
+            for (int i = 0; i < array.Length; i += 2)
+            {
+                if (array[i] > array[max])
+                {
+                    max = i;
+                }
+            }
+            array[max] = max;
             // end
 
         }
@@ -43,7 +80,16 @@
             int index = 0;
 
             // code here
-
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == P)
+                {
+                    index = i;
+                    break;
+                }
+                else
+                    index = -1;
+            }
             // end
 
             return index;
@@ -52,7 +98,15 @@
         {
 
             // code here
-
+            int max = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > array[max]) { max = i; }
+            }
+            for (int i = 0; i < max - 1; i += 2)
+            {
+                (array[i], array[i + 1]) = (array[i + 1], array[i]);
+            }
             // end
 
         }
@@ -61,7 +115,23 @@
             int[] answer = null;
 
             // code here
+            int c = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] >= 0)
+                    c++;
+            }
 
+            answer = new int[c];
+            int j = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] >= 0)
+                {
+                    answer[j] = array[i];
+                    j++;
+                }
+            }
             // end
 
             return answer;
@@ -70,7 +140,21 @@
         {
 
             // code here
+            for (int i = 0;i < array.Length; i ++)
+            {
+                int max1 = array[i];
+                int max2 = i;
+                for (int j = i + 1; j < array.Length; j ++)
+                {
 
+                    if (array[j] > max1)
+                    {
+                        max1 = array[j];
+                        max2 = j;
+                    }
+                }
+                (array[i], array[max2]) = (array[max2], array[i]);
+            }
             // end
 
         }
@@ -78,7 +162,17 @@
         {
 
             // code here
-
+            int[] arr = new int[array.Length];
+            int j = 0;
+            for (int i = array.Length - 1; i >= 0; i--)
+            {
+                arr[j] = array[i];
+                j++;
+            }
+            for (int l = 0; l < array.Length; l++)
+            {
+                array[l] = arr[l];
+            }
             // end
 
         }
@@ -87,7 +181,58 @@
             int[] C = null;
 
             // code here
+            if (A.Length == 0 && B.Length == 0) { return new int[0]; }
 
+            if (A.Length == 0)
+            {
+                C = new int[B.Length];
+                for (int i = 0; i < B.Length; i++)
+                {
+                    C[i] = B[i];
+                }
+                return C;
+            }
+
+            if (B.Length == 0)
+            {
+                C = new int[A.Length];
+                for (int i = 0; i < A.Length; i++)
+                {
+                    C[i] = A[i];
+                }
+                return C;
+            }
+
+            int CC = A.Length + B.Length;
+            C = new int[CC];
+            int iA = 0;
+            int iB = 0;
+            int iC = 0;
+
+            while (iA < A.Length && iB < B.Length)
+            {
+                C[iC] = A[iA];
+                iA++;
+                iC++;
+
+                C[iC] = B[iB];
+                iB++;
+                iC++;
+            }
+
+            while (iA < A.Length)
+            {
+                C[iC] = A[iA];
+                iA++;
+                iC++;
+            }
+
+            while (iB < B.Length)
+            {
+                C[iC] = B[iB];
+                iB++;
+                iC++;
+            }
             // end
 
             return C;
@@ -98,6 +243,43 @@
 
             // code here
 
+            if (n <= 0) 
+            { 
+                return null; 
+            }
+
+            if (n == 1)
+            {
+                if (a == b)
+                {
+                    return new double[] { a };
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            if (a == b) { return null; }
+
+
+            array = new double[n];
+            if (a < b)
+            {
+                double step = (b - a) / (n - 1);
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = a + i * step;
+                }
+            }
+            else
+            {
+                double step = (a - b) / (n - 1);
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = a - i * step;
+                }
+            }
             // end
 
             return array;
@@ -108,10 +290,65 @@
             double[] restored = null;
 
             // code here
+            int c = 0; int len = 0;
+            double left = 0; double right = 0;
+            if (raw.Length < 3)
+            {
+                return null;
+            }
+            for (int i = 0; i < raw.Length; i++)
+            {
+                if (raw[i] == -1)
+                {
+                    c++;
+                }
+            }
+            if (c == raw.Length)
+            {
+                restored = new double[raw.Length];
+                for (int i = 0; i < raw.Length; i++)
+                {
+                    restored[i] = -1;
+                }
+                return restored;
+            }
+            restored = new double[raw.Length];
+            for (int j = 0; j < raw.Length; j++)
+            {
+                restored[j] = raw[j];
 
+            }
+            for (int j = 0; j < raw.Length; j++)
+            {
+                if (raw[j] == -1)
+                {
+                    if (j == 0)
+                    {
+                        left = raw[raw.Length - 1];
+                    }
+                    else
+                    {
+                        left = raw[j - 1];
+                    }
+                    if (j == raw.Length - 1)
+                    {
+                        right = raw[0];
+                    }
+                    else
+                    {
+                        right = raw[j + 1];
+                    }
+                    if (left != -1 && right != -1)
+                    {
+                        restored[j] = (left + right) / 2;
+                    }
+                }
+            }
             // end
 
             return restored;
         }
     }
+
 }
+
