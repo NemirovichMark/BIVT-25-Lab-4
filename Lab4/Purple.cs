@@ -252,4 +252,4 @@ namespace Lab4
             return (bright, normal, dim);
         }
     }
-}
+ }
