@@ -208,7 +208,54 @@ namespace Lab4
             int[] C = null;
 
             // code here
-
+            int i = 1, j = 0, k = 0;
+            int lA = A.Length, lB = B.Length;
+            while (i < lA)
+            {
+                if (i == 0 || A[i] <= A[i - 1])
+                {
+                    i++;
+                }
+                else
+                {
+                    (A[i], A[i - 1]) = (A[i - 1], A[i]);
+                    i--;
+                }
+            }
+            i = 1;
+            while (i < lB)
+            {
+                if (i == 0 || B[i] <= B[i - 1])
+                {
+                    i++;
+                }
+                else
+                {
+                    (B[i], B[i - 1]) = (B[i - 1], B[i]);
+                    i--;
+                }
+            }
+            i = 0;
+            C = new int[lA + lB];
+            while ((i < lA) && (j < lB))
+            {
+                if (A[i] > B[j])
+                {
+                    C[k++] = A[i++]; 
+                }
+                else
+                {
+                    C[k++] = B[j++];
+                }
+            }
+            while (i < lA)
+            {
+                C[k++] = A[i++];
+            }
+            while (j < lB)
+            {
+                C[k++] = B[j++];
+            }
             // end
 
             return C;
@@ -217,7 +264,24 @@ namespace Lab4
         {
 
             // code here
-
+            int max = int.MinValue, max_i = -1;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max) 
+                {
+                    max = array[i];
+                    max_i = i;
+                }
+            }
+            int[] temp = new int[array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                temp[((i + max_i) % array.Length)] = array[i];
+            }
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = temp[i];
+            }
             // end
 
         }
@@ -225,7 +289,26 @@ namespace Lab4
         {
 
             // code here
-
+            if (N > 1)
+            {
+                int[] mirror = new int[N - 1];
+                int K = 1;
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i < N - 1)
+                    {
+                        mirror[i] = array[i];
+                    }
+                }
+                if (N < array.Length)
+                {
+                    for (int i = N; i < array.Length; i++)
+                    {
+                        array[i] = mirror[^K];
+                        K++;
+                    }
+                }
+            }
             // end
 
         }
