@@ -6,17 +6,18 @@ namespace Lab4
         {
             double length = 0;
 
-            //length = Math.Sqrt()
             for (int i = 0; i < vector.Length; i++)
             {
                 length += vector[i] * vector[i];
             }
+            length = Math.Sqrt(length);
 
-            return Math.Sqrt(length);
+            return length;
         }
         public int Task2(int[] array, int P, int Q)
         {
             int count = 0;
+
             int lower = Math.Min(P, Q);
             int upper = Math.Max(P, Q);
 
@@ -26,14 +27,14 @@ namespace Lab4
                 {
                     count++;
                 }
-                
-            }
 
+            }
 
             return count;
         }
         public void Task3(int[] array)
         {
+
             int maxx = int.MinValue;
             int MaxIdx = -1;
             for (int i = 0; i < array.Length; i++)
@@ -70,26 +71,28 @@ namespace Lab4
         }
         public void Task4(int[] array)
         {
+
             int index = -1;
             int mxx = int.MinValue;
-            for (int i = 0; i < array.Length; i ++)
+            for (int i = 0; i < array.Length; i++)
             {
                 if (i % 2 == 0 && mxx < array[i])
                 {
                     index = i;
                     mxx = array[i];
-                    
+
                 }
 
             }
             array[index] = index;
-           
+
         }
         public int Task5(int[] array, int P)
         {
             int index = 0;
+
             bool Flag = false;
-            
+
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] == P)
@@ -109,6 +112,7 @@ namespace Lab4
         }
         public void Task6(int[] array)
         {
+
             int maxx = int.MinValue;
             int IdxMax = -1;
             for (int i = 0; i < array.Length; i++)
@@ -127,6 +131,7 @@ namespace Lab4
             {
                 (array[i], array[i + 1]) = (array[i + 1], array[i]);
             }
+
         }
         public int[] Task7(int[] array)
         {
@@ -136,7 +141,7 @@ namespace Lab4
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] >= 0)
-                count++;
+                    count++;
             }
             answer = new int[count];
             int idx = 0;
@@ -149,14 +154,12 @@ namespace Lab4
                 }
             }
 
-
-
             return answer;
         }
         public void Task8(int[] array)
         {
 
-           for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 bool hasSwapped = false;
                 for (int j = 1; j < array.Length - i; j++)
@@ -173,19 +176,20 @@ namespace Lab4
         }
         public void Task9(int[] array)
         {
+
             int L = array.Length;
-            for (int i = 0; i < L / 2; i++ )
+            for (int i = 0; i < L / 2; i++)
             {
                 int temp = array[i];
                 array[i] = array[L - 1 - i];
                 array[L - 1 - i] = temp;
             }
 
-
         }
         public int[] Task10(int[] A, int[] B)
         {
             //int[] C = null;
+
             int[] C = new int[A.Length + B.Length];
             if (A == null)
             {
@@ -204,12 +208,12 @@ namespace Lab4
                 }
                 return C;
             }
-            
+
 
 
             int indexA = 0, indexB = 0;
 
-            for (int i  = 0; i < C.Length; i ++)
+            for (int i = 0; i < C.Length; i++)
             {
                 if (i % 2 == 0)
                 {
@@ -223,7 +227,7 @@ namespace Lab4
                         C[i] = B[indexB];
                         indexB++;
                     }
-                    
+
                 }
                 if (i % 2 != 0)
                 {
@@ -237,7 +241,7 @@ namespace Lab4
                         C[i] = A[indexA];
                         indexA++;
                     }
-                    
+
                 }
             }
 
@@ -245,30 +249,36 @@ namespace Lab4
         }
         public double[] Task11(double a, double b, int n)
         {
+            //double[] array = null;
+
+            if (n <= 0) return null;
             
-            if (n == 0) return null;
-            double[] array = new double[n];
-            if (n == 1)
+            if (a == b)
             {
-                if (a == b)
+                if (n == 1)
                 {
-                    array[0] = a;
-                    return array;
+                    double[] arrayy = new double[1];
+                    arrayy[0] = a;
+                    return arrayy;
                 }
                 else return null;
 
             }
+            if (n == 1) return null;
+            double[] array = new double[n];
             double step = (b - a) / (n - 1);
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < n; i++)
             {
                 array[i] = a + i * step;
             }
+
             return array;
         }
 
         public double[] Task12(double[] raw)
         {
             double[] restored = null;
+
             if (raw.Length < 3) return null;
             restored = new double[raw.Length];
             bool allbad = true;
@@ -289,20 +299,22 @@ namespace Lab4
                 return restored;
             }
 
-            restored[0] = raw[0];
-            restored[raw.Length - 1] = raw[raw.Length - 1];
-            for (int i = 1; i < raw.Length - 1; i++)
+            for (int i = 0; i < raw.Length; i++)
             {
+                int left = i - 1;
+                if (left < 0)
+                    left = raw.Length - 1;
+
+                int right = i + 1;
+                if (right >= raw.Length)
+                    right = 0;
+
                 if (raw[i] == -1)
                 {
-                    if (raw[i - 1] != -1 && raw[i + 1] != -1)
-                    {
-                        restored[i] = (raw[i - 1] + raw[i + 1]) / 2;
-                    }
+                    if (raw[left] != -1 && raw[right] != -1)
+                        restored[i] = (raw[left] + raw[right]) / 2.0;
                     else
-                    {
-                        restored[i] = raw[i];
-                    }
+                        restored[i] = -1;
                 }
                 else
                 {
@@ -315,6 +327,3 @@ namespace Lab4
         }
     }
 }
-
-
-
