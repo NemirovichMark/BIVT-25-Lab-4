@@ -53,7 +53,8 @@ namespace Lab4
 
             // code here
 
-            int imax = 0, imin = 0;
+            int imax = 0;
+            int imin = 0;
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] > array[imax]) 
@@ -351,4 +352,5 @@ namespace Lab4
         }
     }
 }
+
 
