@@ -301,17 +301,71 @@ namespace Lab4
         {
 
             // code here
+            int leftCount = N - 1;
+            int rightCount = array.Length - N;
+            int elementsReplace = Math.Min(leftCount, rightCount);
+            for (int i = 0; i < elementsReplace; i++)
+            {
+                array[N + i] = array[N - 2 - i];
+            }
+
+
 
             // end
-
         }
+        
         public (double[], double[]) Task11(double a, double b, int n)
         {
             double[] X = null, Y = null;
             double[] Xext = null, Yext = null;
 
             // code here
-
+            
+            X = new double[n];
+            Y = new double[n];
+            double step = 0;
+            if (n == 1)
+            {
+                X[0] = (b - a) / 2;
+            }
+            else
+            {
+                step = ((b - a)) / (double)(n - 1);
+            }
+            if ((a == b && n != 1) || a > b) { return (null, null); }
+            if (step < 0) { return (null, null); }
+            for (int i = 0; i < n; i++)
+            {
+                X[i] = a + i * step;
+                double x = X[i];
+                Y[i] = Math.Cos(x) + x * Math.Sin(x);
+            }
+            int MaxCount = 0;
+            int MinCount = 0;
+            for (int i = 1; i < n - 1; i++)
+            {
+                if (Y[i] > Y[i - 1] && Y[i] > Y[i + 1])
+                {
+                    MaxCount++;
+                }
+                else if (Y[i] < Y[i - 1] && Y[i] < Y[i + 1])
+                {
+                    MinCount++;
+                }
+            }
+            int indexYext = 0;
+            Yext = new double[MaxCount + MinCount];
+            Xext = new double[MaxCount + MinCount];
+            for (int i = 1; i < n - 1; i++)
+            {
+                if (Y[i] > Y[i - 1] && Y[i] > Y[i + 1] || Y[i] < Y[i - 1] && Y[i] < Y[i + 1])
+                {
+                    Yext[indexYext] = Y[i];
+                    Xext[indexYext] = X[i];
+                    indexYext++;
+                }
+            }
+            
             // end
 
             return (Xext, Yext);
