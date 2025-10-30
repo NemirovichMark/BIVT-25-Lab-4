@@ -5,7 +5,7 @@ namespace Lab4
         public void Task1(double[] array)
         {
 
-                        // code here
+            // code here
 
             double s = 0;
             int k = 0;
@@ -351,3 +351,4 @@ namespace Lab4
         }
     }
 }
+
