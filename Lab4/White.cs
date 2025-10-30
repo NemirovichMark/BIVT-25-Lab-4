@@ -329,7 +329,7 @@
             double[] restored = null;
 
             // code here
-            if (raw.Length < 3) return raw;
+            if (raw.Length < 3) return null;
             int k = 0;
             for (int i = 0; i < raw.Length; i++)
             {
@@ -345,48 +345,41 @@
             {
                 restored[i] = raw[i];
             }
-            bool changed;
-            do
+            
+            for (int i = 0; i < restored.Length; i++)
             {
-                changed = false;
-                for (int i = 0; i < restored.Length; i++)
+                int leftind;
+                if (i == 0)
                 {
-                    int leftind;
-                    if (i == 0)
-                    {
-                        leftind = restored.Length - 1;
-                    }
-                    else leftind = i - 1;
-                    double left = restored[leftind];
-
-                    int rightind;
-                    if (i == restored.Length - 1)
-                    {
-                        rightind = 0;
-                    }
-                    else rightind = i + 1;
-                    double right = restored[rightind];
-
-                    if (restored[i] == -1)
-                    {
-                        if (left != -1 && right != -1)
-                        {
-                            restored[i] = (left + right) / 2.0;
-                            changed = true;  
-                        }
-                        else if (left != -1)
-                        {
-                            restored[i] = left;
-                            changed = true;  
-                        }
-                        else if (right != -1)
-                        {
-                            restored[i] = right;
-                            changed = true;  
-                        }
-                    }
+                    leftind = restored.Length - 1;
                 }
-            } while (changed);
+                else leftind = i - 1;
+                double left = restored[leftind];
+
+                int rightind;
+                if (i == restored.Length - 1)
+                {
+                    rightind = 0;
+                }
+                else rightind = i + 1;
+                double right = restored[rightind];
+
+                if (restored[i] == -1)
+                {
+                    if (left != -1 && right != -1)
+                    {
+                        restored[i] = (left + right) / 2.0;
+                    }
+                    //else if (left != -1)
+                    //{
+                    //    restored[i] = left;  
+                    //}
+                    //else if (right != -1)
+                    //{
+                    //    restored[i] = right;
+                    //}
+                }
+            }
             // end
 
             return restored;
