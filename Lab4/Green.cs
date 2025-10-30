@@ -5,8 +5,8 @@ namespace Lab4
         public void Task1(double[] array)
         {
 
-            // code here
-            
+                        // code here
+
             double s = 0;
             int k = 0;
             for (int i = 0; i < array.Length; i++)
@@ -53,56 +53,30 @@ namespace Lab4
 
             // code here
 
-            int n = -1;
-            int k = 0;
-            int l = 0;
-            int fl = 0;
-            int imin = 1000000;
-            int imax = -100000;
-
-            for (int i = 0; i < array.Length; i++)
+            int imax = 0, imin = 0;
+            for (int i = 1; i < array.Length; i++)
             {
-                if (array[i]<imin)
-                    imin=i;
-                if (array[i]>imax)
-                    imax=i;
+                if (array[i] > array[imax]) 
+                    imax = i;
+                if (array[i] < array[imin]) 
+                    imin = i;
             }
+            int left = Math.Min(imax, imin);
+            int right = Math.Max(imax, imin);
 
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (n==-1)
-                {
-                    if (i==imin || i==imax)
-                    {
-                        fl=1;
-                        n=i;
-                    }
+            int count = 0;
+            for (int i = left + 1; i < right; i++)
+                if (array[i] < 0) 
+                    count++;
 
-                }
-                if (fl==1)
-                {
-                    if (i==imin || i==imax)
-                    {
-                        k = i;
-                        fl=0;
-                    }
-                    if (array[i]<0)
-                    l++;
-                }
-                
-            }
-            if (l==0)
-                return [ ];
-            negatives = new int[l];
-            int b = 0;
-            for (int i = n+1; i < k; i++)
-            {
-                if (array[i]<0)
-                {
-                    negatives[b] = array[i];
-                    b++;
-                }
-            }
+            if (count == 0) 
+                return new int[0];
+
+            negatives = new int[count];
+            int index = 0;
+            for (int i = left + 1; i < right; i++)
+                if (array[i] < 0) 
+                    negatives[index++] = array[i];
             // end
 
             return negatives;
@@ -250,16 +224,22 @@ namespace Lab4
 
             int ch = (array.Length+1)/2;
             int[] a = new int[ch];
+            int p = 0;
+            for (int i = 0; i < array.Length; i += 2) a[p++] = array[i];
 
-            for (int i = 0; i < a.Length; i++)
-            {
-                a[i] = array[i*2];
-            }
-            Array.Sort(a);
-            for (int i = 0; i < a.Length; i++)
-            {
-                array[2*i] = a[i];
-            }
+            for (int i = 0; i < ch - 1; i++)
+                for (int j = i + 1; j < ch; j++)
+                    if (a[i] > a[j])
+                    {
+                        int t = a[i];
+                        a[i] = a[j];
+                        a[j] = t;
+                    }
+
+            p = 0;
+            for (int i = 0; i < array.Length; i += 2) 
+                array[i] = a[p++];
+
             // end
 
         }
@@ -269,7 +249,28 @@ namespace Lab4
 
             // code here
 
-            cleared = array.Distinct().ToArray();
+            if (array == null || array.Length == 0) 
+                return null;
+
+            int n = array.Length;
+            int[] a = new int[n];
+            int count = 0;
+            for (int i = 0; i < n; i++)
+            {
+                bool seen = false;
+                for (int j = 0; j < count; j++)
+                    if (a[j] == array[i]) 
+                    {
+                        seen = true;
+                        break;
+                    }
+                if (!seen) 
+                    a[count++] = array[i];
+            }
+
+            cleared = new int[count];
+            for (int i = 0; i < count; i++) 
+                cleared[i] = a[i];
             // end
 
             return cleared;
@@ -349,5 +350,4 @@ namespace Lab4
 
         }
     }
-
 }
