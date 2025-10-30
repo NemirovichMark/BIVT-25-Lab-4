@@ -979,7 +979,11 @@
       "Lab4/1.0.0": {
         "runtime": {
           "Lab4.dll": {
+<<<<<<< HEAD
             "assemblyVersion": "1.0.0.0",
+=======
+            "assemblyVersion": "1.0.0",
+>>>>>>> 3a1d214a6191bdfadad0d53808b510ecd9b2a307
             "fileVersion": "1.0.0.0"
           }
         }
