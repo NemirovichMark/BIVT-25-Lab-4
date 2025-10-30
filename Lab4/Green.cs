@@ -136,117 +136,129 @@ namespace Lab4
                 }
             }
 
-            int A = array[maxIndex];
-            array[maxIndex] = array[NegativeIndex];
-            array[NegativeIndex] = A;
+            if (NegativeIndex != -1)
+            {
+                int temp = array[maxIndex];
+                array[maxIndex] = array[NegativeIndex];
+                array[NegativeIndex] = temp;
+            }
 
-            
+
 
         }
         public int[] Task5(int[] array)
         {
             int[] answer = null;
-
-            int index = 0;
-            int c = 0;
-            int maxValue = int.MinValue;
-            for (int i = 1; i < array.Length; i++)
+            if (array.Length > 0)
             {
-                if (array[i] > maxValue)
+                answer = new int[0];
+                int index = 0;
+                int c = 0;
+                int maxValue = int.MinValue;
+                for (int i = 1; i < array.Length; i++)
                 {
-                    maxValue = array[i];
+                    if (array[i] > maxValue)
+                    {
+                        maxValue = array[i];
+                    }
                 }
-            }
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] == maxValue)
+                for (int i = 0; i < array.Length; i++)
                 {
-                    c++;
+                    if (array[i] == maxValue)
+                    {
+                        c++;
+                    }
                 }
-            }
-            int[] A = new int[c];
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] == maxValue)
+                int[] A = new int[c];
+                for (int i = 0; i < array.Length; i++)
                 {
-                    A[index] = i;
-                    index++;
+                    if (array[i] == maxValue)
+                    {
+                        A[index] = i;
+                        index++;
+                    }
                 }
-            }
-            answer = A;
-
+                answer = A;
+            }   
             return answer;
         }
         public void Task6(int[] array)
         {
-
-            int maxValue = int.MinValue;
-            for (int i = 1; i < array.Length; i++)
+            if (array.Length > 0)
             {
-                if (array[i] > maxValue)
+                int maxValue = int.MinValue;
+                for (int i = 1; i < array.Length; i++)
                 {
-                    maxValue = array[i];
+                    if (array[i] > maxValue)
+                    {
+                        maxValue = array[i];
+                    }
+                }
+
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i] == maxValue)
+                    {
+                        array[i] += (i + 1);
+
+                    }
                 }
             }
-
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] == maxValue)
-                {
-                    array[i] += (i+1);
-
-                }
-            }
-
         }
         public void Task7(int[] array)
         {
-
-            int maxValue = int.MinValue;
-            int S = 0;
-            for (int i = 1; i < array.Length; i++)
+            if (array.Length > 0)
             {
-                if (array[i] > maxValue)
+                int maxValue = int.MinValue;
+                int S = 0;
+                for (int i = 1; i < array.Length; i++)
                 {
-                    maxValue = array[i];
+                    if (array[i] > maxValue)
+                    {
+                        maxValue = array[i];
+                    }
                 }
-            }
 
 
-            for (int i = 0; i < array.Length; i++)
-            {
-                S += array[i];
-                if (array[i] == maxValue)
-                    array[i] = S - maxValue;
+                for (int i = 0; i < array.Length; i++)
+                {
+                    S += array[i];
+                    if (array[i] == maxValue)
+                    {
+
+                        array[i] = S - maxValue;
+                    }
+                }
             }
 
         }
         public int Task8(int[] array)
         {
             int length = 0;
-
-            int maxValue = int.MinValue;
-            int c = 0;
-            for (int i = 1; i < array.Length; i++)
+            if (array.Length > 0)
             {
-                if (array[i - 1] > array[i])
+                int maxValue = int.MinValue;
+                int c = 0;
+                for (int i = 1; i < array.Length; i++)
                 {
-                    c++;
-                    maxValue = Math.Max(c, maxValue);
+                    if (array[i - 1] > array[i])
+                    {
+                        c++;
+                        maxValue = Math.Max(c, maxValue);
+                    }
+                    else
+                    {
+                        c = 1;
+                    }
+
                 }
-                else
+                length = maxValue;
+                if (array.Length == 1)
                 {
-                    c = 1;
+                    length = 1;
                 }
-
             }
-            length = maxValue;
-            if (array.Length == 1)
-            {
-                length = 1;
-            }
-
             return length;
         }
         public void Task9(int[] array)
