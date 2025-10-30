@@ -32,14 +32,20 @@ namespace Lab4
             int sum = 0;
 
             // code here
+            int k = 0;
             for (int i = 0; i < array.Length; i++)
             {
-                while (array[i] > 0)
+                if (array[i] < 0)
                 {
-                    sum += array[i] * array[i];
+                    k = i;
+                    break;
                 }
-                
             }
+            for (int i = 0; i < k; i++)
+            {
+                sum += array[i] * array[i];
+            }
+               
             // end
 
             return sum;
@@ -94,24 +100,22 @@ namespace Lab4
         {
 
             // code here
-            int max = int.MinValue, maxid = 0, otrid = 0;
+            int otr = array.Length;
+            int max = int.MinValue, maxid = array.Length;
             for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] < 0)
-                {
-                    otrid = i;
-                }break;
-            }
-            for (int i = 0; i < array.Length; i++)
-            {
                 if (array[i] > max)
                 {
                     max = array[i];
                     maxid = i;
                 }
-            }
-            array[maxid] = array[otrid];
-            array[otrid] = max;
+            for (int i = 0; i < array.Length; i++)
+                if (array[i] < 0)
+                {
+                    otr = i;
+                    break;
+                }
+            if (otr != array.Length & maxid != array.Length)
+                (array[maxid], array[otr]) = (array[otr], array[maxid]);
             // end
 
         }
@@ -120,11 +124,12 @@ namespace Lab4
             int[] answer = null;
 
             // code here
-            int max = int.MinValue, maxid = 0, cnt = 0;
+            int max = int.MinValue, maxid = array.Length, cnt = 0;
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] > max)
+                if (max < array[i])
                 {
+                    cnt = 0;
                     max = array[i];
                     maxid = i;
                 }
@@ -133,7 +138,7 @@ namespace Lab4
             }
             answer = new int[cnt];
             int k = 0;
-            for (int i = 0; i<array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 if (max == array[i])
                 {
