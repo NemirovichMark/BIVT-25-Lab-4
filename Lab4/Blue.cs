@@ -190,37 +190,42 @@ namespace Lab4
         }
         public int Task7(int[] array)
         {
-            int mcount = 0;
+            int count = 0;
 
             // code here
-            int count = 0;
-            int lastC = 0;
-            foreach (int i in array)
+
+            int ans = 0;
+            int cur = 1;
+            for (int i = 0; i < array.Length - 1; i++)
             {
-                if (count==0)
+                if (array[i] >= array[i + 1])
                 {
-                    count++;
-                    lastC = i;
+                    cur += 1;
                 }
                 else
                 {
-                    if (i >= lastC)
-                    {
-                        lastC = i;
-                        count++;
-                    }
-                    else
-                    {
-                        if (mcount < count)
-                        {
-                            mcount = count;
-                            count = 1;
-                            lastC = i;
-                        }
-                    }
+                    ans = Math.Max(ans, cur);
+                    cur = 1;
                 }
-                return mcount;
             }
+            ans = Math.Max(ans, cur);
+
+            cur = 1;
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                if (array[i] <= array[i + 1])
+                {
+                    cur += 1;
+                }
+                else
+                {
+                    ans = Math.Max(ans, cur);
+                    cur = 1;
+                }
+            }
+            ans = Math.Max(ans, cur);
+            count = ans;
+
             // end
 
             return count;
@@ -230,6 +235,13 @@ namespace Lab4
             int[] answer = null;
 
             // code here
+
+            answer = new int[array.Length * 2];
+            for (int i = 0; i < array.Length; i++)
+            {
+                answer[i * 2] = array[i];
+                answer[i * 2 + 1] = array[i];
+            }
 
             // end
 
@@ -241,6 +253,25 @@ namespace Lab4
 
             // code here
 
+            int min = array[0];
+            int max = array[0];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                min = Math.Min(min, array[i]);
+                max = Math.Max(max, array[i]);
+            }
+
+            if (min == max) { return normalized; }
+
+            normalized = new double[array.Length];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                normalized[i] = (double)(array[i] - min) / (max - min);
+            }
+
+
             // end
 
             return normalized;
@@ -250,6 +281,41 @@ namespace Lab4
             int index = 0;
 
             // code here
+
+            int[] arr = new int[array.Length];
+            for (int j = 0; j < array.Length; j++)
+            {
+                arr[j] = array[j];
+            }
+            int i = 1, n = arr.Length;
+
+
+            while (i < n)
+            {      // Использовал GnomeSort из лекции, так как он реализуется без вложенных циклов
+                if (i == 0 || arr[i] >= arr[i - 1])
+                    i++;
+                else
+                {
+                    (arr[i], arr[i - 1]) = (arr[i - 1], arr[i]);
+                    i--;
+                }
+            }
+
+            index = -1;
+            int target = P, low = 0, high = arr.Length - 1;
+            while (low <= high)
+            {
+                int mid = (low + high) / 2;
+                if (arr[mid] == target)
+                {
+                    index = mid;
+                    break;
+                }
+                else if (arr[mid] < target)
+                    low = mid + 1;
+                else
+                    high = mid - 1;
+            }
 
             // end
 
@@ -261,6 +327,16 @@ namespace Lab4
 
             // code here
 
+            if (b > 0)
+            {
+                array = new int[Math.Max(0, (c - a) / b + 1)];
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i] = a + b * i;
+                }
+            }
+
             // end
 
             return array;
@@ -271,6 +347,31 @@ namespace Lab4
             int[] indexes = null;
 
             // code here
+
+            if (magazine.Length == 1)
+            {
+                indexes = new int[1] { 0 };
+                return indexes;
+            }
+
+            if (magazine.Length == 2)
+            {
+                indexes = new int[2] { 0, 1 };
+                return indexes;
+            }
+
+            int ans = 0;
+            int sum = magazine[0] + magazine[1] + magazine[2];
+            for (int i = 1; i < magazine.Length - 2; ++i)
+            {
+                if (sum < magazine[i] + magazine[i + 1] + magazine[i + 2])
+                {
+                    ans = i;
+                    sum = magazine[i] + magazine[i + 1] + magazine[i + 2];
+                }
+            }
+            indexes = new int[3] { ans, ans + 1, ans + 2 };
+
 
             // end
 
