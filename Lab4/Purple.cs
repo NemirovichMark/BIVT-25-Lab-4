@@ -1,7 +1,71 @@
 ﻿namespace Lab4
 {
+    
     public class Purple
     {
+        private void SwapImpl(int[] array, int i, int j)
+        {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        
+        private void SwapImpl(double[] array, int i, int j)
+        {
+            double temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        private void ReverseImpl(int[] array, int start, int endExclusive)
+        {
+            int left = start, right = endExclusive - 1;
+            while (left < right)
+            {
+                SwapImpl(array, left, right);
+                ++left;
+                --right;
+            }
+        }
+
+        private void SelectionSort(int[] arr, bool isReverse = false)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; ++i)
+            {
+                int selectedIdx = i;
+                for (int j = i + 1; j < n; ++j)
+                {
+                    if ((isReverse && arr[j] > arr[selectedIdx]) || (!isReverse && arr[j] < arr[selectedIdx]))
+                    {
+                        selectedIdx = j;
+                    }
+                }
+                if (selectedIdx != i)
+                {
+                    SwapImpl(arr, i, selectedIdx);
+                }
+            }
+        }
+        
+        private void SelectionSort(double[] arr, bool isReverse = false)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; ++i)
+            {
+                int selectedIdx = i;
+                for (int j = i + 1; j < n; ++j)
+                {
+                    if ((isReverse && arr[j] > arr[selectedIdx]) || (!isReverse && arr[j] < arr[selectedIdx]))
+                    {
+                        selectedIdx = j;
+                    }
+                }
+                if (selectedIdx != i)
+                {
+                    SwapImpl(arr, i, selectedIdx);
+                }
+            }
+        }
         public void Task1(double[] array)
         {
             if (array.Length == 0)
@@ -116,18 +180,29 @@
         {
             int n = A.Length;
             int m = B.Length;
-            
-            if (m == 0 || k < 0 || k > n) return (int[])A.Clone();
+
+            if (m == 0 || k < 0 || k > n)
+            {
+                int[] cp = new int[n];
+                for (int i = 0; i < n; ++i)
+                {
+                    cp[i] = A[i];
+                }
+                return cp;
+            }
             
             int[] answer  = new int[n + m];
-            if (k > 0)
+            for (int i = 0; i < k; i++)
             {
-                Array.Copy(A, 0, answer, 0, k);
+                answer[i] = A[i];
             }
-            Array.Copy(B, 0, answer, k, m);
-            if (k < n)
+            for (int i = 0; i < m; i++)
             {
-                Array.Copy(A, k, answer, k + m, n - k);
+                answer[k + i] = B[i];
+            }
+            for (int i = k; i < n; i++)
+            {
+                answer[m + i] = A[i];
             }
             return answer;
         }
@@ -175,13 +250,20 @@
         }
         public int[] Task8(int[] A, int[] B)
         {
-            int[] sa = (int[])A.Clone();
-            int[] sb = (int[])B.Clone();
-            Array.Sort(sa);
-            Array.Sort(sb);
-            Array.Reverse(sa);
-            Array.Reverse(sb);
-            int ap = 0, bp = 0, cp = 0, aLen = sa.Length, bLen = sb.Length;
+            int aLen = A.Length, bLen = B.Length;
+            int[] sa = new int[aLen];
+            int[] sb = new int[bLen];
+            for (int i = 0; i < aLen; i++)
+            {
+                sa[i] = A[i];
+            }
+            for (int i = 0; i < bLen; i++)
+            {
+                sb[i] = B[i];
+            }
+            SelectionSort(sa, true/*reverse*/);
+            SelectionSort(sb, true/*reverse*/);
+            int ap = 0, bp = 0, cp = 0;
             int[] C = new int[aLen + bLen];
             while (ap < aLen && bp < bLen)
             {
@@ -221,9 +303,9 @@
                 }
             }
             if (idx == 0 || idx == n) return;
-            Array.Reverse(array);
-            Array.Reverse(array, 0, idx);
-            Array.Reverse(array, idx, n - idx);
+            ReverseImpl(array, 0, n);
+            ReverseImpl(array, 0, idx);
+            ReverseImpl(array, idx, n);
         }
         public void Task10(int[] array, int N)
         {
@@ -360,8 +442,7 @@
                 normal[i] = removed[i] ? 0.5 * (avgSimple + raw[i]) : raw[i];
             }
             
-            Array.Sort(normal);
-            Array.Reverse(normal);
+            SelectionSort(normal, true /*reverse*/);
 
             return (bright, normal, dim);
         }
