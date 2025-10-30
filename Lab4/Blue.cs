@@ -1,3 +1,5 @@
+using System.ComponentModel.Design.Serialization;
+
 namespace Lab4
 {
     public class Blue
@@ -20,7 +22,7 @@ namespace Lab4
                     maxindex = i;
                 }
             }
-            for (int i = maxindex + 1; i < n; i++)
+            for (int i = maxindex+1; i < n; i++)
             {
                 sum += array[i];
             }
@@ -62,7 +64,7 @@ namespace Lab4
             }
             else
             {
-                answer = new int[n + 1];
+                answer = new int[n+1];
                 for (int i = 0; i <= index; i++)
                 {
                     answer[i] = array[i];
@@ -70,7 +72,7 @@ namespace Lab4
                 answer[index + 1] = P;
                 for (int i = index + 1; i < n; i++)
                 {
-                    answer[i + 1] = array[i];
+                    answer[i+1] = array[i];
                 }
             }
 
@@ -117,9 +119,9 @@ namespace Lab4
                 {
                     answer[i] = array[i];
                 }
-                for (int i = index + 1; i < n; i++)
+                for (int i = index+1; i < n; i++)
                 {
-                    answer[i - 1] = array[i];
+                    answer[i-1] = array[i];
                 }
             }
 
@@ -163,35 +165,32 @@ namespace Lab4
             int sum = 0;
 
             // code here
-            Console.Write("A = ");
-            for (int i = 0; i < A.Length; i++)
-            {
-                Console.Write(A[i] + " ");
-            }
-            Console.WriteLine();
-            Console.Write("B = ");
-            for (int i = 0; i < B.Length; i++)
-            {
-                Console.Write(B[i] + " ");
-            }
-            Console.WriteLine();
+            //Console.Write("A = ");
+            //for (int i = 0; i < A.Length; i++)
+            //{
+            //    Console.Write(A[i] + " ");
+            //}
+            //Console.WriteLine();
+            //Console.Write("B = ");
+            //for (int i = 0; i < B.Length; i++)
+            //{
+            //    Console.Write(B[i] + " ");
+            //}
+            //Console.WriteLine();
 
             int na = A.Length;
             int nb = B.Length;
-            int n = na;
-            if (na > nb)
-                n = nb;
-            int c = 0;
-
-            for (int i = 0; i < n; i++)
+            if (na != nb)
             {
-                c = A[i] * B[i];
-                sum += c;
-                c = 0;
+                return 0;
+            }
+            for (int i = 0; i < na; i++)
+            {
+                sum += A[i] * B[i];
             }
 
-            Console.WriteLine(sum);
-
+            //Console.WriteLine(sum);
+            
             // ???
 
             // end
@@ -254,26 +253,28 @@ namespace Lab4
             int count = 0;
 
             // code here
-
             int n = array.Length;
             int l = 1;
             int s = 0;
             int cs = 0;
             int maxl = int.MinValue;
+            int f = 0;
 
             if (n <= 2)
             {
-                count = n;
-                Console.WriteLine(count);
+                return n;
+                //Console.WriteLine(count);
             }
 
             for (int i = 0; i < n - 1; i++)
             {
                 s = Math.Sign(array[i + 1] - array[i]);
+                f = s;
                 for (int j = i; j < n - 1; j++)
                 {
                     cs = Math.Sign(array[j + 1] - array[j]);
-                    if (s == cs || cs*s ==0)
+
+                    if (s == cs || cs == 0 || (s == 0 && cs == f || f == 0))
                     {
                         l++;
                         //Console.Write(array[j] + " ");
@@ -284,33 +285,25 @@ namespace Lab4
                     }
                     else
                     {
-                        l = 1;
+                        l = 2;
                         //Console.Write(array[j]);
                         //Console.WriteLine();
                         break;
                     }
                     s = cs;
+                    if (s != 0)
+                        f = s;
                 }
+                l = 1;
             }
+            //Console.WriteLine(array[n - 1]);
             if (maxl > count)
             {
                 count = maxl;
             }
             //Console.WriteLine();
 
-
-            //for (int i = 0; i < n - 1; i++)
-            //{
-            //    if (array[i] == array[i + 1])
-            //        l++;
-            //    else
-            //        l = 1;
-            //}
-            //if (l > count)
-            //{
-            //    count = l;
-            //}
-            Console.WriteLine(count);
+            //Console.WriteLine(count);
 
             // end
 
@@ -381,7 +374,7 @@ namespace Lab4
             int a = 0;
             int left = 0;
             int right = n;
-            int mid = n / 2;
+            int mid = n/2;
 
             for (int i = 1; i < n; i++)
             {
@@ -433,6 +426,11 @@ namespace Lab4
 
             // code here
 
+            if (b <= 0)
+            {
+                return null;
+            }
+
             int n = (c - a + b) / b;
             if (a < c && b > 0 || a > c && b < 0 || a == b && b == c)
             {
@@ -442,13 +440,15 @@ namespace Lab4
                     array[i] = b * i + a;
                 }
             }
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.Write(array[i] + " ");
-            }
-            Console.WriteLine();
-
+            else
+                array = new int[0];
+            
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    Console.Write(array[i] + " ");
+            //}
+            //Console.WriteLine();
+            
 
             // end
 
