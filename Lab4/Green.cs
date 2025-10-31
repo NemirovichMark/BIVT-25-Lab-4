@@ -5,7 +5,7 @@ namespace Lab4
         public void Task1(double[] array)
         {
 
-            // code here
+                        // code here
 
             double s = 0;
             int k = 0;
@@ -91,6 +91,12 @@ namespace Lab4
             int g = int.MinValue;
             int jj = int.MinValue;
             int gg = int.MinValue;
+            int imax = 0;
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] > array[imax])
+                    imax = i;
+            }
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i]<0 && j==int.MinValue)
@@ -98,7 +104,7 @@ namespace Lab4
                     j=array[i];
                     g=i;
                 }
-                if ((array[i]==array.Max()) && jj==int.MinValue)
+                if ((array[i]==array[imax]) && jj==int.MinValue)
                 {
                     jj=array[i];
                     gg=i;
@@ -119,7 +125,12 @@ namespace Lab4
 
             // code here
 
-            int max = array.Max();
+            int max = -100000;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                    max = array[i];
+            }
             int b = 0;
             for (int i = 0; i < array.Length; i++)
             {
@@ -145,7 +156,12 @@ namespace Lab4
 
             // code here
 
-            int max = array.Max();
+            int max = -100000;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                    max = array[i];
+            }
             int b = 1;
             for (int i = 0; i < array.Length; i++)
             {
@@ -164,7 +180,12 @@ namespace Lab4
 
             // code here
 
-            int max = array.Max();
+            int max = -100000;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                    max = array[i];
+            }
             int b = 0;
 
             for (int i = 0; i < array.Length; i++)
@@ -352,5 +373,4 @@ namespace Lab4
         }
     }
 }
-
 
