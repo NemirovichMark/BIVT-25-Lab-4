@@ -139,14 +139,14 @@ namespace Lab4
                 if (array[i] == max) count++;
             }
 
-            // Собираем индексы
-            int[] result = new int[count];
+            // Собираем индексы в answer
+            answer = new int[count];
             int index = 0;
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] == max)
                 {
-                    result[index] = i;
+                    answer[index] = i;
                     index++;
                 }
             }
