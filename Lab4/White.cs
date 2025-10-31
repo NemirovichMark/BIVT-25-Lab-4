@@ -142,7 +142,7 @@
             if (array != null)
             {
                 int count = 0;
-                for (int i = 0; i < array.length; i++)
+                for (int i = 0; i < array.Length; i++)
                 {
                     if (array[i] >= 0)
                     {
