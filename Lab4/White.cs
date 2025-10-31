@@ -123,11 +123,11 @@
                 }
                 if (imax > 0)
                     {
-                    for (int i = 0; i < imax - 1; i += 2)
+                    for (int j = 0; j < imax - 1; j += 2)
                         {
-                            int temp = array[i];
-                            array[i] = array[i +1];
-                            array[i + 1] = temp;
+                            int temp = array[j];
+                            array[j] = array[j +1];
+                            array[j + 1] = temp;
                         }
                     }
             }
@@ -203,31 +203,37 @@
             int[] C = null;
 
             // code here
-            C = A.Length + B.Length;
-            int i = 0, j = 0, k =0;
-            while (i < A.Length && j < B.Length)
+            if (A == null && B == null)
             {
-                if (A[i] <= B[i])
-               
+                C = new int[0];
+            }
+            else if (A == null)
+            {
+                C = new int[B.Length];
+                Array.Copy(B, C, B.Length);
+            }
+            else if (B == null)
+            {
+                C = new int[A.Length];
+                Array.Copy(A, C, A.Length);
+            }
+            else
+            {
+                C = new int[A.Length + B.Length];
+                int index = 0;
+                int i = 0, j = 0;
+
+                while (i < A.Length && j < B.Length)
                 {
-                    C[k++] = A[i++];
-                } 
-                else
-                {
-                    C[k++] = B[j++];
+                    C[index++] = A[i++];
+                    C[index++] = B[j++];
                 }
-            }
-            while (i < A.Length)
-            {
-                C[k++] = A[i++];
-            }
-            while (j < B.Length)
-            {
-                C[k++] = B[j++];
-            }
 
+                while (i < A.Length) C[index++] = A[i++];
+                while (j < B.Length) C[index++] = B[j++];
+            }
             // end
-
+        
             return C;
         }
         public double[] Task11(double a, double b, int n)
