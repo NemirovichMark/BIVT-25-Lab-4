@@ -303,9 +303,8 @@ if (a == b && n == 1)
 
 if ((a == b && n!= 1) || n < 1)
 {
-    return null;
+    return;
 }
-
 
 double distance = (b - a) / (n - 1);
 
@@ -383,5 +382,6 @@ for (int i = 0; i < n; i++)
     }
 
 }
+
 
 
