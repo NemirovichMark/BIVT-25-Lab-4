@@ -38,31 +38,29 @@
         {
 
             // code here
-            if (array != null && array.Length > 1)
+            if (array == null || array.Length <= 1)
+                return;
+            
+            int imax = 0;
+            for (int i = 1; i < array.Length; i++)
             {
-                int imax = 0;
-                for (int i = 1; i < array.Length; i++)
+                if (array[i] > array[imax])
+                    imax = i;
+            }
+
+            if (imax < array.Length - 1)
+            {
+                int imin = imax + 1;
+                for (int i = imax + 2; i < array.Length; i++)
                 {
-                    if (array[i] > array[imax])
-                        imax = i;
+                    if (array[i] < array[imin])
+                        imin = i;
                 }
 
-                if (imax < array.Length - 1)
-                {
-                    imax = imax + 1;
-                    for (int i = imax + 2; i < array.Length; i++)
-                    {
-                        if (array[i] < array[imax])
-                            imax = i;
-                    }
-
-                    if (array[imax] != array[imax])
-                    {
-                        int temp = array[imax];
-                        array[imax] = array[imax];
-                        array[imax] = temp;
-                    }
-                }
+                int temp = array[imax];
+                array[imax] = array[imin];
+                array[imin] = temp;
+                
             }
             // end
 
@@ -71,19 +69,18 @@
         {
 
             // code here
-            if (array != null && array.Length > 0)
+            if (array == null || array.Length == 0)
+                return;
+            
+            int imax = 0;
+            for (int i = 0; i < array.Length; i += 2)
             {
-                int imax = 0;
-                for (int i = 2; i < array.Length; i += 2)
-                {
                 if (array[i] > array[imax])
                 {
                     imax = i;
                 }  
-            
-                    array[imax] = imax;
-                }
             }
+            array[imax] = imax;
         }
             // end
 
@@ -112,25 +109,26 @@
         {
 
             // code here
-            if (array != null && array.Length > 1)
+            if (array == null || array.Length <= 1)
+                return;
+
+            int imax = 0;
+
+            for (int i = 1; i < array.Length;  i++)
             {
-                 int imax = 0;
-            for (int i = 1; i < array.Length; i++)
-            {
-                if (array[i] > array[imax])
+                if ( array[i] > array[imax])
                 {
                     imax = i;
                 }
-                if (imax > 0)
-                    {
-                    for (int j = 0; j < imax - 1; j += 2)
-                        {
-                            int temp = array[j];
-                            array[j] = array[j +1];
-                            array[j + 1] = temp;
-                        }
-                    }
             }
+            if (imax > 0)
+            {
+                for (int i = 0; i < imax - 1; i += 2)
+                {
+                    int temp = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                }
             }
             // end
         }
@@ -187,13 +185,14 @@
         {
 
             // code here
-            int n = array.Length;
-            int[] reversed = new int[n];
-            for (int i = 0; i < n; i++)
+            if (array == null || array.Length <= 1)
+                return;
+            for (int i = 0; i < array.Length/2; i++)
             {
-                reversed[i] = array[n - 1 - i];
+                int temp = array[i];
+                array[i] = array[array.Length - 1 - i];
+                array[array.Length - 1 - i] = temp;
             }
-            return;
           
             // end
 
@@ -245,13 +244,26 @@
             {
                 return new double[] {a};
             }
-            else if (n > 1 && a != b)
+            if (n <= 0 || a == b)
             {
-                array = new double[n];
-                double jamp = (b - a) / (n - 1);
+                return null;
+            }
+            double[] array = new double[n];
+
+            if (a < b)
+            {
+                double step = (b - a) / (n - 1);
                 for (int i = 0; i < n; i++)
                 {
-                    array[i] = a + i * jamp;
+                    array[i] = a + i * step;
+                }
+            }
+            else 
+            {
+                double step = (a - b) / (n - 1);
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = a - i * step;
                 }
             }
             // end
