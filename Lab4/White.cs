@@ -149,13 +149,13 @@
                         count++;
                     }
                 }
-                int[] A = new int[count];
+                int[] answer = new int[count];
                 int index = 0;
                 for (int i = 0; i < array.Length; i++)
                 {
                     if (array[i] >= 0)
                     {
-                        A[index++] = array[i];
+                        answer[index++] = array[i];
                     }
                 }
                 
