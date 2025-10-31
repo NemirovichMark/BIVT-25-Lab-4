@@ -42,30 +42,24 @@ namespace Lab4
         {
 
             // code here
-            int max = 1000000000;
-            int min = -1000000000;
-            int indexmax = 0;
-            int indexmin = 0;
-            for (int i = 0; i<array.Length; i++)
-            {
-                if (array[i]>min)
-                {
-                    min = array[i];
-                    indexmax = i;
+            if (array == null || array.Length == 0)
+                return;
+            int maxIndex = 0;
+            for (int i = 0; i < array.Length; i++) {
+                if (array[i] > array[maxIndex]) {
+                    maxIndex= i;
                 }
             }
-            for (int i = 0;i<array.Length; i++)
+            if (maxIndex == array.Length - 1) { return; }
+
+            int min = maxIndex + 1;
+            for (int i = maxIndex + 2; i < array.Length; i++)
             {
-                if (array[i]>min)
-                {
-                    min = array[i];
-                    indexmin = i;
-                }
+                if (array[i] < array[min]) { min = i; }
             }
-            int temp = 0;
-            temp = array[indexmax];
-            array[indexmax] = min;
-            array[indexmin] = temp;
+
+            (array[maxIndex], array[min]) = (array[min], array[maxIndex]);
+            Console.WriteLine(string.Join(",", array));
             // end
 
         }
@@ -73,17 +67,15 @@ namespace Lab4
         {
 
             // code here
-            int max = 0;
-            int index = 0;
-            for (int i = 0;i<array.Length;i++)
+            int maxIndex = 0;
+            for (int i = 0; i < array.Length; i += 2)
             {
-                if (array[i]>max)
+                if (array[i] > array[maxIndex])
                 {
-                    max = array[i]; 
-                    index = i;
+                    maxIndex= i;
                 }
             }
-            array[index] = index;
+            array[maxIndex] = maxIndex;
             // end
 
         }
@@ -110,23 +102,14 @@ namespace Lab4
 
             // code here
             int max = 0;
-            int index = 0;
-
-            for (int i = 0; i < array.Length; i++)
+            for (int i =0; i < array.Length; i++)
             {
-                if (array[i] > max)
-                {
-                    max = array[i];
-                    index = i;
-                }
+                if (array[i] > array[max]) { max = i; }
             }
 
-            for (int i = 0; i + 1 < index; i += 2)
+            for (int i = 0; i < max-1; i+=2)
             {
-                int temp = 0;
-                temp = array[i + 1];
-                array[i + 1] = array[i];
-                array[i] = temp;
+                (array[i], array[i+1]) = (array[i+1], array[i]);
             }
             // end
 
@@ -136,24 +119,21 @@ namespace Lab4
             int[] answer = null;
 
             // code here
-            int neg = 0;
-            for (int i = 0; i<array.Length;i++)
+            int c = 0;
+            for (int i=0; i<array.Length; i++)
             {
-                if (array[i] >= 0) 
-                {
-                    neg++;
-                }
+                if (array[i]>=0)
+                    c++;
             }
-            int[] arr = new int[neg];
-            int k = 0;
-            for (int i = 0; i<array.Length; i++)
+
+            answer = new int[c];
+            int j = 0;
+            for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] >= 0)
-                {
-                    k++;   
-                }
+                if (array[i] >= 0) { 
+                answer[j] = array[i];
+                j++; }
             }
-            answer = arr;
             // end
 
             return answer;
@@ -227,36 +207,37 @@ namespace Lab4
             double[] array = null;
 
             // code here
-            if (n <= 0 || (a != b && n == 1) || (a == b && n != 1))
+             if (n <= 0) { return null; }
+             if (n == 1)
             {
-                return null;
-            }
-
-            if (a == b && n == 1)
-            {
-                return new double[] { a };
-            }
-
-            double[] newArray = new double[n];
-            double step = (b - a) / (n - 1);
-
-            for (int i = 0; i < n; i++)
-            {
-                double newValue = a + i * step;
-
-                if (a < b)
+                if (a == b)
                 {
-                    if (newValue <= b)
-                        newArray[i] = newValue;
-                    else
-                        newArray[i] = b;
+                    return new double[] { a };
                 }
                 else
                 {
-                    if (newValue >= b)
-                        newArray[i] = newValue;
-                    else
-                        newArray[i] = b;
+                    return null;
+                }
+            }
+
+            if (a == b) { return null; }
+
+
+            array = new double[n];
+            if (a < b)
+            {
+                double step = (b - a) / (n - 1);
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = a + i * step;
+                }
+            }
+            else 
+            {
+                double step = (a - b) / (n - 1);
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = a - i * step;
                 }
             }
             // end
@@ -269,51 +250,75 @@ namespace Lab4
             double[] restored = null;
 
             // code here
-            if (raw == null || raw.Length < 3)
+             if (raw.Length < 3)
             {
                 return null;
             }
-            bool allDamaged = true;
-            foreach (double value in raw)
-            {
-                if (value != -1)
-                {
-                    allDamaged = false;
-                    break;
-                }
-            }
 
-            if (allDamaged)
+            else
             {
-                return (double[])raw.Clone();
-            }
-            double[] rest = (double[])raw.Clone();
-
-            bool changed;
-            do
-            {
-                changed = false;
-                for (int j = 0; j < rest.Length; j++)
+                bool allMinusOne = true;
+                for (int i = 0; i < raw.Length; i++)
                 {
-                    if (rest[j] == -1)
+                    if (raw[i] != -1)
                     {
-                        double left;
-                        int leftIndex = (j == 0) ? rest.Length - 1 : j - 1;
-                        left = rest[leftIndex];
-                        double right;
-                        int rightIndex = (j == rest.Length - 1) ? 0 : j + 1;
-                        right = rest[rightIndex];
-                        if (left != -1 && right != -1)
-                        {
-                            rest[j] = (left + right) / 2;
-                            changed = true; 
-                        }
+                        allMinusOne = false;
+                        break;
                     }
                 }
-            } while (changed);
+
+                if (allMinusOne)
+                {
+                    restored = new double[raw.Length];
+                    for (int i = 0; i < raw.Length; i++)
+                    {
+                        restored[i] = -1;
+                    }
+                    return restored;
+                }
+
+                restored = new double[raw.Length];
+                for (int i = 0; i < raw.Length; i++)
+                {
+                    restored[i] = raw[i];
+                }
+
+                for (int i = 0; i < raw.Length; i++)
+                {
+                    if (raw[i] == -1)
+                    {
+                        double leftNeighbor;
+                        if (i == 0)
+                        {
+                            leftNeighbor = raw[raw.Length - 1];
+                        }
+                        else
+                        {
+                            leftNeighbor = raw[i - 1];
+                        }
+
+                        double rightNeighbor;
+                        if (i == raw.Length - 1)
+                        {
+                            rightNeighbor = raw[0];
+                        }
+                        else
+                        {
+                            rightNeighbor = raw[i + 1];
+                        }
+
+                        if (leftNeighbor != -1 && rightNeighbor != -1)
+                        {
+                            restored[i] = (leftNeighbor + rightNeighbor) / 2;
+                        }
+
+                    }
+                }
+            }
             // end
 
             return rest;
         }
     }
 }
+
