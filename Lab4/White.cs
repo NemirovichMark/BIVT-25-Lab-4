@@ -82,9 +82,18 @@ namespace Lab4
             int[] answer = null;
 
             // code here
-            List <int> result = new List <int>();
-            foreach (int x in array) if (x >= 0) result.Add(x);
-            return result.ToArray();
+            int count = 0;
+            for (int i = 0; i != array.Length; i++) if (array[i] < 0) count++;
+            answer = new int[array.Length - count];
+            count = 0;
+            for (int i = 0; i != array.Length; i++)
+            {
+                if (array[i] >= 0)
+                {
+                    answer[count] = array[i];
+                    count++;
+                }
+            }
             // end
 
             return answer;
@@ -92,8 +101,10 @@ namespace Lab4
         public void Task8(int[] array)
         {
             // code here
-            Array.Sort(array);
-            Array.Reverse(array);
+            int n = array.Length;
+            for (int i = 0; i < n - 1; i++)
+                for (int j = 0; j < n - 1; j++)
+                    if (array[j] < array[j + 1]) { (array[j], array[j + 1]) = (array[j + 1], array[j]); }
             // end 
         }
         public void Task9(int[] array)
