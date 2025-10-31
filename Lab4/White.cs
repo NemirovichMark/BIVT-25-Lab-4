@@ -294,33 +294,25 @@ while (i < A.Length || j < B.Length)
             // code here
 // PROBLEM ELEVEN---------------------------------------------------------------------------------------------------------------------------------------------START
 
-
-if (a == b && n == 1)
-{
-    return new double[] { a };
-}
-
-if (a == b || n == 1)
-{
-    return null;
-}
-
-double distance = 0;
-array = new double[n];
-
-if (b > a)
-{
-    distance = (b - a) / (n - 1);
-}
-else
-{
-    distance = (a - b) / (n - 1);
-}
+        if (a == b)
+        {
+            if (n == 1)
+            {
+                    array = new double[] { a };
+             }
             
-    for (int i = 0; i < n; i++)
-    {
-        array[i] = a + i * distance;
-    }    
+        }
+            
+            else if (n >= 2)
+            {
+                array = new double[n];
+                double distance = (b - a) / (n - 1);
+
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = a + i * distance;
+                }
+            }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
             // end
@@ -385,6 +377,7 @@ for (int i = 0; i < n; i++)
     }
 
 }
+
 
 
 
