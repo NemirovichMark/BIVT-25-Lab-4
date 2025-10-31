@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.ComponentModel.Design.Serialization;
 
 namespace Lab4
 {
@@ -9,6 +9,32 @@ namespace Lab4
 
             // code here
 
+            int n = array.Length;
+            int max = int.MinValue;
+            int maxindex = -1;
+            int sum = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    maxindex = i;
+                }
+            }
+            for (int i = maxindex+1; i < n; i++)
+            {
+                sum += array[i];
+            }
+            for (int i = 0; i < n; i++)
+            {
+                if (array[i] < 0)
+                {
+                    array[i] = sum;
+                    break;
+                }
+            }
+
             // end
 
         }
@@ -17,6 +43,44 @@ namespace Lab4
             int[] answer = null;
 
             // code here
+
+            int n = array.Length;
+            int index = -1;
+
+            for (int i = 0; i < n; i++)
+            {
+                if (array[i] > 0)
+                {
+                    index = i;
+                }
+            }
+            if (index == -1)
+            {
+                answer = new int[n];
+                for (int i = 0; i < n; i++)
+                {
+                    answer[i] = array[i];
+                }
+            }
+            else
+            {
+                answer = new int[n+1];
+                for (int i = 0; i <= index; i++)
+                {
+                    answer[i] = array[i];
+                }
+                answer[index + 1] = P;
+                for (int i = index + 1; i < n; i++)
+                {
+                    answer[i+1] = array[i];
+                }
+            }
+
+            //for (int i = 0; i < answer.Length;i++)
+            //{
+            //    Console.Write(answer[i] + " ");
+            //}
+            //Console.WriteLine();
 
             // end
 
@@ -28,6 +92,48 @@ namespace Lab4
 
             // code here
 
+            int n = array.Length;
+            int min = int.MaxValue;
+            int index = -1;
+
+            for (int i = 0; i < n; i++)
+            {
+                if (array[i] > 0 && array[i] < min)
+                {
+                    min = array[i];
+                    index = i;
+                }
+            }
+            if (index == -1)
+            {
+                answer = new int[n];
+                for (int i = 0; i < n; i++)
+                {
+                    answer[i] = array[i];
+                }
+            }
+            else
+            {
+                answer = new int[n - 1];
+                for (int i = 0; i < index; i++)
+                {
+                    answer[i] = array[i];
+                }
+                for (int i = index+1; i < n; i++)
+                {
+                    answer[i-1] = array[i];
+                }
+            }
+
+            // 0 1 2 3 4 5 6 7 8 9
+            // 0 1 2 4 5 6 7 8 9
+
+            //for (int i = 0; i < answer.Length; i++)
+            //{
+            //    Console.Write(answer[i] + " ");
+            //}
+            //Console.WriteLine();
+
             // end
 
             return answer;
@@ -37,6 +143,20 @@ namespace Lab4
 
             // code here
 
+            int n = array.Length;
+            double sum = 0;
+            double sr = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                sum += array[i];
+            }
+            sr = sum / n;
+            for (int i = 0; i < n; i++)
+            {
+                array[i] -= sr;
+            }
+
             // end
 
         }
@@ -45,6 +165,33 @@ namespace Lab4
             int sum = 0;
 
             // code here
+            //Console.Write("A = ");
+            //for (int i = 0; i < A.Length; i++)
+            //{
+            //    Console.Write(A[i] + " ");
+            //}
+            //Console.WriteLine();
+            //Console.Write("B = ");
+            //for (int i = 0; i < B.Length; i++)
+            //{
+            //    Console.Write(B[i] + " ");
+            //}
+            //Console.WriteLine();
+
+            int na = A.Length;
+            int nb = B.Length;
+            if (na != nb)
+            {
+                return 0;
+            }
+            for (int i = 0; i < na; i++)
+            {
+                sum += A[i] * B[i];
+            }
+
+            //Console.WriteLine(sum);
+            
+            // ???
 
             // end
 
@@ -56,6 +203,47 @@ namespace Lab4
 
             // code here
 
+            int n = array.Length;
+            double sum = 0;
+            double sr = 0;
+            int index = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                sum += array[i];
+            }
+            sr = sum / n;
+            for (int i = 0; i < n; i++)
+            {
+                if (array[i] < sr)
+                {
+                    index++;
+                }
+            }
+            indexes = new int[index];
+            for (int i = 0, i2 = 0; i < n; i++)
+            {
+                if (array[i] < sr)
+                {
+                    indexes[i2] = i;
+                    i2++;
+                }
+            }
+
+            //Console.Write("array = ");
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    Console.Write(array[i] + " ");
+            //}
+            //Console.WriteLine();
+            //Console.Write("indexes = ");
+            //for (int i = 0; i < indexes.Length; i++)
+            //{
+            //    Console.Write(indexes[i] + " ");
+            //}
+            //Console.WriteLine();
+            //Console.WriteLine();
+
             // end
 
             return indexes;
@@ -65,6 +253,57 @@ namespace Lab4
             int count = 0;
 
             // code here
+            int n = array.Length;
+            int l = 1;
+            int s = 0;
+            int cs = 0;
+            int maxl = int.MinValue;
+            int f = 0;
+
+            if (n <= 2)
+            {
+                return n;
+                //Console.WriteLine(count);
+            }
+
+            for (int i = 0; i < n - 1; i++)
+            {
+                s = Math.Sign(array[i + 1] - array[i]);
+                f = s;
+                for (int j = i; j < n - 1; j++)
+                {
+                    cs = Math.Sign(array[j + 1] - array[j]);
+
+                    if (s == cs || cs == 0 || (s == 0 && cs == f || f == 0))
+                    {
+                        l++;
+                        //Console.Write(array[j] + " ");
+                        if (maxl < l)
+                        {
+                            maxl = l;
+                        }
+                    }
+                    else
+                    {
+                        l = 2;
+                        //Console.Write(array[j]);
+                        //Console.WriteLine();
+                        break;
+                    }
+                    s = cs;
+                    if (s != 0)
+                        f = s;
+                }
+                l = 1;
+            }
+            //Console.WriteLine(array[n - 1]);
+            if (maxl > count)
+            {
+                count = maxl;
+            }
+            //Console.WriteLine();
+
+            //Console.WriteLine(count);
 
             // end
 
@@ -76,6 +315,14 @@ namespace Lab4
 
             // code here
 
+            int n = array.Length;
+            answer = new int[n * 2];
+            for (int i = 0; i < n; i++)
+            {
+                answer[2 * i] = array[i];
+                answer[2 * i + 1] = array[i];
+            }
+
             // end
 
             return answer;
@@ -85,6 +332,32 @@ namespace Lab4
             double[] normalized = null;
 
             // code here
+
+            int n = array.Length;
+            double min = int.MaxValue;
+            double max = int.MinValue;
+
+            for (int i = 0; i < n; i++)
+            {
+                if (min > array[i])
+                {
+                    min = array[i];
+                }
+                if (max < array[i])
+                {
+                    max = array[i];
+                }
+            }
+
+            if (max != min)
+            {
+                normalized = new double[n];
+                for (int i = 0; i < n; i++)
+                {
+                    normalized[i] = (array[i] - min) / (max - min);
+                }
+
+            }
 
             // end
 
@@ -96,6 +369,53 @@ namespace Lab4
 
             // code here
 
+            index = -1;
+            int n = array.Length;
+            int a = 0;
+            int left = 0;
+            int right = n;
+            int mid = n/2;
+
+            for (int i = 1; i < n; i++)
+            {
+                for (int j = i; j > 0; j--)
+                {
+                    if (array[j] < array[j - 1])
+                    {
+                        a = array[j];
+                        array[j] = array[j - 1];
+                        array[j - 1] = a;
+                    }
+                }
+            }
+
+            for (int i = 0; i <= Math.Log2(n); i++)
+            {
+                if (array[mid] < P)
+                {
+                    left = mid;
+                    mid = (left + right) / 2;
+                }
+                else if (array[mid] > P)
+                {
+                    right = mid;
+                    mid = (right + left) / 2;
+                }
+                else
+                {
+                    index = mid;
+                    break;
+                }
+            }
+
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    Console.Write(array[i] + " ");
+            //}
+            //Console.WriteLine();
+            //Console.WriteLine(index);
+            //Console.WriteLine(P);
+
             // end
 
             return index;
@@ -105,6 +425,30 @@ namespace Lab4
             int[] array = null;
 
             // code here
+
+            if (b <= 0)
+            {
+                return null;
+            }
+
+            int n = (c - a + b) / b;
+            if (a < c && b > 0 || a > c && b < 0 || a == b && b == c)
+            {
+                array = new int[n];
+                for (int i = 0; i < n; i++)
+                {
+                    array[i] = b * i + a;
+                }
+            }
+            else
+                array = new int[0];
+            
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    Console.Write(array[i] + " ");
+            //}
+            //Console.WriteLine();
+            
 
             // end
 
@@ -116,6 +460,36 @@ namespace Lab4
             int[] indexes = null;
 
             // code here
+
+            int n = magazine.Length;
+            int max = int.MinValue;
+            int index = 0;
+            bool f = true;
+
+            if (n <= 3)
+            {
+                f = false;
+                indexes = new int[n];
+                for (int i = 0; i < n; i++)
+                {
+                    indexes[i] = i;
+                }
+            }
+            for (int i = 1; i < n - 1 && f; i++)
+            {
+                if (magazine[i - 1] + magazine[i] + magazine[i + 1] > max)
+                {
+                    max = magazine[i - 1] + magazine[i] + magazine[i + 1];
+                    index = i;
+                }
+            }
+            if (n > 3)
+            {
+                indexes = new int[3];
+                indexes[0] = index - 1;
+                indexes[1] = index;
+                indexes[2] = index + 1;
+            }
 
             // end
 
