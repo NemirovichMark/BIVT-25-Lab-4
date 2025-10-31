@@ -1,0 +1,16 @@
+2025-10-30T21:17:08.2080274+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 1.4.3+c252b64ad913ea9411fc5d17bfd5580d2d061497
+2025-10-30T21:17:08.2290703+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-10-30T21:17:08.2303098+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-10-30T21:17:08.2303149+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 21:17:08.178
+2025-10-30T21:17:08.2332091+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 12140
+2025-10-30T21:17:08.2336143+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 8.0.20
+2025-10-30T21:17:08.2336459+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.20\System.Private.CoreLib.dll
+2025-10-30T21:17:08.2336681+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-10-30T21:17:08.2336719+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\BIVT-25-Lab-4\Lab4test\bin\Debug\net8.0\Lab4test.dll
+2025-10-30T21:17:08.2340432+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\BIVT-25-Lab-4\Lab4test\bin\Debug\net8.0\Log --results-directory C:\BIVT-25-Lab-4\Lab4\TestResults --client-port 58990'
+2025-10-30T21:17:08.2355161+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-10-30T21:17:08.2583284+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-10-30T21:17:08.2620660+00:00 Microsoft.Testing.Platform.Configurations.JsonConfigurationSource+JsonConfigurationProvider INFORMATION Config file 'C:\BIVT-25-Lab-4\Lab4test\bin\Debug\net8.0\Lab4test.testconfig.json' not found.
+2025-10-30T21:17:08.2635739+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable:  VSTest mode: False
+2025-10-30T21:17:08.5426509+00:00 Microsoft.Testing.Platform.Requests.TestHostTestFrameworkInvoker INFORMATION Test framework UID: 'MSTestExtension' Version: '3.6.4' DisplayName: 'MSTest' Description: 'MSTest Framework for Microsoft Testing Platform'
+2025-10-30T21:17:08.6503760+00:00 Microsoft.Testing.Extensions.VSTestBridge.ObjectModel.MessageLoggerAdapter INFORMATION Test Parallelization enabled for C:\BIVT-25-Lab-4\Lab4test\bin\Debug\net8.0\Lab4test.dll (Workers: 1, Scope: MethodLevel)
