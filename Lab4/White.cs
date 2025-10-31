@@ -30,7 +30,7 @@ namespace Lab4
             {
                 if (array[i] > P && array[i] < Q)
                 {
-                    count++;
+                    count += 1;
                 }
             }
 
@@ -82,7 +82,8 @@ namespace Lab4
         {
 
             // code here
-            if (array.Length == 0) return;
+            if (array.Length == 0) 
+                return;
 
             int max = 0;
             for (int i = 2; i < array.Length; i += 2)
@@ -121,8 +122,6 @@ namespace Lab4
         {
 
             // code here
-
-
             int max = 0;
             for (int i = 0; i < array.Length; i++)
             {
