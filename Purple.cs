@@ -102,27 +102,8 @@ namespace Lab4
         {
 
             // code here
-            int positiveCount = 0;
-            int negativeCount = 0;
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] >= 0)
-                    positiveCount++;
-                else
-                    negativeCount++;
-            }
-
-            int[] positives = new int[positiveCount];
-            int[] negatives = new int[negativeCount];
-            int pIndex = 0;
-            int nIndex = 0;
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] >= 0)
-                    positives[pIndex++] = array[i];
-                else
-                    negatives[nIndex++] = array[i];
-            }
+            int[] positives = array.Where(x => x >= 0).ToArray();
+            int[] negatives = array.Where(x => x < 0).ToArray();
             int inow = 0;
             for (int i =0; i < positives.Length; i++)
             {
@@ -354,30 +335,8 @@ namespace Lab4
                 mse += raw[i];
             }
             mse = mse / raw.Length;
-            int brightCount = 0;
-            int dimCount = 0;
-            for (int i = 0; i < raw.Length; i++)
-            {
-                if (raw[i] > 2 * mse)
-                    brightCount++;
-                else if (raw[i] < mse / 2)
-                    dimCount++;
-            }
-
-
-            bright = new double[brightCount];
-            dim = new double[dimCount];
-
-
-            int bIndex = 0;
-            int dIndex = 0;
-            for (int i = 0; i < raw.Length; i++)
-            {
-                if (raw[i] > 2 * mse)
-                    bright[bIndex++] = raw[i];
-                else if (raw[i] < mse / 2)
-                    dim[dIndex++] = raw[i];
-            }
+            bright = raw.Where(x => x > 2 * mse).ToArray();
+            dim = raw.Where(x => x < mse / 2).ToArray();
             double sumNew = 0;
             double iNew = 0;
             for (int i = 0; i < raw.Length; i++)
