@@ -164,20 +164,27 @@ namespace Lab4
             // code here
             int n = A.Length + B.Length;
             answer = new int[n];
-            for (int i = 0; i < n; i++)
+            if (k <= A.Length)
             {
-                if (i < k)
+                for (int i = 0; i < n; i++)
                 {
-                    answer[i] = A[i];
+                    if (i < k)
+                    {
+                        answer[i] = A[i];
+                    }
+                    else if (i < k + B.Length)
+                    {
+                        answer[i] = B[i - k];
+                    }
+                    else if (A.Length != k)
+                    {
+                        answer[i] = A[i - B.Length];
+                    }
                 }
-                else if (i < k + B.Length)
-                {
-                    answer[i] = B[i - k];
-                }
-                else
-                {
-                    answer[i] = A[i - B.Length];
-                }
+            }
+            else
+            {
+                answer = A;
             }
             // end
 
@@ -188,7 +195,16 @@ namespace Lab4
             int[] sum = null, dif = null;
 
             // code here
-
+            if (A.Length == B.Length)
+            {
+                sum = new int[A.Length];
+                dif = new int[A.Length];
+                for (int i = 0; i < A.Length; i++)
+                {
+                    sum[i] = A[i] + B[i];
+                    dif[i] = A[i] - B[i];
+                }
+            }
             // end
 
             return (sum, dif);
@@ -198,7 +214,26 @@ namespace Lab4
             double[] normalized = null;
 
             // code here
-
+            double min = double.MaxValue, max = double.MinValue;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < min)
+                {
+                    min = array[i];
+                }
+                if (array[i] > max)
+                {
+                    max = array[i];
+                }
+            }
+            if (!(max == min))
+            {
+                normalized = new double[array.Length];
+                for (int i = 0;i < array.Length; i++)
+                {
+                    normalized[i] = (array[i] - min) / (max - min) * 2 - 1;
+                }
+            }
             // end
             
             return normalized;
@@ -241,7 +276,7 @@ namespace Lab4
             {
                 if (A[i] > B[j])
                 {
-                    C[k++] = A[i++]; 
+                    C[k++] = A[i++];
                 }
                 else
                 {
@@ -267,7 +302,7 @@ namespace Lab4
             int max = int.MinValue, max_i = -1;
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] > max) 
+                if (array[i] > max)
                 {
                     max = array[i];
                     max_i = i;
@@ -289,24 +324,17 @@ namespace Lab4
         {
 
             // code here
-            if (N > 1)
+            int i = 1;
+            while (true)
             {
-                int[] mirror = new int[N - 1];
-                int K = 1;
-                for (int i = 0; i < array.Length; i++)
+                if ((N + i <= array.Length) && (N - i > 0))
                 {
-                    if (i < N - 1)
-                    {
-                        mirror[i] = array[i];
-                    }
+                    array[N + i - 1] = array[N - i - 1];
+                    i++;
                 }
-                if (N < array.Length)
+                else
                 {
-                    for (int i = N; i < array.Length; i++)
-                    {
-                        array[i] = mirror[^K];
-                        K++;
-                    }
+                    break;
                 }
             }
             // end
@@ -318,7 +346,47 @@ namespace Lab4
             double[] Xext = null, Yext = null;
 
             // code here
-
+            if (!(((a == b) && (n > 1)) || (a > b)))
+            {
+                double step = (b - a) / (n - 1);
+                X = new double[n];
+                Y = new double[n];
+                int ext_count = 0;
+                int count = 0;
+                for (double i = a; i < (b + 0.00001); i += step)
+                {
+                    X[count] = i;
+                    Y[count] = Math.Cos(i) + i * Math.Sin(i);
+                    count++;
+                }
+                for (int p = 0; p < n; p++)
+                {
+                    if (!(p == 0 || p == (n - 1)))
+                    {
+                        if ((Y[p] > Y[p - 1] && Y[p] > Y[p + 1]) || (Y[p] < Y[p - 1] && Y[p] < Y[p + 1]))
+                        {
+                            ext_count++;
+                        }
+                    }
+                }
+                Xext = new double[ext_count];
+                Yext = new double[ext_count];
+                ext_count = 0;
+                count = 0;
+                for (double i = a; i < (b + 0.00001); i += step)
+                {
+                    if (!(count == 0 || count == n - 1))
+                    {
+                        if ((Y[count] > Y[count - 1] && Y[count] > Y[count + 1]) || (Y[count] < Y[count - 1] && Y[count] < Y[count + 1]))
+                        {
+                            Xext[ext_count] = X[count];
+                            Yext[ext_count] = Y[count];
+                            ext_count++;
+                        }
+                    }
+                    count++;
+                }
+            }
             // end
 
             return (Xext, Yext);
@@ -329,10 +397,69 @@ namespace Lab4
             double[] bright = null, normal = null, dim = null;
 
             // code here
-
+            int n = raw.Length, d = 0, b = 0;
+            double mid = 0;
+            for (int i = 0; i < n; i++)
+            {
+                mid += raw[i];
+            }
+            mid = mid / n;
+            double left_mid = 0;
+            int left = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if ((raw[i] >= (mid / 2)) && (raw[i] <= (2 * mid)))
+                {
+                    left_mid += raw[i];
+                    left++;
+                }
+                else if (raw[i] <= (mid / 2))
+                {
+                    d++;
+                }
+                else
+                {
+                    b++;
+                }
+            }
+            bright = new double[b];
+            normal = new double[n];
+            dim = new double[d];
+            b = 0;
+            d = 0;
+            left_mid = left_mid / left;
+            for (int i = 0; i < n; i++)
+            {
+                if ((raw[i] >= (mid / 2)) && (raw[i] <= (2 * mid)))
+                {
+                    normal[i] = raw[i];
+                }
+                else if (raw[i] <= (mid / 2)) 
+                {
+                    normal[i] = ((raw[i] + left_mid) / 2);
+                    dim[d] = raw[i];
+                    d++;
+                }
+                else
+                {
+                    normal[i] = ((raw[i] + left_mid) / 2);
+                    bright[b] = raw[i];
+                    b++;
+                }
+            }
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (normal[j] < normal[j + 1])
+                    {
+                        (normal[j], normal[j + 1]) = (normal[j + 1], normal[j]);
+                    }
+                }
+            }
             // end
 
             return (bright, normal, dim);
         }
     }
- }
+}
