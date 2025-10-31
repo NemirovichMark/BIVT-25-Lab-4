@@ -301,11 +301,6 @@ if (a == b && n == 1)
     return array;
 }
 
-if ((a == b && n!= 1) || n < 1)
-{
-    return null;
-}
-
 double distance = (b - a) / (n - 1);
 
 array = new double[n];
@@ -378,6 +373,7 @@ for (int i = 0; i < n; i++)
     }
 
 }
+
 
 
 
