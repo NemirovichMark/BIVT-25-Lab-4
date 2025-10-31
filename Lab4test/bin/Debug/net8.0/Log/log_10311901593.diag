@@ -1,0 +1,16 @@
+2025-10-31T19:07:01.5972280+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 1.4.3+c252b64ad913ea9411fc5d17bfd5580d2d061497
+2025-10-31T19:07:01.6123870+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-10-31T19:07:01.6135398+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-10-31T19:07:01.6135456+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 19:07:01.578
+2025-10-31T19:07:01.6147145+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 31712
+2025-10-31T19:07:01.6147789+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 8.0.20
+2025-10-31T19:07:01.6147831+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.20\System.Private.CoreLib.dll
+2025-10-31T19:07:01.6147904+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-10-31T19:07:01.6147920+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\Users\marko\Source\Repos\BIVT-25-Lab-4\Lab4test\bin\Debug\net8.0\Lab4test.dll
+2025-10-31T19:07:01.6149446+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\Users\marko\Source\Repos\BIVT-25-Lab-4\Lab4test\bin\Debug\net8.0\Log --results-directory C:\Users\marko\source\repos\BIVT-25-Lab-4\Lab4\TestResults --client-port 49562'
+2025-10-31T19:07:01.6158769+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-10-31T19:07:01.6326997+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-10-31T19:07:01.6354402+00:00 Microsoft.Testing.Platform.Configurations.JsonConfigurationSource+JsonConfigurationProvider INFORMATION Config file 'C:\Users\marko\Source\Repos\BIVT-25-Lab-4\Lab4test\bin\Debug\net8.0\Lab4test.testconfig.json' not found.
+2025-10-31T19:07:01.6364471+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable:  VSTest mode: False
+2025-10-31T19:07:01.7538774+00:00 Microsoft.Testing.Platform.Requests.TestHostTestFrameworkInvoker INFORMATION Test framework UID: 'MSTestExtension' Version: '3.6.4' DisplayName: 'MSTest' Description: 'MSTest Framework for Microsoft Testing Platform'
+2025-10-31T19:07:01.8283019+00:00 Microsoft.Testing.Extensions.VSTestBridge.ObjectModel.MessageLoggerAdapter INFORMATION Включена параллелизация тестов для C:\Users\marko\Source\Repos\BIVT-25-Lab-4\Lab4test\bin\Debug\net8.0\Lab4test.dll (рабочие роли: 1, область: MethodLevel)
