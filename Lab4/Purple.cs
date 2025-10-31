@@ -6,8 +6,14 @@ namespace Lab4
         {
 
             // code here
-            double average = array.Average();
-            double max = array.Max();
+            double sum = 0;
+            double max = array[0];
+            foreach (double item in array)
+            {
+                sum += item;
+                if (item > max) max = item;
+            }
+            double average = sum / array.Length;
             bool replacing = false;
             for (int i = 0; i < array.Length; i++)
             {
@@ -51,7 +57,11 @@ namespace Lab4
 
             // code here
             int mindelta_i = 0;
-            double average = array.Average();
+            double average = 0;
+            foreach (var item in array)
+            {
+                average += (double)item / array.Length;
+            }
             double mindelta = Math.Abs(array[0] - average);
             for (int i = 1; i < array.Length; i++)
             {
@@ -85,13 +95,37 @@ namespace Lab4
         {
 
             // code here
-            int[] positive = array.Where(n => (n >= 0)).ToArray();
-            int[] negative = array.Where(n => (n < 0)).ToArray();
-            int i = 0;
-            foreach (int num in positive.Concat(negative).ToArray())
+            int positive_items = 0, negative_items = 0;
+            foreach (int item in array)
             {
-                array[i] = num;
-                i++;
+                if (item >= 0)
+                {
+                    positive_items++;
+                } else
+                {
+                    negative_items++;
+                }
+            }
+            int[] positive = new int[positive_items];
+            int[] negative = new int[negative_items];
+            int positive_i = 0, negative_i = 0;
+            foreach (int item in array)
+            {
+                if (item >= 0)
+                {
+                    positive[positive_i++] = item;
+                } else
+                {
+                    negative[negative_i++] = item;
+                }
+            }
+            for (int i = 0; i < positive.Length; i++)
+            {
+                array[i] = positive[i];
+            }
+            for (int i = 0; i < negative.Length; i++)
+            {
+                array[positive.Length + i] = negative[i];
             }
             // end
 
@@ -103,7 +137,15 @@ namespace Lab4
             // code here
             if (k == A.Length)
             {
-                answer = A.Concat(B).ToArray();
+                answer = new int[A.Length + B.Length];
+                for (int i = 0; i < A.Length; i++)
+                {
+                    answer[i] = A[i];
+                }
+                for (int i = 0; i < B.Length; i++)
+                {
+                    answer[A.Length + i] = B[i];
+                }
             } else if (k > A.Length)
             {
                 return A;
@@ -120,7 +162,19 @@ namespace Lab4
                 {
                     A_after_k[i - k] = A[i];
                 }
-                answer = A_before_k.Concat(B).Concat(A_after_k).ToArray();
+                answer = new int[A_before_k.Length + B.Length + A_after_k.Length];
+                for (int i = 0; i < A_before_k.Length; i++)
+                {
+                    answer[i] = A_before_k[i];
+                }
+                for (int i = 0; i < B.Length; i++)
+                {
+                    answer[A_before_k.Length + i] = B[i];
+                }
+                for (int i = 0; i < A_after_k.Length; i++)
+                {
+                    answer[A_before_k.Length + B.Length + i] = A_after_k[i];
+                }
             }
             // end
 
@@ -147,13 +201,16 @@ namespace Lab4
         public double[] Task7(int[] array)
         {
             double[] normalized = null;
-
-            if (array.Min() == array.Max()) return normalized;
+            int max = array[0], min = array[0];
+            foreach (int item in array)
+            {
+                if (item > max) max = item;
+                if (item < min) min = item;
+            }
+            if (max == min) return normalized;
             
             // code here
             normalized = new double[array.Length];
-            int max = array.Max();
-            int min = array.Min();
             for (int i = 0; i < array.Length; i++)
             {
                 normalized[i] = 2.0 * ((double)(array[i] - min) / (double)(max - min)) - 1.0;
@@ -166,9 +223,37 @@ namespace Lab4
             int[] C = null;
 
             // code here
-            C = A.Concat(B).ToArray();
-            Array.Sort(C);
-            Array.Reverse(C);
+            C = new int[A.Length + B.Length];
+            for (int i = 0; i < A.Length; i++)
+            {
+                C[i] = A[i];
+            }
+            for (int i = 0; i < B.Length; i++)
+            {
+                C[A.Length + i] = B[i];
+            }
+            for (int i = 0; i < C.Length; i++)
+            {
+                for (int j = 0; j < C.Length - 1; j++)
+                {
+                    if (C[j] > C[j + 1])
+                    {
+                        int temp = C[j + 1];
+                        C[j + 1] = C[j];
+                        C[j] = temp;
+                    }
+                }
+            }
+            int start = 0;
+            int end = C.Length - 1;
+            while (start < end)
+            {
+                int temp = C[end];
+                C[end] = C[start];
+                C[start] = temp;
+                start++;
+                end--;
+            }
             // end
 
             return C;
@@ -177,7 +262,11 @@ namespace Lab4
         {
 
             // code here
-            int max = array.Max();
+            int max = array[0];
+            foreach (int item in array)
+            {
+                if (item > max) max = item;
+            }
             int k = 0;
             for (int i = 0; i < array.Length; i++)
             {
@@ -201,10 +290,13 @@ namespace Lab4
             {
                 array_other[i] = array[i];
             }
-            int[] temp = array_last_k.Concat(array_other).ToArray();
-            for (int i = 0; i < temp.Length; i++)
+            for (int i = 0; i < array_last_k.Length; i++)
             {
-                array[i] = temp[i];
+                array[i] = array_last_k[i];
+            }
+            for (int i = 0; i < array_other.Length; i++)
+            {
+                array[array_last_k.Length + i] = array_other[i];
             }
 
             // end
@@ -292,16 +384,50 @@ namespace Lab4
             double[] bright = null, normal = null, dim = null;
 
             // code here
-            double average = raw.Average();
-            bright = raw.Where(n => n > 2 * average).ToArray();
-            dim = raw.Where(n => n < 0.5 * average).ToArray();
-            double[] removed_anomalies = raw.Where(n => (n <= 2 * average) && (n >= 0.5 * average)).ToArray();
+            double average = 0;
+            foreach (double item in raw) average += item / raw.Length;
+            int total_bright = 0, total_dim = 0;
+            foreach (double item in raw)
+            {
+                if (item > 2 * average) total_bright++;
+                if (item < 0.5 * average) total_dim++;
+            }
+            bright = new double[total_bright];
+            dim = new double[total_dim];
+            double[] removed_anomalies = new double[raw.Length - bright.Length - dim.Length];
+            int bright_index = 0, dim_index = 0, removed_index = 0;
 
-            double normal_average = removed_anomalies.Average();
+            foreach (double item in raw)
+            {
+                if (item > 2 * average)
+                {
+                    bright[bright_index++] = item;
+                }
+                else if (item < 0.5 * average)
+                {
+                    dim[dim_index++] = item;
+                }
+                else
+                {
+                    removed_anomalies[removed_index++] = item;
+                }
+            }
+
+            double normal_average = 0;
+            foreach (double item in removed_anomalies) normal_average += item / removed_anomalies.Length;
             normal = new double[raw.Length];
             for (int i = 0; i < raw.Length; i++)
             {
-                if (removed_anomalies.Contains(raw[i]))
+                bool contains = false;
+                foreach (double item in removed_anomalies)
+                {
+                    if (item == raw[i])
+                    {
+                        contains = true;
+                        break;
+                    }
+                }
+                if (contains)
                 {
                     normal[i] = raw[i];
                 } else
@@ -309,8 +435,28 @@ namespace Lab4
                     normal[i] = 0.5 * (raw[i] + normal_average);
                 }
             }
-            Array.Sort(normal);
-            Array.Reverse(normal);
+            for (int i = 0; i < normal.Length; i++)
+            {
+                for (int j = 0; j < normal.Length - 1; j++)
+                {
+                    if (normal[j] > normal[j + 1])
+                    {
+                        double temp = normal[j + 1];
+                        normal[j + 1] = normal[j];
+                        normal[j] = temp;
+                    }
+                }
+            }
+            int start = 0;
+            int end = normal.Length - 1;
+            while (start < end)
+            {
+                double temp = normal[end];
+                normal[end] = normal[start];
+                normal[start] = temp;
+                start++;
+                end--;
+            }
 
             // end
 
