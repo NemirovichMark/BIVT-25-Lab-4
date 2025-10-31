@@ -6,8 +6,29 @@
         {
 
             // code here
+            double sum = 0;
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > 0)
+                {
+                    sum += array[i];
+                    count += 1;
+                }
+            }
 
+            double srednie = sum / count;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > 0)
+                {
+                    array[i] = srednie;
+                }
+            }
             // end
+
+            //return array;
 
         }
         public int Task2(int[] array)
@@ -15,16 +36,65 @@
             int sum = 0;
 
             // code here
-
+            bool flag = false;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < 0)
+                {
+                    flag = true;
+                    break;
+                }
+          
+                sum += array[i]*array[i];
+            }
             // end
 
-            return sum;
+            return flag ? sum: 0;
         }
         public int[] Task3(int[] array)
         {
             int[] negatives = null;
 
             // code here
+            int max = -100000;
+            int min = 1000000;
+            int max_index = 0;
+            int min_index = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    max_index = i;
+                }
+                if (array[i] < min)
+                {
+                    min = array[i];
+                    min_index = i;
+                }
+            }
+            int start = Math.Min(min_index, max_index);
+            int end = Math.Max(max_index, min_index);
+            int cnt = 0;
+            for (int i = start + 1; i < end; i++)
+            {
+                if (array[i] < 0)
+                {
+                    cnt++;
+                }
+            }
+            negatives = new int[cnt];
+
+            int index = 0;
+
+            for (int i = start + 1; i < end; i++)
+            {
+                if (array[i] < 0)
+                {
+                    negatives[index] = array[i];
+                    index++;
+                }
+            }
 
             // end
 
@@ -34,6 +104,32 @@
         {
 
             // code here
+            int max = -100000000;
+            int min = 100000000;
+            int max_index = -1;
+            int min_index = -1;
+            bool first = true;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    max_index = i;
+                }
+                if (first && array[i] < 0)
+                {
+                    min = array[i];
+                    min_index = i;
+                    first = false;
+                }
+            }
+
+            if (first == false && max_index != min_index)
+            {
+                array[max_index] = min;
+                array[min_index] = max;
+            }
 
             // end
 
@@ -41,9 +137,34 @@
         public int[] Task5(int[] array)
         {
             int[] answer = null;
+            //answer.
 
             // code here
+            int max = -100000000;
+            int count = 0;
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    count = 1;
+                } else if (array[i] >= max)
+                {
+                    count += 1;
+                }
+            }
+
+            answer = new int[count];
+            int j = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    answer[j] = i;
+                    j += 1;
+                }
+            }
             // end
 
             return answer;
@@ -52,7 +173,25 @@
         {
 
             // code here
+            int max = -100000000;
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                }
+            }
+
+            int j = 1;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    array[i] += j;
+                    j += 1;
+                }
+            }
             // end
 
         }
@@ -60,34 +199,143 @@
         {
 
             // code here
+            int max = -100000000;
+            int count = 0;
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    count = 1;
+                }
+                else if (array[i] >= max)
+                {
+                    count += 1;
+                }
+            }
+
+            int[] answer = new int[count];
+            int sum = 0;
+            int j = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    answer[j] = sum;
+                    j += 1;
+                }
+                sum += array[i];
+            }
+
+            j = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    array[i] = answer[j];
+                    j += 1;
+                }
+            }
             // end
 
         }
         public int Task8(int[] array)
         {
             int length = 0;
+            int current = 1;
+            length = 1;
 
-            // code here
-
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i - 1] > array[i])
+                {
+                    current++;
+                    if (current > length)
+                    {
+                        length = current;
+                    }
+                }
+                else
+                {
+                    current = 1;
+                }
+            }
             // end
 
             return length;
         }
+
         public void Task9(int[] array)
         {
-
             // code here
+            if (array == null || array.Length <= 2)
+                return;
 
+            int size = (array.Length + 1) / 2;
+            int[] sp = new int[size];
+
+            int index = 0;
+            for (int i = 0; i < array.Length; i += 2)
+            {
+                sp[index] = array[i];
+                index += 1;
+            }
+
+            int n = size;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                    if (sp[j] > sp[j + 1])
+                        (sp[j], sp[j + 1]) = (sp[j + 1], sp[j]);
+            }
+
+            index = 0;
+            for (int i = 0; i < array.Length; i += 2)
+            {
+                array[i] = sp[index];
+                index++;
+            }
             // end
-
         }
         public int[] Task10(int[] array)
         {
             int[] cleared = null;
 
             // code here
+            if (array == null || array.Length == 0)
+            {
+                cleared = new int[0];
+                return cleared;
+            }
 
+            int[] temp = new int[array.Length];
+            int count = 0;
+
+            foreach (int num in array)
+            {
+                bool found = false;
+                for (int i = 0; i < count; i++)
+                {
+                    if (temp[i] == num)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    temp[count] = num;
+                    count++;
+                }
+            }
+
+            cleared = new int[count];
+            for (int i = 0; i < count; i++)
+            {
+                cleared[i] = temp[i];
+            }
             // end
 
             return cleared;
@@ -96,22 +344,80 @@
         {
             double[] A = null, B = null;
 
-            // code here
+            if (n <= 1) return null;
+            if (a == b) return null;
 
-            // end
+            A = new double[n];
+            double step = (n == 1) ? 0.0 : (b - a) / (n - 1);
+            for (int i = 0; i < n; i++)
+            {
+                A[i] = a + step * i;
+            }
+
+            double sum = 0.0;
+            int count = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (A[i] > 0)
+                {
+                    sum += A[i];
+                    count++;
+                }
+            }
+
+            if (count == 0) return new double[0];
+
+            double avg = sum / count;
+
+            int countB = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (A[i] > 0 && A[i] > avg)
+                    countB++;
+            }
+
+            B = new double[countB];
+            int indexB = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                if (A[i] > 0 && A[i] > avg)
+                {
+                    B[indexB] = A[i];
+                    indexB++;
+                }
+            }
 
             return B;
         }
+
         public int Task12(int[] dices)
         {
+            if (dices == null || dices.Length == 0) return 0;
+
+            int n = dices.Length;
             int wins = 0;
 
-            // code here
+            int box = 0;
+            int[] player = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                player[i] = dices[i] - box;
+                if (player[i] < 1) player[i] = 1;
 
-            // end
+                if (dices[i] == 6) box++;
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                int val = 6 - i;
+                if (val < 1) val = 1;
+
+                if (player[i] > val) wins++;
+            }
 
             return wins;
-
         }
+
     }
 }
