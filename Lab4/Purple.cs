@@ -309,18 +309,15 @@ namespace Lab4
                 array[N + i] = array[N - 2 - i];
             }
 
-
-
             // end
+
         }
-        
         public (double[], double[]) Task11(double a, double b, int n)
         {
             double[] X = null, Y = null;
             double[] Xext = null, Yext = null;
 
             // code here
-            
             X = new double[n];
             Y = new double[n];
             double step = 0;
@@ -365,7 +362,7 @@ namespace Lab4
                     indexYext++;
                 }
             }
-            
+
             // end
 
             return (Xext, Yext);
@@ -376,7 +373,46 @@ namespace Lab4
             double[] bright = null, normal = null, dim = null;
 
             // code here
+            double sm = 0;
+            foreach (double item in raw)
+            {
+                sm += item;
+            }
+            double avarge_raw = sm / (double)raw.Length;
+            int c_dim = 0;
+            int c_br = 0;
+            foreach (double item in raw)
+            {
+                if (item > 2 * avarge_raw) { c_br++; }
+                if (item < avarge_raw * 0.5) { c_dim++; }
+            }
+            bright = new double[c_br];
+            dim = new double[c_dim];
+            int j_br = 0, j_dim = 0;
+            double sm_normal = 0;
+            foreach (double item in raw)
+            {
+                if (item > 2 * avarge_raw) { bright[j_br++] = item; }
+                else if (item < avarge_raw * 0.5) { dim[j_dim++] = item; }
+                else { sm_normal += item; }
+            }
+            double avarge_norm = sm_normal / (double)(raw.Length - c_dim - c_br);
+            normal = new double[raw.Length];
+            for (int i = 0; i < normal.Length; i++)
+            {
+                if (raw[i] > 2 * avarge_raw) { normal[i] = (raw[i] + avarge_norm) / 2; }
+                else if (raw[i] < avarge_raw * 0.5) { normal[i] = (raw[i] + avarge_norm) / 2; }
+                else { normal[i] = raw[i]; }
+            }
 
+            int a = 1;
+            int j = 2;
+            while (a < normal.Length)
+            {
+                if (a == 0 || normal[a] <= normal[a - 1]) { a = j; j++; }
+
+                else { (normal[a], normal[a - 1]) = (normal[a - 1], normal[a]); a--; }
+            }
             // end
 
             return (bright, normal, dim);
