@@ -300,17 +300,20 @@ if (a == b && n == 1)
     return new double[] { a };
 }
 
-if (a == b || n <= 1)
+if (a == b || n == 1)
 {
     return null;
 }
 
 array = new double[n];
-double distance = (b - a) / (n - 1);
 
-if (a > b)
+if (b > a)
 {
-    distance = -distance;
+    double distance = (b - a) / (n - 1);
+}
+else
+{
+    double distance = (a - b) / (n - 1);
 }
             
     for (int i = 0; i < n; i++)
@@ -381,4 +384,5 @@ for (int i = 0; i < n; i++)
     }
 
 }
+
 
