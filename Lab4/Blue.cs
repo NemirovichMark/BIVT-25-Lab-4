@@ -8,7 +8,15 @@ namespace Lab4
         {
 
             // code here
-            int maxnumber = array.Max();
+                        int maxnumber = array[0];
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] > maxnumber)
+                {
+                    maxnumber = array[i];
+                }
+            }
+
             int ResultSum = 0;
             int indexMax = 0;
             int indexNegative = 0;
