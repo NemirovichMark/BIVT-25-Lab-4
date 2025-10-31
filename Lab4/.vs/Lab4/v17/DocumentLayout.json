@@ -7,10 +7,10 @@
       "RelativeMoniker": "D:0:0:{9E1E4ED5-B3B0-BE7E-02EC-FF2AF45C22B2}|Lab4.csproj|solutionrelative:green.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{853631A6-F3B4-073C-C95B-D61862AA6910}|..\\Lab4test\\Lab4test.csproj|c:\\bivt-25-lab-4\\lab4test\\greentest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{853631A6-F3B4-073C-C95B-D61862AA6910}|..\\Lab4test\\Lab4test.csproj|c:\\bivt-25-lab-4\\lab4test\\purpletest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{853631A6-F3B4-073C-C95B-D61862AA6910}|..\\Lab4test\\Lab4test.csproj|c:\\bivt-25-lab-4\\lab4test\\purpletest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{853631A6-F3B4-073C-C95B-D61862AA6910}|..\\Lab4test\\Lab4test.csproj|c:\\bivt-25-lab-4\\lab4test\\greentest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,11 +20,25 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Green.cs",
+              "DocumentMoniker": "C:\\BIVT-25-Lab-4\\Lab4\\Green.cs",
+              "RelativeDocumentMoniker": "Green.cs",
+              "ToolTip": "C:\\BIVT-25-Lab-4\\Lab4\\Green.cs",
+              "RelativeToolTip": "Green.cs",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T20:33:12.827Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "PurpleTest.cs",
               "DocumentMoniker": "C:\\BIVT-25-Lab-4\\Lab4test\\PurpleTest.cs",
               "RelativeDocumentMoniker": "..\\Lab4test\\PurpleTest.cs",
@@ -37,28 +51,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "GreenTest.cs",
               "DocumentMoniker": "C:\\BIVT-25-Lab-4\\Lab4test\\GreenTest.cs",
               "RelativeDocumentMoniker": "..\\Lab4test\\GreenTest.cs",
               "ToolTip": "C:\\BIVT-25-Lab-4\\Lab4test\\GreenTest.cs",
               "RelativeToolTip": "..\\Lab4test\\GreenTest.cs",
-              "ViewState": "AgIAAAkCAAAAAAAAAAAkwBkCAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAkCAAAAAAAAAAAkwAsCAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-31T18:58:10.397Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Green.cs",
-              "DocumentMoniker": "C:\\BIVT-25-Lab-4\\Lab4\\Green.cs",
-              "RelativeDocumentMoniker": "Green.cs",
-              "ToolTip": "C:\\BIVT-25-Lab-4\\Lab4\\Green.cs",
-              "RelativeToolTip": "Green.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAzwK0AAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T20:23:41.639Z",
               "EditorCaption": ""
             }
           ]
