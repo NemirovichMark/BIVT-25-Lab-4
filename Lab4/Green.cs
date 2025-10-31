@@ -15,14 +15,23 @@
                 if (array[i] > 0) array[i] = avg;
         }
         public int Task2(int[] array)
-        {
-            if (array == null || array.Length == 0) return 0;
-            int sum = 0;
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] < 0) break;
-                sum += array[i] * array[i];
-            }
+        { int sum = 0;
+         int f = 0;
+         for (int i = 0; i < array.Length; i++)
+         {     
+             if ((array[i] >= 0) && (f == 0))
+             {
+                 sum += array[i] * array[i];
+             }
+             if (array[i] < 0)
+             {
+                 f = -1;
+             }
+         }
+         if (f == 0)
+         {
+     sum = 0;
+ }
             return sum;
         }
 
@@ -118,41 +127,83 @@
 
         public double[] Task11(double a, double b, int n)
         {
-            if (n <= 0) return new double[0];
-            double[] A = new double[n];
-            if (n == 1) A[0] = a;
-            else
+          
+            double[] A = null, B = null;
+
+            double r = (b - a) / (n - 1);
+            A = new double[n];
+            double c = 0;
+            double s = 0;
+            for (int i = 0; i < n; i++)
             {
-                double step = (b - a) / (n - 1);
-                for (int i = 0; i < n; i++)
-                    A[i] = a + i * step;
+                A[i] = a + r * i;
+                if (A[i] > 0)
+                {
+                    s += A[i];
+                    c++;
+                }
+
             }
-            double[] positives = A.Where(x => x > 0).ToArray();
-            if (positives.Length == 0) return new double[0];
-            double avg = positives.Average();
-            return positives.Where(x => x > avg).ToArray();
+            s = s / c;
+            int f = 0;
+            for (int j = 0; j < n; j++)
+            {
+                if (A[j] > s)
+                {
+                    f++;
+                }
+            }
+            int e = 0;
+            B = new double[f];
+            int g = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (A[i] > s)
+                {
+                    B[g] = A[i];
+                    g++;
+                }
+            }
+            if ((n <= 1) || (a == b))
+            {
+                return null;
+            }
+
+            return B;
         }
         public int Task12(int[] dices)
         {
-            if (dices == null || dices.Length == 0) return 0;
-            int n = dices.Length;
-            int[] player = (int[])dices.Clone();
-            for (int i = 0; i < n; i++)
-            {
-                if (player[i] == 6)
-                {
-                    for (int j = i + 1; j < n; j++)
-                        player[j] = Math.Max(1, player[j] - 1);
-                }
-            }
-            int wins = 0;
-            for (int i = 0; i < n; i++)
-            {
-                int opponent = Math.Max(1, 6 - i);
-                if (player[i] > opponent) wins++;
-            }
+           int wins = 0;
+
+int[] s = new int[dices.Length];
+for (int i = 0; i <= 4 & i < dices.Length; i++)
+{
+    s[i] = 6 - i;
+}
+for (int i = 5; i < dices.Length; i++)
+{
+    s[i] = 1;
+}
+int k = 6;
+for (int i = 0; i < dices.Length - 1; i++)
+{
+    if (dices[i] == k)
+    {
+        for (int j = i + 1; j < dices.Length; j++)
+        {
+            dices[j] = dices[j] - 1;
+        }
+        k--;
+    }
+}
+for (int i = 0; i < dices.Length; i++)
+{
+    if (dices[i] > s[i])
+        wins++;
+}
             return wins;
         }
     }
 }
+
 
