@@ -238,34 +238,23 @@ namespace Lab4
             double[] normalized = null;
 
             // code here
-            normalized = new double[array.Length];
-            int maxValue = -100000000;
-            int minValue = 100000000;
+            int maxx = int.MinValue;
+            int minn = int.MaxValue;
 
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] > maxValue)
-                {
-                    maxValue = array[i];
-                }
-                if (array[i] < minValue)
-                {
-                    minValue = array[i];
-                }
+                if (array[i] > maxx) maxx = array[i];
+                if (array[i] < minn) minn = array[i];
             }
-
-            double range = maxValue - minValue;
-            if (range != 0)
+            if (minn != maxx)
             {
-                for (int j = 0; j < array.Length; j++)
+                normalized = new double[array.Length];
+                for (int i = 0; i < array.Length; i++)
                 {
-                    normalized[j] = (array[j] - minValue) / range;
+                    normalized[i] = Math.Round((double)(array[i] - minn) / (maxx - minn), 6);
                 }
             }
-            else
-            {
-                return normalized = new double[0];
-            }
+            else return null;
             // end
 
             return normalized;
