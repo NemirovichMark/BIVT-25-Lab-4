@@ -1,4 +1,6 @@
-﻿namespace Lab4
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Lab4
 {
     public class Purple
     {
@@ -6,51 +8,54 @@
         {
 
             // code here
-
-            int n = array.Length;
-            double sum_elem = 0;
-            double max_val = array[0];
-            int max_ind = 0;
-            for (int i = 0; i < n; i++)
+            double mx = -10000;
+            int imx = 0;
+            double summ = 0;
+            for (int i = 0; i < array.Length; i++)
             {
-                if (max_val < array[i])
+                if (array[i] > mx)
                 {
-                    max_val = array[i];
-                    max_ind = i;
+                    mx = array[i];
+                    imx = i;
                 }
-                sum_elem += array[i];
+                summ+= array[i];
             }
-            double mid = sum_elem / n;
-
-            for (int i = max_ind + 1; i < n; i++)
+            for (int i = imx+1; i < array.Length; i++)
             {
-                array[i] = mid;
+                array[i] = summ / array.Length;
             }
-
+        }
             // end
 
-        }
+        
+
         public (int[] even, int[] odd) Task2(int[] array)
         {
-            int[] even = null, odd = null;
 
             // code here
-
-            int n = array.Length;
-            odd = new int[n / 2];
-            even = new int[n - odd.Length];
-            for (int i = 0; i < n; i++)
+            int[] even = null, odd = null;
+            if (array.Length % 2 == 0)
             {
-                if (i % 2 == 0)
+                even = new int[array.Length / 2];
+                odd = new int[array.Length / 2];
+            }
+            else
+            {
+                even = new int[array.Length / 2 + 1];
+                odd = new int[array.Length / 2];
+            }
+            int evenI = 0, oddI = 0;
+            for (int i = 0; i < array.Length; i++)
                 {
-                    even[i / 2] = array[i];
-                }
+                    if (i % 2 == 0)
+                    {
+                        even[evenI++] = array[i];
+                    }
                 else
                 {
-                    odd[i / 2] = array[i];
+                    odd[oddI++] = array[i];
                 }
-            }
-
+                }
             // end
 
             return (even, odd);
@@ -58,38 +63,36 @@
         public int[] Task3(int[] array, int P)
         {
             int[] answer = null;
+            double summ = 0;
 
             // code here
-
-            int n = array.Length;
-            int sum_elem = 0;
-            foreach (int elem in array)
+            for (int i = 0; i < array.Length; i++)
             {
-                sum_elem += elem;
+                summ += array[i];
             }
-            double mid = (double)sum_elem / n;
-
-            int closest_ind = 0;
-            double closest_dif = Math.Abs(array[0] - mid);
-            for (int i = 0; i < n; i++)
+            double mse = summ / array.Length;
+            double r = 10000;
+            int ielem = 0;
+            for (int i = 0; i < array.Length; i++)
             {
-                double new_dif = Math.Abs(array[i] - mid);
-                if (new_dif < closest_dif)
+                if (Math.Abs(array[i] - mse) < r)
                 {
-                    closest_dif = new_dif;
-                    closest_ind = i;
+                    r = Math.Abs(array[i] - mse);
+                    ielem = i;
                 }
             }
-            answer = new int[n + 1];
-            for (int i = 0; i <= closest_ind; i++)
-            {
-                answer[i] = array[i];
+            answer = new int[array.Length+1];
+            int inow = 0;
+            for (int i = 0; i < array.Length; i++)
+            {   
+                answer[inow] = array[i];
+                inow++;
+                if (i == ielem) {
+                    answer[inow] = P;
+                    inow++;
+                }
             }
-            answer[closest_ind + 1] = P;
-            for (int i = closest_ind + 1; i < n; i++)
-            {
-                answer[i + 1] = array[i];
-            }
+            
 
             // end
 
@@ -99,42 +102,36 @@
         {
 
             // code here
-
-            int n = array.Length;
-            int neg_size = 0;
-            for (int i = 0; i < n; i++)
+            int positiveCount = 0;
+            int negativeCount = 0;
+            for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] < 0)
-                {
-                    neg_size++;
-                }
-            }
-            int pos_size = n - neg_size;
-
-            var pos = new int[pos_size];
-            var neg = new int[neg_size];
-
-            int pos_ind = 0, neg_ind = 0;
-            for (int i = 0; i < n; i++)
-            {
-                if (array[i] < 0)
-                {
-                    neg[neg_ind++] = array[i];
-                }
+                if (array[i] >= 0)
+                    positiveCount++;
                 else
-                {
-                    pos[pos_ind++] = array[i];
-                }
-            }
-            for (int i = 0; i < pos_size; i++)
-            {
-                array[i] = pos[i];
-            }
-            for (int i = pos_size; i < n; i++)
-            {
-                array[i] = neg[i - pos_size];
+                    negativeCount++;
             }
 
+            int[] positives = new int[positiveCount];
+            int[] negatives = new int[negativeCount];
+            int pIndex = 0;
+            int nIndex = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] >= 0)
+                    positives[pIndex++] = array[i];
+                else
+                    negatives[nIndex++] = array[i];
+            }
+            int inow = 0;
+            for (int i =0; i < positives.Length; i++)
+            {
+                array[inow++] = positives[i];
+            }
+            for (int i = 0; i < negatives.Length; i++)
+            {
+                array[inow++] = negatives[i];
+            }
             // end
 
         }
@@ -143,28 +140,25 @@
             int[] answer = null;
 
             // code here
-
-            if (k < A.Length)
+            
+            answer = new int[A.Length+B.Length];
+            if (k > A.Length)
             {
-                answer = new int[A.Length + B.Length];
-                for (int i = 0; i < k; i++)
-                {
-                    answer[i] = A[i];
-                }
-                for (int i = 0; i < B.Length; i++)
-                {
-                    answer[i + k] = B[i];
-                }
-                for (int i = k; i < A.Length; i++)
-                {
-                    answer[B.Length + i] = A[i];
-                }
+                return A;
             }
-            if (answer == null)
-            {
-                answer = A;
-            }
+            int inow = 0;
 
+            for (int i = 0; i < k; i++) {
+                answer[inow++] = A[i];
+            }
+            for (int i = 0; i < B.Length; i++)
+            {
+                answer[inow++] = B[i];
+            }
+            for (int i = k; i < A.Length; i++)
+            {
+                answer[inow++] = A[i];
+            }
             // end
 
             return answer;
@@ -174,20 +168,16 @@
             int[] sum = null, dif = null;
 
             // code here
-
             if (A.Length == B.Length)
             {
-                int n = A.Length;
-                sum = new int[n];
-                dif = new int[n];
-
+                sum = new int[A.Length];
+                dif = new int[B.Length];
                 for (int i = 0; i < A.Length; i++)
                 {
                     sum[i] = A[i] + B[i];
                     dif[i] = A[i] - B[i];
                 }
             }
-
             // end
 
             return (sum, dif);
@@ -197,25 +187,32 @@
             double[] normalized = null;
 
             // code here
-
-            int n = array.Length;
-            int MinVal = array[0], MaxVal = array[0];
-            for (int i = 0; i < n; i++)
+            double maxe = -1000;
+            double mine = 1000;
+            double sum = 0;
+            for (int i = 0; i < array.Length; i++)
             {
-                MinVal = Math.Min(MinVal, array[i]);
-                MaxVal = Math.Max(MaxVal, array[i]);
-            }
-            if (MinVal != MaxVal)
-            {
-                normalized = new double[n];
-                for (int i = 0; i < n; i++)
+                if (array[i] > maxe)
                 {
-                    normalized[i] = ((double)(array[i] - MinVal)) / (MaxVal - MinVal) * 2 - 1;
+                    maxe = array[i];
+                }
+                if (array[i] < mine)
+                {
+                    mine = array[i];
+                }
+                sum += array[i];
+            }
+            if (sum != array[0] * array.Length)
+            {
+                normalized = new double[array.Length];
+                int inow = 0;
+                for (int i = 0;i < array.Length; i++)
+                {
+                    normalized[inow++] = 2 * (Convert.ToDouble(array[i])-mine)/(maxe-mine) - 1;
                 }
             }
-
             // end
-
+            
             return normalized;
         }
         public int[] Task8(int[] A, int[] B)
@@ -223,64 +220,26 @@
             int[] C = null;
 
             // code here
-
-            int n = A.Length;
-            for (int i = 0; i < n - 1; i++)
+            C = new int[A.Length+B.Length];
+            int inow = 0;
+            for (int i = 0; i < A.Length; i++)
             {
-                int MaxInd = i;
-                int MaxVal = A[i];
-                for (int j = i + 1; j < n; j++)
-                {
-                    if (A[j] > MaxVal)
-                    {
-                        MaxInd = j;
-                        MaxVal = A[j];
-                    }
-                }
-                (A[i], A[MaxInd]) = (A[MaxInd], A[i]);
+                C[inow++] = A[i];
             }
-
-            int m = B.Length;
-            for (int i = 0; i < m - 1; i++)
+            for (int i = 0; i<B.Length; i++)
             {
-                int MaxInd = i;
-                int MaxVal = B[i];
-                for (int j = i + 1; j < m; j++)
-                {
-                    if (B[j] > MaxVal)
-                    {
-                        MaxInd = j;
-                        MaxVal = B[j];
-                    }
-                }
-                (B[i], B[MaxInd]) = (B[MaxInd], B[i]);
+                C[inow++] = B[i];
             }
-
-            C = new int[n + m];
-            int i_A = 0, i_B = 0, i_C = 0;
-            while (i_A < n || i_B < m)
+            for (int i = 0; i < C.Length; i++)
             {
-                if (i_A < n && i_B < m)
+                for (int j = 0; j < C.Length - 1; j++)
                 {
-                    if (A[i_A] > B[i_B])
+                    if (C[j] < C[j + 1])
                     {
-                        C[i_C++] = A[i_A++];
+                        (C[j], C[j + 1]) = (C[j+1], C[j]);
                     }
-                    else
-                    {
-                        C[i_C++] = B[i_B++];
-                    }
-                }
-                else if (i_A < n)
-                {
-                    C[i_C++] = A[i_A++];
-                }
-                else
-                {
-                    C[i_C++] = B[i_B++];
                 }
             }
-
             // end
 
             return C;
@@ -289,30 +248,27 @@
         {
 
             // code here
-
-            int n = array.Length;
-            int MaxInd = 0;
-            int MaxVal = array[0];
-            for (int i = 0; i < n; i++)
+            int mx = -1000;
+            int imx = 0;
+            for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] > MaxVal)
+                if (array[i] > mx)
                 {
-                    MaxVal = array[i];
-                    MaxInd = i;
+                    mx = array[i];
+                    imx = i;
                 }
             }
-
-            var moved = new int[n];
-            for (int i = 0; i < n; i++)
+            int[] result = new int[array.Length];
+            for (int i = imx;i< result.Length; i++)
             {
-                moved[(i + MaxInd) % n] = array[i];
+                result[i] = array[i-imx];
             }
-            // // Console.WriteLine(string.Join(" ", moved));
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < imx; i++)
             {
-                array[i] = moved[i];
+                result[i] = array[i + result.Length-imx];
             }
-
+            for (int i = 0; i < array.Length; i++)
+                array[i] = result[i];
             // end
 
         }
@@ -320,13 +276,13 @@
         {
 
             // code here
-
-            N--;
-            for (int move = 1; move <= N && N + move < array.Length; move++)
+            for (int i = N;i< array.Length; i++)
             {
-                array[N + move] = array[N - move];
+                if (2*(N-1)-i >= 0)
+                {
+                    array[i] = array[2 * (N - 1) - i];
+                }
             }
-
             // end
 
         }
@@ -336,56 +292,50 @@
             double[] Xext = null, Yext = null;
 
             // code here
-
-            X = new double[n];
-            Y = new double[n];
-
-            if (n == 1)
+            if (a < b || (a == b && n == 1))
             {
-                X[0] = (a + b) / 2;
-            }
-            else if (n >= 2)
-            {
-                double dif = (b - a) / (n - 1);
-                for (int i = 0; i < n; i++)
+
+
+
+                X = new double[n];
+                Y = new double[n];
+                int inow = 0;
+                double step = (b - a) / (n - 1);
+                for (double x = a; x <= (b + step / 2); x += step)
                 {
-                    X[i] = a + dif * i;
+
+                    X[inow] = x;
+                    Y[inow++] = Math.Cos(x) + x * Math.Sin(x);
                 }
-            }
-            for (int i = 0; i < n; i++)
-            {
-                Y[i] = Math.Cos(X[i]) + X[i] * Math.Sin(X[i]);
-            }
-
-            //// Console.WriteLine($"X: {string.Join(" ", X)}");
-            //// Console.WriteLine($"Y: {string.Join(" ", Y)}");
-
-            if (a == b && n == 1 || a < b)
-            {
-                int cntExt = 0;
+                int len = 0;
                 for (int i = 1; i < n - 1; i++)
                 {
-                    if (Y[i - 1] < Y[i] && Y[i] > Y[i + 1] ||
-                        Y[i - 1] > Y[i] && Y[i] < Y[i + 1])
+                    if ((Y[i] > Y[i - 1]) && (Y[i] > Y[i + 1]))
                     {
-                        cntExt++;
+                        len++;
+                    }
+                    else if ((Y[i] < Y[i - 1]) && (Y[i] < Y[i + 1]))
+                    {
+                        len++;
                     }
                 }
-
-                Xext = new double[cntExt];
-                Yext = new double[cntExt];
-                int iExt = 0;
+                Xext = new double[len];
+                Yext = new double[len];
+                inow = 0;
                 for (int i = 1; i < n - 1; i++)
                 {
-                    if (Y[i - 1] < Y[i] && Y[i] > Y[i + 1] ||
-                        Y[i - 1] > Y[i] && Y[i] < Y[i + 1])
+                    if ((Y[i] > Y[i - 1]) && (Y[i] > Y[i + 1]))
                     {
-                        Xext[iExt] = X[i];
-                        Yext[iExt++] = Y[i];
+                        Xext[inow] = X[i];
+                        Yext[inow++] = Y[i];
+                    }
+                    else if ((Y[i] < Y[i - 1]) && (Y[i] < Y[i + 1]))
+                    {
+                        Xext[inow] = X[i];
+                        Yext[inow++] = Y[i];
                     }
                 }
             }
-
             // end
 
             return (Xext, Yext);
@@ -396,99 +346,75 @@
             double[] bright = null, normal = null, dim = null;
 
             // code here
-
-            // a
-
-            int n = raw.Length;
-            int bright_len = 0, dim_len = 0;
-
-            double sum = 0;
-            foreach (double x in raw)
+            normal = new double[raw.Length];
+            double mse = 0;
+            
+            for (int i = 0; i < raw.Length; i++)
             {
-                sum += x;
+                mse += raw[i];
             }
-            double mid = sum / n;
-            // Console.WriteLine($"mid: {mid}");
-
-            foreach (double x in raw)
+            mse = mse / raw.Length;
+            int brightCount = 0;
+            int dimCount = 0;
+            for (int i = 0; i < raw.Length; i++)
             {
-                if (x > mid * 2)
-                {
-                    bright_len++;
-                }
-                if (x * 2 < mid)
-                {
-                    dim_len++;
-                }
+                if (raw[i] > 2 * mse)
+                    brightCount++;
+                else if (raw[i] < mse / 2)
+                    dimCount++;
             }
 
-            bright = new double[bright_len];
-            dim = new double[dim_len];
-            int i_bright = 0, i_dim = 0;
 
-            for (int i = 0; i < n; i++)
+            bright = new double[brightCount];
+            dim = new double[dimCount];
+
+
+            int bIndex = 0;
+            int dIndex = 0;
+            for (int i = 0; i < raw.Length; i++)
             {
-                if (raw[i] > mid * 2)
+                if (raw[i] > 2 * mse)
+                    bright[bIndex++] = raw[i];
+                else if (raw[i] < mse / 2)
+                    dim[dIndex++] = raw[i];
+            }
+            double sumNew = 0;
+            double iNew = 0;
+            for (int i = 0; i < raw.Length; i++)
+            {
+                if (raw[i] > 2*mse || raw[i]<mse/2)
                 {
-                    bright[i_bright++] = raw[i];
+                    continue;
                 }
-                if (raw[i] * 2 < mid)
+                else
                 {
-                    dim[i_dim++] = raw[i];
+                    sumNew += raw[i];
+                    iNew++;
                 }
             }
-            // Console.WriteLine($"bright: {string.Join(" ", bright)}");
-            // Console.WriteLine($"dim: {string.Join(" ", dim)}");
-
-            // b
-
-            int good_cnt = n - bright_len - dim_len;
-            normal = new double[n];
-            double good_sum = 0;
-
-            for (int i = 0; i < n; i++)
+            double mseNew = sumNew / iNew;
+            for (int i = 0; i < raw.Length; i++)
             {
-                if (!(raw[i] > mid * 2 || raw[i] * 2 < mid))
+                if (raw[i] > 2 * mse || raw[i] < mse / 2)
                 {
-                    normal[i] = raw[i];
-                    good_sum += normal[i];
+                    raw[i] = (mseNew + raw[i]) / 2;
                 }
             }
-            // Console.WriteLine($"normal: {string.Join(" ", normal)}");
-            double good_mid = good_sum / good_cnt;
-            // Console.WriteLine($"good_mid: {good_mid}");
-
-            // c
-
-            for (int i = 0; i < n; i++)
+            int ine = 0;
+            for (int i =0;i<raw.Length; i++)
             {
-                if (raw[i] > mid * 2 || raw[i] * 2 < mid)
-                {
-                    normal[i] = (good_mid + raw[i]) / 2;
-                }
+                normal[ine++] = raw[i];
             }
-            // Console.WriteLine($"normal: {string.Join(" ", normal)}");
-
-            // d
-
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < normal.Length; i++)
             {
-                bool changed = false;
-                for (int j = 1; j < n - i; j++)
+                for (int j = 0; j < normal.Length - 1; j++)
                 {
-                    if (normal[j - 1] < normal[j])
+                    if (normal[j] < normal[j + 1])
                     {
-                        (normal[j - 1], normal[j]) = (normal[j], normal[j - 1]);
-                        changed = true;
+                        (normal[j], normal[j + 1]) = (normal[j + 1], normal[j]);
                     }
                 }
-                if (!changed)
-                {
-                    break;
-                }
             }
-            // Console.WriteLine($"normal: {string.Join(" ", normal)}");
-
             // end
 
             return (bright, normal, dim);
