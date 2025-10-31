@@ -48,6 +48,7 @@
             for (int i = 0; i < answer.Length; i++)
             {
                 _main.Task1(input[i]);
+                System.Console.WriteLine(string.Join(", ", input[i]));
             }
             // Assert
             for (int i = 0; i < answer.Length; i++)

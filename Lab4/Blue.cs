@@ -6,17 +6,35 @@ namespace Lab4
     {
         public void Task1(int[] array)
         {
-            bool Zamena = false;
-
             // code here
+            int maxx = int.MinValue;
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] < 0 && Zamena == false)
+                if (array[i] > maxx) maxx = array[i];
+            }
+            System.Console.WriteLine(maxx);
+            int summ = 0;
+            bool finded = false;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (finded)
                 {
-                    int test = array[i] = array.Skip(array.ToList().IndexOf(array.Max()) + 1).Sum();
-                    Zamena = true;
+                    summ += array[i];
+                    System.Console.WriteLine(array[i]);
+                }
+                else finded = array[i] == maxx;
+            }
+            finded = false;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < 0 && !finded)
+                {
+                    array[i] = summ;
+                    finded = true;
                 }
             }
+
+
 
             // end
 
