@@ -49,7 +49,7 @@
 
                 if (imax < array.Length - 1)
                 {
-                    int imax = imax + 1;
+                    imax = imax + 1;
                     for (int i = imax + 2; i < array.Length; i++)
                     {
                         if (array[i] < array[imax])
@@ -71,7 +71,7 @@
         {
 
             // code here
-            if (array != 0 && array.Length > 0)
+            if (array != null && array.Length > 0)
             {
                 int imax = 0;
                 for (int i = 2; i < array.Length; i += 2)
@@ -132,14 +132,14 @@
                     }
             }
             }
-        }
             // end
+        }
         public int[] Task7(int[] array)
         {
             int[] answer = null;
 
             // code here
-            if (array != 0)
+            if (array != null)
             {
                 int count = 0;
                 for (int i = 0; i < array.length; i++)
@@ -193,7 +193,7 @@
             {
                 reversed[i] = array[n - 1 - i];
             }
-            return reversed;
+            return;
           
             // end
 
