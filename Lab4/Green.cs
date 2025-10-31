@@ -57,10 +57,52 @@
             int[] negatives = null;
 
             // code here
+            //int min = 100000;
+            //int max = -100000;
+            //int n = -1, x = -1;
+            //negatives = new int[0];
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    if (array[i] < min)
+            //    {
+            //        min = array[i];
+            //        n = i;
+            //    }
+            //    if (array[i] > max)
+            //    {
+            //        max = array[i];
+            //        x = i;
+            //    }
+            //}
+
+            //if (x > n)
+            //{
+            //    for (int i = n + 1; i < x; i++)
+            //    {
+            //        if (array[i] < 0)
+            //        {
+            //            Array.Resize(ref negatives, negatives.Length + 1);
+            //            negatives[negatives.Length - 1] = array[i];
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    for (int i = x + 1; i < n; i++)
+            //    {
+            //        if (array[i] < 0)
+            //        {
+            //            Array.Resize(ref negatives, negatives.Length + 1);
+            //            negatives[negatives.Length - 1] = array[i];
+            //        }
+            //    }
+            //}
             int min = 100000;
             int max = -100000;
             int n = -1, x = -1;
-            negatives = new int[0];
+
+            
+            int negativeCount = 0;
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] < min)
@@ -75,26 +117,38 @@
                 }
             }
 
+            
+            int start, end;
             if (x > n)
             {
-                for (int i = n + 1; i < x; i++)
-                {
-                    if (array[i] < 0)
-                    {
-                        Array.Resize(ref negatives, negatives.Length + 1);
-                        negatives[negatives.Length - 1] = array[i];
-                    }
-                }
+                start = n + 1;
+                end = x;
             }
             else
             {
-                for (int i = x + 1; i < n; i++)
+                start = x + 1;
+                end = n;
+            }
+
+            
+            for (int i = start; i < end; i++)
+            {
+                if (array[i] < 0)
                 {
-                    if (array[i] < 0)
-                    {
-                        Array.Resize(ref negatives, negatives.Length + 1);
-                        negatives[negatives.Length - 1] = array[i];
-                    }
+                    negativeCount++;
+                }
+            }
+
+            
+            negatives = new int[negativeCount];
+            int index = 0;
+
+            for (int i = start; i < end; i++)
+            {
+                if (array[i] < 0)
+                {
+                    negatives[index] = array[i];
+                    index++;
                 }
             }
             // end
@@ -139,20 +193,48 @@
             int[] answer = null;
 
             // code here
-            answer = new int[0];
+            //answer = new int[0];
+            //int max = -1000000;
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    if (array[i] > max)
+            //        max = array[i];
+            //}
+
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    if (array[i] == max)
+            //    {
+            //        Array.Resize(ref answer, answer.Length + 1);
+            //        answer[answer.Length - 1] = i;
+            //    }
+            //}
+
             int max = -1000000;
+            int count = 0;
+
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] > max)
+                {
                     max = array[i];
+                    count = 1; 
+                }
+                else if (array[i] == max)
+                {
+                    count++;
+                }
             }
+
+            answer = new int[count];
+            int index = 0;
 
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] == max)
                 {
-                    Array.Resize(ref answer, answer.Length + 1);
-                    answer[answer.Length - 1] = i;
+                    answer[index] = i;
+                    index++;
                 }
             }
             // end
