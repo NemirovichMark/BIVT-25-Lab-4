@@ -265,20 +265,32 @@
 
             return length;
         }
+
         public void Task9(int[] array)
         {
             // code here
             if (array == null || array.Length <= 2)
                 return;
 
-            List<int> sp = new List<int>();
+            int size = (array.Length + 1) / 2;
+            int[] sp = new int[size];
+
+            int index = 0;
             for (int i = 0; i < array.Length; i += 2)
             {
-                sp.Add(array[i]);
+                sp[index] = array[i];
+                index += 1;
             }
 
-            sp.Sort();
-            int index = 0;
+            int n = size;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                    if (sp[j] > sp[j + 1])
+                        (sp[j], sp[j + 1]) = (sp[j + 1], sp[j]);
+            }
+
+            index = 0;
             for (int i = 0; i < array.Length; i += 2)
             {
                 array[i] = sp[index];
@@ -297,19 +309,33 @@
                 return cleared;
             }
 
-            List<int> result = new List<int>();
-            HashSet<int> viddeli = new HashSet<int>();
+            int[] temp = new int[array.Length];
+            int count = 0;
 
             foreach (int num in array)
             {
-                if (!viddeli.Contains(num))
+                bool found = false;
+                for (int i = 0; i < count; i++)
                 {
-                    result.Add(num);
-                    viddeli.Add(num);
+                    if (temp[i] == num)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    temp[count] = num;
+                    count++;
                 }
             }
 
-            cleared = result.ToArray();
+            cleared = new int[count];
+            for (int i = 0; i < count; i++)
+            {
+                cleared[i] = temp[i];
+            }
             // end
 
             return cleared;
@@ -341,16 +367,27 @@
 
             if (count == 0) return new double[0];
 
-            double avgPos = sum / count;
+            double avg = sum / count;
 
-            var listB = new System.Collections.Generic.List<double>();
+            int countB = 0;
             for (int i = 0; i < n; i++)
             {
-                if (A[i] > 0 && A[i] > avgPos)
-                    listB.Add(A[i]);
+                if (A[i] > 0 && A[i] > avg)
+                    countB++;
             }
 
-            B = listB.ToArray();
+            B = new double[countB];
+            int indexB = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                if (A[i] > 0 && A[i] > avg)
+                {
+                    B[indexB] = A[i];
+                    indexB++;
+                }
+            }
+
             return B;
         }
 
