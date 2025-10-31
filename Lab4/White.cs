@@ -310,11 +310,11 @@ array = new double[n];
 
 if (b > a)
 {
-    double distance = (b - a) / (n - 1);
+    distance = (b - a) / (n - 1);
 }
 else
 {
-    double distance = (a - b) / (n - 1);
+    distance = (a - b) / (n - 1);
 }
             
     for (int i = 0; i < n; i++)
@@ -385,6 +385,7 @@ for (int i = 0; i < n; i++)
     }
 
 }
+
 
 
 
