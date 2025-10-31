@@ -162,7 +162,6 @@ namespace Lab4
                 }
             }
 
-            return array;
             // end
 
         }
@@ -170,12 +169,11 @@ namespace Lab4
         {
 
             // code here
-            int L = array.Length;
-            for (int i = 0; i < L / 2; i++)
+            for (int i = 0; i < array.Length / 2; i++) //проходим до средины массива
             {
                 int temp = array[i];
-                array[i] = array[L - 1 - i];
-                array[L - 1 - i] = temp;
+                array[i] = array[array.Length - 1 - i];
+                array[array.Length - 1 - i] = temp;
             }
             // end
 
@@ -185,21 +183,31 @@ namespace Lab4
             int[] C = null;
 
             // code here
-            if (A == null && B == null) return new int[0];
-            if (A == null) return (int[])B.Clone();
-            if (B == null) return (int[])A.Clone();
+            int[] result = new int[A.Length + B.Length];
+            int i = 0;
+            int j = 0;
 
-            int[] C = new int[A.Length + B.Length];
-            int index = 0;
-
-            int maxLength = Math.Max(A.Length, B.Length);
-            for (int i = 0; i < maxLength; i++)
+            while (j < A.Length && j < B.Length)
             {
-                if (i < A.Length) C[index++] = A[i];
-                if (i < B.Length) C[index++] = B[i];
+                result[i] = A[j];
+                i++;
+                result[i] = B[j];
+                i++;
+                j++;
             }
-
-            
+            while (j < A.Length)
+            {
+                result[i] = A[j];
+                i++;
+                j++;
+            }
+            while (j < B.Length)
+            {
+                result[i] = B[j];
+                i++;
+                j++;
+            }
+            C = result;
             // end
 
             return C;
@@ -208,7 +216,7 @@ namespace Lab4
         {
             double[] array = null;
 
-
+            // code here
             if (n != 0 && n != 1)
             {
                 if (a < b)
