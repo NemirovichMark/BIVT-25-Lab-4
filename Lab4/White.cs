@@ -12,7 +12,7 @@ namespace Lab4
             double sum = 0;
             for (int i = 0; i < vector.Length; i++)
             {
-                sum += Math.Pow(vector[i], 2);
+                sum += vector[i] * vector[i];
             }
             length = Math.Sqrt(sum);
             // end
