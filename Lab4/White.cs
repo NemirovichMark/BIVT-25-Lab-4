@@ -305,6 +305,7 @@ if (a == b || n == 1)
     return null;
 }
 
+double distance = 0;
 array = new double[n];
 
 if (b > a)
@@ -384,5 +385,6 @@ for (int i = 0; i < n; i++)
     }
 
 }
+
 
 
