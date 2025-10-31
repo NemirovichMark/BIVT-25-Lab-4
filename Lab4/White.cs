@@ -102,12 +102,19 @@ namespace Lab4
         }
         public void Task6(int[] array)
         {
-            int arrayMax = array.Max();
+            int max = int.MinValue;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                }
+            }
             int indexMax = 0;
             // code here
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] == arrayMax)
+                if (array[i] == max)
                 {
                     indexMax = i;
                     break;
