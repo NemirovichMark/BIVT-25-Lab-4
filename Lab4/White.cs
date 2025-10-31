@@ -69,7 +69,7 @@ namespace Lab4
 
         if (array.Length == 0 || array.Length == 1 || maxIndex == array.Length - 1 || array[maxIndex] == array [minIndex] || array == null)
         {
-        return null;
+        return;
         }
 
         (array[maxIndex], array[minIndex]) = (array[minIndex], array[maxIndex]);
@@ -87,7 +87,7 @@ namespace Lab4
 
 if (array.Length == 0)
 {
-return null;
+return;
 }
     
 int maxIndex = 0;
@@ -145,7 +145,7 @@ for (int i = 1; i < array.Length; i++)
 
 if (array.Length == 0 || max == 0)
 {
-    return null;
+    return;
 }
 
 for (int i = 0; i + 1 < max; i += 2)
@@ -383,4 +383,5 @@ for (int i = 0; i < n; i++)
     }
 
 }
+
 
