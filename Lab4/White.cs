@@ -240,37 +240,24 @@
             double[] array = null;
 
             // code here
-            if (a == b && n == 1)
+            if (n == 1 && a == b)
             {
-                return new double[] {a};
+                array = new double[] { a };
             }
-            if (n <= 0 || a == b)
+            else if (n > 1 && a != b)
             {
-                return null;
-            }
-            double[] array = new double[n];
-
-            if (a < b)
-            {
+                array = new double[n];
                 double step = (b - a) / (n - 1);
                 for (int i = 0; i < n; i++)
                 {
                     array[i] = a + i * step;
                 }
-            }
-            else 
-            {
-                double step = (a - b) / (n - 1);
-                for (int i = 0; i < n; i++)
-                {
-                    array[i] = a - i * step;
-                }
-            }
             // end
 
             return array;
         }
-
+        }
+        
         public double[] Task12(double[] raw)
         {
             double[] restored = null;
