@@ -214,11 +214,22 @@ namespace Lab4
                     dim[dc++] = raw[i];
             
             normal = new double[raw.Length];
+
+            double nsum = 0;
+            int cnt = 0;
+            for (int i = 0; i < raw.Length; i++)
+                if (raw[i] <= 2 * sum && raw[i] * 2 >= sum)
+                {
+                    nsum += raw[i];
+                    cnt++;
+                }
+
+            nsum /= cnt;
             
             for (int i = 0; i < raw.Length; i++)
             {
                 if (raw[i] > 2 * sum || raw[i] * 2 < sum)
-                    normal[i] = (raw[i] + sum) / 2.0;
+                    normal[i] = (raw[i] + nsum) / 2.0;
                 else
                     normal[i] = raw[i];
             }
