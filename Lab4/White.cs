@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 
@@ -10,11 +11,13 @@ namespace Lab4
             double length = 0;
 
             // code here
-            for(int i = 0; i < vector.Length; i++)
+            
+            for (int i = 0; i < vector.Length; i++)
             {
-                length += vector[i] * vector[i];
+                length += Math.Pow(vector[i], 2);
             }
             length = Math.Sqrt(length);
+            Console.WriteLine(length);
             // end
 
             return length;
@@ -24,14 +27,12 @@ namespace Lab4
             int count = 0;
 
             // code here
-            int n = array.Length;
-            for (int i = 0;i<n;i++)
-            {
-                if ((array[i] < Q)&& (array[i] > P))
-                {
+            for (int i = 0; i < array.Length; i++) {
+                if (P < array[i] && array[i]< Q) { 
                     count++;
                 }
             }
+            Console.WriteLine(count);
             // end
 
             return count;
@@ -40,36 +41,24 @@ namespace Lab4
         {
 
             // code here
-            int n = array.Length;
-            int max = -10000000;
-            int indexmax = 0;
-            for(int i = 0; i < n; i++)
-            {
-                if (array[i] > max)
-                {
-                    max = array[i];
-                    indexmax = i;
+            if (array == null || array.Length == 0)
+                return;
+            int maxIndex = 0;
+            for (int i = 0; i < array.Length; i++) {
+                if (array[i] > array[maxIndex]) {
+                    maxIndex= i;
                 }
             }
-            if (indexmax == (n - 1))
-            {
-                return;
-            }
-            int min = 100000;
+            if (maxIndex == array.Length - 1) { return; }
 
-            int indexmin = 0;
-            for (int i = indexmax; i < n; i++)
+            int min = maxIndex + 1;
+            for (int i = maxIndex + 2; i < array.Length; i++)
             {
-                
-               if (array[i] < min)
-               {
-                    min = array[i];
-                    indexmin = i;
-               }
-                
+                if (array[i] < array[min]) { min = i; }
             }
-            (array[indexmin], array[indexmax]) = (array[indexmax], array[indexmin]);
 
+            (array[maxIndex], array[min]) = (array[min], array[maxIndex]);
+            Console.WriteLine(string.Join(",", array));
             // end
 
         }
@@ -77,20 +66,15 @@ namespace Lab4
         {
 
             // code here
-            double max = -100000;
-            int n = array.Length;
-            int index = 0;
-            for(int i = 0; i < n; i+=2)
+            int maxIndex = 0;
+            for (int i = 0; i < array.Length; i += 2)
             {
-                if (array[i] > max)
+                if (array[i] > array[maxIndex])
                 {
-                    max = array[i];
-                    index = i;
-                    //max = index;
+                    maxIndex= i;
                 }
             }
-            array[index] = index;
-            
+            array[maxIndex] = maxIndex;
             // end
 
         }
@@ -99,17 +83,17 @@ namespace Lab4
             int index = 0;
 
             // code here
-            int n = array.Length;
             index = -1;
-            for(int i = 0; i < n; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] == P)
                 {
-                    index = i; break;
+                    index = i;
+                    break;
                 }
-                
-                
             }
+
+            Console.WriteLine(index);
             // end
 
             return index;
@@ -119,14 +103,16 @@ namespace Lab4
 
             // code here
             int max = 0;
-            for (int i = 0; i < array.Length; i++)
+            for (int i =0; i < array.Length; i++)
             {
                 if (array[i] > array[max]) { max = i; }
             }
+
             for (int i = 0; i < max-1; i+=2)
             {
-                (array[i], array[i + 1]) = (array[i + 1], array[i]);
+                (array[i], array[i+1]) = (array[i+1], array[i]);
             }
+
             // end
 
         }
@@ -135,31 +121,21 @@ namespace Lab4
             int[] answer = null;
 
             // code here
-            int n = 0;
-            for(int i = 0; i < array.Length; i++)
+            int c = 0;
+            for (int i=0; i<array.Length; i++)
             {
-                if (array[i] >= 0)
-                
-                    n++;
-                
+                if (array[i]>=0)
+                    c++;
             }
-            answer = new int[n];
-            n = 0;
+
+            answer = new int[c];
+            int j = 0;
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] >= 0)
-                {
-                    answer[n++] = array[i];
-                    
-                }
-                    
-                     
+                if (array[i] >= 0) { 
+                answer[j] = array[i];
+                j++; }
             }
-                
-
-
-
-            
             // end
 
             return answer;
@@ -172,16 +148,15 @@ namespace Lab4
             {
                 int max = array[i];
                 int imax = i;
-                for (int k =i+1; k < array.Length; k++)
+                for (int k=i+1; k<array.Length; k++)
                 {
-                    if (array[k] > max)
+                    if (array[k]> max)
                     {
                         max = array[k];
                         imax = k;
                     }
                 }
-                (array[i], array[imax]) = (array[imax], array[i]);
-
+                (array[i], array[imax] ) = (array[imax], array[i]); 
             }
             // end
 
@@ -190,12 +165,19 @@ namespace Lab4
         {
 
             // code here
-            int temp, n = array.Length;
-            for(int i = 0; i < n / 2; i++)
+            int c = 0;
+            for (int i = 0; i < array.Length; i++) { c++; }
+            int [] answer = new int[c];
+            int j = 0;
+
+            for (int i = array.Length-1; i>=0; i--)
             {
-                temp = array[i];
-                array[i] = array[n - i - 1];
-                array[n - i - 1] = temp;
+                answer[j] = array[i];
+                j++;
+            }
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = answer[i];
             }
             // end
 
@@ -204,13 +186,10 @@ namespace Lab4
         {
             int[] C = null;
 
-
             // code here
             if (A.Length == 0 && B.Length == 0) { return new int[0]; }
 
-            if (A.Length == 0)
-            {
-                C = new int[B.Length];
+            if (A.Length == 0) { C = new int[B.Length];
                 for (int i = 0; i < B.Length; i++)
                 {
                     C[i] = B[i];
@@ -234,7 +213,7 @@ namespace Lab4
             int iB = 0;
             int iC = 0;
 
-            while (iA < A.Length && iB < B.Length)
+            while (iA < A.Length && iB< B.Length)
             {
                 C[iC] = A[iA];
                 iA++;
@@ -263,7 +242,6 @@ namespace Lab4
 
             return C;
         }
-        
         public double[] Task11(double a, double b, int n)
         {
             double[] array = null;
@@ -295,7 +273,7 @@ namespace Lab4
                     array[i] = a + i * step;
                 }
             }
-            else
+            else 
             {
                 double step = (a - b) / (n - 1);
                 for (int i = 0; i < n; i++)
