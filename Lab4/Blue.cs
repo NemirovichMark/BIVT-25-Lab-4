@@ -238,21 +238,20 @@ namespace Lab4
             double[] normalized = null;
 
             // code here
-            double minn = double.MaxValue;
-            double maxx = double.MinValue;
-
-            for (int i = 0; i < array.Length; i++)
+            int max1=int.MinValue,min1=int.MaxValue,n=array.Length;
+            for (int i = 0; i < n; i++)
             {
-                if (array[i] < minn) minn = array[i];
-                if (array[i] > maxx) maxx = array[i];
+                if (array[i] < min1)
+                    min1 = array[i];
+                if (array[i] > max1) 
+                    max1 = array[i];
             }
-
-            if (minn == maxx) return null;
-
-            normalized = new double[array.Length];
-            for (int i = 0; i < array.Length; i++)
+            if (min1 == max1)
+                return normalized;
+            normalized = new double[n];
+            for (int i = 0; i < n; i++)
             {
-                normalized[i] = (array[i] - minn) / (maxx - minn);
+                normalized[i] = (double)(array[i]-min1)/(max1-min1);
             }
             // end
 
@@ -263,24 +262,48 @@ namespace Lab4
             int index = 0;
 
             // code here
-            int n=array.Length;
-            for (int i = 0; i < n - 1; i++){
-                for (int j = 1; j < n - i; j++) {
-                    if (array[j] < array[j - 1])
-                        (array[j], array[j - 1]) = (array[j - 1], array[j]);
-                }
-            }
-            int left=0,right=n-1,mid;
-            while (left <= right) {
-                mid=left+(right-left)/2;
-                if (array[mid] == P) 
-                    return mid;
-                else if (array[mid] < P) 
-                    left = mid + 1;
-                else 
-                    right = mid-1;
+            if (array == null || array.Length == 0)
+            {
+                return -1;
             }
 
+
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                for (int j = 0; j < array.Length - i - 1; j++)
+                {
+                    if (array[j] > array[j + 1])
+                    {
+                        int temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
+
+
+            int left = 0;
+            int right = array.Length - 1;
+            index = -1;
+
+            while (left <= right)
+            {
+                int mid = left + (right - left) / 2;
+
+                if (array[mid] == P)
+                {
+                    index = mid;
+                    break;
+                }
+                else if (array[mid] < P)
+                {
+                    left = mid + 1;
+                }
+                else
+                {
+                    right = mid - 1;
+                }
+            }
             // end
 
             return index;
@@ -331,4 +354,5 @@ namespace Lab4
             return indexes;
         }
     }
+
 }
