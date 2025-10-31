@@ -456,6 +456,8 @@
             for (int i = 0; i < answer.Length; i++)
             {
                 test[i] = _main.Task9(input[i]);
+                System.Console.WriteLine(string.Join(", ", test[i]));
+                System.Console.WriteLine();
             }
             // Assert
             for (int i = 0; i < answer.Length; i++)
