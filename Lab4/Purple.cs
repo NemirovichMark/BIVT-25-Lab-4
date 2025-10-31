@@ -1,9 +1,3 @@
-﻿using System;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
-using System.Transactions;
-
 namespace Lab4
 {
     public class Purple
@@ -434,4 +428,5 @@ namespace Lab4
             return (bright, normal, dim);
         }
     }
+
 }
