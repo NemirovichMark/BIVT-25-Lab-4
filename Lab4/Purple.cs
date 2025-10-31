@@ -105,33 +105,33 @@ namespace Lab4
         {
 
             // code here
-            int count = 0;
+            int[] temp = new int[array.Length];
+            int plus = 0;
+            int minus = array.Length - 1;
+
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] < 0)
+                if (array[i] >= 0)
                 {
-                    count += 1;
-                }
-            }
-            int ind = array.Length - count;
-            int plus = 0;
-            int[] a = new int[array.Length];
-            Array.Copy(array, a, array.Length);
-            for (int i = 0; i < a.Length; i++)
-            {
-                if (array[i] < 0)
-                {
-                    a[ind] = array[i];
-                    ind++;
-                }
-                else
-                {
-                    a[plus] = array[i];
+                    temp[plus] = array[i];
                     plus++;
                 }
             }
-            Array.Copy(a, array, a.Length);
 
+            for (int i = array.Length - 1; i >= 0; i--)
+            {
+                if (array[i] < 0)
+                {
+                    temp[minus] = array[i];
+                    minus--;
+                }
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = temp[i];
+            }
+        
             // end
 
         }
@@ -143,7 +143,10 @@ namespace Lab4
             if (k > A.Length)
             {
                 answer = new int[A.Length];
-                Array.Copy(A, answer, A.Length);
+                for (int i = 0; i < A.Length; i++)
+                {
+                    answer[i] = A[i];
+                }
             }
             else
             {
@@ -224,10 +227,26 @@ namespace Lab4
 
             // code here
             C = new int[A.Length + B.Length];
-            Array.Sort(A);
-            Array.Reverse(A);
-            Array.Sort(B);
-            Array.Reverse(B);
+            for (int i = 0; i < A.Length - 1; i++)
+            {
+                for (int j = 0; j < A.Length - 1; j++)
+                {
+                    if (A[j] < A[j + 1])
+                    {
+                        (A[j], A[j + 1]) = (A[j + 1], A[j]);
+                    }
+                }
+            }
+            for (int i = 0; i < B.Length - 1; i++)
+            {
+                for (int j = 0; j < B.Length - 1; j++)
+                {
+                    if (B[j] < B[j + 1])
+                    {
+                        (B[j], B[j + 1]) = (B[j + 1], B[j]);
+                    }
+                }
+            }
             int a = 0;
             int b = 0;
             int ind = 0;
@@ -275,7 +294,10 @@ namespace Lab4
             {
                 a[(i + step) % array.Length] = array[i];
             }
-            Array.Copy(a, array, a.Length);
+            for (int i = 0; i < a.Length; i++)
+            {
+                array[i] = a[i];
+            }
             // end
 
         }
@@ -403,74 +425,59 @@ namespace Lab4
             //}
             //Array.Sort(raw);
             //Array.Reverse(raw);
-            double sum = 0;
+            double sm = 0, sr = 0;
+            int count_bright = 0, count_dim = 0;
             for (int i = 0; i < raw.Length; i++)
             {
-                sum += raw[i];
+                sr += raw[i];
             }
-            double average = sum / raw.Length;
-
-            System.Collections.Generic.List<double> brightList = new System.Collections.Generic.List<double>();
-            System.Collections.Generic.List<double> dimList = new System.Collections.Generic.List<double>();
-            System.Collections.Generic.List<double> normalList = new System.Collections.Generic.List<double>();
-
             for (int i = 0; i < raw.Length; i++)
             {
-                if (raw[i] > 2 * average)
+                if (raw[i] * raw.Length > 2 * sr)
                 {
-                    brightList.Add(raw[i]);
+                    count_bright++;
+                    sm += raw[i];
                 }
-                else if (raw[i] < 0.5 * average)
+                else if (raw[i] * raw.Length * 2 < sr)
                 {
-                    dimList.Add(raw[i]);
+                    count_dim++;
+                    sm += raw[i];
+                }
+            }
+            bright = new double[count_bright];
+            dim = new double[count_dim];
+            normal = new double[raw.Length];
+            int index_bright = 0, index_dim = 0;
+            for (int i = 0; i < raw.Length; i++)
+            {
+                if (raw[i] * raw.Length > 2 * sr)
+                {
+                    bright[index_bright] = raw[i];
+                    normal[i] = (double)(Math.Abs(sm - sr) / (raw.Length - count_bright - count_dim) + raw[i]) / 2;
+                    index_bright++;
+                }
+                else if (raw[i] * raw.Length * 2 < sr)
+                {
+                    dim[index_dim] = raw[i];
+                    normal[i] = (double)(Math.Abs(sm - sr) / (raw.Length - count_bright - count_dim) + raw[i]) / 2;
+                    index_dim++;
                 }
                 else
                 {
-                    normalList.Add(raw[i]);
+                    normal[i] = raw[i];
+
                 }
             }
-
-            double sumNormal = 0;
-            for (int i = 0; i < normalList.Count; i++)
+            for (int i = 0; i < normal.Length; i++)
             {
-                sumNormal += normalList[i];
-            }
-            double norm = sumNormal / normalList.Count;
-
-            System.Collections.Generic.List<double> allNormalValues = new System.Collections.Generic.List<double>();
-
-            for (int i = 0; i < raw.Length; i++)
-            {
-                if (raw[i] > 2 * average)
+                for (int j = 0; j < normal.Length - 1; j++)
                 {
-                    allNormalValues.Add((norm + raw[i]) / 2);
-                }
-                else if (raw[i] < 0.5 * average)
-                {
-                    allNormalValues.Add((norm + raw[i]) / 2);
-                }
-                else
-                {
-                    allNormalValues.Add(raw[i]);
-                }
-            }
-
-            for (int i = 0; i < allNormalValues.Count - 1; i++)
-            {
-                for (int j = i + 1; j < allNormalValues.Count; j++)
-                {
-                    if (allNormalValues[i] < allNormalValues[j])
+                    if (normal[j + 1] > normal[j])
                     {
-                        double temp = allNormalValues[i];
-                        allNormalValues[i] = allNormalValues[j];
-                        allNormalValues[j] = temp;
+                        (normal[j + 1], normal[j]) = (normal[j], normal[j + 1]);
                     }
                 }
             }
-
-            bright = brightList.ToArray();
-            dim = dimList.ToArray();
-            normal = allNormalValues.ToArray();
             // end
 
             return (bright, normal, dim);
