@@ -1,4 +1,4 @@
-﻿namespace Lab4
+namespace Lab4
 {
     public class Green
     {
@@ -6,6 +6,29 @@
         {
 
             // code here
+
+            double s = 0;
+            int count = 0;
+            foreach (double i in array)
+            {
+                if (i > 0)
+                {
+                    s += i;
+                    count++;
+                }
+            }
+
+            if (count > 0)
+            {
+                s = s / count;
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i] > 0)
+                    {
+                        array[i] = s;
+                    }
+                }
+            }
 
             // end
 
@@ -15,7 +38,25 @@
             int sum = 0;
 
             // code here
+            sum = 0;
 
+            double k = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < 0)
+                    k = 1;
+
+            }
+            if (k == 0)
+            {
+                return 0;
+            }
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < 0)
+                    break;
+                sum += array[i] * array[i];
+            }
             // end
 
             return sum;
@@ -25,7 +66,46 @@
             int[] negatives = null;
 
             // code here
+            if (array.Length == 0)
+            {
+                negatives = new int[0];
+            }
+            else
+            {
+                
+                int maxVal = array[0], minVal = array[0];
+                int idxMax = 0, idxMin = 0;
+                for (int i = 1; i < array.Length; i++)
+                {
+                    if (array[i] > maxVal) { maxVal = array[i]; idxMax = i; }
+                    if (array[i] < minVal) { minVal = array[i]; idxMin = i; }
+                }
 
+                int left = idxMax < idxMin ? idxMax + 1 : idxMin + 1;
+                int right = idxMax < idxMin ? idxMin - 1 : idxMax - 1;
+
+                if (left > right)
+                {
+                    negatives = new int[0];
+                }
+                else
+                {
+                    int count = 0;
+                    for (int i = left; i <= right; i++)
+                    {
+                        if (array[i] < 0) count++;
+                    }
+                    negatives = new int[count];
+                    int k = 0;
+                    for (int i = left; i <= right; i++)
+                    {
+                        if (array[i] < 0)
+                        {
+                            negatives[k++] = array[i];
+                        }
+                    }
+                }
+            }
             // end
 
             return negatives;
@@ -34,7 +114,35 @@
         {
 
             // code here
+            if (array.Length == 0) return;
 
+            int maxVal = array[0];
+            int idxMax = 0;
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] > maxVal)
+                {
+                    maxVal = array[i];
+                    idxMax = i;
+                }
+            }
+
+            int idxFirstNeg = -1;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < 0)
+                {
+                    idxFirstNeg = i;
+                    break;
+                }
+            }
+
+            if (idxFirstNeg != -1)
+            {
+                int tmp = array[idxMax];
+                array[idxMax] = array[idxFirstNeg];
+                array[idxFirstNeg] = tmp;
+            }
             // end
 
         }
@@ -43,7 +151,37 @@
             int[] answer = null;
 
             // code here
+            if (array == null || array.Length == 0) return new int[0];
 
+            double max = array[0];
+            int count = 1;
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    count = 1;
+                }
+                else if (array[i] == max)
+                {
+                    count++;
+                }
+            }
+
+            int[] indices = new int[count];
+            int index = 0;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    indices[index] = i;
+                    index++;
+                }
+            }
+
+            return indices;
             // end
 
             return answer;
@@ -52,7 +190,24 @@
         {
 
             // code here
+            if (array == null || array.Length == 0) return;
 
+            double max = array[0];
+
+            foreach (double element in array)
+            {
+                if (element > max) max = element;
+            }
+
+            int orNumber = 1;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    array[i] += orNumber;
+                    orNumber++;
+                }
+            }
             // end
 
         }
@@ -60,7 +215,25 @@
         {
 
             // code here
+            if (array.Length == 0) return;
 
+            int maxVal = array[0];
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] > maxVal) maxVal = array[i];
+            }
+
+            int prefixSum = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                int original = array[i];
+                if (original == maxVal)
+                {
+                    array[i] = prefixSum;
+                }
+
+                prefixSum += original;
+            }
             // end
 
         }
@@ -69,7 +242,27 @@
             int length = 0;
 
             // code here
+            if (array == null || array.Length == 0) return 0;
+            if (array.Length == 1) return 1;
 
+            int maxLength = 1;
+            int currentLength = 1;
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] < array[i - 1])
+                {
+                    currentLength++;
+                    if (currentLength > maxLength) maxLength = currentLength;
+                }
+                else
+                {
+                    currentLength = 1;
+                }
+            }
+
+            int answer = maxLength;
+            return answer;
             // end
 
             return length;
@@ -78,7 +271,20 @@
         {
 
             // code here
+            if (array == null || array.Length < 2) return;
 
+            for (int i = 0; i < array.Length; i += 2)
+            {
+                for (int j = i + 2; j < array.Length; j += 2)
+                {
+                    if (array[j] < array[i])
+                    {
+                        int tmp = array[i];
+                        array[i] = array[j];
+                        array[j] = tmp;
+                    }
+                }
+            }
             // end
 
         }
@@ -87,7 +293,39 @@
             int[] cleared = null;
 
             // code here
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                bool seenBefore = false;
+                for (int j = 0; j < i; j++)
+                {
+                    if (array[j] == array[i])
+                    {
+                        seenBefore = true;
+                        break;
+                    }
+                }
+                if (!seenBefore) count++;
+            }
 
+            cleared = new int[count];
+            int k = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                bool seenBefore = false;
+                for (int j = 0; j < i; j++)
+                {
+                    if (array[j] == array[i])
+                    {
+                        seenBefore = true;
+                        break;
+                    }
+                }
+                if (!seenBefore)
+                {
+                    cleared[k++] = array[i];
+                }
+            }
             // end
 
             return cleared;
@@ -97,7 +335,45 @@
             double[] A = null, B = null;
 
             // code here
+            A = new double[n];
+            double step = (b - a) / (n - 1);
 
+            for (int i = 0; i < n; i++)
+            {
+                A[i] = a + step * i;
+            }
+            double ss = 0;
+            int n2 = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (A[i] >= 0)
+                {
+                    ss += A[i];
+                    n2++;
+                }
+            }
+            ss = ss / n2;
+            n2 = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (A[i] > ss)
+                {
+                    n2++;
+                }
+            }
+            B = new double[n2];
+            int g = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (A[i] > ss)
+                {
+                    B[g++] = A[i];
+                }
+            }
+            if ((n <= 1) || (a == b))
+            {
+                return null;
+            }
             // end
 
             return B;
@@ -107,7 +383,25 @@
             int wins = 0;
 
             // code here
+            int penaltyMe = 0;
+            int penaltyOpp = 0;
 
+            for (int i = 0; i < dices.Length; i++)
+            {
+                int myVal = dices[i] - penaltyMe;
+                if (myVal < 1) myVal = 1;
+
+                int oppBase = 6;
+                int oppVal = oppBase - penaltyOpp;
+                if (oppVal < 1) oppVal = 1;
+
+                if (myVal > oppVal) wins++;
+
+
+                if (dices[i] == 6) penaltyMe++;
+
+                penaltyOpp++;
+            }
             // end
 
             return wins;
