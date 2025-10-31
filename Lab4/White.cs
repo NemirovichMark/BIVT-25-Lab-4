@@ -317,8 +317,9 @@ namespace Lab4
             }
             // end
 
-            return rest;
+            return restored;
         }
     }
 }
+
 
