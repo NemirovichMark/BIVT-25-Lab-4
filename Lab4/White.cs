@@ -297,20 +297,26 @@ while (i < A.Length || j < B.Length)
 
 if (a == b && n == 1)
 {
-    array = new double[] { 1 };
+    return new double[] { a };
 }
 
-else if (n >= 2)
+if (a == b || n <= 1)
 {
-    
+    return null;
+}
+
 array = new double[n];
 double distance = (b - a) / (n - 1);
+
+if (a > b)
+{
+    distance = -distance;
+}
             
     for (int i = 0; i < n; i++)
     {
         array[i] = a + i * distance;
     }    
-}
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
             // end
@@ -375,3 +381,4 @@ for (int i = 0; i < n; i++)
     }
 
 }
+
