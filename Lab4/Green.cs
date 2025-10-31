@@ -1,4 +1,6 @@
-﻿namespace Lab4
+using System.Security.Cryptography;
+
+namespace Lab4
 {
     public class Green
     {
@@ -6,6 +8,29 @@
         {
 
             // code here
+            double s = 0;
+            double av = 0;
+            int k = 0;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > 0)
+                {
+                    s += array[i];
+                    k += 1;
+                }
+            }
+
+            av = s / k;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > 0)
+                {
+                    array[i] = av;
+                }
+            }
+            Console.WriteLine(string.Join(" ", array));
 
             // end
 
@@ -15,17 +40,58 @@
             int sum = 0;
 
             // code here
-
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < 0)
+                    return sum;
+                sum += array[i] * array[i];
+            }
             // end
 
-            return sum;
+            return 0;
+
         }
         public int[] Task3(int[] array)
         {
             int[] negatives = null;
 
-            // code here
-
+            int max = int.MinValue, maxid = array.Length, min = int.MaxValue, minid = array.Length;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                    maxid = i;
+                }
+                if (array[i] < min)
+                {
+                    min = array[i];
+                    minid = i;
+                }
+            }
+            int len = 0;
+            int j = 0;
+            if (maxid > minid)
+            {
+                for (int i = minid + 1; i < maxid; i++)
+                    if (array[i] < 0)
+                        len++;
+                negatives = new int[len];
+                for (int i = minid + 1; i < maxid; i++)
+                    if (array[i] < 0)
+                        negatives[j++] = array[i];
+            }
+            else if (minid > maxid)
+            {
+                for (int i = maxid + 1; i < minid; i++)
+                    if (array[i] < 0)
+                        len++;
+                negatives = new int[len];
+                for (int i = maxid + 1; i < minid; i++)
+                    if (array[i] < 0)
+                        negatives[j++] = array[i];
+            }
+            else negatives = new int[len];
             // end
 
             return negatives;
@@ -35,15 +101,54 @@
 
             // code here
 
+            int maxx = -1000000000;
+            int ind_max = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > maxx)
+                {
+                    maxx = array[i];
+                }
+            }
+
+            ind_max = Array.IndexOf(array, maxx);
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if ((array[i] < 0))
+                {
+                    array[ind_max] = array[i];
+                    array[i] = maxx;
+                    break;
+                }
+            }
             // end
 
         }
         public int[] Task5(int[] array)
         {
-            int[] answer = null;
 
+            List<int> ans = new List<int>();
             // code here
 
+            int maxx = -100000000;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > maxx)
+                {
+                    maxx = array[i];
+                }
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == maxx)
+                {
+                    ans.Add(i);
+                }
+            }
+
+            int[] answer = ans.ToArray();
             // end
 
             return answer;
@@ -52,6 +157,13 @@
         {
 
             // code here
+            int max = int.MinValue, j = 1;
+            for (int i = 0; i < array.Length; i++)
+                if (max < array[i])
+                    max = array[i];
+            for (int i = 0; i < array.Length; i++)
+                if (array[i] == max)
+                    array[i] += j++;
 
             // end
 
@@ -60,16 +172,39 @@
         {
 
             // code here
-
+            int max = int.MinValue, s = 0, t = 0;
+            for (int i = 0; i < array.Length; i++)
+                if (max < array[i])
+                    max = array[i];
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    t = array[i];
+                    array[i] = s;
+                    s += t;
+                }
+                else
+                    s += array[i];
+            }
             // end
 
         }
         public int Task8(int[] array)
         {
-            int length = 0;
+            int length = 1;
 
             // code here
-
+            int cow = 1;
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] < array[i - 1])
+                    cow++;
+                if (cow > length)
+                    length = cow;
+                if (array[i] >= array[i - 1])
+                    cow = 1;
+            }
             // end
 
             return length;
@@ -78,7 +213,10 @@
         {
 
             // code here
-
+            for (int i = 0; i < array.Length - 2; i += 2)
+                for (int j = 0; j < array.Length - 2; j += 2)
+                    if (array[j] > array[j + 2])
+                        (array[j], array[j + 2]) = (array[j + 2], array[j]);
             // end
 
         }
@@ -87,7 +225,31 @@
             int[] cleared = null;
 
             // code here
+            int f = 0, cow = 0;
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                f = 1;
+                for (int j = 0; j < i; j++)
+                {
+                    if (array[i] == array[j])
+                        f = 0;
+                }
+                if (f == 1)
+                    cow++;
+            }
+
+            int k = 0;
+            cleared = new int[cow];
+            for (int i = 0; i < array.Length; i++)
+            {
+                f = 1;
+                for (int j = 0; j < i; j++)
+                    if (array[i] == array[j])
+                        f = 0;
+                if (f == 1)
+                    cleared[k++] = array[i];
+            }
             // end
 
             return cleared;
@@ -97,7 +259,33 @@
             double[] A = null, B = null;
 
             // code here
+            if (a == b | n <= 1)
+                return B;
 
+            A = new double[n];
+            int j = 0, cow = 0, cow2 = 0;
+            double sum = 0;
+
+            for (double i = Math.Min(a, b); i <= Math.Max(a, b) + 0.0001; i += (Math.Max(a, b) - Math.Min(a, b)) / (n - 1))
+            {
+                A[j++] = i;
+                if (i > 0)
+                {
+                    cow++;
+                    sum += i;
+                }
+            }
+
+            for (int i = 0; i < n; i++)
+                if (A[i] > 0 & A[i] > sum / cow)
+                    cow2++;
+
+            B = new double[cow2];
+            j = 0;
+
+            for (int i = 0; i < n; i++)
+                if (A[i] > 0 & A[i] > sum / cow)
+                    B[j++] = A[i];
             // end
 
             return B;
@@ -107,7 +295,22 @@
             int wins = 0;
 
             // code here
-
+            int[] shul = new int[dices.Length];
+            for (int i = 0; i <= 4 & i < dices.Length; i++)
+                shul[i] = 6 - i;
+            for (int i = 5; i < dices.Length; i++)
+                shul[i] = 1;
+            int cow = 6;
+            for (int i = 0; i < dices.Length - 1; i++)
+                if (dices[i] == cow)
+                {
+                    for (int j = i + 1; j < dices.Length; j++)
+                        dices[j] = dices[j] - 1;
+                    cow--;
+                }
+            for (int i = 0; i < dices.Length; i++)
+                if (dices[i] > shul[i])
+                    wins++;
             // end
 
             return wins;
