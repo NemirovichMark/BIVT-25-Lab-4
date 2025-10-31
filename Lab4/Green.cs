@@ -118,39 +118,59 @@
 
         public double[] Task11(double a, double b, int n)
         {
-            if (n <= 0) return new double[0];
-            double[] A = new double[n];
-            if (n == 1) A[0] = a;
-            else
+            double[] A = null, B = null;
+
+            if (a == b | n <= 1)
+                return B;
+
+            A = new double[n];
+            int j = 0, meo = 0, meo2 = 0;
+            double sum = 0;
+
+            for (double i = Math.Min(a, b); i <= Math.Max(a, b) + 0.0001; i += (Math.Max(a, b) - Math.Min(a, b)) / (n - 1))
             {
-                double step = (b - a) / (n - 1);
-                for (int i = 0; i < n; i++)
-                    A[i] = a + i * step;
+                A[j++] = i;
+                if (i > 0)
+                {
+                    meo++;
+                    sum += i;
+                }
             }
-            double[] positives = A.Where(x => x > 0).ToArray();
-            if (positives.Length == 0) return new double[0];
-            double avg = positives.Average();
-            return positives.Where(x => x > avg).ToArray();
+
+            for (int i = 0; i < n; i++)
+                if (A[i] > 0 & A[i] > sum / meo)
+                    meo2++;
+
+            B = new double[meo2];
+            j = 0;
+
+            for (int i = 0; i < n; i++)
+                if (A[i] > 0 & A[i] > sum / meo)
+                    B[j++] = A[i];
+
+            return B;
         }
         public int Task12(int[] dices)
         {
-            if (dices == null || dices.Length == 0) return 0;
-            int n = dices.Length;
-            int[] player = (int[])dices.Clone();
-            for (int i = 0; i < n; i++)
-            {
-                if (player[i] == 6)
-                {
-                    for (int j = i + 1; j < n; j++)
-                        player[j] = Math.Max(1, player[j] - 1);
-                }
-            }
             int wins = 0;
-            for (int i = 0; i < n; i++)
-            {
-                int opponent = Math.Max(1, 6 - i);
-                if (player[i] > opponent) wins++;
-            }
+
+            int[] not = new int[dices.Length];
+            for (int i = 0; i <= 4 & i < dices.Length; i++)
+                not[i] = 6 - i;
+            for (int i = 5; i < dices.Length; i++)
+                not[i] = 1;
+            int meo = 6;
+            for (int i = 0; i < dices.Length - 1; i++)
+                if (dices[i] == meo)
+                {
+                    for (int j = i + 1; j < dices.Length; j++)
+                        dices[j] = dices[j] - 1;
+                    meo--;
+                }
+            for (int i = 0; i < dices.Length; i++)
+                if (dices[i] > not[i])
+                    wins++;
+
             return wins;
         }
     }
