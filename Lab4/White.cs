@@ -129,17 +129,34 @@ namespace Lab4
             int[] C = null;
 
             // code here
-            List<int> result = new List<int>();
-            int i = 0, j = 0;
-
-            while (i < A.Length && j < B.Length)
+            C = new int[A.Length + B.Length];
+            int q = 0,w = 0;
+            for (int i = 0; i < C.Length; i++)
             {
-                result.Add(A[i++]);
-                result.Add(B[j++]);
+                if (q < A.Length && w < B.Length)
+                {
+                    if (i % 2 == 0)
+                    {
+                        C[i] = A[q];
+                        q++;
+                    }
+                    else
+                    {
+                        C[i] = B[w];
+                        w++;
+                    }
+                }
+                else if (q >= A.Length)
+                {
+                    C[i] = B[w];
+                    w++;
+                }
+                else
+                {
+                    C[i] = A[q];
+                    q++;
+                }
             }
-            while (i < A.Length) result.Add(A[i++]);
-            while (j < B.Length) result.Add(B[j++]);
-            return result.ToArray();
             // end
 
             return C;
