@@ -6,9 +6,6 @@ namespace Lab4
         {
 
             // code here
-            if (array == null || array.Length == 0) return;
-
-            // Находим сумму и количество положительных элементов
             double sum = 0;
             int count = 0;
 
@@ -21,7 +18,6 @@ namespace Lab4
                 }
             }
 
-            // Если есть положительные элементы, заменяем их средним
             if (count > 0)
             {
                 double average = sum / count;
@@ -41,16 +37,18 @@ namespace Lab4
             int sum = 0;
 
             // code here
+             int a = -1;
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] < 0)
-                {
-                    break;
-                }
+                if ((array[i] < 0) && (a == -1)) a = i;
+            }
+
+            for (int i = 0; i < a; i++)
+            {
                 sum += array[i] * array[i];
             }
             // end
-
+            
             return sum;
         }
         public int[] Task3(int[] array)
@@ -58,27 +56,31 @@ namespace Lab4
             int[] negatives = null;
 
             // code here
-            if (array == null || array.Length < 3) return new int[0];
+            if (array.Length < 3) return new int[0];
 
-            int maxIndex = 0, minIndex = 0;
+            int maxIndex = 0;
+            int minIndex = 0;
 
-            // Находим индексы максимального и минимального элементов
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] > array[maxIndex]) maxIndex = i;
                 if (array[i] < array[minIndex]) minIndex = i;
             }
 
-            int start = Math.Min(maxIndex, minIndex);
-            int end = Math.Max(maxIndex, minIndex);
+            int start = maxIndex;
+            int end = minIndex;
+            if (minIndex < maxIndex)
+            {
+                start = minIndex;
+                end = maxIndex;
+            }
 
-            // Считаем количество отрицательных элементов между ними
             int count = 0;
             for (int i = start + 1; i < end; i++)
             {
                 if (array[i] < 0) count++;
             }
-            // Формируем массив отрицательных элементов
+
             negatives = new int[count];
             int index = 0;
             for (int i = start + 1; i < end; i++)
@@ -97,24 +99,20 @@ namespace Lab4
         {
 
             // code here
-            if (array == null || array.Length == 0) return;
-
             int maxIndex = 0;
-            int firstNegativeIndex = -1;
+            int negativeIndex = -1;
 
-            // Находим индекс максимального элемента и первого отрицательного
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] > array[maxIndex]) maxIndex = i;
-                if (firstNegativeIndex == -1 && array[i] < 0) firstNegativeIndex = i;
+                if (negativeIndex == -1 && array[i] < 0) negativeIndex = i;
             }
 
-            // Если нашли отрицательный элемент, меняем местами
-            if (firstNegativeIndex != -1)
+            if (negativeIndex != -1)
             {
                 int temp = array[maxIndex];
-                array[maxIndex] = array[firstNegativeIndex];
-                array[firstNegativeIndex] = temp;
+                array[maxIndex] = array[negativeIndex];
+                array[negativeIndex] = temp;
             }
             // end
 
@@ -125,21 +123,17 @@ namespace Lab4
 
             // code here
             int max = array[0];
-
-            // Находим максимальный элемент
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] > max) max = array[i];
             }
 
-            // Считаем количество максимальных элементов
             int count = 0;
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] == max) count++;
             }
 
-            // Собираем индексы в answer
             answer = new int[count];
             int index = 0;
             for (int i = 0; i < array.Length; i++)
@@ -158,17 +152,12 @@ namespace Lab4
         {
 
             // code here
-            if (array == null || array.Length == 0) return;
-
             int max = array[0];
-
-            // Находим максимальный элемент
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] > max) max = array[i];
             }
 
-            // Увеличиваем максимальные элементы на их порядковые номера
             int order = 1;
             for (int i = 0; i < array.Length; i++)
             {
@@ -185,26 +174,32 @@ namespace Lab4
         {
 
             // code here
-            if (array == null || array.Length == 0) return;
+            if (array.Length == 0) return;
 
             int max = array[0];
-            // Находим максимальный элемент
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] > max) max = array[i];
             }
 
-            // Заменяем максимальные элементы суммой элементов до них
+            int[] sums = new int[array.Length];
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] == max)
                 {
-                    int sum = 0;
+                    sums[i] = 0;
                     for (int j = 0; j < i; j++)
                     {
-                        sum += array[j];
+                        sums[i] += array[j];
                     }
-                    array[i] = sum;
+                }
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == max)
+                {
+                    array[i] = sums[i];
                 }
             }
             // end
@@ -215,22 +210,21 @@ namespace Lab4
             int length = 0;
 
             // code here
-            if (array == null || array.Length == 0) return 0;
-            if (array.Length == 1) return 1;
+            if (array.Length == 0) return 0;
 
-            int currentLength = 1;
+            int current = 1;
             length = 1;
 
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] < array[i - 1])
                 {
-                    currentLength++;
-                    if (currentLength > length) length = currentLength;
+                    current++;
+                    if (current > length) length = current;
                 }
                 else
                 {
-                    currentLength = 1;
+                    current = 1;
                 }
             }
             // end
@@ -241,9 +235,6 @@ namespace Lab4
         {
 
             // code here
-            if (array == null || array.Length < 3) return;
-
-            // Сортировка пузырьком для элементов с четными индексами
             for (int i = 0; i < array.Length; i += 2)
             {
                 for (int j = i + 2; j < array.Length; j += 2)
@@ -264,44 +255,34 @@ namespace Lab4
             int[] cleared = null;
 
             // code here
-            if (array == null) return new int[0];
             if (array.Length == 0) return new int[0];
 
-            // Считаем количество уникальных элементов
+            // Временный массив для уникальных элементов (максимальная длина = array.Length)
+            int[] temp = new int[array.Length];
             int uniqueCount = 0;
+
             for (int i = 0; i < array.Length; i++)
             {
-                bool isUnique = true;
-                for (int j = 0; j < i; j++)
+                bool found = false;
+                for (int j = 0; j < uniqueCount; j++)
                 {
-                    if (array[i] == array[j])
+                    if (temp[j] == array[i])
                     {
-                        isUnique = false;
+                        found = true;
                         break;
                     }
                 }
-                if (isUnique) uniqueCount++;
+                if (!found)
+                {
+                    temp[uniqueCount] = array[i];
+                    uniqueCount++;
+                }
             }
 
-            // Формируем массив без повторений
             cleared = new int[uniqueCount];
-            int index = 0;
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < uniqueCount; i++)
             {
-                bool isUnique = true;
-                for (int j = 0; j < i; j++)
-                {
-                    if (array[i] == array[j])
-                    {
-                        isUnique = false;
-                        break;
-                    }
-                }
-                if (isUnique)
-                {
-                    cleared[index] = array[i];
-                    index++;
-                }
+                cleared[i] = temp[i];
             }
             // end
 
@@ -312,54 +293,51 @@ namespace Lab4
             double[] A = null, B = null;
 
             // code here
-            if (n <= 0) return new double[0];
+            if (b == a)
+                return null;
+            if (n <= 1)
+                return null;
 
-            // Создаем массив A
             A = new double[n];
-            if (n == 1)
+
+            double step = (b - a) / (n - 1);
+            for (int i = 0; i < n; i++)
             {
-                A[0] = a;
+                A[i] = a + step * i;
             }
-            else
+
+            double sum = 0;
+            int count = 0;
+            for (int i = 0; i < n; i++)
             {
-                double step = (b - a) / (n - 1);
-                for (int i = 0; i < n; i++)
+                if (A[i] > 0)
                 {
-                    A[i] = a + i * step;
+                    sum += A[i];
+                    count++;
                 }
             }
 
-            // Находим среднее положительных
-            double sumPositive = 0;
-            int countPositive = 0;
-            foreach (double num in A)
+
+            double average = sum / count;
+
+            int elementsCount = 0;
+            for (int i = 0; i < n; i++)
             {
-                if (num > 0)
+                if (A[i] > 0 && A[i] > average)
                 {
-                    sumPositive += num;
-                    countPositive++;
+                    elementsCount++;
                 }
             }
 
-            if (countPositive == 0) return new double[0];
+            B = new double[elementsCount];
+            int indexB = 0;
 
-            double averagePositive = sumPositive / countPositive;
-
-            // Формируем массив B
-            int countB = 0;
-            foreach (double num in A)
+            for (int i = 0; i < n; i++)
             {
-                if (num > 0 && num > averagePositive) countB++;
-            }
-
-            B = new double[countB];
-            int index = 0;
-            foreach (double num in A)
-            {
-                if (num > 0 && num > averagePositive)
+                if (A[i] > 0 && A[i] > average)
                 {
-                    B[index] = num;
-                    index++;
+                    B[indexB] = A[i];
+                    indexB++;
                 }
             }
             // end
@@ -371,27 +349,31 @@ namespace Lab4
             int wins = 0;
 
             // code here
-            if (dices == null || dices.Length == 0) return 0;
-
-            // Применяем прокатку
-            int[] adjusted = new int[dices.Length];
-            Array.Copy(dices, adjusted, dices.Length);
-
-            for (int i = 0; i < adjusted.Length; i++)
+            int[] shuller = new int[dices.Length];
+            for (int i = 0; i <= 4 & i < dices.Length; i++)
             {
-                if (adjusted[i] == 6)
+                shuller[i] = 6 - i;
+            }
+            for (int i = 5; i < dices.Length; i++)
+            {
+                shuller[i] = 1;
+            }
+            int k = 6;
+            for (int i = 0; i < dices.Length - 1; i++)
+            {
+                if (dices[i] == k)
                 {
-                    for (int j = i + 1; j < adjusted.Length; j++)
+                    for (int j = i + 1; j < dices.Length; j++)
                     {
-                        if (adjusted[j] > 1) adjusted[j]--;
+                        dices[j] = dices[j] - 1;
                     }
+                    k--;
                 }
             }
-
-            // Считаем победы против шулера (все кубики = 6)
-            foreach (int dice in adjusted)
+            for (int i = 0; i < dices.Length; i++)
             {
-                if (dice > 6) wins++;
+                if (dices[i] > shuller[i])
+                    wins++;
             }
             // end
 
